@@ -3,7 +3,7 @@ let b:atp_TexCompiler="pdflatex"
 let b:atp_Viewer= "evince"
 " let g:atp_Compiler="python2"
 
-"for Greak letters and some math commands
+"for Greek letters and some math commands
 let g:atp_imap_leader_1=";"
 
 "for font commands, (another good choice is "_")
