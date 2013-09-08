@@ -1,0 +1,48 @@
+
+snippet hdef "Header definition" !b
+#ifndef ${1:HEADER_H}
+#define $1
+
+#endif // $1
+endsnippet
+
+snippet wrap "Wrapper class for pure" !b
+struct ${1:Base}Wrap : $1, bp::wrapper<$1>
+{
+	void ${2:f}()
+	{
+		return this->get_override("$2")();
+	}
+};
+class_<$1Wrap, boost::noncopyable>("$1", bp::no_init)
+	.def("$2", bp::pure_virtual(&$1::$2))
+	;
+endsnippet
+
+snippet override "Define override" !b
+	${1:void} ${2:f}()
+	{
+		return this->get_override("${2}")();
+	}
+endsnippet
+
+
+snippet nc "Nice comment" !b
+/*
+ * ${1}
+ */
+endsnippet
+
+
+snippet indef "Insert debug macro" !b
+#ifndef NDEBUG
+${1}
+#endif
+endsnippet
+
+
+snippet repval "Report value in debug form" !b
+#ifndef NDEBUG
+std::cout << "${1} -> " << $1 << std::endl;
+#endif
+endsnippet

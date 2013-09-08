@@ -1,0 +1,146 @@
+snippet pnp "Import numpy and pylab!" !b
+import numpy as np
+import pylab as p
+endsnippet
+
+
+snippet she! "Add shebang" !b
+#!/usr/bin/python2
+endsnippet
+
+
+snippet mpl "Matplotlib import" !b
+import matplotlib as mpl
+mpl.use( "${0:Agg}" )
+endsnippet
+
+
+snippet fl "Add function launcher main" !b
+if __name__ == "__main__":
+    from inspect import isfunction, getargspec
+    local_globals = globals().keys()
+
+    def is_noarg_function( f ):
+        "Test if f is valid function and has no arguments"
+        func = globals()[ f ]
+        if isfunction( func ):
+            argspec = getargspec( func )
+            if len( argspec.args ) == 0\
+                        and argspec.varargs is None\
+                        and argspec.keywords is None:
+                return True
+        return False
+
+    def show_functions():
+        functions.sort()
+        for f in functions:
+            print f
+    functions = [ f for f in local_globals if is_noarg_function( f )]
+    if len( sys.argv ) <= 1 or sys.argv[ 1 ] == "-h":
+        show_functions()
+    else:
+        for launch in sys.argv[ 1: ]:
+            if launch in functions:
+                run = globals()[ launch ]
+                run()
+            else:
+                print launch, "not part of functions:"
+                show_functions()
+
+endsnippet
+
+
+snippet mpl3d "Matplotlib 3D prelude" !b
+import matplotlib.pyplot as plt
+from mpl_toolkits.mplot3d import Axes3D
+endsnippet
+
+
+snippet mls "Multi line string" !b
+"""
+${0}
+"""
+endsnippet
+
+
+snippet docopt "Import and setup docopt" !b
+import sys
+from docopt import docopt
+
+__doc__ = \
+"""
+    Usage:
+        {prgm} ${0}
+        {prgm} -h | --help
+	{prgm} --version
+
+    Options:
+        -h --help: Show this help.
+	--version: Show version.
+""".format(prgm=sys.argv[0])
+
+__version__ = "0.0.1"
+
+if __name__ == '__main__':
+    args = docopt( __doc__, version=__version__)
+endsnippet
+
+
+snippet pudb "Set trace for debugging" !b
+from pudb import set_trace; set_trace()
+endsnippet
+
+
+snippet ipy "Start ipython shell" !b
+from IPython import embed as shell; shell()
+endsnippet
+
+
+snippet main "Main script part" !b
+if __name__ == "__main__":
+    $0
+endsnippet
+
+
+snippet sym "import symwaf2ic" !b
+try:
+    from waflib.extras import symwaf2ic
+    HAS_SYMWAF2IC = True
+except ImportError:
+    HAS_SYMWAF2IC = False
+
+if HAS_SYMWAF2IC:
+    os.environ['SYMAP2IC_PATH'] = symwaf2ic.get_toplevel_path()
+endsnippet
+
+
+snippet setuplog "Function to configure logging" !b
+def config_logging():
+    logFormatter = logging.Formatter( "%(asctime)s %(levelname)s %(funcName)s: " +
+                                     "%(message)s", datefmt="%d/%m/%y %H:%M:%S" )
+                                     # "%(message)s", datefmt="%d %b %Y %H:%M:%S" )
+    # logFormatter = logging.Formatter( "%(asctime)s %(name)s %(levelname)s: " +
+                                     # "%(message)s", datefmt="%d %b %Y %H:%M:%S" )
+    # logHandler = logging.FileHandler( filename="debug.log", mode='a' )
+    logHandler = logging.StreamHandler()
+    logHandler.setFormatter( logFormatter )
+    logging.root.addHandler(logHandler)
+    # logging.root.setLevel( logging.INFO )
+    logging.root.setLevel( logging.DEBUG )
+endsnippet
+
+
+snippet new "__new__ syntax" !b
+def __new__(cls, name, bases, dct):
+endsnippet
+
+snippet cyaml "Use c implmentation of yaml" !b
+try:
+    from yaml import CLoader as Loader, CDumper as Dumper
+except ImportError:
+    from yaml import Loader, Dumper
+endsnippet
+
+snippet ll "Loglevel" !b
+if log.getEffectiveLevel() <= logging.DEBUG:
+endsnippet

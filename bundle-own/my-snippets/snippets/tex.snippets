@@ -1,0 +1,35 @@
+
+snippet EFG Insert a figure.
+	\begin{figure}[${1:htbp!}]
+		\centering
+		${2}
+		\caption{${3}}%
+		\label{fig:${4}}%
+	\end{figure}${5}
+
+snippet EFK Insert a figure without caption or label
+	\begin{figure}[${1:htbp!}]
+		\centering
+		${2}
+	\end{figure}${3}
+
+snippet EFS Insert subfigure
+	\subfloat[${1}]{%
+		\includegraphics[width=${2}\columnwidth]{${3}}}%${4}
+
+snippet EFF Insert graphics
+	\includegraphics[width=${1}\columnwidth]{${2}}%${3}
+
+snippet tv Verbatim text
+	\verb${1:~}${2}$1${3}
+
+snippet BCS Insert columns element
+	\begin{columns}[totalwidth=${1}\textwidth]
+	${2}
+	\end{columns}${3}
+
+snippet BCC Insert a columns
+	\column{${1}\textwidth}${2}
+
+snippet cite Insert high citation
+	$^\text{\cite{${1}}$

@@ -1,0 +1,6 @@
+[submodule "bundle-submodule/powerline"]
+	path = bundle-submodule/powerline
+	url = https://github.com/Lokaltog/powerline.git
+[submodule "vimpager/repo"]
+	path = vimpager/repo
+	url = https://github.com/rkitover/vimpager.git
