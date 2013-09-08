@@ -6,6 +6,9 @@ let vimpager_passthrough = 1
 
 source $HOME/.vim/vimpager/vundles.vim
 
+" Have pathogen load the other local/non-git plugins
+call pathogen#infect("$HOME/.vim/bundle-pathogen/{}")
+
 syntax on
 filetype plugin indent on
 

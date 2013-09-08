@@ -1,15 +1,13 @@
+" not used atm
 
 " Misc stuff first
 set nocompatible
 filetype off
 
 set rtp+=~/.vim/bundle/vundle/
-call vundle#rc("~/.vim/bundle-vimpager")
+call vundle#rc("~/.vim/bundle")
 Bundle 'gmarik/vundle'
 
+Bundle 'tpope/vim-pathogen'
+Bundle 'vim-scripts/xoria256.vim'
 
-" plugins needed for vimparger
-let s:base_path = 'file://' . expand('<sfile>:p:h:h') . '/'
-let s:path_own = s:base_path . 'bundles-own/'
-Bundle s:path_own . 'various-colors'
-Bundle s:path_own . 'various-syntax'
