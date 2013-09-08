@@ -4,7 +4,7 @@
 " Passthrough of text smaller than terminal height
 let vimpager_passthrough = 1
 
-runtime vimpager/vundles.vim
+source $HOME/.vim/vimpager/vundles.vim
 
 syntax on
 filetype plugin indent on

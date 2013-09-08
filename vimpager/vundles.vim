@@ -9,7 +9,7 @@ Bundle 'gmarik/vundle'
 
 
 " plugins needed for vimparger
-let s:base_path = 'file://' . expand('%:p:h') . '/'
+let s:base_path = 'file://' . expand('<sfile>:p:h:h') . '/'
 let s:path_own = s:base_path . 'bundles-own/'
 Bundle s:path_own . 'various-colors'
 Bundle s:path_own . 'various-syntax'

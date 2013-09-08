@@ -3,7 +3,11 @@ augroup vimrc
 autocmd! vimrc *
 
 " Load all own bundles
-runtime vundles.vim
+" let s:vundle_path = expand('<sfile>:p:h') . '/vundles.vim'
+source $HOME/.vim/vundles.vim
+
+" Have pathogen load the other local/non-git plugins
+call pathogen#infect("$HOME/.vim/bundle-pathogen/{}")
 
 if has("win16") || has("win32") || has("win64")
 	let g:opsystem = "windows"
@@ -417,6 +421,10 @@ if index(s:powerline_hosts, hostname()) < 0
 	set statusline+=%b,0x%-6B                    " current char
 	set statusline+=%c,%l/                       " cursor column/total lines
 	set statusline+=%L\ %P                       " total lines/percentage in file
+else
+	python from powerline.vim import setup as powerline_setup
+	python powerline_setup()
+	python del powerline_setup
 endif
 " }}}
 " {{{ Plugins
@@ -573,7 +581,7 @@ map <Leader>u :GundoToggle<CR>
 vmap <silent> <leader>ss :python dedent_run_these_lines()<CR>
 " }}}
 " {{{ Jedi
-let g:jedi#pydoc="<leader>k"
+let g:jedi#documentation_command="<leader>k"
 let g:jedi#popup_on_dot=1
 let g:jedi#use_tabs_not_buffers=0
 " }}}
