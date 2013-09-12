@@ -88,6 +88,8 @@ Bundle 'nelstrom/vim-visual-star-search'
 " Bundle 'jceb/vim-orgmode'
 Bundle 'prendradjaja/vim-vertigo'
 Bundle 'PeterRincker/vim-argumentative'
+Bundle 'sickill/vim-pasta'
+Bundle 'Shougo/unite.vim'
 
 " For standalone only (see
 " https://github.com/Lokaltog/powerline/blob/develop/docs/source/overview.rst)

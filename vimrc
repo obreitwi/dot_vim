@@ -293,8 +293,8 @@ filetype plugin on
 
 filetype indent on
 
-" Does break powerline it seems..
-"autocmd! vimrc BufWritePost .vimrc source %
+" Reload vimrc after writing
+autocmd! vimrc BufWritePost .vimrc source %
 
 autocmd vimrc FileType python setlocal omnifunc=pythoncomplete#Complete
 
@@ -661,6 +661,12 @@ let g:UltiSnipsJumpForwardTrigger="<tab>"
 let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
 
 map <leader>ul :call UltiSnips_ListSnippets()<CR>
+" }}}
+" {{{ Unite
+let g:unite_enable_start_insert = 1
+let g:unite_split_rule = "botright"
+
+nmap <Leader>bl :Unite buffer<CR>
 " }}}
 " {{{ Vertigo
 nnoremap <silent> <Space>j :<C-U>VertigoDown n<CR>
