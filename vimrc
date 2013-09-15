@@ -101,6 +101,8 @@ command! -nargs=0 -complete=command TS call CreateTimestamp()
 command! FIncon set guifont=Inconsolata\ Medium\ 10
 command! FEnvy set guifont=Envy\ Code\ R\ 8
 
+command! Vundles tabe $HOME/.vim/vundles.vim
+
 " Open vimrc/tex in new tab
 if g:opsystem != "windows"
 	command! -nargs=0 -complete=command Vimrc tabe $MYVIMRC
@@ -193,6 +195,9 @@ nnoremap <silent> <leader>zk :call NextClosedFold('k')<cr>
 
 " select put text, via http://stackoverflow.com/a/4775281/955926
 nnoremap <expr> gV "`[".getregtype(v:register)[0]."`]"
+
+nnoremap <c-e><c-h> :tabp<CR>
+nnoremap <c-e><c-l> :tabn<CR>
 " }}}
 " {{{ Settings
 set nocompatible
@@ -294,7 +299,8 @@ filetype plugin on
 filetype indent on
 
 " Reload vimrc after writing
-autocmd! vimrc BufWritePost .vimrc source %
+autocmd! vimrc BufWritePost .vimrc source $MYVIMRC
+autocmd! vimrc BufWritePost vundles.vim source $MYVIMRC
 
 autocmd vimrc FileType python setlocal omnifunc=pythoncomplete#Complete
 
@@ -303,6 +309,7 @@ autocmd vimrc BufNewFile,BufRead wscript* set filetype=python
 autocmd filetype tex hi MatchParen ctermbg=black guibg=black
 
 autocmd vimrc FileType python    setlocal tabstop=4 |     setlocal shiftwidth=4 |  setlocal expandtab
+autocmd vimrc FileType yaml      setlocal tabstop=2 |     setlocal shiftwidth=2 |  setlocal expandtab
 autocmd vimrc FileType matlab    setlocal tabstop=4 |     setlocal shiftwidth=4 |  setlocal expandtab
 autocmd vimrc FileType vimwiki   setlocal tabstop=4 |     setlocal shiftwidth=4 |  setlocal expandtab | setlocal foldlevel=99
 autocmd vimrc FileType html      setlocal tabstop=4 |     setlocal shiftwidth=4 |  setlocal softtabstop=4
@@ -655,7 +662,7 @@ let g:tlRememberPosition = 1
 " command! -nargs=0 -complete=command TL TaskList
 " }}}
 " {{{ Ultisnips
-let g:UltiSnipsSnippetsDir="~/.vim/bundle/my-snippets/UltiSnips"
+let g:UltiSnipsSnippetsDir="~/.vim/bundle-own/my-snippets/UltiSnips"
 let g:UltiSnipsExpandTrigger="<tab>"
 let g:UltiSnipsJumpForwardTrigger="<tab>"
 let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
@@ -667,6 +674,9 @@ let g:unite_enable_start_insert = 1
 let g:unite_split_rule = "botright"
 
 nmap <Leader>bl :Unite buffer<CR>
+" }}}
+" {{{ Unite-Outline
+nmap <Leader>uo :Unite outline<CR>
 " }}}
 " {{{ Vertigo
 nnoremap <silent> <Space>j :<C-U>VertigoDown n<CR>

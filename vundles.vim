@@ -90,6 +90,7 @@ Bundle 'prendradjaja/vim-vertigo'
 Bundle 'PeterRincker/vim-argumentative'
 Bundle 'sickill/vim-pasta'
 Bundle 'Shougo/unite.vim'
+Bundle 'h1mesuke/unite-outline'
 
 " For standalone only (see
 " https://github.com/Lokaltog/powerline/blob/develop/docs/source/overview.rst)
