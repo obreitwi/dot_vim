@@ -92,6 +92,7 @@ Bundle 'sickill/vim-pasta'
 Bundle 'Shougo/unite.vim'
 Bundle 'h1mesuke/unite-outline'
 Bundle 'vimwiki/vimwiki'
+Bundle 'mhinz/vim-signify'
 
 " For standalone only (see
 " https://github.com/Lokaltog/powerline/blob/develop/docs/source/overview.rst)
