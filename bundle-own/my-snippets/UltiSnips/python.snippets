@@ -72,11 +72,11 @@ __doc__ = \
     Usage:
         {prgm} ${0}
         {prgm} -h | --help
-	{prgm} --version
+    {prgm} --version
 
     Options:
         -h --help: Show this help.
-	--version: Show version.
+    --version: Show version.
 """.format(prgm=sys.argv[0])
 
 __version__ = "0.0.1"
@@ -114,19 +114,26 @@ if HAS_SYMWAF2IC:
 endsnippet
 
 
+snippet logfmtdef "Default logformatter" !
+logging.Formatter("%(asctime)s %(levelname)s: "
+    "%(message)s", datefmt="%y-%m-%d %H:%M:%S")
+endsnippet
+
+snippet logfmtver "Verbose logformatter" !
+logging.Formatter("%(asctime)s %(levelname)s "
+    "%(funcName)s (%(filename)s:%(lineno)d): %(message)s",
+    datefmt="%y-%m-%d %H:%M:%S")
+endsnippet
+
 snippet setuplog "Function to configure logging" !b
 def config_logging():
-    logFormatter = logging.Formatter( "%(asctime)s %(levelname)s %(funcName)s: " +
-                                     "%(message)s", datefmt="%d/%m/%y %H:%M:%S" )
-                                     # "%(message)s", datefmt="%d %b %Y %H:%M:%S" )
-    # logFormatter = logging.Formatter( "%(asctime)s %(name)s %(levelname)s: " +
-                                     # "%(message)s", datefmt="%d %b %Y %H:%M:%S" )
-    # logHandler = logging.FileHandler( filename="debug.log", mode='a' )
+    global log
+    log = logging.Logger()
+    logFormatter = ${1:logfmtdef/logfmtver}
     logHandler = logging.StreamHandler()
-    logHandler.setFormatter( logFormatter )
+    logHandler.setFormatter(logFormatter)
     logging.root.addHandler(logHandler)
-    # logging.root.setLevel( logging.INFO )
-    logging.root.setLevel( logging.DEBUG )
+    logging.root.setLevel(logging.${2:DEBUG})
 endsnippet
 
 
@@ -144,3 +151,5 @@ endsnippet
 snippet ll "Loglevel" !b
 if log.getEffectiveLevel() <= logging.DEBUG:
 endsnippet
+
+# vim: tabstop=4 shiftwidth=4 expandtab
