@@ -2,12 +2,17 @@
 augroup vimrc
 autocmd! vimrc *
 
+" To make sure vim works with fish, adjust shell
+if $SHELL =~ "/fish$"
+	set shell="/bin/bash"
+endif
+
 " Load all own bundles
 " let s:vundle_path = expand('<sfile>:p:h') . '/vundles.vim'
 source $HOME/.vim/vundles.vim
 
 " Have pathogen load the other local/non-git plugins
-call pathogen#infect("$HOME/.vim/bundle-pathogen/{}")
+call pathogen#infect("bundle-pathogen/{}")
 
 if has("win16") || has("win32") || has("win64")
 	let g:opsystem = "windows"
