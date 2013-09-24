@@ -1,4 +1,5 @@
 
+" {{{ Loading
 " Misc stuff first
 set nocompatible
 filetype off
@@ -14,8 +15,9 @@ Bundle 'gmarik/vundle'
 
 " Pathogen because Vundle is too sophisticated to add local folders to the rtp
 Bundle 'tpope/vim-pathogen'
+" }}}
 
-" Github repositories
+" {{{ Github repositories
 Bundle 'tpope/vim-git'
 Bundle 'tpope/vim-markdown'
 Bundle 'tpope/vim-speeddating'
@@ -36,7 +38,7 @@ Bundle 'int3/vim-extradite'
 Bundle 'altercation/vim-colors-solarized'
 " Bundle 'jeetsukumaran/vim-filesearch'
 " Bundle 'vim-scripts/Highlight-UnMatched-Brackets'
-Bundle 'vim-scripts/xoria256.vim'
+" Bundle 'vim-scripts/xoria256.vim'
 Bundle 'guns/xterm-color-table.vim'
 " Bundle 'vim-scripts/TaskList.vim'
 Bundle 'scrooloose/nerdtree'
@@ -93,8 +95,12 @@ Bundle 'Shougo/unite.vim'
 Bundle 'h1mesuke/unite-outline'
 Bundle 'vimwiki/vimwiki'
 Bundle 'mhinz/vim-signify'
+Bundle 'Glench/Vim-Jinja2-Syntax'
 
 " For standalone only (see
 " https://github.com/Lokaltog/powerline/blob/develop/docs/source/overview.rst)
 " Bundle 'Lokaltog/powerline', {'rtp': 'powerline/bindings/vim/'}
+" }}}
 
+
+" vim: fdm=marker
