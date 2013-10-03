@@ -174,7 +174,7 @@ noremap k gk
 nnoremap <leader>ss :set rnu!<CR>
 
 " Toggle character listing
-nmap <Leader>l :set list!<CR>
+nmap <Leader>ll :set list!<CR>
 
 " Lazy movement, for the few times it actually is faster than easymotion
 nmap J 8j
@@ -669,10 +669,10 @@ let g:tlRememberPosition = 1
 " {{{ Ultisnips
 let g:UltiSnipsSnippetsDir="~/.vim/bundle-own/my-snippets/UltiSnips"
 let g:UltiSnipsExpandTrigger="<tab>"
-let g:UltiSnipsJumpForwardTrigger="<tab>"
-let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
+let g:UltiSnipsJumpForwardTrigger="<c-l>"
+let g:UltiSnipsJumpBackwardTrigger="<c-h>"
 
-map <leader>ul :call UltiSnips_ListSnippets()<CR>
+map <leader>ls :call UltiSnips_ListSnippets()<CR>
 " }}}
 " {{{ Unite
 let g:unite_enable_start_insert = 1

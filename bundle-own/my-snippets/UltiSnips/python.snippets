@@ -128,12 +128,12 @@ endsnippet
 snippet setuplog "Function to configure logging" !b
 def config_logging():
     global log
-    log = logging.Logger()
-    logFormatter = ${1:logfmtdef/logfmtver}
+    log = logging.Logger("${1:name}")
+    logFormatter = ${2:logfmtdef/logfmtver}
     logHandler = logging.StreamHandler()
     logHandler.setFormatter(logFormatter)
-    logging.root.addHandler(logHandler)
-    logging.root.setLevel(logging.${2:DEBUG})
+    log.addHandler(logHandler)
+    log.setLevel(logging.${3:DEBUG})
 endsnippet
 
 
