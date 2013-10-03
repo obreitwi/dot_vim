@@ -618,7 +618,8 @@ map <leader>bg :LustyBufferGrep<CR>
 " }}}
 " {{{ NERDCommenter
 let g:NERDCustomDelimiters = {
-\ 'gitolite': { 'left': '#' }
+\ 'gitolite': { 'left': '#' },
+\ 'jinja' : { 'left': '{#', 'right': '#}'}
 \ }
 " \ 'ruby': { 'left': '#', 'leftAlt': 'FOO', 'rightAlt': 'BAR' },
 " }}}

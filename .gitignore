@@ -1,3 +1,4 @@
 *.pyc
 bundle/
 bundle-vimpager/
+spell

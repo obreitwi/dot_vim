@@ -27,6 +27,7 @@ Bundle 'tpope/vim-repeat'
 Bundle 'tpope/vim-abolish'
 Bundle 'tpope/vim-unimpaired'
 Bundle 'tpope/vim-ragtag'
+Bundle 'tpope/vim-haml'
 Bundle 'sjbach/lusty'
 Bundle 'godlygeek/tabular'
 Bundle 'sjl/gundo.vim'
@@ -96,6 +97,7 @@ Bundle 'h1mesuke/unite-outline'
 Bundle 'vimwiki/vimwiki'
 Bundle 'mhinz/vim-signify'
 Bundle 'Glench/Vim-Jinja2-Syntax'
+Bundle 'groenewege/vim-less'
 
 " For standalone only (see
 " https://github.com/Lokaltog/powerline/blob/develop/docs/source/overview.rst)
