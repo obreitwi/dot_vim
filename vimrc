@@ -2,6 +2,14 @@
 augroup vimrc
 autocmd! vimrc *
 
+set nocompatible
+filetype off
+
+if has("win16") || has("win32") || has("win64")
+	let g:opsystem = "windows"
+else
+	let g:opsystem = substitute(system('uname'), "\n", "", "")
+endif
 " To make sure vim works with fish, adjust shell
 if $SHELL =~ "/fish$"
 	set shell="/bin/bash"
@@ -9,16 +17,18 @@ endif
 
 " Load all own bundles
 " let s:vundle_path = expand('<sfile>:p:h') . '/vundles.vim'
-source $HOME/.vim/vundles.vim
+if g:opsystem == "windows"
+	" No vundle on windows just snapshots of repos under bundle
+	" We have pathogen for that
+	runtime bundle/vim-pathogen/autoload/pathogen.vim
+	execute pathogen#infect()
+else
+	source $HOME/.vim/vundles.vim
+endif
 
 " Have pathogen load the other local/non-git plugins
 call pathogen#infect("bundle-pathogen/{}")
 
-if has("win16") || has("win32") || has("win64")
-	let g:opsystem = "windows"
-else
-	let g:opsystem = substitute(system('uname'), "\n", "", "")
-endif
 " }}}
 " {{{ Functions
 function! EnsureDirExists (dir)
@@ -313,18 +323,20 @@ autocmd vimrc BufNewFile,BufRead wscript* set filetype=python
 
 autocmd filetype tex hi MatchParen ctermbg=black guibg=black
 
-autocmd vimrc FileType python    setlocal tabstop=4 |     setlocal shiftwidth=4 |  setlocal expandtab
-autocmd vimrc FileType yaml      setlocal tabstop=2 |     setlocal shiftwidth=2 |  setlocal expandtab
-autocmd vimrc FileType matlab    setlocal tabstop=4 |     setlocal shiftwidth=4 |  setlocal expandtab
-autocmd vimrc FileType vimwiki   setlocal tabstop=4 |     setlocal shiftwidth=4 |  setlocal expandtab | setlocal foldlevel=99
-autocmd vimrc FileType html      setlocal tabstop=4 |     setlocal shiftwidth=4 |  setlocal softtabstop=4
-autocmd vimrc FileType haskell   setlocal tabstop=4 |     setlocal shiftwidth=4
-autocmd vimrc FileType cpp       setlocal tabstop=4 |     setlocal shiftwidth=4 |  setlocal softtabstop=4
-autocmd vimrc FileType java      setlocal tabstop=4 |     setlocal shiftwidth=4 |  setlocal softtabstop=4
-autocmd vimrc FileType c         setlocal tabstop=4 |     setlocal shiftwidth=4 |  setlocal softtabstop=4
-autocmd vimrc FileType markdown  setlocal tabstop=4 |     setlocal shiftwidth=4 |  setlocal softtabstop=4
-autocmd vimrc FileType exim      setlocal tabstop=4 |     setlocal shiftwidth=4 |  setlocal softtabstop=4 | setlocal expandtab
-autocmd vimrc FileType mail      setlocal textwidth=72 |  setlocal wrapmargin=8 |  setlocal spell
+autocmd vimrc FileType python      setlocal tabstop=4 |     setlocal shiftwidth=4 |  setlocal expandtab
+autocmd vimrc FileType yaml        setlocal tabstop=2 |     setlocal shiftwidth=2 |  setlocal expandtab
+autocmd vimrc FileType matlab      setlocal tabstop=4 |     setlocal shiftwidth=4 |  setlocal expandtab
+autocmd vimrc FileType vimwiki     setlocal tabstop=4 |     setlocal shiftwidth=4 |  setlocal expandtab | setlocal foldlevel=99
+autocmd vimrc FileType html        setlocal tabstop=4 |     setlocal shiftwidth=4 |  setlocal softtabstop=4
+autocmd vimrc FileType haskell     setlocal tabstop=4 |     setlocal shiftwidth=4
+autocmd vimrc FileType cpp         setlocal tabstop=4 |     setlocal shiftwidth=4 |  setlocal softtabstop=4
+autocmd vimrc FileType java        setlocal tabstop=4 |     setlocal shiftwidth=4 |  setlocal softtabstop=4
+autocmd vimrc FileType c           setlocal tabstop=4 |     setlocal shiftwidth=4 |  setlocal softtabstop=4
+autocmd vimrc FileType markdown    setlocal tabstop=4 |     setlocal shiftwidth=4 |  setlocal softtabstop=4
+autocmd vimrc FileType javascript  setlocal tabstop=4 |     setlocal shiftwidth=4 |  setlocal softtabstop=4
+autocmd vimrc FileType exim        setlocal tabstop=4 |     setlocal shiftwidth=4 |  setlocal softtabstop=4 | setlocal expandtab
+autocmd vimrc FileType jinja       setlocal tabstop=2 |     setlocal shiftwidth=2 |  setlocal softtabstop=2 | setlocal expandtab
+autocmd vimrc FileType mail        setlocal textwidth=72 |  setlocal wrapmargin=8 |  setlocal spell
 autocmd vimrc FileType python let python_highlight_all = 1
 
 " Autohotkey
@@ -619,7 +631,8 @@ map <leader>bg :LustyBufferGrep<CR>
 " {{{ NERDCommenter
 let g:NERDCustomDelimiters = {
 \ 'gitolite': { 'left': '#' },
-\ 'jinja' : { 'left': '{#', 'right': '#}'}
+\ 'jinja' : { 'left': '{#', 'right': '#}'},
+\ 'less' : { 'left': '//' },
 \ }
 " \ 'ruby': { 'left': '#', 'leftAlt': 'FOO', 'rightAlt': 'BAR' },
 " }}}
