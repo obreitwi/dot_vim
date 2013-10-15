@@ -126,14 +126,15 @@ logging.Formatter("%(asctime)s %(levelname)s "
 endsnippet
 
 snippet setuplog "Function to configure logging" !b
-def config_logging():
+def config_logging(name, level="debug"):
+    import logging
     global log
-    log = logging.Logger("${1:name}")
-    logFormatter = ${2:logfmtdef/logfmtver}
+    log = logging.Logger(name)
+    logFormatter = ${1:logfmtdef/logfmtver}
     logHandler = logging.StreamHandler()
     logHandler.setFormatter(logFormatter)
     log.addHandler(logHandler)
-    log.setLevel(logging.${3:DEBUG})
+    log.setLevel(getattr(logging, level.upper()))
 endsnippet
 
 
