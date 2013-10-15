@@ -647,6 +647,20 @@ let g:NERDSpaceDelims=1
 command! -nargs=0 -complete=command Nt NERDTree
 map <c-f> :NERDTreeToggle<CR>
 " }}}
+" {{{ Sneak
+
+" yankstack conflicts with its mappings and has to option to turn them off
+nmap s <Plug>SneakForward
+nmap S <Plug>SneakBackward
+nmap , <Plug>SneakPrevious
+nmap \ <Plug>SneakPrevious
+xmap s <Plug>VSneakForward
+xmap Z <Plug>VSneakBackward
+xmap ; <Plug>VSneakNext
+xmap , <Plug>VSneakPrevious
+xmap \ <Plug>VSneakPrevious
+
+" }}}
 " {{{ Syntastic
 
 let g:syntastic_error_symbol='✗'

@@ -95,6 +95,7 @@ Bundle 'vimwiki/vimwiki'
 Bundle 'mhinz/vim-signify'
 Bundle 'Glench/Vim-Jinja2-Syntax'
 Bundle 'groenewege/vim-less'
+Bundle 'justinmk/vim-sneak'
 
 " For standalone only (see
 " https://github.com/Lokaltog/powerline/blob/develop/docs/source/overview.rst)
