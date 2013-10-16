@@ -650,6 +650,9 @@ map <c-f> :NERDTreeToggle<CR>
 " {{{ Sneak
 
 " yankstack conflicts with its mappings and has to option to turn them off
+" therefor we have to call setup and then overwrite the keys we need for the
+" time being
+call yankstack#setup()
 nmap s <Plug>SneakForward
 nmap S <Plug>SneakBackward
 nmap , <Plug>SneakPrevious
@@ -774,7 +777,7 @@ autocmd vimrc FileType vim let g:xptemplate_brace_completes=0
 " }}}
 " {{{ Yank Stack
 let g:yankstack_map_keys = 0
-call yankstack#setup()
+" call yankstack#setup() " currently called in sneak configuration
 " Mappings
 nmap <leader>y :Yanks<CR>
 nmap <leader>p <Plug>yankstack_substitute_older_paste
