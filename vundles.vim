@@ -82,7 +82,7 @@ Bundle 'maxbrunsfeld/vim-yankstack'
 Bundle 'benmills/vimux'
 Bundle 'kien/ctrlp.vim'
 Bundle 'kana/vim-textobj-entire'
-Bundle 'terryma/vim-expand-region'
+" Bundle 'terryma/vim-expand-region' " does not work anymore
 Bundle 'tpope/vim-dispatch'
 Bundle 'nelstrom/vim-visual-star-search'
 " Bundle 'jceb/vim-orgmode'
