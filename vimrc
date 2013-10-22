@@ -297,10 +297,6 @@ if v:version > 703 || v:version == 703 && has("patch541")
 endif
 " Use only 1 space after "." when joining lines instead of 2
 set nojoinspaces
-" This is a test of a line that will exceed 81 characters per line and should trigger the new setting
-" Highlight when a line exceeds 81 characters
-" highlight ColorColumn ctermbg=magenta
-call matchadd('ColorColumn', '\%81v', 100)
 
 
 " {{{ Backup settings
@@ -405,6 +401,10 @@ else
 	" let g:solarized_degrade=1
 	" colorscheme solarized
 	colorscheme xoria256
+" This is a test of a line that will exceed 81 characters per line and should trigger the new setting
+	" Highlight when a line exceeds 81 characters
+	highlight ColorColumn ctermbg=magenta ctermfg=black
+	call matchadd('ColorColumn', '\%81v', 100)
 endif
 " }}}
 " {{{ Other
