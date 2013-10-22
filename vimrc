@@ -480,6 +480,10 @@ let g:atp_imap_leader_2 = "/"
 " {{{ BufferExplorer
 let g:bufExplorerFindActive=0        " Do not go to active window.
 " }}}
+" {{{ Bling
+let g:bling_time = 75
+let g:bling_count = 2
+" }}}
 " {{{ Clang Complete
 
 let g:clang_complete_auto=0
