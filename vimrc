@@ -726,8 +726,16 @@ map <leader>ls :call UltiSnips_ListSnippets()<CR>
 let g:unite_enable_start_insert = 1
 let g:unite_split_rule = "botright"
 
-nmap <Leader>bl :Unite buffer<CR>
-" }}}
+let g:unite_source_file_mru_long_limit = 3000
+let g:unite_source_directory_mru_long_limit = 3000
+
+nnoremap [unite] <Nop>
+nmap <Leader>u [unite]
+
+nmap [unite]b :Unite -start-insert buffer<CR>
+nmap [unite]m :Unite -no-start-insert file_mru<CR>
+nmap [unite]f :Unite -start-insert file<CR>
+
 " {{{ Unite-Outline
 nmap <Leader>uo :Unite outline<CR>
 " }}}
