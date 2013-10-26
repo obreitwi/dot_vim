@@ -95,6 +95,13 @@ function! NextClosedFold(dir)
         call winrestview(view)
     endif
 endfunction
+
+" Set the color column depending on what filetype is set
+function! SetColorColumn()
+	let l:tw = get(s:filetype_to_textwidth, &ft, 80) + 1
+	call matchadd('ColorColumn', '\%'. l:tw . 'v', 100)
+endfunction
+
 " }}}
 " {{{ Commands
 
@@ -298,6 +305,9 @@ endif
 " Use only 1 space after "." when joining lines instead of 2
 set nojoinspaces
 
+let s:filetype_to_textwidth = {
+\ "tex": 120
+\}
 
 " {{{ Backup settings
 if g:opsystem != "windows"
@@ -404,7 +414,7 @@ else
 " This is a test of a line that will exceed 81 characters per line and should trigger the new setting
 	" Highlight when a line exceeds 81 characters
 	highlight ColorColumn ctermbg=magenta ctermfg=black
-	call matchadd('ColorColumn', '\%81v', 100)
+	autocmd Syntax * call SetColorColumn()
 endif
 " }}}
 " {{{ Other
@@ -809,6 +819,8 @@ nmap <leader>p <Plug>yankstack_substitute_older_paste
 nmap <leader>P <Plug>yankstack_substitute_newer_paste
 " }}}
 " }}}
+" }}}
 " {{{ Postscript
+augroup end
 " vim: fdm=marker ts=4 sw=4 sts=4
 " }}}
