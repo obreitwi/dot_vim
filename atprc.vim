@@ -1,9 +1,9 @@
 
 let b:atp_TexCompiler="pdflatex"
-let b:atp_Viewer= "evince"
+let b:atp_Viewer= "okular"
 " let g:atp_Compiler="python2"
 
-"for Greek letters and some math commands
+"for Greak letters and some math commands
 let g:atp_imap_leader_1=";"
 
 "for font commands, (another good choice is "_")
@@ -17,8 +17,6 @@ let g:atp_ProjectScript=0
 
 " for environments
 " let g:atp_imap_leader_3="]"
-
-nmap K 8k
 
 let b:atp_TexFlavor = "latex"
 
