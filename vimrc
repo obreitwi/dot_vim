@@ -623,7 +623,7 @@ nnoremap <leader>f :Gstatus<CR>:on<CR>
 " nnoremap <silent> sr     :FufRenewCache<CR>
 " }}}
 " {{{ Gundo
-map <Leader>u :GundoToggle<CR>
+map <Leader>gu :GundoToggle<CR>
 " }}}
 " {{{ Histwin
 " map <Leader>u :Histwin<CR>
