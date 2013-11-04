@@ -624,7 +624,7 @@ nnoremap <leader>f :Gstatus<CR>:on<CR>
 " nnoremap <silent> sr     :FufRenewCache<CR>
 " }}}
 " {{{ Gundo
-map <Leader>u :GundoToggle<CR>
+map <Leader>gt :GundoToggle<CR>
 " }}}
 " {{{ Histwin
 " map <Leader>u :Histwin<CR>
@@ -683,6 +683,9 @@ let g:NERDSpaceDelims=1
 " Mappings and commands
 command! -nargs=0 -complete=command Nt NERDTree
 map <c-f> :NERDTreeToggle<CR>
+" }}}
+" {{{ Signify
+map <leader>st <Plug>(signify-toggle)
 " }}}
 " {{{ Sneak
 
