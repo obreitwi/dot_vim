@@ -121,6 +121,7 @@ command! -nargs=0 -complete=command TS call CreateTimestamp()
 
 " Font settings
 command! FIncon set guifont=Inconsolata\ Medium\ 10
+command! FInconP set guifont=Inconsolata\ for\ Powerline\ Medium\ 10
 command! FEnvy set guifont=Envy\ Code\ R\ 8
 
 command! Vundles tabe $HOME/.vim/vundles.vim
@@ -377,7 +378,7 @@ if has("gui_running") && (g:opsystem == "windows")
 	set guifont=Consolas:h10:cANSI
 " elseif has("gui_running") && ( hostname() == "nurikum" )
 elseif has("gui_running")
-	FIncon
+	FInconP
 end
 " }}}
 " {{{ Color management
@@ -426,7 +427,7 @@ if executable("par") && system( "par help | wc -l" ) == 22
 	autocmd FileType mail set formatprg=par\ -w72qrg
 	" PARPROTECT prevents tabs from being converted!
 	command! -nargs=0 -complete=command Parwide setlocal formatprg=par\ -w100
-	autocmd FileType markdown  setlocal formatprg=PARQUOTE\=_x09\ par\ -w100T4
+	autocmd FileType markdown  setlocal formatprg=PARQUOTE\=_x09\ par\ -w80T4
 endif
 
 " Setup ag to be ack
@@ -480,12 +481,12 @@ endif
 let g:loaded_AlignMapsPlugin=1
 " }}}
 " {{{ ATP
-" For tex we need to use atp mappings
-autocmd vimrc FileType tex autocmd vimrc BufEnter inoremap <C-X><C-O> <silent> <C-R>=atplib#complete#TabCompletion(1)<CR>
-autocmd vimrc FileType tex autocmd vimrc BufEnter inoremap <C-X>o <silent> <C-R>=atplib#complete#TabCompletion(0)<CR>
-let g:atp_imap_leader_1 = ";"
-let g:atp_imap_leader_2 = "/"
-" au FileType tex au BufEnter imap <c-l> <c-x><c-o>
+" " For tex we need to use atp mappings
+" autocmd vimrc FileType tex autocmd vimrc BufEnter inoremap <C-X><C-O> <silent> <C-R>=atplib#complete#TabCompletion(1)<CR>
+" autocmd vimrc FileType tex autocmd vimrc BufEnter inoremap <C-X>o <silent> <C-R>=atplib#complete#TabCompletion(0)<CR>
+" let g:atp_imap_leader_1 = ";"
+" let g:atp_imap_leader_2 = "/"
+" " au FileType tex au BufEnter imap <c-l> <c-x><c-o>
 " "}}}
 " {{{ BufferExplorer
 let g:bufExplorerFindActive=0        " Do not go to active window.
@@ -623,7 +624,7 @@ nnoremap <leader>f :Gstatus<CR>:on<CR>
 " nnoremap <silent> sr     :FufRenewCache<CR>
 " }}}
 " {{{ Gundo
-map <Leader>gu :GundoToggle<CR>
+map <Leader>gt :GundoToggle<CR>
 " }}}
 " {{{ Histwin
 " map <Leader>u :Histwin<CR>
@@ -635,6 +636,15 @@ vmap <silent> <leader>ss :python dedent_run_these_lines()<CR>
 let g:jedi#documentation_command="<leader>k"
 let g:jedi#popup_on_dot=1
 let g:jedi#use_tabs_not_buffers=0
+" }}}
+" {{{ Latex-Box
+let g:LatexBox_latexmk_async=1
+let g:LatexBox_output_type="pdf"
+let g:LatexBox_quickfix=2
+let g:LatexBox_show_warnings=0
+let g:LatexBox_latexmk_options="-pdf -pdflatex='pdflatex -synctex=1 \%O \%S'"
+let g:LatexBox_viewer="okular"
+let g:tex_flavor='latex'
 " }}}
 " {{{ Large Files
 let g:LargeFile=100
@@ -673,6 +683,9 @@ let g:NERDSpaceDelims=1
 " Mappings and commands
 command! -nargs=0 -complete=command Nt NERDTree
 map <c-f> :NERDTreeToggle<CR>
+" }}}
+" {{{ Signify
+map <leader>st <Plug>(signify-toggle)
 " }}}
 " {{{ Sneak
 
@@ -742,9 +755,9 @@ let g:unite_source_directory_mru_long_limit = 3000
 nnoremap [unite] <Nop>
 nmap <Leader>u [unite]
 
-nmap [unite]b :Unite -start-insert buffer<CR>
-nmap [unite]m :Unite -no-start-insert file_mru<CR>
-nmap [unite]f :Unite -start-insert file<CR>
+nmap <silent> [unite]b :Unite -start-insert buffer<CR>
+nmap <silent> [unite]m :Unite -no-start-insert file_mru<CR>
+nmap <silent> [unite]f :Unite -start-insert file<CR>
 
 " {{{ Unite-Outline
 nmap <Leader>uo :Unite outline<CR>

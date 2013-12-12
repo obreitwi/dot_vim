@@ -95,12 +95,22 @@ Bundle 'vimwiki/vimwiki'
 Bundle 'mhinz/vim-signify'
 Bundle 'Glench/Vim-Jinja2-Syntax'
 Bundle 'groenewege/vim-less'
-Bundle 'justinmk/vim-sneak'
 Bundle 'ivyl/vim-bling'
+Bundle 'LaTeX-Box-Team/LaTeX-Box'
+Bundle 'justinmk/vim-sneak'
 
 " For standalone only (see
 " https://github.com/Lokaltog/powerline/blob/develop/docs/source/overview.rst)
 " Bundle 'Lokaltog/powerline', {'rtp': 'powerline/bindings/vim/'}
+" }}}
+
+" {{{ Other repositories
+" Only install atp on hosts where latex editing takes place
+" let s:atp_hosts=["juno", "phaelon", "nurikum"]
+let s:atp_hosts=[]
+if index(s:atp_hosts, hostname()) >= 0
+	Bundle 'git://atp-vim.git.sourceforge.net/gitroot/atp-vim/atp-vim'
+endif
 " }}}
 
 
