@@ -3,7 +3,9 @@
 setlocal sw=2
 setlocal tabstop=2
 setlocal softtabstop=2
-setlocal textwidth=112
+setlocal textwidth=0
+setlocal wrap
+setlocal linebreak
 setlocal wrapmargin=8
 " setlocal formatprg=par\ -w120qrg
 " setlocal formatprg=PARPROTECT\=_x09\ par\ -w120qrg
