@@ -7,6 +7,7 @@ setlocal textwidth=0
 setlocal wrap
 setlocal linebreak
 setlocal wrapmargin=8
+setlocal fo-=t
 " setlocal formatprg=par\ -w120qrg
 " setlocal formatprg=PARPROTECT\=_x09\ par\ -w120qrg
 " setlocal formatprg=PARQUOTE\=_x09\ par\ -w120qrgT2
