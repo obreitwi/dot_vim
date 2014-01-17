@@ -98,6 +98,8 @@ Bundle 'groenewege/vim-less'
 Bundle 'ivyl/vim-bling'
 Bundle 'LaTeX-Box-Team/LaTeX-Box'
 Bundle 'justinmk/vim-sneak'
+Bundle 'mattn/webapi-vim'
+Bundle 'mattn/gist-vim'
 
 " For standalone only (see
 " https://github.com/Lokaltog/powerline/blob/develop/docs/source/overview.rst)
