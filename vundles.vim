@@ -77,7 +77,6 @@ Bundle 'kana/vim-textobj-indent'
 Bundle 'kana/vim-textobj-user'
 Bundle 'caio/querycommandcomplete.vim'
 Bundle 'davidhalter/jedi-vim'
-Bundle 'chrisbra/histwin.vim'
 Bundle 'maxbrunsfeld/vim-yankstack'
 Bundle 'benmills/vimux'
 Bundle 'kien/ctrlp.vim'
@@ -100,6 +99,10 @@ Bundle 'LaTeX-Box-Team/LaTeX-Box'
 Bundle 'justinmk/vim-sneak'
 Bundle 'mattn/webapi-vim'
 Bundle 'mattn/gist-vim'
+
+if v:version >= 703
+	Bundle 'chrisbra/histwin.vim'
+endif
 
 " For standalone only (see
 " https://github.com/Lokaltog/powerline/blob/develop/docs/source/overview.rst)

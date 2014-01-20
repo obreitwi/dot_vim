@@ -188,8 +188,10 @@ noremap J M
 noremap j gj
 noremap k gk
 
-" Toggle relative numbers
-nnoremap <leader>ss :set rnu!<CR>
+if v:version >= 703
+	" Toggle relative numbers
+	nnoremap <leader>ss :set rnu!<CR>
+endif
 
 " Toggle character listing
 nmap <Leader>ll :set list!<CR>
@@ -238,10 +240,12 @@ set ttyfast
 set cul
 " set timeoutlen=250
 set timeoutlen=500
-set cm=blowfish
 
+if v:version >= 703
+set cm=blowfish
 " relative line numbers
 set relativenumber
+endif
 set number
 
 " assume the /g flag on :s substitutions to replace all matches in a line:
