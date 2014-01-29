@@ -448,7 +448,7 @@ endif
 " {{{ Statusline
 " Powerline
 " disable on all machines unless specifically enabled
-let s:powerline_hosts=["nurikum", "juno", "iminspace.zqnr.de", "phaelon", "ice"]
+let s:powerline_hosts=["nurikum", "juno", "iminspace.zqnr.de", "phaelon", "ice", "dopamine"]
 set laststatus=2
 set noshowmode
 if index(s:powerline_hosts, hostname()) < 0
