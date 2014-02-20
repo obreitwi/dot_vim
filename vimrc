@@ -717,8 +717,11 @@ let g:syntastic_warning_symbol='⚐'
 let g:syntastic_enable_signs=1
 if hostname() == "phaelon"
 	let g:syntastic_python_checkers = ['pylint2']
-	let g:syntastic_python_pylint_args = '-d C0103,C0111,W0603'
 endif
+if hostname() == "dopamine"
+	let g:syntastic_python_checkers = ['pyflakes']
+endif
+let g:syntastic_python_pylint_post_args = '-d C0103,C0111,W0603'
 
 " }}}
 " {{{ Tabularize 
@@ -746,6 +749,7 @@ let g:UltiSnipsSnippetsDir="~/.vim/bundle-own/my-snippets/UltiSnips"
 let g:UltiSnipsExpandTrigger="<tab>"
 let g:UltiSnipsJumpForwardTrigger="<c-l>"
 let g:UltiSnipsJumpBackwardTrigger="<c-h>"
+let g:UltiSnipsUsePythonVersion=2
 
 map <leader>ls :call UltiSnips_ListSnippets()<CR>
 " }}}
