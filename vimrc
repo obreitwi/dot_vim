@@ -305,6 +305,7 @@ endif
 
 " Taken form: https://github.com/gregstallings/vimfiles/blob/master/vimrc
 " Delete comment character when joining commented lines
+set formatoptions+=c
 if v:version > 703 || v:version == 703 && has("patch541")
   set formatoptions+=j
 endif
@@ -351,7 +352,6 @@ autocmd filetype tex hi MatchParen ctermbg=black guibg=black
 autocmd vimrc FileType python      setlocal tabstop=4 |     setlocal shiftwidth=4 |  setlocal expandtab
 autocmd vimrc FileType yaml        setlocal tabstop=2 |     setlocal shiftwidth=2 |  setlocal expandtab
 autocmd vimrc FileType matlab      setlocal tabstop=4 |     setlocal shiftwidth=4 |  setlocal expandtab
-autocmd vimrc FileType vimwiki     setlocal tabstop=4 |     setlocal shiftwidth=4 |  setlocal expandtab | setlocal foldlevel=99
 autocmd vimrc FileType html        setlocal tabstop=4 |     setlocal shiftwidth=4 |  setlocal softtabstop=4
 autocmd vimrc FileType haskell     setlocal tabstop=4 |     setlocal shiftwidth=4
 autocmd vimrc FileType cpp         setlocal tabstop=4 |     setlocal shiftwidth=4 |  setlocal softtabstop=4
@@ -361,6 +361,8 @@ autocmd vimrc FileType markdown    setlocal tabstop=4 |     setlocal shiftwidth=
 autocmd vimrc FileType javascript  setlocal tabstop=4 |     setlocal shiftwidth=4 |  setlocal softtabstop=4
 autocmd vimrc FileType exim        setlocal tabstop=4 |     setlocal shiftwidth=4 |  setlocal softtabstop=4 | setlocal expandtab
 autocmd vimrc FileType jinja       setlocal tabstop=2 |     setlocal shiftwidth=2 |  setlocal softtabstop=2 | setlocal expandtab
+autocmd vimrc FileType vimwiki     setlocal tabstop=4 |     setlocal shiftwidth=4 | 
+			\setlocal expandtab | setlocal foldlevel=99 | setlocal comments=fb:*,fb:#
 autocmd vimrc FileType mail        setlocal textwidth=72 |  setlocal wrapmargin=8 |  setlocal spell
 autocmd vimrc FileType python let python_highlight_all = 1
 
@@ -428,7 +430,7 @@ endif
 if executable("par") && system( "par help | wc -l" ) == 22
 	" Width of 78, justified lines
 	" set formatprg=PARPROTECT\=_x09\ par\ -w80qrg
-	set formatprg=par\ -w80qrg
+	" set formatprg=par\ -w80qrg
 	autocmd FileType mail set formatprg=par\ -w72qrg
 	" PARPROTECT prevents tabs from being converted!
 	command! -nargs=0 -complete=command Parwide setlocal formatprg=par\ -w100
