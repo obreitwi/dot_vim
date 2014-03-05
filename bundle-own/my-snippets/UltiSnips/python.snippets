@@ -17,6 +17,7 @@ endsnippet
 
 snippet fl "Add function launcher main" !b
 if __name__ == "__main__":
+    import sys
     from inspect import isfunction, getargspec
     local_globals = globals().keys()
 
@@ -46,7 +47,6 @@ if __name__ == "__main__":
             else:
                 print launch, "not part of functions:"
                 show_functions()
-
 endsnippet
 
 

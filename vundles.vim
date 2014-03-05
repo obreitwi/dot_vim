@@ -99,6 +99,8 @@ Bundle 'LaTeX-Box-Team/LaTeX-Box'
 Bundle 'justinmk/vim-sneak'
 Bundle 'mattn/webapi-vim'
 Bundle 'mattn/gist-vim'
+Bundle 'vim-scripts/DrawIt'
+Bundle 'mantiz/vim-plugin-dirsettings' 
 
 if v:version >= 703
 	Bundle 'chrisbra/histwin.vim'

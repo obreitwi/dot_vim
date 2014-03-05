@@ -26,6 +26,8 @@ else
 	source $HOME/.vim/vundles.vim
 endif
 
+call dirsettings#Install()
+
 " Have pathogen load the other local/non-git plugins
 call pathogen#infect("bundle-pathogen/{}")
 
@@ -125,6 +127,8 @@ command! FInconP set guifont=Inconsolata\ for\ Powerline\ Medium\ 10
 command! FEnvy set guifont=Envy\ Code\ R\ 8
 
 command! Vundles tabe $HOME/.vim/vundles.vim
+
+command! -nargs=0 -complete=command MakeTags !ctags -R --c++-kinds=+p --fields=+iaS --extra=+q .
 
 " Open vimrc/tex in new tab
 if g:opsystem != "windows"
@@ -350,7 +354,7 @@ autocmd vimrc BufNewFile,BufRead wscript* set filetype=python
 autocmd filetype tex hi MatchParen ctermbg=black guibg=black
 
 autocmd vimrc FileType python      setlocal tabstop=4 |     setlocal shiftwidth=4 |  setlocal expandtab
-autocmd vimrc FileType yaml        setlocal tabstop=2 |     setlocal shiftwidth=2 |  setlocal expandtab
+autocmd vimrc FileType yaml        setlocal tabstop=4 |     setlocal shiftwidth=4 |  setlocal expandtab
 autocmd vimrc FileType matlab      setlocal tabstop=4 |     setlocal shiftwidth=4 |  setlocal expandtab
 autocmd vimrc FileType html        setlocal tabstop=4 |     setlocal shiftwidth=4 |  setlocal softtabstop=4
 autocmd vimrc FileType haskell     setlocal tabstop=4 |     setlocal shiftwidth=4
@@ -365,10 +369,11 @@ autocmd vimrc FileType vimwiki     setlocal tabstop=4 |     setlocal shiftwidth=
 			\setlocal expandtab | setlocal foldlevel=99 | setlocal comments=fb:*,fb:#
 autocmd vimrc FileType mail        setlocal textwidth=72 |  setlocal wrapmargin=8 |  setlocal spell
 autocmd vimrc FileType python let python_highlight_all = 1
+autocmd vimrc FileType text         setlocal expandtab | setlocal comments=fb:*,fb:#
 
 " Autohotkey
 autocmd vimrc BufNewFile,BufRead *.ahk setf autohotkey 
-autocmd vimrc BufNewFile,BufRead *.txt setf txt 
+autocmd vimrc BufNewFile,BufRead *.txt setf text
 
 " Apache config files
 autocmd vimrc BufNewFile,BufRead /etc/apache2/* setf apache
