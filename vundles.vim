@@ -100,7 +100,8 @@ Bundle 'justinmk/vim-sneak'
 Bundle 'mattn/webapi-vim'
 Bundle 'mattn/gist-vim'
 Bundle 'vim-scripts/DrawIt'
-Bundle 'mantiz/vim-plugin-dirsettings' 
+Bundle 'mantiz/vim-plugin-dirsettings'
+Bundle 'tommcdo/vim-exchange'
 
 if v:version >= 703
 	Bundle 'chrisbra/histwin.vim'
