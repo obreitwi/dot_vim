@@ -17,11 +17,15 @@ endsnippet
 
 snippet efs "Insert subfigure"
 \subfloat[${1}]{%
-	\includegraphics[width=${2}\columnwidth]{${3}}}%${4}
+	\includegraphics[width=${2}\linewidth]{${3}}}%${4}
+endsnippet
+
+snippet bf "Mathbf" !
+\mathbf{${1}}${2}
 endsnippet
 
 snippet eff "Insert graphics"
-\includegraphics[width=${1}\columnwidth]{${2}}%${3}
+\includegraphics[width=${1}\linewidth]{${2}}%${3}
 endsnippet
 
 snippet tv "Verbatim text"
@@ -34,8 +38,14 @@ ${2}
 \end{columns}${3}
 endsnippet
 
-snippet bcc "Insert a columns"
+snippet bcco "Insert a columns (old)"
 \column{${1}\textwidth}${2}
+endsnippet
+
+snippet bcc "Insert a column"
+\begin{column}{${1}\linewidth}
+  ${2}
+\end{column}
 endsnippet
 
 snippet cite "Insert high citation"

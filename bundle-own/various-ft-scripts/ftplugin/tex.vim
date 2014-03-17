@@ -3,6 +3,7 @@
 setlocal sw=2
 setlocal tabstop=2
 setlocal softtabstop=2
+setlocal expandtab
 setlocal textwidth=0
 setlocal wrap
 setlocal linebreak
@@ -11,14 +12,15 @@ setlocal fo-=t
 " setlocal formatprg=par\ -w120qrg
 " setlocal formatprg=PARPROTECT\=_x09\ par\ -w120qrg
 " setlocal formatprg=PARQUOTE\=_x09\ par\ -w120qrgT2
-setlocal formatprg=PARQUOTE\=_x09\ par\ -w100T2
+setlocal formatprg=PARQUOTE\=_x09\ par\ w100T2
 setlocal spell
 " Apparently NERDTreeIngore cannot be a buffer variable
 let g:NERDTreeIgnore+=[ "\._log$", "\._aux$", "\.bbl$", "\.blg$", "\.idx", "\.log$", "\.toc$", "\.out$" ]
 
 vmap <LocalLeader>bf :Wrap \left\lfloor\  \right\rfloor<CR>
 
-set iskeyword+=:
+setlocal iskeyword+=@-@
+setlocal iskeyword+=:
 
 " TIP: if you write your \label's as \label{fig:something}, then if you
 " type in \ref{fig: and press <C-n> you will automatically cycle through
