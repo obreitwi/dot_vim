@@ -704,7 +704,7 @@ map <leader>st <Plug>(signify-toggle)
 " yankstack conflicts with its mappings and has to option to turn them off
 " therefor we have to call setup and then overwrite the keys we need for the
 " time being
-call yankstack#setup()
+" callc yankstack#setup()
 nmap s <Plug>SneakForward
 nmap S <Plug>SneakBackward
 nmap , <Plug>SneakPrevious
@@ -762,6 +762,7 @@ let g:UltiSnipsUsePythonVersion=2
 map <leader>ls :call UltiSnips_ListSnippets()<CR>
 " }}}
 " {{{ Unite
+let g:unite_source_history_yank_save_clipboard = 1
 let g:unite_enable_start_insert = 1
 let g:unite_split_rule = "botright"
 
@@ -771,9 +772,10 @@ let g:unite_source_directory_mru_long_limit = 3000
 nnoremap [unite] <Nop>
 nmap <Leader>u [unite]
 
-nmap <silent> [unite]b :Unite -start-insert buffer<CR>
+" nmap <silent> [unite]b :Unite -start-insert buffer<CR>
+nmap <silent> <leader>be :Unite -start-insert buffer<CR>
 nmap <silent> [unite]m :Unite -no-start-insert file_mru<CR>
-nmap <silent> [unite]f :Unite -start-insert file<CR>
+nmap <silent> [unite]f :Unite -start-insert file_rec/async<CR>
 
 " {{{ Unite-Outline
 nmap <Leader>uo :Unite outline<CR>
