@@ -762,7 +762,7 @@ let g:UltiSnipsUsePythonVersion=2
 map <leader>ls :call UltiSnips_ListSnippets()<CR>
 " }}}
 " {{{ Unite
-let g:unite_source_history_yank_save_clipboard = 1
+let g:unite_source_history_yank_enable = 1
 let g:unite_enable_start_insert = 1
 let g:unite_split_rule = "botright"
 
@@ -776,6 +776,7 @@ nmap <Leader>u [unite]
 nmap <silent> <leader>be :Unite -start-insert buffer<CR>
 nmap <silent> [unite]m :Unite -no-start-insert file_mru<CR>
 nmap <silent> [unite]f :Unite -start-insert file_rec/async<CR>
+nmap <silent> <leader>y :Unite -start-insert history/yank<CR>
 
 " {{{ Unite-Outline
 nmap <Leader>uo :Unite outline<CR>
@@ -845,9 +846,9 @@ autocmd vimrc FileType vim let g:xptemplate_brace_completes=0
 let g:yankstack_map_keys = 0
 " call yankstack#setup() " currently called in sneak configuration
 " Mappings
-nmap <leader>y :Yanks<CR>
-nmap <leader>p <Plug>yankstack_substitute_older_paste
-nmap <leader>P <Plug>yankstack_substitute_newer_paste
+" nmap <leader>y :Yanks<CR>
+" nmap <leader>p <Plug>yankstack_substitute_older_paste
+" nmap <leader>P <Plug>yankstack_substitute_newer_paste
 " }}}
 " }}}
 " }}}
