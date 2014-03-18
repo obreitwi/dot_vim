@@ -445,6 +445,7 @@ endif
 " Setup ag to be ack
 if executable('ag')
 	let g:ackprg = 'ag --nogroup --nocolor --column'
+	let g:ack_wildignore=0
 endif
 
 " Taken from tpope sensible
