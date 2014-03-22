@@ -774,7 +774,7 @@ nnoremap [unite] <Nop>
 nmap <Leader>u [unite]
 
 " nmap <silent> [unite]b :Unite -start-insert buffer<CR>
-nmap <silent> <leader>be :Unite -start-insert buffer<CR>
+nmap <silent> <leader>be :Unite -no-start-insert buffer<CR>
 nmap <silent> [unite]m :Unite -no-start-insert file_mru<CR>
 nmap <silent> [unite]f :Unite -start-insert file_rec/async<CR>
 nmap <silent> <leader>y :Unite -start-insert history/yank<CR>
