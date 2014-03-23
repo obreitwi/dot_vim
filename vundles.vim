@@ -63,6 +63,7 @@ Bundle 'kana/vim-textobj-line'
 " Bundle 'jeffkreeftmeijer/vim-numbertoggle'
 " Bundle 'noahfrederick/Hemisu'
 Bundle 'SirVer/ultisnips'
+Bundle 'honza/vim-snippets'
 Bundle 'vim-scripts/DirDiff.vim'
 Bundle 'chrisbra/csv.vim'
 Bundle 'michaeljsmith/vim-indent-object'
@@ -106,7 +107,7 @@ Bundle 'mantiz/vim-plugin-dirsettings'
 Bundle 'tommcdo/vim-exchange'
 
 if v:version >= 703
-	Bundle 'chrisbra/histwin.vim'
+      " Bundle 'chrisbra/histwin.vim'
 endif
 
 " For standalone only (see
@@ -119,7 +120,7 @@ endif
 " let s:atp_hosts=["juno", "phaelon", "nurikum"]
 let s:atp_hosts=[]
 if index(s:atp_hosts, hostname()) >= 0
-	Bundle 'git://atp-vim.git.sourceforge.net/gitroot/atp-vim/atp-vim'
+      " Bundle 'git://atp-vim.git.sourceforge.net/gitroot/atp-vim/atp-vim'
 endif
 " }}}
 

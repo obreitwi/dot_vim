@@ -198,8 +198,8 @@ if v:version >= 703
 	nnoremap <leader>ss :set rnu!<CR>
 endif
 
-" Toggle character listing
-nmap <Leader>ll :set list!<CR>
+" Toggle character listing (col in unimpaired)w
+" nmap <Leader>ll :set list!<CR>
 
 " Lazy movement, for the few times it actually is faster than easymotion
 nmap J 8j
