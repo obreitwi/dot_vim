@@ -105,6 +105,7 @@ Bundle 'mattn/gist-vim'
 Bundle 'vim-scripts/DrawIt'
 Bundle 'mantiz/vim-plugin-dirsettings'
 Bundle 'tommcdo/vim-exchange'
+Bundle 'tmhedberg/SimpylFold'
 
 if v:version >= 703
       " Bundle 'chrisbra/histwin.vim'
