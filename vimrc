@@ -430,6 +430,9 @@ else
 	autocmd Syntax * call SetColorColumn()
 endif
 " }}}
+" {{{ Digraphs
+digraph el 8230
+" }}}
 " {{{ Other
 " Call par if availible
 if executable("par") && system( "par help | wc -l" ) == 22
