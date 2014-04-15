@@ -353,6 +353,7 @@ autocmd vimrc BufNewFile,BufRead wscript* set filetype=python
 
 autocmd filetype tex hi MatchParen ctermbg=black guibg=black
 
+autocmd vimrc FileType vim         setlocal tabstop=4 |     setlocal shiftwidth=4 |  setlocal expandtab
 autocmd vimrc FileType python      setlocal tabstop=4 |     setlocal shiftwidth=4 |  setlocal expandtab
 autocmd vimrc FileType yaml        setlocal tabstop=4 |     setlocal shiftwidth=4 |  setlocal expandtab
 autocmd vimrc FileType matlab      setlocal tabstop=4 |     setlocal shiftwidth=4 |  setlocal expandtab
