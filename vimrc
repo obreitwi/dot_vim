@@ -299,14 +299,6 @@ if has("gui_running")
 	set go=c
 end
 
-" ack is called differently on debian
-let s:true_ack_hosts = ["nurikum", "phaelon", "juno"]
-if index(s:true_ack_hosts, hostname()) < 0
-	let g:ackprg="ack-grep -H --nocolor --nogroup --column"
-else
-	let g:ackprg="ack -H --nocolor --nogroup --column"
-endif
-
 " Taken form: https://github.com/gregstallings/vimfiles/blob/master/vimrc
 " Delete comment character when joining commented lines
 set formatoptions+=c
@@ -493,6 +485,16 @@ else
 endif
 " }}}
 " {{{ Plugins
+" {{{ Ack.vim
+" ack is called differently on debian
+let s:true_ack_hosts = ["nurikum", "phaelon", "juno"]
+if index(s:true_ack_hosts, hostname()) < 0
+    let g:ackprg="ack-grep -H --nocolor --nogroup --column"
+else
+    let g:ackprg="ack -H --nocolor --nogroup --column"
+endif
+
+" }}}
 " {{{ AlignMaps
 " Disable AlignMaps since they are not being used currently
 let g:loaded_AlignMapsPlugin=1
