@@ -438,12 +438,6 @@ if executable("par") && system( "par help | wc -l" ) == 22
 	autocmd FileType markdown  setlocal formatprg=PARQUOTE\=_x09\ par\ -w80T4
 endif
 
-" Setup ag to be ack
-if executable('ag')
-	let g:ackprg = 'ag --nogroup --nocolor --column'
-	let g:ack_wildignore=0
-endif
-
 " Taken from tpope sensible
 " Load matchit.vim, but only if the user hasn't installed a newer version.
 if !exists('g:loaded_matchit') && findfile('plugin/matchit.vim', &rtp) ==# ''
@@ -492,6 +486,12 @@ if index(s:true_ack_hosts, hostname()) < 0
     let g:ackprg="ack-grep -H --nocolor --nogroup --column"
 else
     let g:ackprg="ack -H --nocolor --nogroup --column"
+endif
+"
+" Setup ag to be ack
+if executable('ag')
+    let g:ackprg = 'ag --nogroup --nocolor --column'
+    let g:ack_wildignore=0
 endif
 
 " }}}
