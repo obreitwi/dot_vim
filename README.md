@@ -4,7 +4,7 @@ This is my vim setup. It relies on Vundle to manage external plugins. All other 
 
 I tend to try out many plugins and only prune them once in a blue moon. Current startup time is around 0.5s which is fast enough for me. 
 
-**Note:** What works for me might not work for you..
+**Note:** What works for me might not work for you…
 
 Setup
 ---
