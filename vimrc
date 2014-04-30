@@ -231,6 +231,8 @@ nnoremap <c-e><c-l> :tabn<CR>
 " }}}
 " {{{ Settings
 set nocompatible
+set encoding=utf-8
+"
 set hidden
 set nowrap
 " Wrap at word
@@ -258,8 +260,6 @@ set gdefault
 
 set sessionoptions=blank,curdir,tabpages,folds,resize
 
-set encoding=utf-8
-"
 "make backspace work
 set backspace=indent,eol,start
 
