@@ -106,6 +106,7 @@ Bundle 'vim-scripts/DrawIt'
 Bundle 'mantiz/vim-plugin-dirsettings'
 Bundle 'tommcdo/vim-exchange'
 Bundle 'tmhedberg/SimpylFold'
+Bundle 'luochen1990/rainbow'
 
 if v:version >= 703
       " Bundle 'chrisbra/histwin.vim'

@@ -703,6 +703,9 @@ let g:NERDSpaceDelims=1
 command! -nargs=0 -complete=command Nt NERDTree
 map <c-f> :NERDTreeToggle<CR>
 " }}}
+" {{{ rainbow
+let g:rainbow_active=0
+" }}}
 " {{{ Signify
 map <leader>st <Plug>(signify-toggle)
 " }}}
