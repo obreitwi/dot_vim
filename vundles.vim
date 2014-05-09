@@ -107,6 +107,7 @@ Bundle 'mantiz/vim-plugin-dirsettings'
 Bundle 'tommcdo/vim-exchange'
 Bundle 'tmhedberg/SimpylFold'
 Bundle 'luochen1990/rainbow'
+Bundle 'farseer90718/vim-taskwarrior'
 
 if v:version >= 703
       " Bundle 'chrisbra/histwin.vim'

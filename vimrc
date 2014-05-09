@@ -762,6 +762,9 @@ command! -nargs=0 -complete=command TU :TlistUpdate
 let g:tlRememberPosition = 1
 " command! -nargs=0 -complete=command TL TaskList
 " }}}
+" {{{ TaskWarrior
+let g:task_report_name="long"
+" }}}
 " {{{ Ultisnips
 let g:UltiSnipsSnippetsDir="~/.vim/bundle-own/my-snippets/UltiSnips"
 let g:UltiSnipsExpandTrigger="<tab>"
