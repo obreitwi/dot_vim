@@ -781,6 +781,8 @@ let g:unite_split_rule = "botright"
 
 let g:unite_source_file_mru_long_limit = 10000
 let g:unite_source_directory_mru_long_limit = 10000
+let g:unite_source_rec_max_cache_files = 10000
+let g:unite_source_rec_async_command = 'ag --nocolor --nogroup --hidden -f -g ""'
 
 nnoremap [unite] <Nop>
 nmap <Leader>u [unite]
