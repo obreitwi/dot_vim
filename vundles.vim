@@ -77,7 +77,6 @@ Bundle 'vim-scripts/LargeFile'
 Bundle 'kana/vim-textobj-indent'
 Bundle 'kana/vim-textobj-user'
 Bundle 'caio/querycommandcomplete.vim'
-Bundle 'davidhalter/jedi-vim'
 " Bundle 'maxbrunsfeld/vim-yankstack'
 Bundle 'benmills/vimux'
 Bundle 'kien/ctrlp.vim'
@@ -92,7 +91,7 @@ Bundle 'sickill/vim-pasta'
 Bundle 'Shougo/unite.vim'
 Bundle 'Shougo/neomru.vim'
 Bundle 'Shougo/vimproc.vim'
-Bundle 'h1mesuke/unite-outline'
+Bundle 'shougo/unite-outline'
 Bundle 'vimwiki/vimwiki'
 Bundle 'mhinz/vim-signify'
 Bundle 'Glench/Vim-Jinja2-Syntax'
@@ -111,6 +110,15 @@ Bundle 'luochen1990/rainbow'
 " only use taskwarrior where we use task
 if executable('task')
     Bundle 'farseer90718/vim-taskwarrior'
+endif
+
+" Since YCM requires manual installation, dont enable it by default everywhere
+let s:ycm_hosts=["dopamine"]
+let s:ycm_requirements_met = v:version >= 704 || (v:version == 703 && has('patch584'))
+if s:ycm_requirements_met && index(s:ycm_hosts, hostname()) >= 0
+    Bundle 'Valloric/YouCompleteMe'
+else
+    Bundle 'davidhalter/jedi-vim'
 endif
 
 if v:version >= 703
