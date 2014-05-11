@@ -107,7 +107,11 @@ Bundle 'mantiz/vim-plugin-dirsettings'
 Bundle 'tommcdo/vim-exchange'
 Bundle 'tmhedberg/SimpylFold'
 Bundle 'luochen1990/rainbow'
-Bundle 'farseer90718/vim-taskwarrior'
+
+" only use taskwarrior where we use task
+if executable('task')
+    Bundle 'farseer90718/vim-taskwarrior'
+endif
 
 if v:version >= 703
       " Bundle 'chrisbra/histwin.vim'

@@ -779,8 +779,8 @@ let g:unite_source_history_yank_enable = 1
 let g:unite_enable_start_insert = 1
 let g:unite_split_rule = "botright"
 
-let g:unite_source_file_mru_long_limit = 3000
-let g:unite_source_directory_mru_long_limit = 3000
+let g:unite_source_file_mru_long_limit = 10000
+let g:unite_source_directory_mru_long_limit = 10000
 
 nnoremap [unite] <Nop>
 nmap <Leader>u [unite]
