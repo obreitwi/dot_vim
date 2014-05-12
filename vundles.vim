@@ -41,7 +41,6 @@ Bundle 'guns/xterm-color-table.vim'
 " Bundle 'vim-scripts/TaskList.vim'
 Bundle 'scrooloose/nerdtree'
 Bundle 'scrooloose/nerdcommenter'
-Bundle 'mileszs/ack.vim'
 " Bundle 'vim-scripts/FuzzyFinder'
 Bundle 'vim-scripts/L9'
 " Bundle 'vim-scripts/bufexplorer.zip'
@@ -106,6 +105,7 @@ Bundle 'mantiz/vim-plugin-dirsettings'
 Bundle 'tommcdo/vim-exchange'
 Bundle 'tmhedberg/SimpylFold'
 Bundle 'luochen1990/rainbow'
+Bundle 'mileszs/ack.vim'
 
 " only use taskwarrior where we use task
 if executable('task')

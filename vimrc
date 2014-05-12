@@ -494,6 +494,8 @@ if executable('ag')
     let g:ack_wildignore=0
 endif
 
+let g:ack_use_dispatch=1
+
 " }}}
 " {{{ AlignMaps
 " Disable AlignMaps since they are not being used currently
@@ -866,6 +868,9 @@ let g:yankstack_map_keys = 0
 " nmap <leader>p <Plug>yankstack_substitute_older_paste
 " nmap <leader>P <Plug>yankstack_substitute_newer_paste
 " }}}
+" }}}
+" {{{ YouCompleteMe
+nnoremap <leader>jd :YcmCompleter GoTo<CR>
 " }}}
 " }}}
 " {{{ Postscript
