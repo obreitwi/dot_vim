@@ -31,6 +31,8 @@ call dirsettings#Install()
 " Have pathogen load the other local/non-git plugins
 call pathogen#infect("bundle-pathogen/{}")
 
+filetype on
+
 " }}}
 " {{{ Functions
 function! EnsureDirExists (dir)

@@ -2,132 +2,132 @@
 " {{{ Loading
 " Misc stuff first
 set rtp+=~/.vim/bundle/vundle/
-call vundle#rc()
+call vundle#begin()
 
 " let g:vundle_default_git_proto = 'git'
 
 " let Vundle manage Vundle
 " required! 
-Bundle 'gmarik/vundle'
+Plugin 'gmarik/vundle'
 
 " Pathogen because Vundle is too sophisticated to add local folders to the rtp
-Bundle 'tpope/vim-pathogen'
+Plugin 'tpope/vim-pathogen'
 " }}}
 
 " {{{ Github repositories
-Bundle 'tpope/vim-git'
-Bundle 'tpope/vim-markdown'
-Bundle 'tpope/vim-speeddating'
-Bundle 'tpope/vim-fugitive'
-Bundle 'tpope/vim-surround'
-Bundle 'tpope/vim-repeat'
-Bundle 'tpope/vim-abolish'
-Bundle 'tpope/vim-unimpaired'
-Bundle 'tpope/vim-ragtag'
-Bundle 'tpope/vim-haml'
-Bundle 'sjbach/lusty'
-Bundle 'godlygeek/tabular'
-Bundle 'sjl/gundo.vim'
-" Bundle 'vim-scripts/taglist.vim'
-Bundle 'majutsushi/tagbar'
-" Bundle 'gregsexton/VimCalc'
-Bundle 'gregsexton/gitv'
-Bundle 'int3/vim-extradite'
-Bundle 'altercation/vim-colors-solarized'
-" Bundle 'jeetsukumaran/vim-filesearch'
-" Bundle 'vim-scripts/Highlight-UnMatched-Brackets'
-" Bundle 'vim-scripts/xoria256.vim'
-Bundle 'guns/xterm-color-table.vim'
-" Bundle 'vim-scripts/TaskList.vim'
-Bundle 'scrooloose/nerdtree'
-Bundle 'scrooloose/nerdcommenter'
-" Bundle 'vim-scripts/FuzzyFinder'
-Bundle 'vim-scripts/L9'
-" Bundle 'vim-scripts/bufexplorer.zip'
-Bundle 'scrooloose/syntastic'
-" Bundle 'om/theshadowhost/Clippo'
-Bundle 'vim-scripts/FSwitch'
-" Bundle 'vim-scripts/YankRing.vim'
-Bundle 'ehamberg/vim-cute-python'
-Bundle 'Twinside/vim-haskellConceal'
-Bundle 'trapd00r/vim-syntax-vidir-ls'
-" Bundle 'Rip-Rip/clang_complete'
-" Bundle 'rkitover/vimpager'
-" Bundle 'vim-scripts/calendar.vim--Matsumoto'
-" Bundle 'msanders/snipmate.vim'
-Bundle 'Raimondi/delimitMate'
-" Bundle 'mikewest/vimroom'
-Bundle 'vim-scripts/SudoEdit.vim'
-Bundle 'kana/vim-textobj-line'
-" Bundle 'jeffkreeftmeijer/vim-numbertoggle'
-" Bundle 'noahfrederick/Hemisu'
-Bundle 'SirVer/ultisnips'
-Bundle 'honza/vim-snippets'
-Bundle 'vim-scripts/DirDiff.vim'
-Bundle 'chrisbra/csv.vim'
-Bundle 'michaeljsmith/vim-indent-object'
-Bundle 'ivanov/vim-ipython'
-Bundle 'nathanaelkane/vim-indent-guides'
-" Bundle 'fmoralesc/vim-pad'
-Bundle 'Lokaltog/vim-easymotion'
-Bundle 'vim-scripts/AnsiEsc.vim'
-Bundle 'coderifous/textobj-word-column.vim'
-Bundle 'vim-scripts/LargeFile'
-Bundle 'kana/vim-textobj-indent'
-Bundle 'kana/vim-textobj-user'
-Bundle 'caio/querycommandcomplete.vim'
-" Bundle 'maxbrunsfeld/vim-yankstack'
-Bundle 'benmills/vimux'
-Bundle 'kien/ctrlp.vim'
-Bundle 'kana/vim-textobj-entire'
-" Bundle 'terryma/vim-expand-region' " does not work correctly
-Bundle 'tpope/vim-dispatch'
-Bundle 'nelstrom/vim-visual-star-search'
-" Bundle 'jceb/vim-orgmode'
-Bundle 'prendradjaja/vim-vertigo'
-Bundle 'PeterRincker/vim-argumentative'
-Bundle 'sickill/vim-pasta'
-Bundle 'Shougo/unite.vim'
-Bundle 'Shougo/neomru.vim'
-Bundle 'Shougo/vimproc.vim'
-Bundle 'shougo/unite-outline'
-Bundle 'vimwiki/vimwiki'
-Bundle 'mhinz/vim-signify'
-Bundle 'Glench/Vim-Jinja2-Syntax'
-Bundle 'groenewege/vim-less'
-Bundle 'ivyl/vim-bling'
-Bundle 'LaTeX-Box-Team/LaTeX-Box'
-Bundle 'justinmk/vim-sneak'
-Bundle 'mattn/webapi-vim'
-Bundle 'mattn/gist-vim'
-Bundle 'vim-scripts/DrawIt'
-Bundle 'mantiz/vim-plugin-dirsettings'
-Bundle 'tommcdo/vim-exchange'
-Bundle 'tmhedberg/SimpylFold'
-Bundle 'luochen1990/rainbow'
-Bundle 'mileszs/ack.vim'
+Plugin 'tpope/vim-git'
+Plugin 'tpope/vim-markdown'
+Plugin 'tpope/vim-speeddating'
+Plugin 'tpope/vim-fugitive'
+Plugin 'tpope/vim-surround'
+Plugin 'tpope/vim-repeat'
+Plugin 'tpope/vim-abolish'
+Plugin 'tpope/vim-unimpaired'
+Plugin 'tpope/vim-ragtag'
+Plugin 'tpope/vim-haml'
+Plugin 'sjbach/lusty'
+Plugin 'godlygeek/tabular'
+Plugin 'sjl/gundo.vim'
+" Plugin 'vim-scripts/taglist.vim'
+Plugin 'majutsushi/tagbar'
+" Plugin 'gregsexton/VimCalc'
+Plugin 'gregsexton/gitv'
+Plugin 'int3/vim-extradite'
+Plugin 'altercation/vim-colors-solarized'
+" Plugin 'jeetsukumaran/vim-filesearch'
+" Plugin 'vim-scripts/Highlight-UnMatched-Brackets'
+" Plugin 'vim-scripts/xoria256.vim'
+Plugin 'guns/xterm-color-table.vim'
+" Plugin 'vim-scripts/TaskList.vim'
+Plugin 'scrooloose/nerdtree'
+Plugin 'scrooloose/nerdcommenter'
+" Plugin 'vim-scripts/FuzzyFinder'
+Plugin 'vim-scripts/L9'
+" Plugin 'vim-scripts/bufexplorer.zip'
+Plugin 'scrooloose/syntastic'
+" Plugin 'om/theshadowhost/Clippo'
+Plugin 'vim-scripts/FSwitch'
+" Plugin 'vim-scripts/YankRing.vim'
+Plugin 'ehamberg/vim-cute-python'
+Plugin 'Twinside/vim-haskellConceal'
+Plugin 'trapd00r/vim-syntax-vidir-ls'
+" Plugin 'Rip-Rip/clang_complete'
+" Plugin 'rkitover/vimpager'
+" Plugin 'vim-scripts/calendar.vim--Matsumoto'
+" Plugin 'msanders/snipmate.vim'
+Plugin 'Raimondi/delimitMate'
+" Plugin 'mikewest/vimroom'
+Plugin 'vim-scripts/SudoEdit.vim'
+Plugin 'kana/vim-textobj-line'
+" Plugin 'jeffkreeftmeijer/vim-numbertoggle'
+" Plugin 'noahfrederick/Hemisu'
+Plugin 'SirVer/ultisnips'
+Plugin 'honza/vim-snippets'
+Plugin 'vim-scripts/DirDiff.vim'
+Plugin 'chrisbra/csv.vim'
+Plugin 'michaeljsmith/vim-indent-object'
+Plugin 'ivanov/vim-ipython'
+Plugin 'nathanaelkane/vim-indent-guides'
+" Plugin 'fmoralesc/vim-pad'
+Plugin 'Lokaltog/vim-easymotion'
+Plugin 'vim-scripts/AnsiEsc.vim'
+Plugin 'coderifous/textobj-word-column.vim'
+Plugin 'vim-scripts/LargeFile'
+Plugin 'kana/vim-textobj-indent'
+Plugin 'kana/vim-textobj-user'
+Plugin 'caio/querycommandcomplete.vim'
+" Plugin 'maxbrunsfeld/vim-yankstack'
+Plugin 'benmills/vimux'
+Plugin 'kien/ctrlp.vim'
+Plugin 'kana/vim-textobj-entire'
+" Plugin 'terryma/vim-expand-region' " does not work correctly
+Plugin 'tpope/vim-dispatch'
+Plugin 'nelstrom/vim-visual-star-search'
+" Plugin 'jceb/vim-orgmode'
+Plugin 'prendradjaja/vim-vertigo'
+Plugin 'PeterRincker/vim-argumentative'
+Plugin 'sickill/vim-pasta'
+Plugin 'Shougo/unite.vim'
+Plugin 'Shougo/neomru.vim'
+Plugin 'Shougo/vimproc.vim'
+Plugin 'shougo/unite-outline'
+Plugin 'vimwiki/vimwiki'
+Plugin 'mhinz/vim-signify'
+Plugin 'Glench/Vim-Jinja2-Syntax'
+Plugin 'groenewege/vim-less'
+Plugin 'ivyl/vim-bling'
+Plugin 'LaTeX-Box-Team/LaTeX-Box'
+Plugin 'justinmk/vim-sneak'
+Plugin 'mattn/webapi-vim'
+Plugin 'mattn/gist-vim'
+Plugin 'vim-scripts/DrawIt'
+Plugin 'mantiz/vim-plugin-dirsettings'
+Plugin 'tommcdo/vim-exchange'
+Plugin 'tmhedberg/SimpylFold'
+Plugin 'luochen1990/rainbow'
+Plugin 'mileszs/ack.vim'
 
 " only use taskwarrior where we use task
 if executable('task')
-    Bundle 'farseer90718/vim-taskwarrior'
+    Plugin 'farseer90718/vim-taskwarrior'
 endif
 
 " Since YCM requires manual installation, dont enable it by default everywhere
 let s:ycm_hosts=["dopamine"]
 let s:ycm_requirements_met = v:version >= 704 || (v:version == 703 && has('patch584'))
 if s:ycm_requirements_met && index(s:ycm_hosts, hostname()) >= 0
-    Bundle 'Valloric/YouCompleteMe'
+    Plugin 'Valloric/YouCompleteMe'
 else
-    Bundle 'davidhalter/jedi-vim'
+    Plugin 'davidhalter/jedi-vim'
 endif
 
 if v:version >= 703
-      " Bundle 'chrisbra/histwin.vim'
+      " Plugin 'chrisbra/histwin.vim'
 endif
 
 " For standalone only (see
 " https://github.com/Lokaltog/powerline/blob/develop/docs/source/overview.rst)
-" Bundle 'Lokaltog/powerline', {'rtp': 'powerline/bindings/vim/'}
+" Plugin 'Lokaltog/powerline', {'rtp': 'powerline/bindings/vim/'}
 " }}}
 
 " {{{ Other repositories
@@ -135,9 +135,10 @@ endif
 " let s:atp_hosts=["juno", "phaelon", "nurikum"]
 let s:atp_hosts=[]
 if index(s:atp_hosts, hostname()) >= 0
-      " Bundle 'git://atp-vim.git.sourceforge.net/gitroot/atp-vim/atp-vim'
+      " Plugin 'git://atp-vim.git.sourceforge.net/gitroot/atp-vim/atp-vim'
 endif
 " }}}
 
+call vundle#end()
 
 " vim: fdm=marker
