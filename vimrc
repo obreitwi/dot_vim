@@ -365,6 +365,7 @@ autocmd vimrc FileType vimwiki     setlocal tabstop=4 |     setlocal shiftwidth=
 autocmd vimrc FileType mail        setlocal textwidth=72 |  setlocal wrapmargin=8 |  setlocal spell
 autocmd vimrc FileType python let python_highlight_all = 1
 autocmd vimrc FileType text         setlocal expandtab | setlocal comments=fb:*,fb:#
+autocmd vimrc FileType zsh         setlocal tabstop=4 |     setlocal shiftwidth=4
 
 " Autohotkey
 autocmd vimrc BufNewFile,BufRead *.ahk setf autohotkey 
@@ -496,7 +497,11 @@ if executable('ag')
     let g:ack_wildignore=0
 endif
 
-let g:ack_use_dispatch=1
+" There is something iffy with the module environment
+let s:no_dispatch_hosts = ["dopamine"]
+if index(s:no_dispatch_hosts, hostname()) < 0
+    let g:ack_use_dispatch=1
+endif
 
 " }}}
 " {{{ AlignMaps
@@ -683,6 +688,10 @@ elseif g:opsystem == "windows"
 	let g:LatexNotesBase = "C:/Users/Desoxy/latexNotes"
 endif
 " }}}
+" {{{ LineDiff
+map <leader>ld :Linediff<CR>
+map <leader>ldr :LinediffReset<CR>
+" }}}
 " {{{ Lusty
 let g:LustyJugglerSuppressRubyWarning = 1
 let g:LustyExplorerSuppressRubyWarning = 1
@@ -796,7 +805,7 @@ nmap <Leader>u [unite]
 nmap <silent> <leader>be :Unite -no-start-insert buffer<CR>
 nmap <silent> [unite]m :Unite -no-start-insert file_mru<CR>
 nmap <silent> [unite]f :Unite -start-insert file_rec/async<CR>
-nmap <silent> <leader>y :Unite -start-insert history/yank<CR>
+nmap <silent> <leader>y :Unite -no-start-insert history/yank<CR>
 
 " {{{ Unite-Outline
 nmap <Leader>uo :Unite outline<CR>
