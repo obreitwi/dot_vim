@@ -107,6 +107,7 @@ Plugin 'tmhedberg/SimpylFold'
 Plugin 'luochen1990/rainbow'
 Plugin 'mileszs/ack.vim'
 Plugin 'jamessan/vim-gnupg'
+Plugin 'ledger/vim-ledger'
 
 " only use taskwarrior where we use task
 if executable('task')
