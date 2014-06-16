@@ -9,7 +9,7 @@ AddTabularPattern! eq /^[^=]*\zs=/l1
 AddTabularPattern! co /^[^:]*\zs:/l1
 AddTabularPattern! di /^[^:]*:\zs/l1
 
-AddTabularPattern! eu /\ze€/l1
+AddTabularPattern! eu /\ze€/
 
 let &cpo = s:save_cpo
 unlet s:save_cpo

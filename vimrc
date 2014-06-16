@@ -765,6 +765,7 @@ let g:syntastic_python_pylint_post_args = '-d C0103,C0111,W0603'
 map <Leader>tb :Tabularize/
 map <Leader>tt :Tabularize<CR>
 map <Leader>t<Leader> :Tabularize 
+map <Leader>tm :tabe ~/.vim/bundle-own/tabular-maps/after/plugin/TabularMaps.vim<CR>
 " map <Leader>t :Tabularize
 " }}}
 " {{{ Tagbar
