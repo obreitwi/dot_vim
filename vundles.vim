@@ -108,6 +108,7 @@ Plugin 'luochen1990/rainbow'
 Plugin 'mileszs/ack.vim'
 Plugin 'jamessan/vim-gnupg'
 Plugin 'ledger/vim-ledger'
+Plugin 'AndrewRadev/linediff.vim'
 
 " only use taskwarrior where we use task
 if executable('task')
