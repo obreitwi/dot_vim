@@ -26,7 +26,7 @@ else
 	source $HOME/.vim/vundles.vim
 endif
 
-call dirsettings#Install()
+call dirsettings#Install(".dirvimrc", ".dirvim")
 
 " Have pathogen load the other local/non-git plugins
 call pathogen#infect("bundle-pathogen/{}")
@@ -451,7 +451,7 @@ endif
 " {{{ Statusline
 " Powerline
 " disable on all machines unless specifically enabled
-let s:powerline_hosts=["nurikum", "lark", "iminspace.zqnr.de", "phaelon", "ice", "dopamine"]
+let s:powerline_hosts=["nurikum", "lark", "iminspace.zqnr.de", "phaelon", "ignatz", "dopamine", "ice"]
 set laststatus=2
 set noshowmode
 if index(s:powerline_hosts, hostname()) < 0
@@ -787,6 +787,7 @@ let g:task_report_name="long"
 " }}}
 " {{{ Ultisnips
 let g:UltiSnipsSnippetsDir="~/.vim/bundle-own/my-snippets/UltiSnips"
+let g:UltiSnipsListSnippets="<leader>ls"
 " let g:UltiSnipsExpandTrigger="<tab>"
 let g:UltiSnipsExpandTrigger="<c-j>"
 let g:UltiSnipsJumpForwardTrigger="<c-l>"
@@ -794,7 +795,6 @@ let g:UltiSnipsJumpBackwardTrigger="<c-h>"
 let g:UltiSnipsUsePythonVersion=2
 
 map <leader>ue :UltiSnipsEdit<CR>
-map <leader>ls :call UltiSnips_ListSnippets()<CR>
 " }}}
 " {{{ Unite
 let g:unite_source_history_yank_enable = 1
