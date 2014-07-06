@@ -112,6 +112,13 @@ Plugin 'altercation/vim-colors-solarized'
 " Plugin 'vim-scripts/DrawIt'
 " }}}
 
+
+if executable('ghc')
+    Plugin 'lukerandall/haskellmode-vim'
+    Plugin 'eagletmt/ghcmod-vim'
+    Plugin 'eagletmt/neco-ghc'
+endif
+
 if executable('ledger')
     Plugin 'ledger/vim-ledger'
 endif
@@ -122,7 +129,7 @@ if executable('task')
 endif
 
 " Since YCM requires manual installation, dont enable it by default everywhere
-let s:ycm_hosts=["dopamine", "ice", "ignatz"]
+let s:ycm_hosts=["dopamine", "ice", "ignatz", "nurikum"]
 let s:ycm_requirements_met = v:version >= 704 || (v:version == 703 && has('patch584'))
 if s:ycm_requirements_met && index(s:ycm_hosts, hostname()) >= 0
     Plugin 'Valloric/YouCompleteMe'

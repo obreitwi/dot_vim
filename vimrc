@@ -75,6 +75,15 @@ function! Command(cmd)
 	set nomodified
 endfunction
 
+function! OpenCustomFT(folder)
+    if g:opsystem != "windows"
+        let basefolder = "~/.vim/bundle-own/various-ft-scripts"
+    else
+        let basefolder = "$VIM/vimfiles/bundle-own/various-ft-scripts/"
+    endif
+    execute "tabe ".basefolder."/".a:folder."/".&ft.".vim"
+endfunction
+
 function! CreateTimestamp()
 	normal! oCreated:
 	normal! a TIMESTAMP
@@ -135,13 +144,12 @@ command! -nargs=0 -complete=command MakeTags !ctags -R --c++-kinds=+p --fields=+
 " Open vimrc/tex in new tab
 if g:opsystem != "windows"
 	command! -nargs=0 -complete=command Vimrc tabe $MYVIMRC
-	command! -nargs=0 -complete=command FTex tabe
-\	~/.vim/bundle-own/various-ft-scripts/ftplugin/tex.vim
 else 
 	command! -nargs=0 -complete=command Vimrc tabe $VIM/vimfiles/vimrc
-	command! -nargs=0 -complete=command FTex tabe
-\	$VIM/vimfiles/bundle-own/various-ft-scripts/ftplugin/tex.vim
 endif
+
+command! -nargs=0 -complete=command FT call OpenCustomFT("ftplugin")
+command! -nargs=0 -complete=command FTA call OpenCustomFT("after")
 
 " Spelling
 command! -nargs=0 -complete=command Spde setlocal spelllang=de
@@ -374,6 +382,9 @@ autocmd vimrc BufNewFile,BufRead *.txt setf text
 
 " Apache config files
 autocmd vimrc BufNewFile,BufRead /etc/apache2/* setf apache
+
+" Haskell
+autocmd vimrc BufEnter *.hs compiler ghc
 
 " {{{ mutt
 " au BufRead,BufNewFile /tmp/mutt-* set filetype=mail | nohl | set bg=dark | colo solarized | setlocal omnifunc=QueryCommandComplete
@@ -655,6 +666,10 @@ nnoremap <leader>f :Gstatus<CR>:on<CR>
 " {{{ Gundo
 map <Leader>gt :GundoToggle<CR>
 " }}}
+" {{{ Haskellmode
+let g:haddock_browser="/usr/bin/firefox"
+let g:haddock_docdir="/usr/share/doc/ghc/html/"
+" }}}
 " {{{ Histwin
 " map <Leader>u :Histwin<CR>
 " }}}
@@ -890,6 +905,7 @@ let g:yankstack_map_keys = 0
 " }}}
 " {{{ YouCompleteMe
 nnoremap <leader>jd :YcmCompleter GoTo<CR>
+let g:ycm_semantic_triggers = {'haskell' : ['.']}
 " }}}
 " }}}
 " {{{ Postscript
