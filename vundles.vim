@@ -129,7 +129,7 @@ if executable('task')
 endif
 
 " Since YCM requires manual installation, dont enable it by default everywhere
-let s:ycm_hosts=["dopamine", "ice", "ignatz", "nurikum"]
+let s:ycm_hosts=["dopamine", "ice", "ignatz", "nurikum", "lark"]
 let s:ycm_requirements_met = v:version >= 704 || (v:version == 703 && has('patch584'))
 if s:ycm_requirements_met && index(s:ycm_hosts, hostname()) >= 0
     Plugin 'Valloric/YouCompleteMe'
