@@ -688,7 +688,9 @@ let g:LatexBox_quickfix=2
 let g:LatexBox_show_warnings=0
 let g:LatexBox_latexmk_options="-pdf -pdflatex='pdflatex -synctex=1 \%O \%S'"
 let g:LatexBox_viewer="okular"
+let g:LatexBox_fold_toc=0
 let g:tex_flavor='latex'
+map <leader>ltt :LatexTOCToggle<CR>
 " }}}
 " {{{ Large Files
 let g:LargeFile=100
