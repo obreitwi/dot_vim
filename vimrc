@@ -510,7 +510,7 @@ if executable('ag')
 endif
 
 " There is something iffy with the module environment
-let s:no_dispatch_hosts = ["dopamine"]
+let s:no_dispatch_hosts = ["dopamine", "ice", "ignatz"]
 if index(s:no_dispatch_hosts, hostname()) < 0
     let g:ack_use_dispatch=1
 endif
