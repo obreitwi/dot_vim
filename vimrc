@@ -708,7 +708,7 @@ endif
 " }}}
 " {{{ LineDiff
 map <leader>ld :Linediff<CR>
-map <leader>ldr :LinediffReset<CR>
+map <leader>lr :LinediffReset<CR>
 " }}}
 " {{{ ledger
 let g:ledger_maxwith = 80
@@ -804,13 +804,14 @@ let g:task_report_name="long"
 " }}}
 " {{{ Ultisnips
 let g:UltiSnipsSnippetsDir="~/.vim/bundle-own/my-snippets/UltiSnips"
-let g:UltiSnipsListSnippets="<leader>ls"
+" let g:UltiSnipsListSnippets="<leader>ls"
 " let g:UltiSnipsExpandTrigger="<tab>"
 let g:UltiSnipsExpandTrigger="<c-j>"
 let g:UltiSnipsJumpForwardTrigger="<c-l>"
 let g:UltiSnipsJumpBackwardTrigger="<c-h>"
 let g:UltiSnipsUsePythonVersion=2
 
+map <leader>ls <Esc>:call UltiSnips#ListSnippets()<CR>
 map <leader>ue :UltiSnipsEdit<CR>
 " }}}
 " {{{ Unite
