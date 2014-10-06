@@ -708,7 +708,7 @@ endif
 " }}}
 " {{{ LineDiff
 map <leader>ld :Linediff<CR>
-map <leader>lr :LinediffReset<CR>
+map <leader>dr :LinediffReset<CR>
 " }}}
 " {{{ ledger
 let g:ledger_maxwith = 80
