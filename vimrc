@@ -243,6 +243,8 @@ nnoremap <c-e><c-l> :tabn<CR>
 " {{{ Settings
 set nocompatible
 set encoding=utf-8
+
+set splitright
 "
 set hidden
 set nowrap
