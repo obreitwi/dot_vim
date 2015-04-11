@@ -560,6 +560,10 @@ autocmd vimrc FileType c,cpp inoremap <c-l> <c-x><c-u>
 command! SourceClewn source /usr/share/vim/vimfiles/macros/clewn_mappings.vim
 command! ResetClewn normal <F7>:source ~/.vimrc<CR>
 " }}}
+" {{{ CtrlSF
+vmap <Leader>sf <Plug>CtrlSFVwordPath
+nmap <Leader>sf <Plug>CtrlSFPrompt
+" }}}
 " {{{ CtrlP
 map <Leader>cm :CtrlPMRU<CR>
 let g:ctrlp_switch_buffer = 'et'
