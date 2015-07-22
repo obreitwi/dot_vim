@@ -115,8 +115,18 @@ function! SetColorColumn()
 	call matchadd('ColorColumn', '\%'. l:tw . 'v', 100)
 endfunction
 
+" Search for the ... arguments separated with whitespace (if no '!'),
+" or with non-word characters (if '!' added to command).
+function! SearchMultiLine(bang, ...)
+  if a:0 > 0
+    let sep = (a:bang) ? '\_W\+' : '\_s\+'
+    let @/ = join(a:000, sep)
+  endif
+endfunction
+
 " }}}
 " {{{ Commands
+command! -bang -nargs=* -complete=tag S call SearchMultiLine(<bang>0, <f-args>)|normal! /<C-R>/<CR
 
 " Enable folding
 command! Folds set fdm=syntax
@@ -328,8 +338,12 @@ let s:filetype_to_textwidth = {
 " {{{ Backup settings
 if g:opsystem != "windows"
 	call EnsureDirExists( $HOME . '/.vimbackup' )
+    call EnsureDirExists( $HOME . '/.vimbackup/writebackup' )
 	set directory=~/.vimbackup//
+    set backupdir=~/.vimbackup/writebackup//
 endif
+set backup
+
 " }}}
 " {{{ List Chars (Make sure they work on all platforms)
 
@@ -363,10 +377,11 @@ autocmd vimrc FileType python      setlocal tabstop=4 |     setlocal shiftwidth=
 autocmd vimrc FileType yaml        setlocal tabstop=4 |     setlocal shiftwidth=4 |  setlocal expandtab
 autocmd vimrc FileType matlab      setlocal tabstop=4 |     setlocal shiftwidth=4 |  setlocal expandtab
 autocmd vimrc FileType html        setlocal tabstop=4 |     setlocal shiftwidth=4 |  setlocal softtabstop=4
-autocmd vimrc FileType haskell     setlocal tabstop=4 |     setlocal shiftwidth=4
+autocmd vimrc FileType haskell     setlocal tabstop=4 |     setlocal shiftwidth=4 |  setlocal expandtab
 autocmd vimrc FileType cpp         setlocal tabstop=4 |     setlocal shiftwidth=4 |  setlocal softtabstop=4
 autocmd vimrc FileType java        setlocal tabstop=4 |     setlocal shiftwidth=4 |  setlocal softtabstop=4
 autocmd vimrc FileType c           setlocal tabstop=4 |     setlocal shiftwidth=4 |  setlocal softtabstop=4
+autocmd vimrc FileType arduino     setlocal tabstop=4 |     setlocal shiftwidth=4 |  setlocal softtabstop=4
 autocmd vimrc FileType markdown    setlocal tabstop=4 |     setlocal shiftwidth=4 |  setlocal softtabstop=4
 autocmd vimrc FileType javascript  setlocal tabstop=4 |     setlocal shiftwidth=4 |  setlocal softtabstop=4
 autocmd vimrc FileType exim        setlocal tabstop=4 |     setlocal shiftwidth=4 |  setlocal softtabstop=4 | setlocal expandtab
@@ -413,8 +428,8 @@ if has( "gui_running" )
 	" let g:solarized_underline=1
 	" let g:solarized_italic=1
 	" let g:solarized_termcolors=16
-	let g:solarized_contrast="normal"
-	let g:solarized_visibility="low"
+    let g:solarized_contrast="normal"
+    let g:solarized_visibility="low"
 	let g:solarized_diffmode="high"
 	" let g:solarized_hitrail=0
 	" let g:solarized_menu=1
@@ -464,7 +479,7 @@ endif
 " {{{ Statusline
 " Powerline
 " disable on all machines unless specifically enabled
-let s:powerline_hosts=["nurikum", "lark", "propane.zqnr.de", "phaelon", "ignatz", "dopamine", "ice"]
+let s:powerline_hosts=["nurikum", "lark", "propane.zqnr.de", "phaelon", "ignatz", "dopamine", "ice", "jovis"]
 set laststatus=2
 set noshowmode
 if index(s:powerline_hosts, hostname()) < 0
@@ -692,11 +707,12 @@ let g:LatexBox_latexmk_async=1
 let g:LatexBox_output_type="pdf"
 let g:LatexBox_quickfix=2
 let g:LatexBox_show_warnings=0
-let g:LatexBox_latexmk_options="-pdf -pdflatex='pdflatex -synctex=1 \%O \%S'"
+let g:LatexBox_latexmk_options="-pdf -pdflatex='pdflatex --shell-escape -synctex=1 \%O \%S'"
 let g:LatexBox_viewer="okular"
 let g:LatexBox_fold_toc=0
 let g:tex_flavor='latex'
 map <leader>ltt :LatexTOCToggle<CR>
+let g:LatexBox_custom_inden=0
 " }}}
 " {{{ Large Files
 let g:LargeFile=100
