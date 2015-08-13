@@ -15,7 +15,6 @@ Plugin 'tpope/vim-pathogen'
 " }}}
 
 " {{{ Github repositories
-Plugin 'SirVer/ultisnips'
 Plugin 'tpope/vim-git'
 Plugin 'tpope/vim-fugitive'
 Plugin 'tpope/vim-surround'
@@ -140,6 +139,9 @@ endif
 
 if v:version >= 703
       " Plugin 'chrisbra/histwin.vim'
+endif
+if v:version >= 704
+    Plugin 'SirVer/ultisnips'
 endif
 
 " For standalone only (see
