@@ -376,6 +376,8 @@ autocmd vimrc FileType vim         setlocal tabstop=4 |     setlocal shiftwidth=
 autocmd vimrc FileType python      setlocal tabstop=4 |     setlocal shiftwidth=4 |  setlocal expandtab
 autocmd vimrc FileType yaml        setlocal tabstop=4 |     setlocal shiftwidth=4 |  setlocal expandtab
 autocmd vimrc FileType matlab      setlocal tabstop=4 |     setlocal shiftwidth=4 |  setlocal expandtab
+autocmd vimrc FileType json        setlocal tabstop=4 |     setlocal shiftwidth=4 |  setlocal expandtab
+autocmd vimrc FileType javascript  setlocal tabstop=4 |     setlocal shiftwidth=4 |  setlocal expandtab
 autocmd vimrc FileType html        setlocal tabstop=4 |     setlocal shiftwidth=4 |  setlocal softtabstop=4
 autocmd vimrc FileType haskell     setlocal tabstop=4 |     setlocal shiftwidth=4 |  setlocal expandtab
 autocmd vimrc FileType cpp         setlocal tabstop=4 |     setlocal shiftwidth=4 |  setlocal softtabstop=4
@@ -929,8 +931,10 @@ let g:yankstack_map_keys = 0
 " }}}
 " }}}
 " {{{ YouCompleteMe
-nnoremap <leader>jd :YcmCompleter GoTo<CR>
-let g:ycm_semantic_triggers = {'haskell' : ['.']}
+if g:ycm_requirements_met && index(g:ycm_hosts, hostname()) >= 0
+    nnoremap <leader>jd :YcmCompleter GoTo<CR>
+    let g:ycm_semantic_triggers = {'haskell' : ['.']}
+endif
 " }}}
 " }}}
 " {{{ Postscript
