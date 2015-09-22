@@ -484,7 +484,25 @@ endif
 let s:powerline_hosts=["nurikum", "lark", "propane.zqnr.de", "phaelon", "ignatz", "dopamine", "ice", "jovis"]
 set laststatus=2
 set noshowmode
-if index(s:powerline_hosts, hostname()) < 0
+
+let g:powerline_available=1
+if !has("python")
+    let g:powerline_available=0
+else
+    python << EOF
+try:
+    from powerline.vim import setup as powerline_setup
+    powerline_setup()
+    del powerline_setup
+except:
+    import vim
+    vim.cmd("let g:powerline_available=0")
+EOF
+endif
+
+
+" if index(s:powerline_hosts, hostname()) < 0
+if !g:powerline_available
 	let g:powerline_loaded=1
 	set showmode
 
@@ -506,10 +524,6 @@ if index(s:powerline_hosts, hostname()) < 0
 	set statusline+=%b,0x%-6B                    " current char
 	set statusline+=%c,%l/                       " cursor column/total lines
 	set statusline+=%L\ %P                       " total lines/percentage in file
-else
-	python from powerline.vim import setup as powerline_setup
-	python powerline_setup()
-	python del powerline_setup
 endif
 " }}}
 " {{{ Plugins

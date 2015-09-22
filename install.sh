@@ -4,7 +4,7 @@
 git clone https://github.com/gmarik/vundle.git bundle/vundle
 vim +BundleInstall +q!
 
-PREFIX=$HOME/usr
+PREFIX=$HOME/.local
 # SRCFLD=$(dirname $(realpath $0))
 SRCFLD=$(dirname $(readlink -m "$0"))
 
