@@ -496,7 +496,7 @@ try:
     del powerline_setup
 except:
     import vim
-    vim.cmd("let g:powerline_available=0")
+    vim.command("let g:powerline_available=0")
 EOF
 endif
 
