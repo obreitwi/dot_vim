@@ -8,7 +8,7 @@ call vundle#begin()
 
 " let Vundle manage Vundle
 " required! 
-Plugin 'gmarik/vundle'
+Plugin 'VundleVim/Vundle.vim', {'name': 'vundle'}
 
 " Pathogen because Vundle is too sophisticated to add local folders to the rtp
 Plugin 'tpope/vim-pathogen'
@@ -71,6 +71,7 @@ Plugin 'jamessan/vim-gnupg'
 Plugin 'AndrewRadev/linediff.vim'
 Plugin 'altercation/vim-colors-solarized'
 Plugin 'majutsushi/tagbar'
+Plugin 'AndrewRadev/id3.vim'
 
 " {{{ Disabled stfuff:
 " Plugin 'luochen1990/rainbow'

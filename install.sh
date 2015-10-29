@@ -1,7 +1,8 @@
 #!/bin/bash
 
 # Quick install script to setup all symlinks
-git clone https://github.com/gmarik/vundle.git bundle/vundle
+git clone https://github.com/VundleVim/Vundle.vim bundle/vundle
+vim +BundleInstall +q!
 
 PREFIX=$HOME/.local
 # SRCFLD=$(dirname $(realpath $0))

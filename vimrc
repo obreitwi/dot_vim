@@ -828,12 +828,12 @@ nnoremap <c-y> :TagbarToggle<CR>
 let g:tagbar_autofocus = 1
 " }}}
 " {{{ Taglist
-map <Leader>tl <Plug>TaskList
 nnoremap <c-s> :TlistToggle<CR>
 command! -nargs=0 -complete=command TU :TlistUpdate
 
 " }}}
 " {{{ Tasklist
+map <Leader>tl <Plug>TaskList
 let g:tlRememberPosition = 1
 " command! -nargs=0 -complete=command TL TaskList
 " }}}
