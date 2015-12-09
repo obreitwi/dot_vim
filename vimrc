@@ -862,6 +862,19 @@ let g:unite_source_directory_mru_long_limit = 10000
 let g:unite_source_rec_max_cache_files = 10000
 let g:unite_source_rec_async_command = 'ag --nocolor --nogroup --hidden -f -g ""'
 
+let g:unite_source_grep_max_candidates = 10000
+
+" from unite doc :help unit-source-grep
+if executable('ag')
+  " Use ag (the silver searcher)
+  " https://github.com/ggreer/the_silver_searcher
+  let g:unite_source_grep_command = 'ag'
+  let g:unite_source_grep_default_opts =
+  \ '-f --vimgrep --smart-case --hidden --nocolor ' .
+  \ '--ignore ''.hg'' --ignore ''.svn'' --ignore ''.git'' --ignore ''.bzr'''
+  let g:unite_source_grep_recursive_opt = ''
+endif
+
 nnoremap [unite] <Nop>
 nmap <Leader>u [unite]
 
@@ -869,6 +882,7 @@ nmap <Leader>u [unite]
 nmap <silent> <leader>be :Unite -no-start-insert buffer<CR>
 nmap <silent> [unite]m :Unite -no-start-insert file_mru<CR>
 nmap <silent> [unite]f :Unite -start-insert file_rec/async<CR>
+nmap <silent> [unite]g :Unite -no-start-insert grep:.<CR>
 nmap <silent> <leader>y :Unite -no-start-insert history/yank<CR>
 
 " {{{ Unite-Outline
