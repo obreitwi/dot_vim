@@ -296,6 +296,11 @@ set ignorecase
 set smartcase
 set pastetoggle=<leader>tp " read as: toggle paste
 
+set expandtab
+set tabstop=4
+set softtabstop=4
+set shiftwidth=4
+
 set completeopt=menu,menuone,preview,longest
 
 set wildmenu
@@ -392,8 +397,9 @@ autocmd vimrc FileType vimwiki     setlocal tabstop=4 |     setlocal shiftwidth=
 			\setlocal expandtab | setlocal foldlevel=99 | setlocal comments=fb:*,fb:#
 autocmd vimrc FileType mail        setlocal textwidth=72 |  setlocal wrapmargin=8 |  setlocal spell
 autocmd vimrc FileType python let python_highlight_all = 1
-autocmd vimrc FileType text         setlocal expandtab | setlocal comments=fb:*,fb:#
-autocmd vimrc FileType zsh         setlocal tabstop=4 |     setlocal shiftwidth=4
+autocmd vimrc FileType text        setlocal expandtab | setlocal comments=fb:*,fb:#
+autocmd vimrc FileType zsh         setlocal expandtabsetlocal tabstop=4 |     setlocal shiftwidth=4
+autocmd vimrc FileType sh          setlocal tabstop=4 |     setlocal softtabstop=4 | setlocal shiftwidth=4  | setlocal expandtab
 
 " Autohotkey
 autocmd vimrc BufNewFile,BufRead *.ahk setf autohotkey 
