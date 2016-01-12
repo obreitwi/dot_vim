@@ -394,11 +394,11 @@ autocmd vimrc FileType javascript  setlocal tabstop=4 |     setlocal shiftwidth=
 autocmd vimrc FileType exim        setlocal tabstop=4 |     setlocal shiftwidth=4 |  setlocal softtabstop=4 | setlocal expandtab
 autocmd vimrc FileType jinja       setlocal tabstop=2 |     setlocal shiftwidth=2 |  setlocal softtabstop=2 | setlocal expandtab
 autocmd vimrc FileType vimwiki     setlocal tabstop=4 |     setlocal shiftwidth=4 | 
-			\setlocal expandtab | setlocal foldlevel=99 | setlocal comments=fb:*,fb:#
+            \setlocal expandtab | setlocal foldlevel=99 |   setlocal comments=fb:*,fb:#
 autocmd vimrc FileType mail        setlocal textwidth=72 |  setlocal wrapmargin=8 |  setlocal spell
 autocmd vimrc FileType python let python_highlight_all = 1
-autocmd vimrc FileType text        setlocal expandtab | setlocal comments=fb:*,fb:#
-autocmd vimrc FileType zsh         setlocal expandtabsetlocal tabstop=4 |     setlocal shiftwidth=4
+autocmd vimrc FileType text        setlocal expandtab |     setlocal comments=fb:*,fb:#
+autocmd vimrc FileType zsh         setlocal expandtab |     setlocal tabstop=4 |     setlocal shiftwidth=4
 autocmd vimrc FileType sh          setlocal tabstop=4 |     setlocal softtabstop=4 | setlocal shiftwidth=4  | setlocal expandtab
 
 " Autohotkey
