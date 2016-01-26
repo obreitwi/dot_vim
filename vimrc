@@ -379,6 +379,7 @@ autocmd filetype tex hi MatchParen ctermbg=black guibg=black
 
 autocmd vimrc FileType vim         setlocal tabstop=4 |     setlocal shiftwidth=4 |  setlocal expandtab
 autocmd vimrc FileType python      setlocal tabstop=4 |     setlocal shiftwidth=4 |  setlocal expandtab
+autocmd vimrc FileType haskell     setlocal tabstop=4 |     setlocal shiftwidth=4 |  setlocal expandtab
 autocmd vimrc FileType yaml        setlocal tabstop=4 |     setlocal shiftwidth=4 |  setlocal expandtab
 autocmd vimrc FileType matlab      setlocal tabstop=4 |     setlocal shiftwidth=4 |  setlocal expandtab
 autocmd vimrc FileType json        setlocal tabstop=4 |     setlocal shiftwidth=4 |  setlocal expandtab
@@ -409,7 +410,7 @@ autocmd vimrc BufNewFile,BufRead *.txt setf text
 autocmd vimrc BufNewFile,BufRead /etc/apache2/* setf apache
 
 " Haskell
-autocmd vimrc BufEnter *.hs compiler ghc
+" autocmd vimrc BufEnter *.hs compiler ghc
 
 " {{{ mutt
 " au BufRead,BufNewFile /tmp/mutt-* set filetype=mail | nohl | set bg=dark | colo solarized | setlocal omnifunc=QueryCommandComplete
