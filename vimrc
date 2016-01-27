@@ -379,13 +379,12 @@ autocmd filetype tex hi MatchParen ctermbg=black guibg=black
 
 autocmd vimrc FileType vim         setlocal tabstop=4 |     setlocal shiftwidth=4 |  setlocal expandtab
 autocmd vimrc FileType python      setlocal tabstop=4 |     setlocal shiftwidth=4 |  setlocal expandtab
-autocmd vimrc FileType haskell     setlocal tabstop=4 |     setlocal shiftwidth=4 |  setlocal expandtab
+autocmd vimrc FileType haskell     setlocal tabstop=2 |     setlocal shiftwidth=2 |  setlocal expandtab
 autocmd vimrc FileType yaml        setlocal tabstop=4 |     setlocal shiftwidth=4 |  setlocal expandtab
 autocmd vimrc FileType matlab      setlocal tabstop=4 |     setlocal shiftwidth=4 |  setlocal expandtab
 autocmd vimrc FileType json        setlocal tabstop=4 |     setlocal shiftwidth=4 |  setlocal expandtab
 autocmd vimrc FileType javascript  setlocal tabstop=4 |     setlocal shiftwidth=4 |  setlocal expandtab
 autocmd vimrc FileType html        setlocal tabstop=4 |     setlocal shiftwidth=4 |  setlocal softtabstop=4
-autocmd vimrc FileType haskell     setlocal tabstop=4 |     setlocal shiftwidth=4 |  setlocal expandtab
 autocmd vimrc FileType cpp         setlocal tabstop=4 |     setlocal shiftwidth=4 |  setlocal softtabstop=4
 autocmd vimrc FileType java        setlocal tabstop=4 |     setlocal shiftwidth=4 |  setlocal softtabstop=4
 autocmd vimrc FileType c           setlocal tabstop=4 |     setlocal shiftwidth=4 |  setlocal softtabstop=4
