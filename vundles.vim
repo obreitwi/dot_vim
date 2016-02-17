@@ -73,6 +73,8 @@ Plugin 'altercation/vim-colors-solarized'
 Plugin 'majutsushi/tagbar'
 Plugin 'AndrewRadev/id3.vim'
 Plugin 'guns/xterm-color-table.vim'
+Plugin 'kana/vim-operator-user'
+Plugin 'rhysd/vim-clang-format'
 
 " {{{ Disabled stfuff:
 " Plugin 'luochen1990/rainbow'

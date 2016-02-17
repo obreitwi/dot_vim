@@ -401,6 +401,9 @@ autocmd vimrc FileType text        setlocal expandtab |     setlocal comments=fb
 autocmd vimrc FileType zsh         setlocal expandtab |     setlocal tabstop=4 |     setlocal shiftwidth=4
 autocmd vimrc FileType sh          setlocal tabstop=4 |     setlocal softtabstop=4 | setlocal shiftwidth=4  | setlocal expandtab
 
+autocmd vimrc FileType cpp         setlocal cinoptions=g0,hs,N-s,+0
+
+
 " Autohotkey
 autocmd vimrc BufNewFile,BufRead *.ahk setf autohotkey 
 autocmd vimrc BufNewFile,BufRead *.txt setf text
@@ -592,6 +595,11 @@ let g:clang_snippets = 1
 " for c/c++ use clang completer
 autocmd vimrc FileType c,cpp inoremap <c-l> <c-x><c-u>
 
+" }}}
+" {{{ clang-format
+autocmd vimrc Filetype c,cpp nnoremap <buffer><Leader>cf :ClangFormat<CR>
+autocmd vimrc Filetype c,cpp vnoremap <buffer><Leader>cf :ClangFormat<CR>
+autocmd vimrc Filetype c,cpp map <buffer><Leader>x <Plug>(operator-clang-format)
 " }}}
 " {{{ Clewn
 command! SourceClewn source /usr/share/vim/vimfiles/macros/clewn_mappings.vim
