@@ -146,6 +146,12 @@ if v:version >= 704
     Plugin 'SirVer/ultisnips'
 endif
 
+
+let s:atp_hosts=["lark"]
+if index(s:atp_hosts, hostname()) >= 0
+    Plugin 'dermusikman/sonicpi.vim'
+endif
+
 " For standalone only (see
 " https://github.com/Lokaltog/powerline/blob/develop/docs/source/overview.rst)
 " Plugin 'Lokaltog/powerline', {'rtp': 'powerline/bindings/vim/'}
