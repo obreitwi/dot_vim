@@ -468,6 +468,8 @@ endif
 " }}}
 " {{{ Digraphs
 digraph el 8230
+digraph li 8212
+digraph al 8594
 " }}}
 " {{{ Other
 " Call par if availible
