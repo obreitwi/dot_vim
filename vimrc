@@ -477,6 +477,7 @@ digraph Al 8656
 digraph Au 8657
 digraph Ar 8658
 digraph Ad 8659
+digraph tm 8482
 " }}}
 " {{{ Other
 " Call par if availible
