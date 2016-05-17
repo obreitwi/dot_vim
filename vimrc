@@ -211,8 +211,8 @@ inoremap <c-q> <c-u>
 vnoremap <c-q> <c-u>
 noremap M J
 noremap J M
-noremap j gj
-noremap k gk
+noremap <silent> <expr> j (v:count == 0 ? 'gj' : 'j')
+noremap <silent> <expr> k (v:count == 0 ? 'gk' : 'k')
 
 if v:version >= 703
 	" Toggle relative numbers
