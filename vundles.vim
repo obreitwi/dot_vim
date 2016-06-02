@@ -119,6 +119,7 @@ Plugin 'nathangrigg/vim-beancount'
 " Plugin 'vim-scripts/DrawIt'
 " }}}
 
+Plugin 'sanjayankur31/sli.vim'
 
 if executable('ghc')
     Plugin 'lukerandall/haskellmode-vim'

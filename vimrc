@@ -411,6 +411,9 @@ autocmd vimrc BufNewFile,BufRead *.txt setf text
 " Apache config files
 autocmd vimrc BufNewFile,BufRead /etc/apache2/* setf apache
 
+" SLI
+autocmd vimrc BufNewFile,BufRead *.sli setf sli
+
 " Haskell
 " autocmd vimrc BufEnter *.hs compiler ghc
 
@@ -787,6 +790,7 @@ let g:NERDCustomDelimiters = {
 \ 'gitolite': { 'left': '#' },
 \ 'jinja' : { 'left': '{#', 'right': '#}'},
 \ 'less' : { 'left': '//' },
+\ 'sli' : { 'left': '%' },
 \ }
 " \ 'ruby': { 'left': '#', 'leftAlt': 'FOO', 'rightAlt': 'BAR' },
 " }}}
