@@ -76,6 +76,7 @@ Plugin 'AndrewRadev/id3.vim'
 Plugin 'guns/xterm-color-table.vim'
 Plugin 'kana/vim-operator-user'
 Plugin 'rhysd/vim-clang-format'
+Plugin 'nathangrigg/vim-beancount'
 
 " {{{ Disabled stfuff:
 " Plugin 'luochen1990/rainbow'
