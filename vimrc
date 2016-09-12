@@ -481,6 +481,7 @@ digraph Au 8657 " ⇑
 digraph Ar 8658 " ⇒
 digraph Ad 8659 " ⇓
 digraph tm 8482 " ™
+digraph pm 177  " ±
 " }}}
 " {{{ Other
 " Call par if availible
