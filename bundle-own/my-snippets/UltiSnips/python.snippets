@@ -142,6 +142,26 @@ def config_logging(name, level="debug"):
     log.setLevel(getattr(logging, level.upper()))
 endsnippet
 
+snippet mklog "Setup basic logging" !b
+def make_log(name):
+    import logging
+    import os
+    log = logging.Logger(name)
+    if "DEBUG" in os.environ:
+        log_level = logging.DEBUG
+        log_formatter = logging.Formatter("%(asctime)s %(levelname)s: "
+            "%(message)s", datefmt="%y-%m-%d %H:%M:%S")
+    else:
+        log_level = logging.INFO
+        log_formatter = logging.Formatter("%(asctime)s %(levelname)s "
+            "%(funcName)s (%(filename)s:%(lineno)d): %(message)s",
+            datefmt="%y-%m-%d %H:%M:%S")
+    log_handler = logging.StreamHandler()
+    log_handler.setFormatter(log_formatter)
+    log.addHandler(log_handler)
+    log.setLevel(log_level)
+    return log
+endsnippet
 
 snippet new "__new__ syntax" !b
 def __new__(cls, name, bases, dct):
