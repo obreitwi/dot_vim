@@ -6,24 +6,24 @@ set nocompatible
 filetype off
 
 if has("win16") || has("win32") || has("win64")
-	let g:opsystem = "windows"
+    let g:opsystem = "windows"
 else
-	let g:opsystem = substitute(system('uname'), "\n", "", "")
+    let g:opsystem = substitute(system('uname'), "\n", "", "")
 endif
 " To make sure vim works with fish, adjust shell
 if $SHELL =~ "/fish$"
-	set shell="/bin/bash"
+    set shell="/bin/bash"
 endif
 
 " Load all own bundles
 " let s:vundle_path = expand('<sfile>:p:h') . '/vundles.vim'
 if g:opsystem == "windows"
-	" No vundle on windows just snapshots of repos under bundle
-	" We have pathogen for that
-	runtime bundle/vim-pathogen/autoload/pathogen.vim
-	execute pathogen#infect()
+    " No vundle on windows just snapshots of repos under bundle
+    " We have pathogen for that
+    runtime bundle/vim-pathogen/autoload/pathogen.vim
+    execute pathogen#infect()
 else
-	source $HOME/.vim/vundles.vim
+    source $HOME/.vim/vundles.vim
 endif
 
 call dirsettings#Install(".dirvimrc", ".dirvim")
@@ -36,43 +36,43 @@ filetype on
 " }}}
 " {{{ Functions
 function! EnsureDirExists (dir)
-	if !isdirectory(a:dir)
-		if exists("*mkdir")
-			call mkdir(a:dir,'p')
-			echo "Created directory: " . a:dir
-		else
-			echo "Please create directory: " . a:dir
-		endif
-	endif
+    if !isdirectory(a:dir)
+        if exists("*mkdir")
+            call mkdir(a:dir,'p')
+            echo "Created directory: " . a:dir
+        else
+            echo "Please create directory: " . a:dir
+        endif
+    endif
 endfunction
 
 " Run shell command and write output in new buffer
 function! s:RunShellCommand(cmdline)
-	echo a:cmdline
-	let expanded_cmdline = a:cmdline
-	for part in split(a:cmdline, ' ')
-		if part[0] =~ '\v[%#<]'
-			let expanded_part = fnameescape(expand(part))
-			let expanded_cmdline = substitute(expanded_cmdline, part, expanded_part, '')
-		endif
-	endfor
-	botright new
-	setlocal buftype=nofile bufhidden=wipe nobuflisted noswapfile nowrap
-	call setline(1, 'You entered:    ' . a:cmdline)
-	call setline(2, 'Expanded Form:  ' .expanded_cmdline)
-	call setline(3,substitute(getline(2),'.','=','g'))
-	execute '$read !'. expanded_cmdline
-	setlocal nomodifiable
+    echo a:cmdline
+    let expanded_cmdline = a:cmdline
+    for part in split(a:cmdline, ' ')
+        if part[0] =~ '\v[%#<]'
+            let expanded_part = fnameescape(expand(part))
+            let expanded_cmdline = substitute(expanded_cmdline, part, expanded_part, '')
+        endif
+    endfor
+    botright new
+    setlocal buftype=nofile bufhidden=wipe nobuflisted noswapfile nowrap
+    call setline(1, 'You entered:    ' . a:cmdline)
+    call setline(2, 'Expanded Form:  ' .expanded_cmdline)
+    call setline(3,substitute(getline(2),'.','=','g'))
+    execute '$read !'. expanded_cmdline
+    setlocal nomodifiable
 endfunction
 
 " Capture output of vim command
 function! Command(cmd)
-	redir => message
-	silent execute a:cmd
-	redir END
-	tabnew
-	silent put=message
-	set nomodified
+    redir => message
+    silent execute a:cmd
+    redir END
+    tabnew
+    silent put=message
+    set nomodified
 endfunction
 
 function! OpenCustomFT(folder)
@@ -85,13 +85,13 @@ function! OpenCustomFT(folder)
 endfunction
 
 function! CreateTimestamp()
-	normal! oCreated:
-	normal! a TIMESTAMP
-	" call EnhancedCommentify('', 'first')
-	normal! oLast modified:
-	" this is a comment to prevent TIMESTAMP from being evaluated
-	normal! a TIME
-	normal! aSTAMP
+    normal! oCreated:
+    normal! a TIMESTAMP
+    " call EnhancedCommentify('', 'first')
+    normal! oLast modified:
+    " this is a comment to prevent TIMESTAMP from being evaluated
+    normal! a TIME
+    normal! aSTAMP
 endfunction
 
 " Jump to next closed fold
@@ -111,8 +111,8 @@ endfunction
 
 " Set the color column depending on what filetype is set
 function! SetColorColumn()
-	let l:tw = get(s:filetype_to_textwidth, &ft, 80) + 1
-	call matchadd('ColorColumn', '\%'. l:tw . 'v', 100)
+    let l:tw = get(s:filetype_to_textwidth, &ft, 80) + 1
+    call matchadd('ColorColumn', '\%'. l:tw . 'v', 100)
 endfunction
 
 " Search for the ... arguments separated with whitespace (if no '!'),
@@ -153,9 +153,9 @@ command! -nargs=0 -complete=command MakeTags !ctags -R --c++-kinds=+p --fields=+
 
 " Open vimrc/tex in new tab
 if g:opsystem != "windows"
-	command! -nargs=0 -complete=command Vimrc tabe $MYVIMRC
+    command! -nargs=0 -complete=command Vimrc tabe $MYVIMRC
 else 
-	command! -nargs=0 -complete=command Vimrc tabe $VIM/vimfiles/vimrc
+    command! -nargs=0 -complete=command Vimrc tabe $VIM/vimfiles/vimrc
 endif
 
 command! -nargs=0 -complete=command FT call OpenCustomFT("ftplugin")
@@ -164,17 +164,17 @@ command! -nargs=0 -complete=command FTA call OpenCustomFT("after")
 " Spelling
 command! -nargs=0 -complete=command Spde setlocal spelllang=de
 command! -nargs=0 -complete=command Thde setlocal thesaurus=
-\	/usr/share/mythes/th_de_DE.v2.dat
+\   /usr/share/mythes/th_de_DE.v2.dat
 command! -nargs=0 -complete=command Spen setlocal spelllang=en
 command! -nargs=0 -complete=command Then setlocal thesaurus=
-\	/usr/share/mythes/th_en_US.v2.dat
+\   /usr/share/mythes/th_en_US.v2.dat
 
 " Lazy bunch
 command! -nargs=0 -complete=command SA setf apache
 
 " :Man command
 if g:opsystem == "Linux"
-	source $VIMRUNTIME/ftplugin/man.vim
+    source $VIMRUNTIME/ftplugin/man.vim
 end
 
 " Grep helpers
@@ -215,8 +215,8 @@ noremap <silent> <expr> j (v:count == 0 ? 'gj' : 'j')
 noremap <silent> <expr> k (v:count == 0 ? 'gk' : 'k')
 
 if v:version >= 703
-	" Toggle relative numbers
-	nnoremap <leader>ss :set rnu!<CR>
+    " Toggle relative numbers
+    nnoremap <leader>ss :set rnu!<CR>
 endif
 
 " Toggle character listing (col in unimpaired)w
@@ -324,7 +324,7 @@ set diffopt=filler,vertical,context:10
 " No menu if we don't need it
 if has("gui_running") 
     " No Pop Ups but console
-	set go=c
+    set go=c
 end
 
 " Taken form: https://github.com/gregstallings/vimfiles/blob/master/vimrc
@@ -342,9 +342,9 @@ let s:filetype_to_textwidth = {
 
 " {{{ Backup settings
 if g:opsystem != "windows"
-	call EnsureDirExists( $HOME . '/.vimbackup' )
+    call EnsureDirExists( $HOME . '/.vimbackup' )
     call EnsureDirExists( $HOME . '/.vimbackup/writebackup' )
-	set directory=~/.vimbackup//
+    set directory=~/.vimbackup//
     set backupdir=~/.vimbackup/writebackup//
 endif
 set backup
@@ -354,9 +354,9 @@ set backup
 
 set listchars=tab:>\ ,trail:\ ,extends:>,precedes:<,nbsp:+
 if (g:opsystem != "windows") && (&termencoding ==# 'utf-8' || &encoding ==# 'utf-8')
-	" NOTE: These two lines are NOT the same characgters!
-	" let &listchars = "tab:\u21e5 ,trail:\u2423,extends:\u21c9,precedes:\u21c7,nbsp:\u00b7"
-	set listchars=tab:▸\ ,extends:⇉,precedes:⇇,nbsp:·,eol:¬,trail:␣
+    " NOTE: These two lines are NOT the same characgters!
+    " let &listchars = "tab:\u21e5 ,trail:\u2423,extends:\u21c9,precedes:\u21c7,nbsp:\u00b7"
+    set listchars=tab:▸\ ,extends:⇉,precedes:⇇,nbsp:·,eol:¬,trail:␣
 endif
 
 " }}}
@@ -426,47 +426,47 @@ let g:qcc_query_command="nottoomuch-addresses-reformatted"
 " {{{ Font config
 " Nicer font in gvim for windows
 if has("gui_running") && (g:opsystem == "windows")
-	set guifont=Consolas:h10:cANSI
+    set guifont=Consolas:h10:cANSI
 " elseif has("gui_running") && ( hostname() == "nurikum" )
 elseif has("gui_running")
-	FInconP
+    FInconP
 end
 " }}}
 " {{{ Color management
 " Set really nice colors
 syntax enable
 if has( "gui_running" )
-	set background=dark
-	" let g:solarized_termtrans=0
-	" let g:solarized_bold=1
-	" let g:solarized_underline=1
-	" let g:solarized_italic=1
-	" let g:solarized_termcolors=16
+    set background=dark
+    " let g:solarized_termtrans=0
+    " let g:solarized_bold=1
+    " let g:solarized_underline=1
+    " let g:solarized_italic=1
+    " let g:solarized_termcolors=16
     let g:solarized_contrast="normal"
     let g:solarized_visibility="low"
-	let g:solarized_diffmode="high"
-	" let g:solarized_hitrail=0
-	" let g:solarized_menu=1
-	colorscheme solarized
-	call togglebg#map("<F5>")
+    let g:solarized_diffmode="high"
+    " let g:solarized_hitrail=0
+    " let g:solarized_menu=1
+    colorscheme solarized
+    call togglebg#map("<F5>")
 elseif $TERM == "linux"
-	colorscheme default
-	" set nolist
+    colorscheme default
+    " set nolist
 else
-	" let g:solarized_termcolors=256
-	" let g:solarized_contrast="normal"
-	" let g:solarized_visibility="low"
-	" let g:solarized_diffmode="high"
-	" let g:solarized_termtrans=1
-	let g:solarized_termcolors=256
-	set background=dark
-	" let g:solarized_degrade=1
-	" colorscheme solarized
-	colorscheme xoria256
+    " let g:solarized_termcolors=256
+    " let g:solarized_contrast="normal"
+    " let g:solarized_visibility="low"
+    " let g:solarized_diffmode="high"
+    " let g:solarized_termtrans=1
+    let g:solarized_termcolors=256
+    set background=dark
+    " let g:solarized_degrade=1
+    " colorscheme solarized
+    colorscheme xoria256
 " This is a test of a line that will exceed 81 characters per line and should trigger the new setting
-	" Highlight when a line exceeds 81 characters
-	highlight ColorColumn ctermbg=magenta ctermfg=black
-	autocmd Syntax * call SetColorColumn()
+    " Highlight when a line exceeds 81 characters
+    highlight ColorColumn ctermbg=magenta ctermfg=black
+    autocmd Syntax * call SetColorColumn()
 endif
 " }}}
 " {{{ Digraphs
@@ -486,19 +486,19 @@ digraph pm 177  " ±
 " {{{ Other
 " Call par if availible
 if executable("par") && system( "par help | wc -l" ) == 22
-	" Width of 78, justified lines
-	" set formatprg=PARPROTECT\=_x09\ par\ -w80qrg
-	" set formatprg=par\ -w80qrg
-	autocmd FileType mail set formatprg=par\ -w72qrg
-	" PARPROTECT prevents tabs from being converted!
-	command! -nargs=0 -complete=command Parwide setlocal formatprg=par\ -w100
-	autocmd FileType markdown  setlocal formatprg=PARQUOTE\=_x09\ par\ -w80T4
+    " Width of 78, justified lines
+    " set formatprg=PARPROTECT\=_x09\ par\ -w80qrg
+    " set formatprg=par\ -w80qrg
+    autocmd FileType mail set formatprg=par\ -w72qrg
+    " PARPROTECT prevents tabs from being converted!
+    command! -nargs=0 -complete=command Parwide setlocal formatprg=par\ -w100
+    autocmd FileType markdown  setlocal formatprg=PARQUOTE\=_x09\ par\ -w80T4
 endif
 
 " Taken from tpope sensible
 " Load matchit.vim, but only if the user hasn't installed a newer version.
 if !exists('g:loaded_matchit') && findfile('plugin/matchit.vim', &rtp) ==# ''
-	runtime! macros/matchit.vim
+    runtime! macros/matchit.vim
 endif
 " }}}
 " {{{ Statusline
@@ -524,27 +524,27 @@ endif
 
 
 if !g:powerline_available
-	let g:powerline_loaded=1
-	set showmode
+    let g:powerline_loaded=1
+    set showmode
 
-	" Git branch
-	" set statusline=%{GitBranch()}
-	" Custom status line
-	set statusline=                              " clear the statusline for when vimrc is reloaded
-	set statusline+=%f\                          " file name
-	set statusline+=[%{strlen(&ft)?&ft:'none'},  " filetype
-	set statusline+=%{strlen(&fenc)?&fenc:&enc}, " encoding
-	set statusline+=%{&fileformat}]              " file format
-	set statusline+=%{fugitive#statusline()}
-	set statusline+=%h%m%r%w                     " flags
-	set statusline+=%#warningmsg#
-	set statusline+=%{SyntasticStatuslineFlag()}
-	set statusline+=%*
-	set statusline+=%=                           " left/right separator
-						     " set statusline+=%{synIDattr(synID(line('.'),col('.'),1),'name')}\ " highlight
-	set statusline+=%b,0x%-6B                    " current char
-	set statusline+=%c,%l/                       " cursor column/total lines
-	set statusline+=%L\ %P                       " total lines/percentage in file
+    " Git branch
+    " set statusline=%{GitBranch()}
+    " Custom status line
+    set statusline=                              " clear the statusline for when vimrc is reloaded
+    set statusline+=%f\                          " file name
+    set statusline+=[%{strlen(&ft)?&ft:'none'},  " filetype
+    set statusline+=%{strlen(&fenc)?&fenc:&enc}, " encoding
+    set statusline+=%{&fileformat}]              " file format
+    set statusline+=%{fugitive#statusline()}
+    set statusline+=%h%m%r%w                     " flags
+    set statusline+=%#warningmsg#
+    set statusline+=%{SyntasticStatuslineFlag()}
+    set statusline+=%*
+    set statusline+=%=                           " left/right separator
+                             " set statusline+=%{synIDattr(synID(line('.'),col('.'),1),'name')}\ " highlight
+    set statusline+=%b,0x%-6B                    " current char
+    set statusline+=%c,%l/                       " cursor column/total lines
+    set statusline+=%L\ %P                       " total lines/percentage in file
 endif
 " }}}
 " {{{ Plugins
@@ -564,7 +564,7 @@ if executable('ag')
 endif
 
 " There is something iffy with the module environment
-let s:no_dispatch_hosts = ["dopamine", "ice", "ignatz"]
+let s:no_dispatch_hosts = ["dopamine", "ice", "ignatz", "hel"]
 if index(s:no_dispatch_hosts, hostname()) < 0
     let g:ack_use_dispatch=1
 endif
@@ -596,8 +596,8 @@ let g:clang_complete_auto=0
 " let g:clang_user_options="-v &1>2"
 let g:clang_use_library=1
 if hostname() == "phaelon" || hostname() == "nurikum"
-	let g:clang_library_path="/usr/lib"
-	" let g:atp_Compiler="python2"
+    let g:clang_library_path="/usr/lib"
+    " let g:atp_Compiler="python2"
 endif
 let g:clang_complete_copen = 1
 let g:clang_snippets = 1
@@ -629,21 +629,21 @@ set wildignore+=*/.git/*,*/.hg/*,*/.svn/*,*.pyc        " Linux/MacOSX
 
  " Sane Ignore 
 let g:ctrlp_custom_ignore = {
-	\ 'dir': '\.git$\|\.hg$\|\.svn$\|\.yardoc\|public\/images\|public\/system\|data\|log\|tmp$',
-	\ 'file': '\.exe$\|\.so$\|\.dat$'
-	\ }
+    \ 'dir': '\.git$\|\.hg$\|\.svn$\|\.yardoc\|public\/images\|public\/system\|data\|log\|tmp$',
+    \ 'file': '\.exe$\|\.so$\|\.dat$'
+    \ }
 
 " Set the max files
 let g:ctrlp_max_files = 10000
  
 " Optimize file searching
 if has("unix")
-	let g:ctrlp_user_command = {
-	\ 'types': {
-	\ 1: ['.git/', 'cd %s && git ls-files']
-	\ },
-	\ 'fallback': 'find %s -type f | head -' . g:ctrlp_max_files
-	\ }
+    let g:ctrlp_user_command = {
+    \ 'types': {
+    \ 1: ['.git/', 'cd %s && git ls-files']
+    \ },
+    \ 'fallback': 'find %s -type f | head -' . g:ctrlp_max_files
+    \ }
 endif
 " }}}
 " {{{ DelimitMate
@@ -653,6 +653,16 @@ autocmd vimrc FileType markdown let b:delimitMate_quotes = "\" ' *"
 let g:delimitMate_expand_cr = 1
 inoremap <C-Tab> <C-R>=delimitMate#JumpAny("\<C-Tab>")<CR>
 imap <C-G><C-G> <Plug>delimitMateS-Tab
+" }}}
+" {{{ Dispatch
+" let g:dispatch_handlers = [
+        " \ 'windows',
+        " \ 'iterm',
+        " \ 'x11',
+        " \ 'headless',
+        " \ 'tmux',
+        " \ 'screen',
+        " \ ]
 " }}}
 " {{{ Easymotion
 hi link EasyMotionTarget ErrorMsg
@@ -763,11 +773,11 @@ let g:LargeFile=100
 " (my very first plugin, utterly useless, but I keep the " config for
 " sentimental sake)
 if g:opsystem == "CYGWIN_NT-6.1-WOW64"
-	let g:LatexNotesBase = "/cygdrive/c/Users/Desoxy/latexNotes/"
+    let g:LatexNotesBase = "/cygdrive/c/Users/Desoxy/latexNotes/"
 elseif g:opsystem == "Linux"
-	let g:LatexNotesBase = "/home/obreitwi/.notes/"
+    let g:LatexNotesBase = "/home/obreitwi/.notes/"
 elseif g:opsystem == "windows"
-	let g:LatexNotesBase = "C:/Users/Desoxy/latexNotes"
+    let g:LatexNotesBase = "C:/Users/Desoxy/latexNotes"
 endif
 " }}}
 " {{{ LineDiff
@@ -810,6 +820,10 @@ let g:rainbow_active=0
 " {{{ Signify
 map <leader>st <Plug>(signify-toggle)
 " }}}
+" {{{ SimplyFold
+autocmd BufWinEnter *.py setlocal foldexpr=SimpylFold(v:lnum) foldmethod=expr
+autocmd BufWinLeave *.py setlocal foldexpr< foldmethod<
+" }}}
 " {{{ Sneak
 
 " yankstack conflicts with its mappings and has to option to turn them off
@@ -835,10 +849,10 @@ let g:syntastic_warning_symbol='⚐'
 " let g:syntastic_warning_symbol='☇'
 let g:syntastic_enable_signs=1
 if hostname() == "phaelon"
-	let g:syntastic_python_checkers = ['pylint2']
+    let g:syntastic_python_checkers = ['pylint2']
 endif
 if hostname() == "dopamine"
-	let g:syntastic_python_checkers = ['pyflakes']
+    let g:syntastic_python_checkers = ['pyflakes']
 endif
 let g:syntastic_python_pylint_post_args = '-d C0103,C0111,W0603'
 
@@ -925,16 +939,16 @@ onoremap <silent> <Space>k :<C-U>VertigoUp o<CR>
 " }}}
 " {{{ Vimpad
 " if hostname() == "phaelon" || hostname() == "nurikum"
-	" let g:pad_use_default_mappings = 0
-	" " exec "au BufReadPre ".g:pad_dir."* setlocal directory = /tmp/"
-	" let g:pad_dir = "~/.notes/"
-	" autocmd vimrc BufReadPre,FileReadPre ~/.notes/* setlocal noswapfile | setlocal directory=~/tmp | setlocal swapfile | setlocal bufhidden=delete
-	" nmap <Leader><esc> :ListPads<CR>
-	" nmap <Leader>s :call pad#SearchPads()<CR>
-	" nmap <Leader>n :OpenPad<CR>
-	" autocmd vimrc BufReadPost __pad__ setlocal bufhidden=delete
+    " let g:pad_use_default_mappings = 0
+    " " exec "au BufReadPre ".g:pad_dir."* setlocal directory = /tmp/"
+    " let g:pad_dir = "~/.notes/"
+    " autocmd vimrc BufReadPre,FileReadPre ~/.notes/* setlocal noswapfile | setlocal directory=~/tmp | setlocal swapfile | setlocal bufhidden=delete
+    " nmap <Leader><esc> :ListPads<CR>
+    " nmap <Leader>s :call pad#SearchPads()<CR>
+    " nmap <Leader>n :OpenPad<CR>
+    " autocmd vimrc BufReadPost __pad__ setlocal bufhidden=delete
 " else
-	" let g:loaded_pad = 1
+    " let g:loaded_pad = 1
 " endif
 " }}}
 " {{{ Vimux

@@ -80,7 +80,7 @@ Plugin 'christoomey/vim-sort-motion'
 Plugin 'vim-scripts/ReplaceWithRegister' 
 Plugin 'nathangrigg/vim-beancount'
 
-" {{{ Disabled stfuff:
+" {{{ Disabled stuff:
 " Plugin 'luochen1990/rainbow'
 " Plugin 'tpope/vim-markdown'
 " Plugin 'tpope/vim-speeddating'
