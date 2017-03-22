@@ -145,8 +145,9 @@ command! -nargs=0 -complete=command TS call CreateTimestamp()
 " Font settings
 command! FIncon set guifont=Inconsolata\ Medium\ 10
 command! FInconP set guifont=Inconsolata\ for\ Powerline\ Medium\ 10
+command! FDejaP set guifont=DejaVu\ Sans\ Mono\ for\ Powerline\ 10
 command! FEnvy set guifont=Envy\ Code\ R\ 8
-
+        
 command! Vundles tabe $HOME/.vim/vundles.vim
 
 command! -nargs=0 -complete=command MakeTags !ctags -R --c++-kinds=+p --fields=+iaS --extra=+q .
@@ -429,7 +430,7 @@ if has("gui_running") && (g:opsystem == "windows")
     set guifont=Consolas:h10:cANSI
 " elseif has("gui_running") && ( hostname() == "nurikum" )
 elseif has("gui_running")
-    FInconP
+    FDejaP
 end
 " }}}
 " {{{ Color management
