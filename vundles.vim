@@ -138,12 +138,13 @@ if executable('task')
 endif
 
 " Since YCM requires manual installation, dont enable it by default everywhere
-let g:ycm_hosts=["dopamine", "lark"]
+let g:hosts_ycm=["dopamine", "lark"]
+let g:hosts_no_jedi=["gordon"]
 let g:ycm_requirements_met = v:version >= 704 || (v:version == 703 && has('patch584'))
-if g:ycm_requirements_met && index(g:ycm_hosts, hostname()) >= 0
+if g:ycm_requirements_met && index(g:hosts_ycm, hostname()) >= 0
     Plugin 'Valloric/YouCompleteMe'
     Plugin 'rdnetto/YCM-Generator'
-else
+elseif index(g:hosts_no_jedi, hostname()) == -1
     Plugin 'davidhalter/jedi-vim'
 endif
 

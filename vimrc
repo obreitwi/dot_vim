@@ -1001,7 +1001,7 @@ let g:yankstack_map_keys = 0
 " }}}
 " }}}
 " {{{ YouCompleteMe
-if g:ycm_requirements_met && index(g:ycm_hosts, hostname()) >= 0
+if g:ycm_requirements_met && index(g:hosts_ycm, hostname()) >= 0
     nnoremap <leader>jd :YcmCompleter GoTo<CR>
     let g:ycm_semantic_triggers = {'haskell' : ['.']}
 endif
