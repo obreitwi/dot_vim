@@ -26,7 +26,9 @@ else
     source $HOME/.vim/vundles.vim
 endif
 
-call dirsettings#Install(".dirvimrc", ".dirvim")
+if v:false
+    call dirsettings#Install(".dirvimrc", ".dirvim")
+endif
 
 " Have pathogen load the other local/non-git plugins
 call pathogen#infect("bundle-pathogen/{}")

@@ -130,16 +130,28 @@ logging.Formatter("%(asctime)s %(levelname)s "
     datefmt="%y-%m-%d %H:%M:%S")
 endsnippet
 
-snippet setuplog "Function to configure logging" !b
+snippet logsetup "Function to configure logging" !b
 def config_logging(name, level="debug"):
     import logging
+
     global log
     log = logging.Logger(name)
-    logFormatter = ${1:logfmtdef/logfmtver}
+
+    level = getattr(logging, level.upper())
+
     logHandler = logging.StreamHandler()
-    logHandler.setFormatter(logFormatter)
     log.addHandler(logHandler)
-    log.setLevel(getattr(logging, level.upper()))
+
+    if level <= logging.DEBUG:
+        logging.Formatter("%(asctime)s %(levelname)s "
+            "%(funcName)s (%(filename)s:%(lineno)d): %(message)s",
+            datefmt="%y-%m-%d %H:%M:%S")
+    else:
+        logFormatter = logging.Formatter("%(asctime)s %(levelname)s: "
+            "%(message)s", datefmt="%y-%m-%d %H:%M:%S")
+    logHandler.setFormatter(logFormatter)
+
+    log.setLevel(level)
 endsnippet
 
 snippet mklog "Setup basic logging" !b
