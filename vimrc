@@ -26,7 +26,7 @@ else
     source $HOME/.vim/vundles.vim
 endif
 
-if v:false
+if 0
     call dirsettings#Install(".dirvimrc", ".dirvim")
 endif
 
@@ -567,7 +567,7 @@ if executable('ag')
 endif
 
 " There is something iffy with the module environment
-let s:no_dispatch_hosts = ["dopamine", "ice", "ignatz", "hel"]
+let s:no_dispatch_hosts = ["dopamine", "ice", "ignatz", "hel", "beli"]
 if index(s:no_dispatch_hosts, hostname()) < 0
     let g:ack_use_dispatch=1
 endif
