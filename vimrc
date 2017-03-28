@@ -333,6 +333,17 @@ end
 " Taken form: https://github.com/gregstallings/vimfiles/blob/master/vimrc
 " Delete comment character when joining commented lines
 set formatoptions+=c
+
+" set current comment leader when using o/O
+set formatoptions+=o
+
+" format comments using gq
+set formatoptions+=q
+
+" Format 
+set formatoptions+=n
+set formatlistpat=^\\s*\\d\\+[\\]:.)}\\t\ ]\\s*\\\|^\\s*\\*\\s\\?
+
 if v:version > 703 || v:version == 703 && has("patch541")
   set formatoptions+=j
 endif
