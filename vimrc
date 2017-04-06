@@ -915,9 +915,13 @@ let g:unite_source_history_yank_enable = 1
 let g:unite_enable_start_insert = 1
 let g:unite_split_rule = "botright"
 
-let g:unite_source_file_mru_long_limit = 10000
-let g:unite_source_directory_mru_long_limit = 10000
-let g:unite_source_rec_max_cache_files = 10000
+let g:neomru#file_mru_limit = 10000
+let g:neomru#directory_mru_limit = 10000
+
+" this causes a lot of stress for NFS systems
+let g:neomru#do_validate = 0
+" note: use :NeoMRUReload to update the mru files
+
 let g:unite_source_rec_async_command = 'ag --nocolor --nogroup --hidden -f -g ""'
 
 let g:unite_source_grep_max_candidates = 10000
