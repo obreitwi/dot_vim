@@ -484,19 +484,21 @@ else
 endif
 " }}}
 " {{{ Digraphs
-digraph el 8230  " …
-digraph li 8212  " —
-digraph al 8592  " ←
-digraph au 8593  " ↑
-digraph ar 8594  " →
-digraph ad 8595  " ↓
-digraph Al 8656  " ⇐
-digraph Au 8657  " ⇑
-digraph Ar 8658  " ⇒
-digraph Ad 8659  " ⇓
-digraph tm 8482  " ™
-digraph pm 177   " ±
-digraph cm 10003 " ✓
+digraph el 8230   " …
+digraph li 8212   " —
+digraph al 8592   " ←
+digraph au 8593   " ↑
+digraph ar 8594   " →
+digraph ad 8595   " ↓
+digraph Al 8656   " ⇐
+digraph Au 8657   " ⇑
+digraph Ar 8658   " ⇒
+digraph Ad 8659   " ⇓
+digraph tm 8482   " ™
+digraph pm 177    " ±
+digraph cm 10003  " ✓
+digraph tu 128077 " :thumbsup:
+digraph td 128078 " :thumbdsdown:
 " }}}
 " {{{ Other
 " Call par if availible

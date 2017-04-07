@@ -124,8 +124,10 @@ Plugin 'sanjayankur31/sli.vim'
 
 if executable('ghc')
     Plugin 'lukerandall/haskellmode-vim'
-    Plugin 'eagletmt/ghcmod-vim'
     Plugin 'eagletmt/neco-ghc'
+endif
+if executable('ghc-mod')
+    Plugin 'eagletmt/ghcmod-vim'
 endif
 
 if executable('ledger')
