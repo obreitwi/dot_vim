@@ -48,7 +48,6 @@ Plugin 'kien/ctrlp.vim'
 Plugin 'kana/vim-textobj-entire'
 Plugin 'tpope/vim-dispatch'
 Plugin 'tpope/vim-eunuch'
-Plugin 'nelstrom/vim-visual-star-search'
 Plugin 'prendradjaja/vim-vertigo'
 Plugin 'PeterRincker/vim-argumentative'
 Plugin 'sickill/vim-pasta'
@@ -79,6 +78,7 @@ Plugin 'rhysd/vim-clang-format'
 Plugin 'christoomey/vim-sort-motion'
 Plugin 'vim-scripts/ReplaceWithRegister' 
 Plugin 'nathangrigg/vim-beancount'
+Plugin 'qpkorr/vim-renamer'
 
 " {{{ Disabled stuff:
 " Plugin 'mantiz/vim-plugin-dirsettings'
@@ -118,6 +118,7 @@ Plugin 'nathangrigg/vim-beancount'
 " Plugin 'mattn/webapi-vim'
 " Plugin 'mattn/gist-vim'
 " Plugin 'vim-scripts/DrawIt'
+" Plugin 'nelstrom/vim-visual-star-search' " Suspect errors when searching
 " }}}
 
 Plugin 'sanjayankur31/sli.vim'
