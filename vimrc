@@ -848,8 +848,8 @@ let g:rainbow_active=0
 map <leader>st <Plug>(signify-toggle)
 " }}}
 " {{{ SimplyFold
-autocmd BufWinEnter *.py setlocal foldexpr=SimpylFold(v:lnum) foldmethod=expr
-autocmd BufWinLeave *.py setlocal foldexpr< foldmethod<
+" autocmd BufWinEnter *.py setlocal foldexpr=SimpylFold(v:lnum) foldmethod=expr
+" autocmd BufWinLeave *.py setlocal foldexpr< foldmethod<
 " }}}
 " {{{ Sneak
 
