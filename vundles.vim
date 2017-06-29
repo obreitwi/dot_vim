@@ -169,6 +169,10 @@ endif
 " Plugin 'Lokaltog/powerline', {'rtp': 'powerline/bindings/vim/'}
 " }}}
 
+" {{{ My stuff
+Plugin 'obreitwi/vim-sort-folds'
+" }}}
+
 " {{{ Other repositories
 " Only install atp on hosts where latex editing takes place
 " let s:atp_hosts=["juno", "phaelon", "nurikum"]
