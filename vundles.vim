@@ -126,6 +126,7 @@ Plugin 'sanjayankur31/sli.vim'
 if executable('ghc')
     Plugin 'lukerandall/haskellmode-vim'
     Plugin 'eagletmt/neco-ghc'
+    Plugin 'commercialhaskell/hindent'
 endif
 if executable('ghc-mod')
     Plugin 'eagletmt/ghcmod-vim'
