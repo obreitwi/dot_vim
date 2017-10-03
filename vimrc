@@ -1030,6 +1030,9 @@ let g:yankstack_map_keys = 0
 " nmap <leader>P <Plug>yankstack_substitute_newer_paste
 " }}}
 " }}}
+" {{{ VimFiler
+let g:vimfiler_as_default_explorer = 1
+" }}}
 " {{{ YouCompleteMe
 if g:ycm_requirements_met && index(g:hosts_ycm, hostname()) >= 0
     nnoremap <leader>jd :YcmCompleter GoTo<CR>
