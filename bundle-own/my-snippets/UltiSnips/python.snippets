@@ -189,4 +189,25 @@ snippet ll "Loglevel" !b
 if log.getEffectiveLevel() <= logging.DEBUG:
 endsnippet
 
+snippet interp2d "Interpolate 2D data for use with imshow" !b
+def nn2d(xy, z, num_points=100):
+    """
+        Interpolate xy.shape == (npoints, 2) datapoints to their nearest
+        neighbour.
+
+        Returns X, Y, Z to be used in imshow (with correct dimensions).
+    """
+    from scipy import interpolate
+    interp = interpolate.NearestNDInterpolator(xy, z)
+
+    xnew = np.linspace(xy[:, 0].min(), xy[:, 0].max(), num_points)
+    ynew = np.linspace(xy[:, 1].min(), xy[:, 1].max(), num_points)
+
+    Xsmall, Ysmall = np.meshgrid(xnew[:-1], ynew[:-1])
+    Z = interp(np.stack([Xsmall.flatten(), Ysmall.flatten()], axis=-1)).reshape(Xsmall.shape)
+
+    X, Y = np.meshgrid(xnew, ynew)
+
+    return X, Y, Z
+endsnippet
 # vim: tabstop=4 shiftwidth=4 expandtab
