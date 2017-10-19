@@ -189,19 +189,33 @@ snippet ll "Loglevel" !b
 if log.getEffectiveLevel() <= logging.DEBUG:
 endsnippet
 
-snippet interp2d "Interpolate 2D data for use with imshow" !b
-def nn2d(xy, z, num_points=100):
+snippet nn2d "Plotting function" !b
+def nn2d(xy, z, num_points=100, xscale="linear", yscale="linear"):
     """
         Interpolate xy.shape == (npoints, 2) datapoints to their nearest
         neighbour.
 
+        xscale and yscale can be set to "log".
+
         Returns X, Y, Z to be used in imshow (with correct dimensions).
     """
     from scipy import interpolate
-    interp = interpolate.NearestNDInterpolator(xy, z)
+    interp = interpolate.NearestNDInterpolator(xy, z, rescale=True)
 
-    xnew = np.linspace(xy[:, 0].min(), xy[:, 0].max(), num_points)
-    ynew = np.linspace(xy[:, 1].min(), xy[:, 1].max(), num_points)
+    if xscale == "linear":
+        xnew = np.linspace(xy[:, 0].min(), xy[:, 0].max(), num_points)
+    elif xscale == "log":
+        xnew = np.exp(np.linspace(np.log(xy[:, 0].min()),
+                                  np.log(xy[:, 0].max()), num_points))
+    else:
+        raise ValueError("xscale should be linear or log.")
+    if yscale == "linear":
+        ynew = np.linspace(xy[:, 1].min(), xy[:, 1].max(), num_points)
+    elif yscale == "log":
+        ynew = np.exp(np.linspace(np.log(xy[:, 1].min()),
+                                  np.log(xy[:, 1].max()), num_points))
+    else:
+        raise ValueError("yscale should be linear or log.")
 
     Xsmall, Ysmall = np.meshgrid(xnew[:-1], ynew[:-1])
     Z = interp(np.stack([Xsmall.flatten(), Ysmall.flatten()], axis=-1)).reshape(Xsmall.shape)
@@ -209,5 +223,5 @@ def nn2d(xy, z, num_points=100):
     X, Y = np.meshgrid(xnew, ynew)
 
     return X, Y, Z
-endsnippet
+
 # vim: tabstop=4 shiftwidth=4 expandtab
