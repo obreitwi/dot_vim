@@ -182,6 +182,14 @@ end
 
 " Grep helpers
 command! -nargs=+ RGrep :grep -ri <q-args> .
+
+" Apparently decode_qp
+" command! -range=% Decode64 :w | <line1>,<line2>delete | let foo = @"
+ " \| perl my $foo=VIM::Eval(foo); my ($r, $c)=$curwin->Cursor(); $curbuf->Append($r-1, split '\n', MIME::Base64::decode($foo));
+
+" command! -range=% DecodeQP :w | <line1>,<line2>delete | let foo = @"
+ " \| perl my $foo=VIM::Eval(foo); my ($r, $c)=$curwin->Cursor(); $curbuf->Append($r-1, split '\n', MIME::QuotedPrint::decode_qp($foo));
+
 " }}}
 " {{{ General Mappings
 " Plugin specific mappings are found in Plugins-section
@@ -252,6 +260,12 @@ nnoremap <expr> gV "`[".getregtype(v:register)[0]."`]"
 
 nnoremap <c-e><c-h> :tabp<CR>
 nnoremap <c-e><c-l> :tabn<CR>
+
+
+" decode quoted printable
+nnoremap <Leader>Q :%s/=\(\x\x\<BAR>\n\)/\=submatch(1)=='\n'?'':nr2char('0x'.submatch(1))/ge<CR>
+vnoremap <Leader>Q :s/=\(\x\x\<BAR>\n\)/\=submatch(1)=='\n'?'':nr2char('0x'.submatch(1))/ge<CR>
+
 " }}}
 " {{{ Settings
 set nocompatible
