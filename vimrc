@@ -523,7 +523,7 @@ if executable("par") && system( "par help | wc -l" ) == 22
     autocmd FileType mail set formatprg=par\ -w72qrg
     " PARPROTECT prevents tabs from being converted!
     command! -nargs=0 -complete=command Parwide setlocal formatprg=par\ -w100
-    autocmd FileType markdown  setlocal formatprg=PARQUOTE\=_x09\ par\ -w80T4
+    " autocmd FileType markdown  setlocal formatprg=PARQUOTE\=_x09\ par\ -w80T4
 endif
 
 " Taken from tpope sensible
@@ -970,6 +970,9 @@ nmap <silent> [unite]m :Unite -no-start-insert file_mru<CR>
 nmap <silent> [unite]f :Unite -start-insert file_rec/async<CR>
 nmap <silent> [unite]g :Unite -no-quit -no-start-insert grep:.<CR>
 nmap <silent> <leader>y :Unite -no-start-insert history/yank<CR>
+
+" neoyank-specific
+let g:neoyank#save_registers = ['"', '1']
 
 " {{{ Unite-Outline
 nmap <Leader>uo :Unite outline<CR>

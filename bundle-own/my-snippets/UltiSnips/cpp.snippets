@@ -46,3 +46,15 @@ snippet repval "Report value in debug form" !b
 std::cout << "${1} -> " << $1 << std::endl;
 #endif
 endsnippet
+
+
+snippet msg "Add a quick debug message via stringstream"
+// if (false)
+{
+  std::stringstream msg;
+  msg << "${1:Your message be here!}"
+      << std::endl;
+  std::cerr << msg.str();
+}
+endsnippet
+
