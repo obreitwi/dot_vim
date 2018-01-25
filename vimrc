@@ -145,9 +145,12 @@ command! SOvlow let g:solarized_visibility="low" | colorscheme solarized
 command! -nargs=0 -complete=command TS call CreateTimestamp()
 
 " Font settings
-command! FIncon set guifont=Inconsolata\ Medium\ 10
-command! FInconP set guifont=Inconsolata\ for\ Powerline\ Medium\ 10
-command! FDejaP set guifont=DejaVu\ Sans\ Mono\ for\ Powerline\ 10
+command! FIncon set guifont=Inconsolata\ Medium\ 8
+command! FInconP set guifont=Inconsolata\ for\ Powerline\ Medium\ 8
+command! FDejaP set guifont=DejaVu\ Sans\ Mono\ for\ Powerline\ 8
+command! FInconL set guifont=Inconsolata\ Medium\ 10
+command! FInconPL set guifont=Inconsolata\ for\ Powerline\ Medium\ 10
+command! FDejaPL set guifont=DejaVu\ Sans\ Mono\ for\ Powerline\ 10
 command! FEnvy set guifont=Envy\ Code\ R\ 8
         
 command! Vundles tabe $HOME/.vim/vundles.vim
@@ -491,7 +494,7 @@ else
     " let g:solarized_degrade=1
     " colorscheme solarized
     colorscheme xoria256
-" This is a test of a line that will exceed 81 characters per line and should trigger the new setting
+    " This is a test of a line that will exceed 81 characters per line and should trigger the new setting
     " Highlight when a line exceeds 81 characters
     highlight ColorColumn ctermbg=magenta ctermfg=black
     autocmd Syntax * call SetColorColumn()
