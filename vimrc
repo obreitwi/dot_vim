@@ -217,6 +217,7 @@ imap <silent> <C-D><C-E> <C-R>=strftime("%d.%m.%Y %H:%M:%S")<CR>
 imap <silent> <C-D><C-D> <C-R> --obreitwi, <C-R>=strftime("%d-%m-%y %H:%M:%S")<CR>
 imap <silent> <C-D><C-F> <C-R>=strftime("%Y-%m-%d %H:%M:%S")<CR>
 imap <silent> <C-D><C-R> <C-R>=strftime("%Y/%m/%d")<CR>
+imap <silent> <C-D><C-W> <C-R>=strftime("%Y-%m-%d")<CR>
 
 nnoremap <silent> <c-u> :nohl<CR>
 inoremap <silent> <c-u> <c-o>:nohl<CR>
