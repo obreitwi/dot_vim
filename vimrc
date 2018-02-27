@@ -973,7 +973,7 @@ nmap <silent> <leader>be :Unite -no-start-insert buffer<CR>
 nmap <silent> [unite]m :Unite -no-start-insert file_mru<CR>
 nmap <silent> [unite]f :Unite -start-insert file_rec/async<CR>
 nmap <silent> [unite]g :Unite -no-quit -no-start-insert grep:.<CR>
-nmap <silent> <leader>y :Unite -no-start-insert history/yank<CR>
+nmap <silent> [unite]y :Unite -no-start-insert history/yank<CR>
 
 " neoyank-specific
 let g:neoyank#save_registers = ['"', '1']
@@ -1059,6 +1059,12 @@ if g:ycm_requirements_met && index(g:hosts_ycm, hostname()) >= 0
     nnoremap <leader>jd :YcmCompleter GoTo<CR>
     let g:ycm_semantic_triggers = {'haskell' : ['.']}
 endif
+
+nnoremap [ycm] <Nop>
+nmap <Leader>y [ycm]
+nnoremap [ycm]y :YcmCompleter 
+nnoremap [ycm]g :YcmCompleter GoTo<CR>
+nnoremap [ycm]d :YcmCompleter GetDoc<CR>
 " }}}
 " }}}
 " {{{ Postscript
