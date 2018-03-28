@@ -113,8 +113,7 @@ endfunction
 
 " Set the color column depending on what filetype is set
 function! SetColorColumn()
-    let l:tw = get(s:filetype_to_textwidth, &ft, 80) + 1
-    call matchadd('ColorColumn', '\%'. l:tw . 'v', 100)
+    call matchadd('ColorColumn', '\%'. &textwidth + 1 . 'v', 100)
 endfunction
 
 " Search for the ... arguments separated with whitespace (if no '!'),
@@ -367,10 +366,6 @@ if v:version > 703 || v:version == 703 && has("patch541")
 endif
 " Use only 1 space after "." when joining lines instead of 2
 set nojoinspaces
-
-let s:filetype_to_textwidth = {
-\ "tex": 120
-\}
 
 " {{{ Backup settings
 if g:opsystem != "windows"
@@ -1056,15 +1051,18 @@ let g:vimfiler_as_default_explorer = 1
 " }}}
 " {{{ YouCompleteMe
 if g:ycm_requirements_met && index(g:hosts_ycm, hostname()) >= 0
-    nnoremap <leader>jd :YcmCompleter GoTo<CR>
     let g:ycm_semantic_triggers = {'haskell' : ['.']}
-endif
 
-nnoremap [ycm] <Nop>
-nmap <Leader>y [ycm]
-nnoremap [ycm]y :YcmCompleter 
-nnoremap [ycm]g :YcmCompleter GoTo<CR>
-nnoremap [ycm]d :YcmCompleter GetDoc<CR>
+    " mappings
+    nnoremap [ycm] <Nop>
+    nmap <Leader>y [ycm]
+    nnoremap [ycm]y :YcmCompleter 
+    nnoremap [ycm]g :YcmCompleter GoTo<CR>
+    nnoremap [ycm]d :YcmCompleter GetDoc<CR>
+    nnoremap [ycm]t :YcmCompleter GetType<CR>
+
+    let g:ycm_confirm_extra_conf=0
+endif
 " }}}
 " }}}
 " {{{ Postscript
