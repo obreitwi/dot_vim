@@ -111,9 +111,15 @@ function! NextClosedFold(dir)
     endif
 endfunction
 
+let b:currentcolorcolumn = 0
 " Set the color column depending on what filetype is set
 function! SetColorColumn()
-    call matchadd('ColorColumn', '\%'. &textwidth + 1 . 'v', 100)
+    if get(b:, "currentcolorcolumn") > 0
+        call matchdelete(b:currentcolorcolumn)
+        let b:currentcolorcolumn = 0
+    endif
+    let l:tw = max([&textwidth, 80]) + 1
+    let b:currentcolorcolumn=matchadd('ColorColumn', '\%' . l:tw . 'v', 100)
 endfunction
 
 " Search for the ... arguments separated with whitespace (if no '!'),
@@ -490,11 +496,12 @@ else
     " let g:solarized_degrade=1
     " colorscheme solarized
     colorscheme xoria256
-    " This is a test of a line that will exceed 81 characters per line and should trigger the new setting
-    " Highlight when a line exceeds 81 characters
-    highlight ColorColumn ctermbg=magenta ctermfg=black
-    autocmd Syntax * call SetColorColumn()
 endif
+" This is a test of a line that will exceed 81 characters per line and should trigger the new setting
+" Highlight when a line exceeds 81 characters
+highlight ColorColumn ctermbg=magenta ctermfg=black
+" autocmd Syntax * call SetColorColumn()
+autocmd BufWinEnter * call SetColorColumn()
 " }}}
 " {{{ Digraphs
 digraph el 8230   " …
