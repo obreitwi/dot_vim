@@ -111,15 +111,14 @@ function! NextClosedFold(dir)
     endif
 endfunction
 
-let b:currentcolorcolumn = 0
 " Set the color column depending on what filetype is set
 function! SetColorColumn()
-    if get(b:, "currentcolorcolumn") > 0
-        call matchdelete(b:currentcolorcolumn)
-        let b:currentcolorcolumn = 0
+    if get(w:, "currentcolorcolumn") > 0
+        call matchdelete(w:currentcolorcolumn)
+        let w:currentcolorcolumn = 0
     endif
-    let l:tw = max([&textwidth, 80]) + 1
-    let b:currentcolorcolumn=matchadd('ColorColumn', '\%' . l:tw . 'v', 100)
+    let l:tw = max([&textwidth, 78]) + 1
+    let w:currentcolorcolumn=matchadd('ColorColumn', '\%' . l:tw . 'v', 100)
 endfunction
 
 " Search for the ... arguments separated with whitespace (if no '!'),
