@@ -81,9 +81,9 @@ Plugin 'christoomey/vim-sort-motion'
 Plugin 'vim-scripts/ReplaceWithRegister' 
 Plugin 'nathangrigg/vim-beancount'
 Plugin 'qpkorr/vim-renamer'
+Plugin 'mantiz/vim-plugin-dirsettings'
 
 " {{{ Disabled stuff:
-" Plugin 'mantiz/vim-plugin-dirsettings'
 " Plugin 'luochen1990/rainbow'
 " Plugin 'tpope/vim-markdown'
 " Plugin 'tpope/vim-speeddating'
@@ -144,7 +144,7 @@ if executable('task')
 endif
 
 " Since YCM requires manual installation, dont enable it by default everywhere
-let g:hosts_ycm=["dopamine", "lark", "hel", "beli"]
+let g:hosts_ycm=["dopamine", "lark", "hel", "abded", "beli"]
 let g:hosts_no_jedi=["gordon"]
 let g:ycm_requirements_met = v:version >= 704 || (v:version == 703 && has('patch584'))
 if g:ycm_requirements_met && index(g:hosts_ycm, hostname()) >= 0
