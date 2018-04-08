@@ -599,6 +599,8 @@ if executable('ag')
     let g:ack_wildignore=0
 endif
 
+noremap <leader>af :AckFromSearch
+
 " There is something iffy with the module environment
 let s:no_dispatch_hosts = ["dopamine", "ice", "ignatz", "hel", "beli"]
 if index(s:no_dispatch_hosts, hostname()) < 0
