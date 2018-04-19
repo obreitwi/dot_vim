@@ -372,14 +372,22 @@ endif
 " Use only 1 space after "." when joining lines instead of 2
 set nojoinspaces
 
-" {{{ Backup settings
+" {{{ Backup/undo settings
 if g:opsystem != "windows"
+    " keep .vim repository free from temporary files
     call EnsureDirExists( $HOME . '/.vimbackup' )
     call EnsureDirExists( $HOME . '/.vimbackup/writebackup' )
     set directory=~/.vimbackup//
     set backupdir=~/.vimbackup/writebackup//
 endif
 set backup
+" persistent undo
+if g:opsystem != "windows"
+    " keep .vim repository free from temporary files
+    call EnsureDirExists( $HOME . '/.vimundo' )
+    set undodir=~/.vimundo//
+    set undofile
+endif
 
 " }}}
 " {{{ List Chars (Make sure they work on all platforms)
@@ -1066,6 +1074,7 @@ if g:ycm_requirements_met && index(g:hosts_ycm, hostname()) >= 0
     nmap <Leader>y [ycm]
     nnoremap [ycm]y :YcmCompleter 
     nnoremap [ycm]g :YcmCompleter GoTo<CR>
+    nnoremap [ycm]f :YcmCompleter GoToDefinition<CR>
     nnoremap [ycm]d :YcmCompleter GetDoc<CR>
     nnoremap [ycm]t :YcmCompleter GetType<CR>
 
