@@ -15,11 +15,7 @@ Plugin 'tpope/vim-pathogen'
 " }}}
 
 " {{{ Github repositories
-Plugin 'tpope/vim-git'
-Plugin 'tpope/vim-fugitive'
-Plugin 'tpope/vim-surround'
-Plugin 'tpope/vim-repeat'
-Plugin 'tpope/vim-unimpaired'
+
 Plugin 'sjbach/lusty'
 Plugin 'godlygeek/tabular'
 Plugin 'sjl/gundo.vim'
@@ -27,12 +23,10 @@ Plugin 'gregsexton/gitv'
 Plugin 'scrooloose/nerdcommenter'
 Plugin 'vim-scripts/L9'
 Plugin 'scrooloose/syntastic'
-Plugin 'vim-scripts/FSwitch'
 Plugin 'ehamberg/vim-cute-python'
 Plugin 'Twinside/vim-haskellConceal'
 Plugin 'trapd00r/vim-syntax-vidir-ls'
 Plugin 'Raimondi/delimitMate'
-Plugin 'vim-scripts/SudoEdit.vim'
 Plugin 'kana/vim-textobj-line'
 Plugin 'honza/vim-snippets'
 Plugin 'vim-scripts/DirDiff.vim'
@@ -46,18 +40,9 @@ Plugin 'kana/vim-textobj-user'
 Plugin 'caio/querycommandcomplete.vim'
 Plugin 'kien/ctrlp.vim'
 Plugin 'kana/vim-textobj-entire'
-Plugin 'tpope/vim-dispatch'
-Plugin 'tpope/vim-eunuch'
 Plugin 'prendradjaja/vim-vertigo'
 Plugin 'PeterRincker/vim-argumentative'
 Plugin 'sickill/vim-pasta'
-Plugin 'Shougo/unite.vim'
-Plugin 'Shougo/neomru.vim'
-Plugin 'Shougo/vimproc.vim'
-Plugin 'shougo/unite-outline'
-Plugin 'shougo/neoyank.vim'
-Plugin 'Shougo/vimfiler.vim'
-Plugin 'Shougo/neossh.vim'
 Plugin 'vimwiki/vimwiki'
 Plugin 'mhinz/vim-signify'
 Plugin 'Glench/Vim-Jinja2-Syntax'
@@ -82,8 +67,35 @@ Plugin 'vim-scripts/ReplaceWithRegister'
 Plugin 'nathangrigg/vim-beancount'
 Plugin 'qpkorr/vim-renamer'
 Plugin 'mantiz/vim-plugin-dirsettings'
+Plugin 'w0rp/ale'
+
+" {{{ tpope plugins
+
+Plugin 'tpope/vim-git'
+Plugin 'tpope/vim-fugitive'
+Plugin 'tpope/vim-surround'
+Plugin 'tpope/vim-repeat'
+Plugin 'tpope/vim-unimpaired'
+Plugin 'tpope/vim-dispatch'
+Plugin 'tpope/vim-eunuch'
+
+" }}}
+
+" {{{ Unite
+
+Plugin 'Shougo/unite.vim'
+Plugin 'Shougo/neomru.vim'
+Plugin 'Shougo/vimproc.vim'
+Plugin 'shougo/unite-outline'
+Plugin 'shougo/neoyank.vim'
+Plugin 'Shougo/vimfiler.vim'
+Plugin 'Shougo/neossh.vim'
+
+" }}}
 
 " {{{ Disabled stuff:
+" Plugin 'vim-scripts/SudoEdit.vim'
+" Plugin 'vim-scripts/FSwitch'
 " Plugin 'luochen1990/rainbow'
 " Plugin 'tpope/vim-markdown'
 " Plugin 'tpope/vim-speeddating'
