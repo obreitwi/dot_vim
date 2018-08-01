@@ -22,7 +22,6 @@ Plugin 'sjl/gundo.vim'
 Plugin 'gregsexton/gitv'
 Plugin 'scrooloose/nerdcommenter'
 Plugin 'vim-scripts/L9'
-Plugin 'scrooloose/syntastic'
 Plugin 'ehamberg/vim-cute-python'
 Plugin 'Twinside/vim-haskellConceal'
 Plugin 'trapd00r/vim-syntax-vidir-ls'
@@ -133,6 +132,7 @@ Plugin 'Shougo/neossh.vim'
 " Plugin 'mattn/gist-vim'
 " Plugin 'vim-scripts/DrawIt'
 " Plugin 'nelstrom/vim-visual-star-search' " Suspect errors when searching
+" Plugin 'scrooloose/syntastic'
 " }}}
 
 Plugin 'sanjayankur31/sli.vim'
