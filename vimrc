@@ -582,7 +582,9 @@ if !g:powerline_available
     set statusline+=%{fugitive#statusline()}
     set statusline+=%h%m%r%w                     " flags
     set statusline+=%#warningmsg#
-    set statusline+=%{SyntasticStatuslineFlag()}
+    if match(&runtimepath, 'syntastic') != -1
+        set statusline+=%{SyntasticStatuslineFlag()}
+    endif
     set statusline+=%*
     set statusline+=%=                           " left/right separator
                              " set statusline+=%{synIDattr(synID(line('.'),col('.'),1),'name')}\ " highlight
