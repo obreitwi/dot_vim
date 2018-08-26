@@ -944,7 +944,9 @@ let g:UltiSnipsSnippetsDir="~/.vim/bundle-own/my-snippets/UltiSnips"
 let g:UltiSnipsExpandTrigger="<c-j>"
 let g:UltiSnipsJumpForwardTrigger="<c-l>"
 let g:UltiSnipsJumpBackwardTrigger="<c-h>"
-let g:UltiSnipsUsePythonVersion=2
+if !has('python3')
+    let g:UltiSnipsUsePythonVersion=2
+endif
 
 map <leader>ls <Esc>:call UltiSnips#ListSnippets()<CR>
 map <leader>ue :UltiSnipsEdit<CR>
