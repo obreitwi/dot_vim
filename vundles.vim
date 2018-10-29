@@ -68,6 +68,7 @@ Plugin 'mantiz/vim-plugin-dirsettings'
 Plugin 'w0rp/ale'
 Plugin 'lervag/vimtex'
 Plugin 'jceb/vim-orgmode'
+Plugin 'gyim/vim-boxdraw'
 
 " {{{ tpope plugins
 
