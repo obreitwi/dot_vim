@@ -47,7 +47,6 @@ Plugin 'mhinz/vim-signify'
 Plugin 'Glench/Vim-Jinja2-Syntax'
 Plugin 'groenewege/vim-less'
 Plugin 'ivyl/vim-bling'
-Plugin 'LaTeX-Box-Team/LaTeX-Box'
 Plugin 'justinmk/vim-sneak'
 Plugin 'tommcdo/vim-exchange'
 Plugin 'tmhedberg/SimpylFold'
@@ -67,16 +66,19 @@ Plugin 'nathangrigg/vim-beancount'
 Plugin 'qpkorr/vim-renamer'
 Plugin 'mantiz/vim-plugin-dirsettings'
 Plugin 'w0rp/ale'
+Plugin 'lervag/vimtex'
+Plugin 'jceb/vim-orgmode'
 
 " {{{ tpope plugins
 
-Plugin 'tpope/vim-git'
-Plugin 'tpope/vim-fugitive'
-Plugin 'tpope/vim-surround'
-Plugin 'tpope/vim-repeat'
-Plugin 'tpope/vim-unimpaired'
 Plugin 'tpope/vim-dispatch'
 Plugin 'tpope/vim-eunuch'
+Plugin 'tpope/vim-fugitive'
+Plugin 'tpope/vim-git'
+Plugin 'tpope/vim-repeat'
+Plugin 'tpope/vim-speeddating'
+Plugin 'tpope/vim-surround'
+Plugin 'tpope/vim-unimpaired'
 
 " }}}
 
@@ -97,7 +99,6 @@ Plugin 'Shougo/neossh.vim'
 " Plugin 'vim-scripts/FSwitch'
 " Plugin 'luochen1990/rainbow'
 " Plugin 'tpope/vim-markdown'
-" Plugin 'tpope/vim-speeddating'
 " Plugin 'tpope/vim-abolish'
 " Plugin 'tpope/vim-ragtag'
 " Plugin 'tpope/vim-haml'
@@ -127,12 +128,12 @@ Plugin 'Shougo/neossh.vim'
 " Plugin 'maxbrunsfeld/vim-yankstack'
 " Plugin 'benmills/vimux'
 " Plugin 'terryma/vim-expand-region' " does not work correctly
-" Plugin 'jceb/vim-orgmode'
 " Plugin 'mattn/webapi-vim'
 " Plugin 'mattn/gist-vim'
 " Plugin 'vim-scripts/DrawIt'
 " Plugin 'nelstrom/vim-visual-star-search' " Suspect errors when searching
 " Plugin 'scrooloose/syntastic'
+" Plugin 'LaTeX-Box-Team/LaTeX-Box' " not async
 " }}}
 
 Plugin 'sanjayankur31/sli.vim'

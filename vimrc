@@ -349,7 +349,7 @@ set diffopt=filler,vertical,context:10
 " No menu if we don't need it
 if has("gui_running") 
     " No Pop Ups but console
-    set go=c
+    set guioptions=ck
 end
 
 " Taken form: https://github.com/gregstallings/vimfiles/blob/master/vimrc
@@ -811,7 +811,7 @@ let g:LatexBox_latexmk_options="-pdf -pdflatex='pdflatex --shell-escape -synctex
 let g:LatexBox_viewer="okular"
 let g:LatexBox_fold_toc=0
 let g:tex_flavor='latex'
-map <leader>ltt :LatexTOCToggle<CR>
+" map <leader>ltt :LatexTOCToggle<CR>
 let g:LatexBox_custom_inden=0
 " }}}
 " {{{ Large Files
@@ -833,6 +833,7 @@ map <leader>ld :Linediff<CR>
 map <leader>dr :LinediffReset<CR>
 " }}}
 " {{{ ledger
+" let g:ledger_bin="hledger"
 let g:ledger_maxwith = 80
 let g:ledger_fillstring = "······"
 let g:ledger_detailed_first = 1
@@ -991,7 +992,7 @@ nmap <silent> [unite]g :Unite -no-quit -no-start-insert grep:.<CR>
 nmap <silent> [unite]y :Unite -no-start-insert history/yank<CR>
 
 " neoyank-specific
-let g:neoyank#save_registers = ['"', '1']
+" let g:neoyank#save_registers = ['"', '1']
 
 " {{{ Unite-Outline
 nmap <Leader>uo :Unite outline<CR>
@@ -1046,6 +1047,8 @@ let wiki_sync.nested_syntaxes = {'python': 'python', 'c++': 'cpp'}
 
 let g:vimwiki_list = [wiki_sync]
 
+" nmap <leader>ws :VimwikiSearch 
+
 " Folding
 let g:vimwiki_folding=0
 " }}}
@@ -1068,6 +1071,9 @@ let g:yankstack_map_keys = 0
 " }}}
 " {{{ VimFiler
 let g:vimfiler_as_default_explorer = 1
+" }}}
+" {{{ vimtex
+let g:vimtex_view_general_viewer = 'okular'
 " }}}
 " {{{ YouCompleteMe
 if g:ycm_requirements_met && index(g:hosts_ycm, hostname()) >= 0
