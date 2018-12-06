@@ -69,6 +69,7 @@ Plugin 'w0rp/ale'
 Plugin 'lervag/vimtex'
 Plugin 'jceb/vim-orgmode'
 Plugin 'gyim/vim-boxdraw'
+Plugin 'aquach/vim-http-client'
 
 " {{{ tpope plugins
 
