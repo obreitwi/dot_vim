@@ -23,7 +23,7 @@ if g:opsystem == "windows"
     runtime bundle/vim-pathogen/autoload/pathogen.vim
     execute pathogen#infect()
 else
-    source $HOME/.vim/vundles.vim
+    source $HOME/.vim/plugs.vim
 endif
 
 if 0
@@ -31,7 +31,7 @@ if 0
 endif
 
 " Have pathogen load the other local/non-git plugins
-call pathogen#infect("bundle-pathogen/{}")
+call pathogen#infect("bundle/{}")
 
 filetype on
 
