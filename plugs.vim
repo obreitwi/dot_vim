@@ -11,6 +11,7 @@ Plug 'tpope/vim-pathogen'
 
 " {{{ Github repositories
 
+" {{{ common
 Plug 'sjbach/lusty'
 Plug 'godlygeek/tabular'
 Plug 'sjl/gundo.vim'
@@ -65,6 +66,8 @@ Plug 'lervag/vimtex'
 Plug 'jceb/vim-orgmode'
 Plug 'gyim/vim-boxdraw'
 Plug 'aquach/vim-http-client'
+Plug 'sanjayankur31/sli.vim'
+" }}}
 
 " {{{ tpope plugins
 
@@ -133,8 +136,7 @@ Plug 'Shougo/neossh.vim'
 " Plug 'LaTeX-Box-Team/LaTeX-Box' " not async
 " }}}
 
-Plug 'sanjayankur31/sli.vim'
-
+" {{{ haskell
 if executable('ghc')
     Plug 'lukerandall/haskellmode-vim'
     Plug 'eagletmt/neco-ghc'
@@ -145,6 +147,18 @@ endif
 if executable('ghc-mod')
     Plug 'eagletmt/ghcmod-vim'
 endif
+" }}}
+
+" {{{ deoplete
+if has('nvim')
+  Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+else
+  Plug 'Shougo/deoplete.nvim'
+  Plug 'roxma/nvim-yarp'
+  Plug 'roxma/vim-hug-neovim-rpc'
+endif
+let g:deoplete#enable_at_startup = 1
+" }}}
 
 if executable('ledger')
     Plug 'ledger/vim-ledger'

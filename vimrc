@@ -156,8 +156,8 @@ command! FInconL set guifont=Inconsolata\ Medium\ 10
 command! FInconPL set guifont=Inconsolata\ for\ Powerline\ Medium\ 10
 command! FDejaPL set guifont=DejaVu\ Sans\ Mono\ for\ Powerline\ 10
 command! FEnvy set guifont=Envy\ Code\ R\ 8
-        
-command! Vundles tabe $HOME/.vim/vundles.vim
+
+command! Plugs tabe $HOME/.vim/plugs.vim
 
 command! -nargs=0 -complete=command MakeTags !ctags -R --c++-kinds=+p --fields=+iaS --extra=+q .
 
