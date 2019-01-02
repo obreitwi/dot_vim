@@ -70,7 +70,6 @@ Plug 'sanjayankur31/sli.vim'
 " }}}
 
 " {{{ tpope plugins
-
 Plug 'tpope/vim-dispatch'
 Plug 'tpope/vim-eunuch'
 Plug 'tpope/vim-fugitive'
@@ -79,7 +78,6 @@ Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-speeddating'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-unimpaired'
-
 " }}}
 
 " {{{ Unite
@@ -149,16 +147,10 @@ if executable('ghc-mod')
 endif
 " }}}
 
-" {{{ deoplete
 if has('nvim')
-  Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-else
-  Plug 'Shougo/deoplete.nvim'
-  Plug 'roxma/nvim-yarp'
-  Plug 'roxma/vim-hug-neovim-rpc'
+    Plug 'vim-airline/vim-airline'
+    Plug 'vim-airline/vim-airline-themes'
 endif
-let g:deoplete#enable_at_startup = 1
-" }}}
 
 if executable('ledger')
     Plug 'ledger/vim-ledger'
@@ -170,6 +162,26 @@ if executable('task')
 endif
 
 " {{{ Completion
+" {{{ deoplete
+if has('nvim')
+  Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+else
+  if has("pythonx")
+    source $HOME/.vim/compatibility/check_pynvim.pythonx.vim
+  else
+    source $HOME/.vim/compatibility/check_pynvim.python.vim
+  endif
+
+  if g:pynvim_available
+    Plug 'Shougo/deoplete.nvim'
+    Plug 'roxma/nvim-yarp'
+    Plug 'roxma/vim-hug-neovim-rpc'
+  endif
+endif
+let g:deoplete#enable_at_startup = 1
+" }}}
+
+" {{{ YouCompleMe
 function! BuildYCM(info)
   " info is a dictionary with 3 fields
   " - name:   name of the plugin
@@ -190,6 +202,7 @@ if g:ycm_requirements_met && index(g:hosts_ycm, hostname()) >= 0
 elseif index(g:hosts_no_jedi, hostname()) == -1
     Plug 'davidhalter/jedi-vim'
 endif
+" }}}
 " }}}
 
 if v:version >= 703

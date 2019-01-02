@@ -163,8 +163,12 @@ command! -nargs=0 -complete=command MakeTags !ctags -R --c++-kinds=+p --fields=+
 
 " Open vimrc/tex in new tab
 if g:opsystem != "windows"
-    command! -nargs=0 -complete=command Vimrc tabe $MYVIMRC
-else 
+    if has('nvim')
+        command! -nargs=0 -complete=command Vimrc tabe $HOME/.vimrc
+    else
+        command! -nargs=0 -complete=command Vimrc tabe $MYVIMRC
+    endif
+else
     command! -nargs=0 -complete=command Vimrc tabe $VIM/vimfiles/vimrc
 endif
 
@@ -296,11 +300,13 @@ set cul
 " set timeoutlen=250
 set timeoutlen=500
 
-if v:version >= 703
-set cm=blowfish
+if v:version >= 703 && !has('nvim')
+set cm=blowfish2
+endif
+
 " relative line numbers
 set relativenumber
-endif
+
 set number
 
 " assume the /g flag on :s substitutions to replace all matches in a line:
@@ -417,7 +423,7 @@ autocmd vimrc BufNewFile,BufRead wscript* set filetype=python
 
 autocmd filetype tex hi MatchParen ctermbg=black guibg=black
 
-autocmd vimrc FileType vim         setlocal tabstop=4 |     setlocal shiftwidth=4 |  setlocal expandtab
+autocmd vimrc FileType vim         setlocal tabstop=2 |     setlocal shiftwidth=2 |  setlocal expandtab
 autocmd vimrc FileType python      setlocal tabstop=4 |     setlocal shiftwidth=4 |  setlocal expandtab
 autocmd vimrc FileType haskell     setlocal tabstop=2 |     setlocal shiftwidth=2 |  setlocal expandtab
 autocmd vimrc FileType yaml        setlocal tabstop=4 |     setlocal shiftwidth=4 |  setlocal expandtab
@@ -556,20 +562,26 @@ set laststatus=2
 set noshowmode
 
 let g:powerline_available=1
-if !has("python")
+if !has("python") && !has("python3")
     let g:powerline_available=0
 else
-    python << EOF
-try:
-    from powerline.vim import setup as powerline_setup
-    powerline_setup()
-    del powerline_setup
-except:
-    import vim
-    vim.command("let g:powerline_available=0")
-EOF
+    if has("pythonx")
+      source $HOME/.vim/compatibility/enable_powerline.pythonx.vim
+    else
+      source $HOME/.vim/compatibility/enable_powerline.python.vim
+    endif
 endif
 
+let g:airline_powerline_fonts = 1
+if !exists('g:airline_symbols')
+      let g:airline_symbols = {}
+endif
+let g:airline_symbols.space = "\ua0"
+let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#show_buffers = 0
+" let g:airline_theme = 'molokai'
+let g:airline_solarized_bg='dark'
+let g:airline_theme = 'solarized'
 
 if !g:powerline_available
     let g:powerline_loaded=1
