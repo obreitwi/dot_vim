@@ -409,15 +409,14 @@ endif
 " }}}
 " {{{ Filetype Settings
 filetype plugin on
-" autocmd FileType python set ofu=syntaxcomplete#Complete
 
 filetype indent on
 
-" Reload vimrc after writing
-autocmd! vimrc BufWritePost .vimrc source $MYVIMRC
-autocmd! vimrc BufWritePost vundles.vim source $MYVIMRC
+" Reload vimrc after writing (does not work as well as it used to)
+" autocmd! vimrc BufWritePost .vimrc source $MYVIMRC
+" autocmd! vimrc BufWritePost vundles.vim source $MYVIMRC
 
-autocmd vimrc FileType python setlocal omnifunc=pythoncomplete#Complete
+" autocmd vimrc FileType python setlocal omnifunc=pythoncomplete#Complete
 
 autocmd vimrc BufNewFile,BufRead wscript* set filetype=python
 
@@ -810,6 +809,19 @@ let g:haddock_docdir="/usr/share/doc/ghc/html/"
 " {{{ Histwin
 " map <Leader>u :Histwin<CR>
 " }}}
+" {{{ intero
+nnoremap [intero] <Nop>
+nmap <Leader>i [intero]
+" close is easier to remember than "hide"
+nnoremap <silent> [intero]c :InteroHide<CR>
+nnoremap <silent> [intero]g :InteroGoToDef<CR>
+nnoremap <silent> [intero]l :InteroLoadCurrentFile<CR>
+nnoremap <silent> [intero]o :InteroOpen<CR>
+nnoremap <silent> [intero]r :InteroReload<CR>
+nnoremap <silent> [intero]t :InteroGenericType<CR>
+nnoremap <silent> [intero]T :InteroType<CR>
+" nnoremap <silent> [intero]t <Plug>InteroGenericType
+" }}}
 " {{{ iPython
 vmap <silent> <leader>ss :python dedent_run_these_lines()<CR>
 " }}}
@@ -1006,9 +1018,10 @@ nmap <silent> [unite]m :Unite -no-start-insert file_mru<CR>
 nmap <silent> [unite]f :Unite -start-insert file_rec/async<CR>
 nmap <silent> [unite]g :Unite -no-quit -no-start-insert grep:.<CR>
 nmap <silent> [unite]y :Unite -no-start-insert history/yank<CR>
+" }}}
 
 " neoyank-specific
-" let g:neoyank#save_registers = ['"', '1']
+let g:neoyank#save_registers = ['"', '1']
 
 " {{{ Unite-Outline
 nmap <Leader>uo :Unite outline<CR>
@@ -1083,7 +1096,6 @@ let g:yankstack_map_keys = 0
 " nmap <leader>y :Yanks<CR>
 " nmap <leader>p <Plug>yankstack_substitute_older_paste
 " nmap <leader>P <Plug>yankstack_substitute_newer_paste
-" }}}
 " }}}
 " {{{ VimFiler
 let g:vimfiler_as_default_explorer = 1

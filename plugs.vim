@@ -64,7 +64,6 @@ Plug 'mantiz/vim-plugin-dirsettings'
 Plug 'w0rp/ale'
 Plug 'lervag/vimtex'
 Plug 'jceb/vim-orgmode'
-Plug 'gyim/vim-boxdraw'
 Plug 'aquach/vim-http-client'
 Plug 'sanjayankur31/sli.vim'
 " }}}
@@ -132,10 +131,11 @@ Plug 'Shougo/neossh.vim'
 " Plug 'nelstrom/vim-visual-star-search' " Suspect errors when searching
 " Plug 'scrooloose/syntastic'
 " Plug 'LaTeX-Box-Team/LaTeX-Box' " not async
+" Plug 'gyim/vim-boxdraw' " does not play well with vim-plug
 " }}}
 
 " {{{ haskell
-if executable('ghc')
+if executable('ghc') && !has('nvim')
     Plug 'lukerandall/haskellmode-vim'
     Plug 'eagletmt/neco-ghc'
 endif
@@ -145,6 +145,15 @@ endif
 if executable('ghc-mod')
     Plug 'eagletmt/ghcmod-vim'
 endif
+
+if has('nvim') && executable('stack')
+  Plug 'autozimu/LanguageClient-neovim', {
+    \ 'branch': 'next',
+    \ 'do': './install.sh'
+    \ }
+  Plug 'parsonsmatt/intero-neovim'
+endif
+
 " }}}
 
 if has('nvim')
@@ -198,7 +207,7 @@ let g:hosts_no_jedi=["gordon"]
 let g:ycm_requirements_met = v:version >= 704 || (v:version == 703 && has('patch584'))
 if g:ycm_requirements_met && index(g:hosts_ycm, hostname()) >= 0
     Plug 'Valloric/YouCompleteMe', { 'do': function('BuildYCM') }
-    Plug 'rdnetto/YCM-Generator'
+    Plug 'rdnetto/YCM-Generator', { 'branch': 'stable'}
 elseif index(g:hosts_no_jedi, hostname()) == -1
     Plug 'davidhalter/jedi-vim'
 endif
@@ -236,9 +245,10 @@ if index(s:atp_hosts, hostname()) >= 0
 endif
 " }}}
 
+" {{{ postscript
 call plug#end()
 
 " Update vim-plug via vim-plug and no special command
 delc PlugUpgrade
-
 " vim: fdm=marker
+" }}}
