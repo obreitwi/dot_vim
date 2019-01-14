@@ -36,6 +36,9 @@ call pathogen#infect("bundle/{}")
 filetype on
 
 " }}}
+" {{{ Helper variables
+let s:power_online = readfile("/sys/class/power_supply/AC/online")[0]
+" }}}
 " {{{ Functions
 function! EnsureDirExists (dir)
     if !isdirectory(a:dir)
@@ -117,7 +120,7 @@ function! SetColorColumn()
         call matchdelete(w:currentcolorcolumn)
         let w:currentcolorcolumn = 0
     endif
-    let l:tw = max([&textwidth, 78]) + 1
+    let l:tw = max([&textwidth, 79]) + 1
     let w:currentcolorcolumn=matchadd('ColorColumn', '\%' . l:tw . 'v', 100)
 endfunction
 
@@ -636,6 +639,12 @@ endif
 " {{{ AlignMaps
 " Disable AlignMaps since they are not being used currently
 let g:loaded_AlignMapsPlugin=1
+" }}}
+" {{{ ale
+if s:power_online == '0'
+    " disable power consuming features of ale when not running on AC power
+    let g:ale_lint_on_text_changed = "never"
+endif
 " }}}
 " {{{ ATP
 " " For tex we need to use atp mappings
