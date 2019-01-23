@@ -37,7 +37,13 @@ filetype on
 
 " }}}
 " {{{ Helper variables
-let s:power_online = readfile("/sys/class/power_supply/AC/online")[0]
+let s:ac_file="/sys/class/power_supply/AC/online"
+if filereadable(s:ac_file)
+    let s:power_online = readfile(s:ac_file)[0]
+else
+    " if there is no battery we are on AC power
+    let s:power_online = '1'
+endif
 " }}}
 " {{{ Functions
 function! EnsureDirExists (dir)

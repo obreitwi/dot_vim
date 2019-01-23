@@ -1,1 +1,0 @@
-/home/obreitwi/git/toolbox/vim/plugged/plug/plug.vim
