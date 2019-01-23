@@ -26,7 +26,7 @@ symlink "${SRCFLD}/vimpager/repo/vimpager"      "${PREFIX}/bin/vimpager"
 symlink "${SRCFLD}/vimpager/repo/vimpager.1"    "${PREFIX}/share/man"
 
 # check if nvim exists
-if which nvim; then
+if which nvim >/dev/null; then
     mkdir -p "${HOME}/.config/nvim"
     cat <<EOF >"${HOME}/.config/nvim/init.vim"
 set runtimepath^=~/.vim runtimepath+=~/.vim/after
