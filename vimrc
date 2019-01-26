@@ -1026,18 +1026,16 @@ nnoremap [unite] <Nop>
 nmap <Leader>u [unite]
 
 " nmap <silent> [unite]b :Unite -start-insert buffer<CR>
+" backward compatible mapping to BufferExplorer
 nmap <silent> <leader>be :Unite -no-start-insert buffer<CR>
 nmap <silent> [unite]m :Unite -no-start-insert file_mru<CR>
 nmap <silent> [unite]f :Unite -start-insert file_rec/async<CR>
 nmap <silent> [unite]g :Unite -no-quit -no-start-insert grep:.<CR>
 nmap <silent> [unite]y :Unite -no-start-insert history/yank<CR>
-" }}}
-
+" Unite-Outline
+nmap <silent> [Unite]o :Unite outline<CR>
 " neoyank-specific
 let g:neoyank#save_registers = ['"', '1']
-
-" {{{ Unite-Outline
-nmap <Leader>uo :Unite outline<CR>
 " }}}
 " {{{ Vertigo
 nnoremap <silent> <Space>j :<C-U>VertigoDown n<CR>

@@ -134,6 +134,16 @@ Plug 'Shougo/neossh.vim'
 " Plug 'gyim/vim-boxdraw' " does not play well with vim-plug
 " }}}
 
+" {{{ language client
+if has('nvim')
+  Plug 'autozimu/LanguageClient-neovim', {
+    \ 'branch': 'next',
+    \ 'do': './install.sh'
+    \ }
+endif
+" }}}
+
+
 " {{{ haskell
 if executable('ghc') && !has('nvim')
     Plug 'lukerandall/haskellmode-vim'
@@ -147,10 +157,6 @@ if executable('ghc-mod')
 endif
 
 if has('nvim') && executable('stack')
-  Plug 'autozimu/LanguageClient-neovim', {
-    \ 'branch': 'next',
-    \ 'do': './install.sh'
-    \ }
   Plug 'parsonsmatt/intero-neovim'
 endif
 

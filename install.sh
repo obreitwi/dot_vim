@@ -5,7 +5,6 @@ ln -s -f -v "$@"
 }
 
 PREFIX=$HOME/.local
-# SRCFLD=$(dirname $(realpath $0))
 SRCFLD=$(dirname "$(readlink -m "$0")")
 
 # Quick install script to setup all symlinks
