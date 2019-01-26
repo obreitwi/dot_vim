@@ -135,7 +135,8 @@ Plug 'Shougo/neossh.vim'
 " }}}
 
 " {{{ language client
-if has('nvim')
+" currently not used because in favor of YouCompleteMe
+if has('nvim') && 0
   Plug 'autozimu/LanguageClient-neovim', {
     \ 'branch': 'next',
     \ 'do': './install.sh'

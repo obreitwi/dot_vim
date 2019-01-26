@@ -261,15 +261,8 @@ vmap K 8k
 " Disable annoying insert-mode bindings
 imap <c-w> <nop>
 imap <c-h> <nop>
-" map K <nop>
 map L <nop>
-" imap <c-k> <nop>
-imap <c-l> <nop>
-imap <c-j> <c-x>
 
-" omni completion (context)
-imap <c-l> <c-x><c-o>
-"
 " Jump to next closed fold
 nnoremap <silent> <leader>zj :call NextClosedFold('j')<cr>
 nnoremap <silent> <leader>zk :call NextClosedFold('k')<cr>
@@ -339,7 +332,7 @@ set tabstop=4
 set softtabstop=4
 set shiftwidth=4
 
-set completeopt=menu,menuone,preview,longest
+set completeopt=menu,menuone,preview,noinsert,noselect
 
 set wildmenu
 set wildmode=list,full
