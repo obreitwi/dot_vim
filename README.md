@@ -20,4 +20,4 @@ $ PREFIX=$HOME/.local ./install.sh # symlinks to the appropriate places under
                                    # $PREFIX
 ```
 
-[`vim-plug`]: (https://github.com/junegunn/vim-plug)
+[`vim-plug`]: https://github.com/junegunn/vim-plug
