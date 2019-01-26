@@ -1,14 +1,16 @@
 .vim
 ---
-This is my vim setup. It relies on
-[`vim-plug`] to manage external plugins.
-All other modular configuration is managed via pathogen to allow for easier
+This is my vim setup. It relies on [`vim-plug`] to manage external plugins.
+Other modular configuration is managed via pathogen to allow for easier
 enable/disable via symlinks.
 
-I tend to try out many plugins and only prune them once in a blue moon. Current
-startup time is around 0.5s which is fast enough for me.
+The main configuration (as well as plugin-specific settings) is organized via
+folds in [`vimrc`](vimrc) (so it is best viewed using nvim/vim directly).
 
-**Note:** What works for me might not work for you…
+Plugins are defined in [plugs.vim](plugs.vim). Please note that I tend to try
+out many plugins and only prune them once in a blue moon. Current
+startup time is around 0.5s which is fast enough for me but might be too long
+for others. Just mix and match and see which plugins suit you.
 
 Setup
 ---
