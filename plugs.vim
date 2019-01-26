@@ -66,6 +66,7 @@ Plug 'lervag/vimtex'
 Plug 'jceb/vim-orgmode'
 Plug 'aquach/vim-http-client'
 Plug 'sanjayankur31/sli.vim'
+Plug 'rkitover/vimpager'
 " }}}
 
 " {{{ tpope plugins
@@ -112,7 +113,6 @@ Plug 'Shougo/neossh.vim'
 " Plug 'om/theshadowhost/Clippo'
 " Plug 'vim-scripts/YankRing.vim'
 " Plug 'Rip-Rip/clang_complete'
-" Plug 'rkitover/vimpager'
 " Plug 'vim-scripts/calendar.vim--Matsumoto'
 " Plug 'msanders/snipmate.vim'
 " Plug 'mikewest/vimroom'

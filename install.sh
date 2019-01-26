@@ -1,31 +1,57 @@
 #!/bin/bash
 
+set -Eeuo pipefail
+
+# prefer neovim over vim
+VIM="$(command -v nvim || command -v vim)"
+
 symlink () {
-ln -s -f -v "$@"
+    ln -sfv "$@"
 }
 
-PREFIX=$HOME/.local
-SRCFLD=$(dirname "$(readlink -m "$0")")
+if [ "${PREFIX:+x}" != "x" ]; then
+    PREFIX="$HOME/.local"
+fi
+SOURCE_FOLDER="$(dirname "$(readlink -m "$0")")"
+VIMPLUG_FOLDER="${SOURCE_FOLDER}/plugged/plug"
+VIMPLUG_URL="https://github.com/junegunn/vim-plug" 
 
-# Quick install script to setup all symlinks
-git clone "https://github.com/junegunn/vim-plug" "${SRCFLD}/plugged/plug"
-mkdir -p "${SRCFLD}/autoload"
-symlink "${SRCFLD}/plugged/plug/plug.vim" "${SRCFLD}/autoload/plug.vim"
-vim +PlugInstall +q!
+if [ ! -d "${SOURCE_FOLDER}/plugged/plug" ]; then
+    # Quick install script to setup all symlinks
+    git clone "${VIMPLUG_URL}" "${VIMPLUG_FOLDER}"
+else
+    pushd "${VIMPLUG_FOLDER}" >/dev/null
+    if ! git remote -v | grep -q "junegunn/vim-plug"; then
+        cat <<EOF >&2
+ERROR: ${VIMPLUG_FOLDER} does not contain a checkout of ${VIMPLUG_URL}!
+Please investigate and delete the folder before continuing! 
+EOF
+        exit 1
+    fi
+    popd >/dev/null
+fi
 
-mkdir -p "${PREFIX}/bin" "${PREFIX}/share/man"
+# create autoload folder if not existing
+mkdir -p "${SOURCE_FOLDER}/autoload" || true 
+
+symlink "${VIMPLUG_FOLDER}/plug.vim"\
+        "${SOURCE_FOLDER}/autoload/plug.vim"
+
+"${VIM}" +PlugInstall +q! +q!
+
+mkdir -p "${PREFIX}/bin" || true
 
 if [ ! -e "${HOME}/.vim" ]; then
-    symlink "${SRCFLD}"                         "${HOME}/.vim"
+    symlink "${SOURCE_FOLDER}"                       "${HOME}/.vim"
 fi
-symlink "${SRCFLD}/vimrc"                       "${HOME}/.vimrc"
-symlink "${SRCFLD}/vimpager/vimpagerrc"         "${HOME}/.vimpagerrc"
-symlink "${SRCFLD}/vimpager/repo/vimcat"        "${PREFIX}/bin/vcat"
-symlink "${SRCFLD}/vimpager/repo/vimpager"      "${PREFIX}/bin/vimpager"
-symlink "${SRCFLD}/vimpager/repo/vimpager.1"    "${PREFIX}/share/man"
+# vcat symlink is personal preference
+symlink "${SOURCE_FOLDER}/vimrc"                     "${HOME}/.vimrc"
+symlink "${SOURCE_FOLDER}/plugged/vimpager/vimcat"   "${PREFIX}/bin/vcat"
+symlink "${SOURCE_FOLDER}/plugged/vimpager/vimcat"   "${PREFIX}/bin/vimcat"
+symlink "${SOURCE_FOLDER}/plugged/vimpager/vimpager" "${PREFIX}/bin/vimpager"
 
 # check if nvim exists
-if which nvim >/dev/null; then
+if command -v nvim >/dev/null; then
     mkdir -p "${HOME}/.config/nvim"
     cat <<EOF >"${HOME}/.config/nvim/init.vim"
 set runtimepath^=~/.vim runtimepath+=~/.vim/after
