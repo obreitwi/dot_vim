@@ -203,8 +203,18 @@ function! BuildYCM(info)
   " - name:   name of the plugin
   " - status: 'installed', 'updated', or 'unchanged'
   " - force:  set on PlugInstall! or PlugUpdate!
-  if a:info.status == 'installed' || a:info.force
-    !./install.py --clang-completer --system-libclang
+  if a:info.status != 'unchanged' || a:info.force
+    !git submodule update --init --recursive
+    let l:args = []
+    if executable("go")
+      call add(l:args, "--go-completer")
+    endif
+    if executable("clang")
+      call add(l:args, "--clang-completer")
+      call add(l:args, "--system-libclang")
+    endif
+    let l:update_command = "!./install.py " . join(l:args, " ")
+    exec l:update_command
   endif
 endfunction
 
