@@ -5,7 +5,7 @@ call plug#begin('~/.vim/plugged')
 
 Plug 'junegunn/vim-plug'
 
-" Pathogen because Vundle is too sophisticated to add local folders to the rtp
+" needed to add local folders to the rtp
 Plug 'tpope/vim-pathogen'
 " }}}
 
