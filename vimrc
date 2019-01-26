@@ -992,8 +992,11 @@ if !has('python3')
     let g:UltiSnipsUsePythonVersion=2
 endif
 
-map <leader>ls <Esc>:call UltiSnips#ListSnippets()<CR>
-map <leader>ue :UltiSnipsEdit<CR>
+nnoremap [usnips] <Nop>
+nmap <Leader>s [usnips]
+
+map <silent> [usnips]l <Esc>:call UltiSnips#ListSnippets()<CR>
+map <silent> [usnips]e :UltiSnipsEdit<CR>
 " }}}
 " {{{ Unite
 let g:unite_source_history_yank_enable = 1
