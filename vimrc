@@ -566,7 +566,9 @@ if !has("python") && !has("python3")
 else
     if has("pythonx")
       source $HOME/.vim/compatibility/enable_powerline.pythonx.vim
-    else
+    elseif has("python3")
+      source $HOME/.vim/compatibility/enable_powerline.python3.vim
+    elseif has("python")
       source $HOME/.vim/compatibility/enable_powerline.python.vim
     endif
 endif
@@ -981,7 +983,7 @@ let g:UltiSnipsSnippetsDir="~/.vim/bundle-own/my-snippets/UltiSnips"
 let g:UltiSnipsExpandTrigger="<c-j>"
 let g:UltiSnipsJumpForwardTrigger="<c-l>"
 let g:UltiSnipsJumpBackwardTrigger="<c-h>"
-if !has('python3')
+if !has('python3') && !has('pythonx')
     let g:UltiSnipsUsePythonVersion=2
 endif
 

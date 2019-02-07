@@ -184,8 +184,12 @@ if has('nvim')
 else
   if has("pythonx")
     source $HOME/.vim/compatibility/check_pynvim.pythonx.vim
-  else
+  elseif has("python3")
+    source $HOME/.vim/compatibility/check_pynvim.python3.vim
+  elseif has("python")
     source $HOME/.vim/compatibility/check_pynvim.python.vim
+  else
+    let g:pynvim_available=0
   endif
 
   if g:pynvim_available
