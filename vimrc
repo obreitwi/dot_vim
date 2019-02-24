@@ -479,6 +479,7 @@ if has("gui_running") && (g:opsystem == "windows")
 " elseif has("gui_running") && ( hostname() == "nurikum" )
 elseif has("gui_running")
     FDejaP
+    set clipboard=unnamedplus
 end
 " }}}
 " {{{ Color management
@@ -622,7 +623,7 @@ endif
 "
 " Setup ag to be ack
 if executable('ag')
-    let g:ackprg = 'ag --nogroup --nocolor --column --follow'
+    let g:ackprg = 'ag --nogroup --nocolor --column --follow --silent'
     let g:ack_wildignore=0
 endif
 
@@ -994,7 +995,6 @@ map <silent> [usnips]l <Esc>:call UltiSnips#ListSnippets()<CR>
 map <silent> [usnips]e :UltiSnipsEdit<CR>
 " }}}
 " {{{ Unite
-let g:unite_source_history_yank_enable = 1
 let g:unite_enable_start_insert = 1
 let g:unite_split_rule = "botright"
 

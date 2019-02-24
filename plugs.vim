@@ -9,8 +9,6 @@ Plug 'junegunn/vim-plug'
 Plug 'tpope/vim-pathogen'
 " }}}
 
-" {{{ Github repositories
-
 " {{{ common
 Plug 'sjbach/lusty'
 Plug 'godlygeek/tabular'
@@ -144,6 +142,9 @@ if has('nvim') && 0
 endif
 " }}}
 
+" {{{ neovim
+
+" }}}
 
 " {{{ haskell
 if executable('ghc') && !has('nvim')
@@ -164,8 +165,9 @@ endif
 " }}}
 
 if has('nvim')
-    Plug 'vim-airline/vim-airline'
-    Plug 'vim-airline/vim-airline-themes'
+  Plug 'vim-airline/vim-airline'
+  Plug 'vim-airline/vim-airline-themes'
+  Plug 'raghur/vim-ghost', {'do': ':GhostInstall'}
 endif
 
 if executable('ledger')
@@ -182,6 +184,7 @@ endif
 if has('nvim')
   Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 else
+  " TODO: this check is very very slow!
   if has("pythonx")
     source $HOME/.vim/compatibility/check_pynvim.pythonx.vim
   elseif has("python3")
@@ -233,7 +236,6 @@ elseif index(g:hosts_no_jedi, hostname()) == -1
     Plug 'davidhalter/jedi-vim'
 endif
 " }}}
-" }}}
 
 if v:version >= 703
       " Plug 'chrisbra/histwin.vim'
@@ -241,8 +243,9 @@ endif
 if v:version >= 704
     Plug 'SirVer/ultisnips'
 endif
+" }}}
 
-
+" {{{ Misc
 let s:atp_hosts=["lark"]
 if index(s:atp_hosts, hostname()) >= 0
     Plug 'dermusikman/sonicpi.vim'
