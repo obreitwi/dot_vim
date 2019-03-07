@@ -65,6 +65,7 @@ Plug 'jceb/vim-orgmode'
 Plug 'aquach/vim-http-client'
 Plug 'sanjayankur31/sli.vim'
 Plug 'rkitover/vimpager'
+Plug 'lambdalisue/suda.vim'
 " }}}
 
 " {{{ tpope plugins
