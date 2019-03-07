@@ -65,7 +65,10 @@ Plug 'jceb/vim-orgmode'
 Plug 'aquach/vim-http-client'
 Plug 'sanjayankur31/sli.vim'
 Plug 'rkitover/vimpager'
-Plug 'lambdalisue/suda.vim'
+if has('nvim')
+  " Needed because :SudoWrite does not workin neovim
+  Plug 'lambdalisue/suda.vim'
+endif
 " }}}
 
 " {{{ tpope plugins
