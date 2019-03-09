@@ -1,5 +1,4 @@
-
-" {{{ Loading
+" {{{ Preamble
 " Misc stuff first
 call plug#begin('~/.vim/plugged')
 
@@ -65,36 +64,75 @@ Plug 'jceb/vim-orgmode'
 Plug 'aquach/vim-http-client'
 Plug 'sanjayankur31/sli.vim'
 Plug 'rkitover/vimpager'
+" }}}
+
+" {{{ completion
+" {{{ deoplete
 if has('nvim')
-  " Needed because :SudoWrite does not workin neovim
-  Plug 'lambdalisue/suda.vim'
+  Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+else
+  " TODO: this check is very very slow!
+  if has("pythonx")
+    source $HOME/.vim/compatibility/check_pynvim.pythonx.vim
+  elseif has("python3")
+    source $HOME/.vim/compatibility/check_pynvim.python3.vim
+  elseif has("python")
+    source $HOME/.vim/compatibility/check_pynvim.python.vim
+  else
+    let g:pynvim_available=0
+  endif
+
+  if g:pynvim_available
+    Plug 'Shougo/deoplete.nvim'
+    Plug 'roxma/nvim-yarp'
+    Plug 'roxma/vim-hug-neovim-rpc'
+  endif
+endif
+let g:deoplete#enable_at_startup = 1
+" }}}
+
+" {{{ youcompleme
+function! BuildYCM(info)
+  " info is a dictionary with 3 fields
+  " - name:   name of the plugin
+  " - status: 'installed', 'updated', or 'unchanged'
+  " - force:  set on PlugInstall! or PlugUpdate!
+  if a:info.status != 'unchanged' || a:info.force
+    !git submodule update --init --recursive
+    let l:args = []
+    if executable("go")
+      call add(l:args, "--go-completer")
+    endif
+    if executable("clang")
+      call add(l:args, "--clang-completer")
+      call add(l:args, "--system-libclang")
+    endif
+    let l:update_command = "!./install.py " . join(l:args, " ")
+    exec l:update_command
+  endif
+endfunction
+
+" Since YCM requires manual installation, dont enable it by default everywhere
+let g:hosts_ycm=["dopamine", "lark", "hel", "abed", "beli"]
+let g:hosts_no_jedi=["gordon"]
+let g:ycm_requirements_met = v:version >= 704 || (v:version == 703 && has('patch584'))
+if g:ycm_requirements_met && index(g:hosts_ycm, hostname()) >= 0
+    Plug 'Valloric/YouCompleteMe', { 'do': function('BuildYCM') }
+    Plug 'rdnetto/YCM-Generator', { 'branch': 'stable'}
+elseif index(g:hosts_no_jedi, hostname()) == -1
+    Plug 'davidhalter/jedi-vim'
 endif
 " }}}
 
-" {{{ tpope plugins
-Plug 'tpope/vim-dispatch'
-Plug 'tpope/vim-eunuch'
-Plug 'tpope/vim-fugitive'
-Plug 'tpope/vim-git'
-Plug 'tpope/vim-repeat'
-Plug 'tpope/vim-speeddating'
-Plug 'tpope/vim-surround'
-Plug 'tpope/vim-unimpaired'
+if v:version >= 703
+      " Plug 'chrisbra/histwin.vim'
+endif
+if v:version >= 704
+    Plug 'SirVer/ultisnips'
+endif
 " }}}
 
-" {{{ Unite
-
-Plug 'Shougo/unite.vim'
-Plug 'Shougo/neomru.vim'
-Plug 'Shougo/vimproc.vim'
-Plug 'shougo/unite-outline'
-Plug 'shougo/neoyank.vim'
-Plug 'Shougo/vimfiler.vim'
-Plug 'Shougo/neossh.vim'
-
-" }}}
-
-" {{{ Disabled stuff:
+" {{{ disabled stuff:
 " Plug 'vim-scripts/SudoEdit.vim'
 " Plug 'vim-scripts/FSwitch'
 " Plug 'luochen1990/rainbow'
@@ -136,20 +174,6 @@ Plug 'Shougo/neossh.vim'
 " Plug 'gyim/vim-boxdraw' " does not play well with vim-plug
 " }}}
 
-" {{{ language client
-" currently not used because in favor of YouCompleteMe
-if has('nvim') && 0
-  Plug 'autozimu/LanguageClient-neovim', {
-    \ 'branch': 'next',
-    \ 'do': './install.sh'
-    \ }
-endif
-" }}}
-
-" {{{ neovim
-
-" }}}
-
 " {{{ haskell
 if executable('ghc') && !has('nvim')
     Plug 'lukerandall/haskellmode-vim'
@@ -168,88 +192,23 @@ endif
 
 " }}}
 
-if has('nvim')
-  Plug 'vim-airline/vim-airline'
-  Plug 'vim-airline/vim-airline-themes'
-  Plug 'raghur/vim-ghost', {'do': ':GhostInstall'}
+" {{{ language client
+" currently not used because in favor of YouCompleteMe
+if has('nvim') && 0
+  Plug 'autozimu/LanguageClient-neovim', {
+    \ 'branch': 'next',
+    \ 'do': './install.sh'
+    \ }
 endif
+" }}}
 
+" {{{ ledger 
 if executable('ledger')
     Plug 'ledger/vim-ledger'
 endif
-
-" only use taskwarrior where we use task
-if executable('task')
-    Plug 'farseer90718/vim-taskwarrior'
-endif
-
-" {{{ Completion
-" {{{ deoplete
-if has('nvim')
-  Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-else
-  " TODO: this check is very very slow!
-  if has("pythonx")
-    source $HOME/.vim/compatibility/check_pynvim.pythonx.vim
-  elseif has("python3")
-    source $HOME/.vim/compatibility/check_pynvim.python3.vim
-  elseif has("python")
-    source $HOME/.vim/compatibility/check_pynvim.python.vim
-  else
-    let g:pynvim_available=0
-  endif
-
-  if g:pynvim_available
-    Plug 'Shougo/deoplete.nvim'
-    Plug 'roxma/nvim-yarp'
-    Plug 'roxma/vim-hug-neovim-rpc'
-  endif
-endif
-let g:deoplete#enable_at_startup = 1
 " }}}
 
-" {{{ YouCompleMe
-function! BuildYCM(info)
-  " info is a dictionary with 3 fields
-  " - name:   name of the plugin
-  " - status: 'installed', 'updated', or 'unchanged'
-  " - force:  set on PlugInstall! or PlugUpdate!
-  if a:info.status != 'unchanged' || a:info.force
-    !git submodule update --init --recursive
-    let l:args = []
-    if executable("go")
-      call add(l:args, "--go-completer")
-    endif
-    if executable("clang")
-      call add(l:args, "--clang-completer")
-      call add(l:args, "--system-libclang")
-    endif
-    let l:update_command = "!./install.py " . join(l:args, " ")
-    exec l:update_command
-  endif
-endfunction
-
-" Since YCM requires manual installation, dont enable it by default everywhere
-let g:hosts_ycm=["dopamine", "lark", "hel", "abed", "beli"]
-let g:hosts_no_jedi=["gordon"]
-let g:ycm_requirements_met = v:version >= 704 || (v:version == 703 && has('patch584'))
-if g:ycm_requirements_met && index(g:hosts_ycm, hostname()) >= 0
-    Plug 'Valloric/YouCompleteMe', { 'do': function('BuildYCM') }
-    Plug 'rdnetto/YCM-Generator', { 'branch': 'stable'}
-elseif index(g:hosts_no_jedi, hostname()) == -1
-    Plug 'davidhalter/jedi-vim'
-endif
-" }}}
-
-if v:version >= 703
-      " Plug 'chrisbra/histwin.vim'
-endif
-if v:version >= 704
-    Plug 'SirVer/ultisnips'
-endif
-" }}}
-
-" {{{ Misc
+" {{{ misc
 let s:atp_hosts=["lark"]
 if index(s:atp_hosts, hostname()) >= 0
     Plug 'dermusikman/sonicpi.vim'
@@ -260,11 +219,23 @@ endif
 " Plug 'Lokaltog/powerline', {'rtp': 'powerline/bindings/vim/'}
 " }}}
 
-" {{{ My stuff
+" {{{ my stuff
 Plug 'obreitwi/vim-sort-folds'
 " }}}
 
-" {{{ Other repositories
+" {{{ neovim
+
+if has('nvim')
+  " Needed because :SudoWrite does not workin neovim
+  Plug 'lambdalisue/suda.vim'
+  Plug 'vim-airline/vim-airline'
+  Plug 'vim-airline/vim-airline-themes'
+  Plug 'raghur/vim-ghost', {'do': ':GhostInstall'}
+endif
+
+" }}}
+
+" {{{ other repositories
 " Only install atp on hosts where latex editing takes place
 " let s:atp_hosts=["juno", "phaelon", "nurikum"]
 let s:atp_hosts=[]
@@ -273,7 +244,37 @@ if index(s:atp_hosts, hostname()) >= 0
 endif
 " }}}
 
-" {{{ postscript
+" {{{ taskwarrior
+" only use taskwarrior where we use task
+if executable('task')
+    Plug 'farseer90718/vim-taskwarrior'
+endif
+" }}}
+
+" {{{ tpope plugins
+Plug 'tpope/vim-dispatch'
+Plug 'tpope/vim-eunuch'
+Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-git'
+Plug 'tpope/vim-repeat'
+Plug 'tpope/vim-speeddating'
+Plug 'tpope/vim-surround'
+Plug 'tpope/vim-unimpaired'
+" }}}
+
+" {{{ unite
+
+Plug 'Shougo/unite.vim'
+Plug 'Shougo/neomru.vim'
+Plug 'Shougo/vimproc.vim'
+Plug 'shougo/unite-outline'
+Plug 'shougo/neoyank.vim'
+Plug 'Shougo/vimfiler.vim'
+Plug 'Shougo/neossh.vim'
+
+" }}}
+
+" {{{ Postscript
 call plug#end()
 
 " Update vim-plug via vim-plug and no special command
