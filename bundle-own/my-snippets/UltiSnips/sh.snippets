@@ -5,3 +5,7 @@ endsnippet
 snippet extrasafety "Make bash script more safe (and verbose)" b
 set -Eeuxo pipefail
 endsnippet
+
+snippet sourcedir "Create variable containing the path of script directory"
+sourcedir="$(dirname "$(readlink -m "${BASH_SOURCE[0]}")")"
+endsnippet
