@@ -48,7 +48,6 @@ Plug 'mileszs/ack.vim'
 Plug 'dyng/ctrlsf.vim'
 Plug 'jamessan/vim-gnupg'
 Plug 'AndrewRadev/linediff.vim'
-Plug 'altercation/vim-colors-solarized'
 Plug 'majutsushi/tagbar'
 Plug 'AndrewRadev/id3.vim'
 Plug 'guns/xterm-color-table.vim'
@@ -131,6 +130,11 @@ endif
 if v:version >= 704
     Plug 'SirVer/ultisnips'
 endif
+" }}}
+
+" {{{ colors
+Plug 'altercation/vim-colors-solarized'
+Plug 'lifepillar/vim-solarized8'
 " }}}
 
 " {{{ disabled stuff:
