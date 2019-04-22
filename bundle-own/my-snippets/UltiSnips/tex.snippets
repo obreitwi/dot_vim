@@ -113,3 +113,10 @@ endsnippet
 snippet milc "mintinline with custom delimiter"
 \mintinline{${1:language}}${2}${3}$2
 endsnippet
+
+snippet acro "DeclareAcronym"
+\DeclareAcronym{$1}{
+  short=${2:$1},
+  long=${3}
+}
+endsnippet
