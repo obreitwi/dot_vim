@@ -645,6 +645,7 @@ if s:power_online == '0'
     " disable power consuming features of ale when not running on AC power
     let g:ale_lint_on_text_changed = "never"
 endif
+let g:ale_echo_msg_format = '%linter%% (code)%: %s'
 " }}}
 " {{{ ATP
 " " For tex we need to use atp mappings
