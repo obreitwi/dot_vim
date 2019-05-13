@@ -1088,7 +1088,7 @@ let g:vimwiki_list = [wiki_sync]
 " nmap <leader>ws :VimwikiSearch 
 
 " Folding
-let g:vimwiki_folding=0
+let g:vimwiki_folding='expr'
 " }}}
 " {{{ XPTemplate
 " let g:xptemplate_key='<c-m>'
