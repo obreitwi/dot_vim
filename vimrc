@@ -482,6 +482,13 @@ elseif has("gui_running")
     set clipboard=unnamedplus
 end
 " }}}
+" {{{ Clipboard settings
+let s:hosts_clipboard_enabled = ["abed"]
+if index(s:hosts_clipboard_enabled, hostname()) < 0
+    " disable clipboard if host not in list
+    set clipboard=exclude:.*
+end
+" }}}
 " {{{ Color management
 " Set really nice colors
 syntax enable
