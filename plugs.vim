@@ -120,7 +120,7 @@ function! BuildYCM(info)
 endfunction
 
 " Since YCM requires manual installation, dont enable it by default everywhere
-let g:hosts_ycm=["dopamine", "lark", "hel", "abed", "beli"]
+let g:hosts_ycm=["dopamine", "lark", "helvetica", "abed", "beli"]
 let g:hosts_no_jedi=["gordon"]
 let g:ycm_requirements_met = v:version >= 704 || (v:version == 703 && has('patch584'))
 if g:ycm_requirements_met && index(g:hosts_ycm, hostname()) >= 0
