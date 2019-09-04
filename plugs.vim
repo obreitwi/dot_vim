@@ -8,18 +8,22 @@ Plug 'junegunn/vim-plug'
 Plug 'tpope/vim-pathogen'
 " }}}
 
+" {{{ plugin detox 2019
+" temoporarily disabled plugins to see if I really miss them
+" Plug 'kana/vim-textobj-line'
+" Plug 'vim-scripts/L9'
+" Plug 'kana/vim-operator-user'
+" }}}
+
 " {{{ common
 Plug 'sjbach/lusty'
 Plug 'godlygeek/tabular'
 Plug 'sjl/gundo.vim'
 Plug 'gregsexton/gitv'
 Plug 'scrooloose/nerdcommenter'
-Plug 'vim-scripts/L9'
 Plug 'ehamberg/vim-cute-python'
 Plug 'Twinside/vim-haskellConceal'
 Plug 'trapd00r/vim-syntax-vidir-ls'
-Plug 'Raimondi/delimitMate'
-Plug 'kana/vim-textobj-line'
 Plug 'honza/vim-snippets'
 Plug 'vim-scripts/DirDiff.vim'
 Plug 'michaeljsmith/vim-indent-object'
@@ -39,8 +43,6 @@ Plug 'vimwiki/vimwiki'
 Plug 'mhinz/vim-signify'
 Plug 'Glench/Vim-Jinja2-Syntax'
 Plug 'groenewege/vim-less'
-" Plug 'ivyl/vim-bling' " temporarily disabled till PR merged
-Plug 'obreitwi/vim-bling'
 Plug 'justinmk/vim-sneak'
 Plug 'tommcdo/vim-exchange'
 Plug 'tmhedberg/SimpylFold'
@@ -51,7 +53,6 @@ Plug 'AndrewRadev/linediff.vim'
 Plug 'majutsushi/tagbar'
 Plug 'AndrewRadev/id3.vim'
 Plug 'guns/xterm-color-table.vim'
-Plug 'kana/vim-operator-user'
 Plug 'rhysd/vim-clang-format'
 Plug 'christoomey/vim-sort-motion'
 Plug 'vim-scripts/ReplaceWithRegister' 
@@ -64,6 +65,12 @@ Plug 'jceb/vim-orgmode'
 Plug 'aquach/vim-http-client'
 Plug 'sanjayankur31/sli.vim'
 Plug 'rkitover/vimpager'
+Plug 'Raimondi/delimitMate'
+" }}}
+"
+" {{{ pr pending
+" Plug 'ivyl/vim-bling' " temporarily disabled till PR merged
+Plug 'obreitwi/vim-bling'
 " }}}
 
 " {{{ completion
