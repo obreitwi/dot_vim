@@ -569,7 +569,7 @@ set laststatus=2
 set noshowmode
 
 let g:powerline_available=1
-if (!has("python") && !has("python3")) || has("nvim")
+if has('nvim') || (!has("python") && !has("python3"))
     let g:powerline_available=0
 else
     if has("pythonx")
