@@ -653,6 +653,14 @@ if s:power_online == '0'
     let g:ale_lint_on_text_changed = "never"
 endif
 let g:ale_echo_msg_format = '%linter%% (code)%: %s'
+
+nnoremap [ale] <Nop>
+nmap <Leader>a [ale]
+
+map <silent> [ale]d <Plug>(ale_detail)
+map <silent> [ale]t <Plug>(ale_toggle)
+map <silent> [ale]b <Plug>(ale_toggle_buffer)
+
 " }}}
 " {{{ ATP
 " " For tex we need to use atp mappings
