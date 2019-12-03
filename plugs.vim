@@ -66,6 +66,7 @@ Plug 'aquach/vim-http-client'
 Plug 'sanjayankur31/sli.vim'
 Plug 'rkitover/vimpager'
 Plug 'Raimondi/delimitMate'
+Plug 'psf/black'
 " }}}
 "
 " {{{ pr pending

@@ -441,7 +441,7 @@ autocmd vimrc FileType jinja       setlocal tabstop=2 |     setlocal shiftwidth=
 autocmd vimrc FileType vimwiki     setlocal tabstop=2 |     setlocal shiftwidth=2 | 
             \setlocal expandtab | setlocal foldlevel=99 |   setlocal comments=fb:*,fb:#
 autocmd vimrc FileType mail        setlocal textwidth=72 |  setlocal wrapmargin=8 |  setlocal spell
-autocmd vimrc FileType python let python_highlight_all = 1
+autocmd vimrc FileType python      let python_highlight_all = 1 | setlocal textwidth=88 | setlocal wrapmargin=8
 autocmd vimrc FileType text        setlocal expandtab |     setlocal comments=fb:*,fb:#
 autocmd vimrc FileType zsh         setlocal expandtab |     setlocal tabstop=4 |     setlocal shiftwidth=4
 autocmd vimrc FileType sh          setlocal tabstop=4 |     setlocal softtabstop=4 | setlocal shiftwidth=4  | setlocal expandtab
@@ -654,6 +654,10 @@ if s:power_online == '0'
 endif
 let g:ale_echo_msg_format = '%linter%% (code)%: %s'
 
+let g:ale_fixers = {
+\   'python': ['black']
+\}
+
 nnoremap [ale] <Nop>
 nmap <Leader>a [ale]
 
@@ -672,6 +676,11 @@ map <silent> [ale]b <Plug>(ale_toggle_buffer)
 " "}}}
 " {{{ BufferExplorer
 let g:bufExplorerFindActive=0        " Do not go to active window.
+" }}}
+" {{{ black
+" Mnemonic is <c>ode-<f>ormat
+autocmd vimrc Filetype python nnoremap <buffer><Leader>cf :Black<CR>
+autocmd vimrc Filetype python vnoremap <buffer><Leader>cf :Black<CR>
 " }}}
 " {{{ Bling
 let g:bling_time = 75
