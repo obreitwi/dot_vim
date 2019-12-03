@@ -1157,6 +1157,14 @@ if g:ycm_requirements_met && index(g:hosts_ycm, hostname()) >= 0
     nnoremap [ycm]t :YcmCompleter GetType<CR>
 
     let g:ycm_confirm_extra_conf=0
+
+    " Recommendations from https://clang.llvm.org/extra/clangd/Installation.html
+    " Let clangd fully control code completion
+    let g:ycm_clangd_uses_ycmd_caching = 0
+    " Use installed clangd, not YCM-bundled clangd which doesn't get updates.
+    let g:ycm_clangd_binary_path = exepath('clangd')
+    " let g:ycm_clangd_binary_path = exepath('strace') . ' -o /tmp/clangd.log -e trace=%file ' . exepath('clangd')
+    " let g:ycm_clangd_args=['-ferror-limit=0']
 endif
 " }}}
 " }}}

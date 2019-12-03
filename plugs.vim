@@ -102,7 +102,7 @@ endif
 let g:deoplete#enable_at_startup = 1
 " }}}
 
-" {{{ youcompleme
+" {{{ youcompleteme
 function! BuildYCM(info)
   " info is a dictionary with 3 fields
   " - name:   name of the plugin
@@ -116,6 +116,9 @@ function! BuildYCM(info)
     endif
     if executable("clang")
       call add(l:args, "--clang-completer")
+      " call add(l:args, "--clangd-completer")
+      " try upstream pre-built clang with built clangd because system clangd
+      " is not working....
       call add(l:args, "--system-libclang")
     endif
     let l:update_command = "!./install.py " . join(l:args, " ")
