@@ -871,7 +871,7 @@ let g:LatexBox_output_type="pdf"
 let g:LatexBox_quickfix=2
 let g:LatexBox_show_warnings=0
 let g:LatexBox_latexmk_options="-pdf -pdflatex='pdflatex --shell-escape -synctex=1 \%O \%S'"
-let g:LatexBox_viewer="okular"
+let g:LatexBox_viewer="zathura"
 let g:LatexBox_fold_toc=0
 let g:tex_flavor='latex'
 " map <leader>ltt :LatexTOCToggle<CR>
@@ -1136,7 +1136,12 @@ let g:yankstack_map_keys = 0
 let g:vimfiler_as_default_explorer = 1
 " }}}
 " {{{ vimtex
-let g:vimtex_view_general_viewer = 'okular'
+if hostname() == "abed"
+    let g:vimtex_view_general_viewer = 'zathura'
+else
+    let g:vimtex_view_general_viewer = 'okular'
+endif
+let g:vimtex_fold_enabled = 1
 " }}}
 " {{{ YouCompleteMe
 if g:ycm_requirements_met && index(g:hosts_ycm, hostname()) >= 0
