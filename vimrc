@@ -373,6 +373,7 @@ set formatoptions+=n
 set formatlistpat=^\\s*\\d\\+[\\]:.)}\\t\ ]\\s*\\\|^\\s*\\*\\s\\?
 
 if v:version > 703 || v:version == 703 && has("patch541")
+  " Remove comment leader when joining commented lines
   set formatoptions+=j
 endif
 " Use only 1 space after "." when joining lines instead of 2
