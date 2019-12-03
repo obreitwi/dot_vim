@@ -13,6 +13,9 @@ Plug 'tpope/vim-pathogen'
 " Plug 'kana/vim-textobj-line'
 " Plug 'vim-scripts/L9'
 " Plug 'kana/vim-operator-user'
+" if has('nvim') && executable('stack')
+  " Plug 'parsonsmatt/intero-neovim'
+" endif
 " }}}
 
 " {{{ common
@@ -197,10 +200,6 @@ if executable('hindent')
 endif
 if executable('ghc-mod')
     Plug 'eagletmt/ghcmod-vim'
-endif
-
-if has('nvim') && executable('stack')
-  Plug 'parsonsmatt/intero-neovim'
 endif
 
 " }}}
