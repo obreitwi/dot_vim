@@ -124,8 +124,14 @@ function! SetColorColumn()
         call matchdelete(w:currentcolorcolumn)
         let w:currentcolorcolumn = 0
     endif
-    let l:tw = max([&textwidth, 79]) + 1
-    let w:currentcolorcolumn=matchadd('ColorColumn', '\%' . l:tw . 'v', 100)
+    if exists("g:colorcolumn_custom") && has_key(g:colorcolumn_custom, &ft)
+        let l:linewidth = g:colorcolumn_custom[&ft]
+    elseif &textwidth > 0
+        let l:linewidth = &textwidth
+    else
+        let l:linewidth = 80
+    endif
+    let w:currentcolorcolumn=matchadd('ColorColumn', '\%' . l:linewidth+1 . 'v', 100)
 endfunction
 
 " Search for the ... arguments separated with whitespace (if no '!'),
@@ -442,13 +448,16 @@ autocmd vimrc FileType jinja       setlocal tabstop=2 |     setlocal shiftwidth=
 autocmd vimrc FileType vimwiki     setlocal tabstop=2 |     setlocal shiftwidth=2 |
             \setlocal expandtab | setlocal foldlevel=99 |   setlocal comments=fb:*,fb:#
 autocmd vimrc FileType mail        setlocal textwidth=72 |  setlocal wrapmargin=8 |  setlocal spell
-autocmd vimrc FileType python      let python_highlight_all = 1 | setlocal textwidth=88
 autocmd vimrc FileType text        setlocal expandtab |     setlocal comments=fb:*,fb:#
 autocmd vimrc FileType zsh         setlocal expandtab |     setlocal tabstop=4 |     setlocal shiftwidth=4
 autocmd vimrc FileType sh          setlocal tabstop=4 |     setlocal softtabstop=4 | setlocal shiftwidth=4  | setlocal expandtab
 
 autocmd vimrc FileType cpp         setlocal cinoptions=g0,hs,N-s,+0
 
+" Put a linewidth indicator on a custom colum instead of the default 80
+let g:colorcolumn_custom = {
+\   'python': 88
+\}
 
 " Autohotkey
 autocmd vimrc BufNewFile,BufRead *.ahk setf autohotkey 
