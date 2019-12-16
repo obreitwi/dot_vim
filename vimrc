@@ -948,6 +948,10 @@ let g:netrw_list_hide.=',\(^\|\s\s\)\zs\.\S\+'
 " {{{ rainbow
 let g:rainbow_active=0
 " }}}
+" {{{ rust
+autocmd vimrc Filetype rust nnoremap <buffer><Leader>cf :RustFmt<CR>
+autocmd vimrc Filetype rust vnoremap <buffer><Leader>cf :RustFmtRange<CR>
+" }}}
 " {{{ Signify
 map <leader>st <Plug>(signify-toggle)
 " }}}

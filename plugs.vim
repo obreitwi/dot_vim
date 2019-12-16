@@ -70,6 +70,7 @@ Plug 'sanjayankur31/sli.vim'
 Plug 'rkitover/vimpager'
 Plug 'Raimondi/delimitMate'
 Plug 'psf/black'
+Plug 'rust-lang/rust.vim'
 " }}}
 "
 " {{{ pr pending
