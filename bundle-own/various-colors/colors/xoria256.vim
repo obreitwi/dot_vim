@@ -66,7 +66,8 @@ hi LineNr       ctermfg=247 guifg=#9e9e9e ctermbg=233 guibg=#121212
 hi MatchParen   ctermfg=188 guifg=#dfdfdf ctermbg=68  guibg=#5f87df cterm=bold gui=bold
 " TODO
 " hi MoreMsg
-hi NonText      ctermfg=237 guifg=#3a3a3a ctermbg=234 guibg=#1c1c1c cterm=bold gui=bold  " 1.5
+" hi NonText      ctermfg=237 guifg=#3a3a3a  ctermbg=234 guibg=#1c1c1c cterm=bold gui=bold
+hi NonText      ctermfg=237 guifg=#3a3a3a cterm=bold gui=bold
 " hi NonText      ctermfg=247 guifg=#9e9e9e ctermbg=233 guibg=#121212 cterm=bold gui=bold  " 1.7
 " hi Pmenu        ctermfg=0   guifg=#000000 ctermbg=250 guibg=#bcbcbc
 hi Pmenu        ctermfg=0   guifg=#000000 ctermbg=240 guibg=#bcbcbc
