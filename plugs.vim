@@ -79,9 +79,14 @@ Plug 'obreitwi/vim-bling'
 " }}}
 
 " {{{ completion
-" {{{ deoplete
+" {{{ CoC
 if has('nvim')
-  Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+  Plug 'neoclide/coc.nvim', {'branch': 'release'}
+  Plug 'neoclide/coc-json', {'do': 'yarn install --frozen-lockfile'}
+  Plug 'neoclide/coc-python', {'do': 'yarn install --frozen-lockfile'}
+  Plug 'neoclide/coc-rls', {'do': 'yarn install --frozen-lockfile'}
+  let g:using_coc=1
+  " Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 else
   " TODO: this check is very very slow!
   if has("pythonx")
@@ -128,7 +133,7 @@ function! BuildYCM(info)
 endfunction
 
 " Since YCM requires manual installation, dont enable it by default everywhere
-let g:hosts_ycm=["dopamine", "lark", "helvetica", "abed", "beli"]
+let g:hosts_ycm=["dopamine", "lark", "helvetica", "beli"]
 let g:hosts_no_jedi=["gordon"]
 let g:ycm_requirements_met = v:version >= 704 || (v:version == 703 && has('patch584'))
 if g:ycm_requirements_met && index(g:hosts_ycm, hostname()) >= 0
@@ -208,8 +213,8 @@ endif
 
 " }}}
 
-" {{{ language client
-" currently not used because in favor of YouCompleteMe
+" {{{ language server client
+" currently not used because in favor of coc
 if has('nvim') && 0
   Plug 'autozimu/LanguageClient-neovim', {
     \ 'branch': 'next',
