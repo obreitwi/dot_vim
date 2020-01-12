@@ -1243,8 +1243,10 @@ let g:vimwiki_table_mappings = 0
 let wiki_sync = {}
 let wiki_sync.path = '~/.vimwiki/'
 let wiki_sync.path_html = '~/doc/wiki_html/'
+let wiki_sync.syntax = 'markdown'
+let wiki_sync.ext = '.md'
 " let wiki_sync.html_template = '~/public_html/template.tpl'
-let wiki_sync.nested_syntaxes = {'python': 'python', 'c++': 'cpp'}
+let wiki_sync.nested_syntaxes = {'python': 'python', 'c++': 'cpp', 'rust': 'rs', 'haskell': 'hs'}
 
 let g:vimwiki_list = [wiki_sync]
 
