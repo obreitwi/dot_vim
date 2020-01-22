@@ -69,8 +69,25 @@ Plug 'aquach/vim-http-client'
 Plug 'sanjayankur31/sli.vim'
 Plug 'rkitover/vimpager'
 Plug 'Raimondi/delimitMate'
-Plug 'psf/black'
 Plug 'rust-lang/rust.vim'
+" }}}
+
+" {{{ black
+if has("python3")
+python3 << endpython3
+import vim
+try:
+  import pip
+  import venv
+  vim.command("let g:use_black = 1")
+except Exception:
+  vim.command("let g:use_black = 0")
+endpython3
+
+  if g:use_black == 1
+    Plug 'psf/black'
+  endif
+endif
 " }}}
 "
 " {{{ pr pending
