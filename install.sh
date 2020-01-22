@@ -58,4 +58,6 @@ set runtimepath^=~/.vim runtimepath+=~/.vim/after
 let &packpath = &runtimepath
 source ~/.vimrc
 EOF
+
+ln -svf ~/.vim/coc-settings.json ~/.config/nvim
 fi
