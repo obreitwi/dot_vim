@@ -1,5 +1,7 @@
 " {{{ Preamble
 " Misc stuff first
+let s:hostname = hostname()
+
 call plug#begin('~/.vim/plugged')
 
 Plug 'junegunn/vim-plug'
@@ -166,6 +168,14 @@ if v:version >= 703
 endif
 if v:version >= 704
     Plug 'SirVer/ultisnips'
+endif
+" }}}
+
+" {{{ audio stuff
+let s:tidal_hosts=["abed"]
+if index(s:tidal_hosts, s:hostname) >= 0
+  Plug 'tidalcycles/vim-tidal'
+  Plug 'supercollider/scvim'
 endif
 " }}}
 
