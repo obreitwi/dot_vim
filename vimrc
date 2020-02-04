@@ -1244,12 +1244,15 @@ command! -nargs=+ -complete=file RR call VimuxRunCommand("clear; " . expand(<q-a
 " }}}
 " {{{ Vimwiki
 let g:vimwiki_table_mappings = 0
+" No vimwiki syntax for markdown files outside of wiki path
+let g:vimwiki_global_ext = 0
 
 let wiki_sync = {}
 let wiki_sync.path = '~/.vimwiki/'
 let wiki_sync.path_html = '~/doc/wiki_html/'
 let wiki_sync.syntax = 'markdown'
 let wiki_sync.ext = '.md'
+
 " let wiki_sync.html_template = '~/public_html/template.tpl'
 let wiki_sync.nested_syntaxes = {'python': 'python', 'c++': 'cpp', 'rust': 'rs', 'haskell': 'hs'}
 
