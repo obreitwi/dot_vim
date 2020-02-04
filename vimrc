@@ -535,7 +535,12 @@ endif
 " Highlight when a line exceeds 81 characters
 highlight ColorColumn ctermbg=magenta ctermfg=black
 " autocmd Syntax * call SetColorColumn()
-autocmd BufWinEnter * call SetColorColumn()
+autocmd vimrc BufWinEnter * call SetColorColumn()
+
+highlight ExtraWhitespace ctermbg=red guibg=red
+autocmd vimrc Syntax * syn match ExtraWhitespace /\s\+$\| \+\ze\t/
+
+" trailing whitespace
 " }}}
 " {{{ Digraphs
 digraph el 8230   " …
