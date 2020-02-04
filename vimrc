@@ -642,11 +642,13 @@ if index(s:true_ack_hosts, hostname()) < 0
 else
     let g:ackprg="ack -H --nocolor --nogroup --column"
 endif
-"
-" Setup ag to be ack
-if executable('ag')
+
+" see if there are alternatives
+if executable('rg')
+    let g:ackprg = 'rg --vimgrep'
+elseif executable('ag')
+    " Setup ag to be ack
     let g:ackprg = 'ag --nogroup --nocolor --column --follow --silent'
-    let g:ack_wildignore=0
 endif
 
 noremap <leader>af :AckFromSearch
