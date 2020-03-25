@@ -494,7 +494,7 @@ end
 " }}}
 " {{{ Clipboard settings
 let s:hosts_clipboard_enabled = ["abed"]
-if index(s:hosts_clipboard_enabled, hostname()) < 0
+if index(s:hosts_clipboard_enabled, hostname()) < 0 && !has('nvim')
     " disable clipboard if host not in list
     set clipboard=exclude:.*
 end
