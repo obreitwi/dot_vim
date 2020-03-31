@@ -10,68 +10,60 @@ Plug 'junegunn/vim-plug'
 Plug 'tpope/vim-pathogen'
 " }}}
 
-" {{{ plugin detox 2019
-" temoporarily disabled plugins to see if I really miss them
-" Plug 'kana/vim-textobj-line'
-" Plug 'vim-scripts/L9'
-" Plug 'kana/vim-operator-user'
-" if has('nvim') && executable('stack')
-  " Plug 'parsonsmatt/intero-neovim'
-" endif
-" }}}
-
 " {{{ common
-Plug 'sjbach/lusty'
-Plug 'godlygeek/tabular'
-Plug 'sjl/gundo.vim'
-Plug 'gregsexton/gitv'
-Plug 'scrooloose/nerdcommenter'
-Plug 'ehamberg/vim-cute-python'
-Plug 'Twinside/vim-haskellConceal'
-Plug 'trapd00r/vim-syntax-vidir-ls'
-Plug 'honza/vim-snippets'
-Plug 'vim-scripts/DirDiff.vim'
-Plug 'michaeljsmith/vim-indent-object'
-Plug 'nathanaelkane/vim-indent-guides'
+Plug 'AndrewRadev/id3.vim'
+Plug 'AndrewRadev/linediff.vim'
+Plug 'Glench/Vim-Jinja2-Syntax'
 Plug 'Lokaltog/vim-easymotion'
-Plug 'vim-scripts/AnsiEsc.vim'
+Plug 'PeterRincker/vim-argumentative'
+Plug 'Raimondi/delimitMate'
+Plug 'Twinside/vim-haskellConceal'
+Plug 'aquach/vim-http-client'
+Plug 'caio/querycommandcomplete.vim'
+Plug 'christoomey/vim-sort-motion'
 Plug 'coderifous/textobj-word-column.vim'
+Plug 'dyng/ctrlsf.vim'
+Plug 'ehamberg/vim-cute-python'
+Plug 'godlygeek/tabular'
+Plug 'gregsexton/gitv'
+Plug 'groenewege/vim-less'
+Plug 'guns/xterm-color-table.vim'
+Plug 'honza/vim-snippets'
+Plug 'jamessan/vim-gnupg'
+Plug 'jceb/vim-orgmode'
+Plug 'kana/vim-textobj-entire'
 Plug 'kana/vim-textobj-indent'
 Plug 'kana/vim-textobj-user'
-Plug 'caio/querycommandcomplete.vim'
 Plug 'kien/ctrlp.vim'
-Plug 'kana/vim-textobj-entire'
-Plug 'prendradjaja/vim-vertigo'
-Plug 'PeterRincker/vim-argumentative'
-Plug 'sickill/vim-pasta'
-Plug 'vimwiki/vimwiki'
-Plug 'mhinz/vim-signify'
-Plug 'Glench/Vim-Jinja2-Syntax'
-Plug 'groenewege/vim-less'
-Plug 'justinmk/vim-sneak'
-Plug 'tommcdo/vim-exchange'
-Plug 'tmhedberg/SimpylFold'
-Plug 'mileszs/ack.vim'
-Plug 'dyng/ctrlsf.vim'
-Plug 'jamessan/vim-gnupg'
-Plug 'AndrewRadev/linediff.vim'
-Plug 'majutsushi/tagbar'
-Plug 'AndrewRadev/id3.vim'
-Plug 'guns/xterm-color-table.vim'
-Plug 'rhysd/vim-clang-format'
-Plug 'christoomey/vim-sort-motion'
-Plug 'vim-scripts/ReplaceWithRegister' 
-Plug 'nathangrigg/vim-beancount'
-Plug 'qpkorr/vim-renamer'
-Plug 'mantiz/vim-plugin-dirsettings'
-Plug 'w0rp/ale'
 Plug 'lervag/vimtex'
-Plug 'jceb/vim-orgmode'
-Plug 'aquach/vim-http-client'
-Plug 'sanjayankur31/sli.vim'
+Plug 'majutsushi/tagbar'
+Plug 'mantiz/vim-plugin-dirsettings'
+Plug 'mhinz/vim-signify'
+Plug 'michaeljsmith/vim-indent-object'
+Plug 'mileszs/ack.vim'
+Plug 'nathanaelkane/vim-indent-guides'
+Plug 'nathangrigg/vim-beancount'
+Plug 'prendradjaja/vim-vertigo'
+Plug 'psf/black'
+Plug 'qpkorr/vim-renamer'
+Plug 'rhysd/vim-clang-format'
 Plug 'rkitover/vimpager'
-Plug 'Raimondi/delimitMate'
 Plug 'rust-lang/rust.vim'
+Plug 'sanjayankur31/sli.vim'
+Plug 'scrooloose/nerdcommenter'
+Plug 'sickill/vim-pasta'
+Plug 'sjbach/lusty'
+Plug 'sjl/gundo.vim'
+Plug 'tmhedberg/SimpylFold'
+Plug 'tommcdo/vim-exchange'
+Plug 'trapd00r/vim-syntax-vidir-ls'
+Plug 'vim-scripts/AnsiEsc.vim'
+Plug 'vim-scripts/DirDiff.vim'
+Plug 'vim-scripts/ReplaceWithRegister'
+Plug 'vimwiki/vimwiki'
+Plug 'w0rp/ale'
+Plug 'terryma/vim-expand-region'
+Plug 'justinmk/vim-sneak' " evaluate if useful
 " }}}
 
 " {{{ black
@@ -97,13 +89,31 @@ endif
 Plug 'obreitwi/vim-bling'
 " }}}
 
-" {{{ completion
+" {{{ browswer addons
+
+" revisit this with more time 
+let s:firenvim_hosts=["abed"]
+if 0 && index(s:firenvim_hosts, s:hostname) >= 0
+  Plug 'glacambre/firenvim', { 'do': { _ -> firenvim#install(0) } }
+endif
+
+" }}}
+
 " {{{ CoC
-if has('nvim')
+if has('nvim') || v:version >= 802
   Plug 'neoclide/coc.nvim', {'branch': 'release'}
   Plug 'neoclide/coc-json', {'do': 'yarn install --frozen-lockfile'}
-  Plug 'neoclide/coc-python', {'do': 'yarn install --frozen-lockfile'}
-  Plug 'neoclide/coc-rls', {'do': 'yarn install --frozen-lockfile'}
+  if executable('python')
+    Plug 'neoclide/coc-python', {'do': 'yarn install --frozen-lockfile'}
+  endif
+  if executable('java')
+    Plug 'neoclide/coc-java', {'do': 'yarn install --frozen-lockfile'}
+  endif
+  if executable('rustc')
+    Plug 'fannheyward/coc-rust-analyzer', {'do': 'yarn install --frozen-lockfile'}
+    Plug 'neoclide/coc-rls', {'do': 'yarn install --frozen-lockfile'}
+  endif
+  Plug 'neoclide/coc-vimtex', {'do': 'yarn install --frozen-lockfile'}
   let g:using_coc=1
   " Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 else
@@ -127,42 +137,7 @@ endif
 let g:deoplete#enable_at_startup = 1
 " }}}
 
-" {{{ youcompleteme
-function! BuildYCM(info)
-  " info is a dictionary with 3 fields
-  " - name:   name of the plugin
-  " - status: 'installed', 'updated', or 'unchanged'
-  " - force:  set on PlugInstall! or PlugUpdate!
-  if a:info.status != 'unchanged' || a:info.force
-    !git submodule update --init --recursive
-    let l:args = []
-    if executable("go")
-      call add(l:args, "--go-completer")
-    endif
-    if executable("clang")
-      call add(l:args, "--clang-completer")
-      " call add(l:args, "--clangd-completer")
-      " try upstream pre-built clang with built clangd because system clangd
-      " is not working....
-      call add(l:args, "--system-libclang")
-    endif
-    let l:update_command = "!./install.py " . join(l:args, " ")
-    exec l:update_command
-  endif
-endfunction
-
-" Since YCM requires manual installation, dont enable it by default everywhere
-let g:hosts_ycm=["dopamine", "lark", "helvetica", "beli"]
-let g:hosts_no_jedi=["gordon"]
-let g:ycm_requirements_met = v:version >= 704 || (v:version == 703 && has('patch584'))
-if g:ycm_requirements_met && index(g:hosts_ycm, hostname()) >= 0
-    Plug 'Valloric/YouCompleteMe', { 'do': function('BuildYCM') }
-    Plug 'rdnetto/YCM-Generator', { 'branch': 'stable'}
-elseif index(g:hosts_no_jedi, hostname()) == -1
-    Plug 'davidhalter/jedi-vim'
-endif
-" }}}
-
+" {{{ snippets
 if v:version >= 703
       " Plug 'chrisbra/histwin.vim'
 endif
@@ -182,9 +157,60 @@ endif
 " {{{ colors
 Plug 'altercation/vim-colors-solarized'
 Plug 'lifepillar/vim-solarized8'
+" tigrana: Tried it, fold headings blend in with the background -> not nice
+" Plug 'iKarith/tigrana'
 " }}}
 
 " {{{ disabled stuff:
+" {{{ plugin detox 
+" {{{ 2019
+" temoporarily disabled plugins to see if I really miss them
+" Plug 'kana/vim-textobj-line'
+" Plug 'vim-scripts/L9'
+" Plug 'kana/vim-operator-user'
+" if has('nvim') && executable('stack')
+  " Plug 'parsonsmatt/intero-neovim'
+" endif
+" }}}
+" {{{ 2020
+" {{{ youcompleteme
+" function! BuildYCM(info)
+"   " info is a dictionary with 3 fields
+"   " - name:   name of the plugin
+"   " - status: 'installed', 'updated', or 'unchanged'
+"   " - force:  set on PlugInstall! or PlugUpdate!
+"   if a:info.status != 'unchanged' || a:info.force
+"     !git submodule update --init --recursive
+"     let l:args = []
+"     if executable("go")
+"       call add(l:args, "--go-completer")
+"     endif
+"     if executable("clang")
+"       call add(l:args, "--clang-completer")
+"       " call add(l:args, "--clangd-completer")
+"       " try upstream pre-built clang with built clangd because system clangd
+"       " is not working....
+"       call add(l:args, "--system-libclang")
+"     endif
+"     let l:update_command = "!./install.py " . join(l:args, " ")
+"     exec l:update_command
+"   endif
+" endfunction
+" 
+" " Since YCM requires manual installation, dont enable it by default everywhere
+" let g:hosts_ycm=["dopamine", "lark", "helvetica", "beli"]
+" let g:hosts_no_jedi=["gordon"]
+" let g:ycm_requirements_met = v:version >= 704 || (v:version == 703 && has('patch584'))
+" if 0 && g:ycm_requirements_met && index(g:hosts_ycm, hostname()) >= 0
+"     Plug 'Valloric/YouCompleteMe', { 'do': function('BuildYCM') }
+"     Plug 'rdnetto/YCM-Generator', { 'branch': 'stable'}
+" elseif 0 && index(g:hosts_no_jedi, hostname()) == -1
+"     Plug 'davidhalter/jedi-vim'
+" endif
+" }}}
+" }}}
+" }}}
+" {{{ other
 " Plug 'vim-scripts/SudoEdit.vim'
 " Plug 'vim-scripts/FSwitch'
 " Plug 'luochen1990/rainbow'
@@ -216,7 +242,6 @@ Plug 'lifepillar/vim-solarized8'
 " Plug 'vim-scripts/LargeFile'
 " Plug 'maxbrunsfeld/vim-yankstack'
 " Plug 'benmills/vimux'
-" Plug 'terryma/vim-expand-region' " does not work correctly
 " Plug 'mattn/webapi-vim'
 " Plug 'mattn/gist-vim'
 " Plug 'vim-scripts/DrawIt'
@@ -224,6 +249,7 @@ Plug 'lifepillar/vim-solarized8'
 " Plug 'scrooloose/syntastic'
 " Plug 'LaTeX-Box-Team/LaTeX-Box' " not async
 " Plug 'gyim/vim-boxdraw' " does not play well with vim-plug
+" }}}
 " }}}
 
 " {{{ haskell
@@ -257,8 +283,8 @@ endif
 " }}}
 
 " {{{ misc
-let s:atp_hosts=["lark"]
-if index(s:atp_hosts, hostname()) >= 0
+let s:sonicpi_hosts=["lark"]
+if index(s:sonicpi_hosts, s:hostname) >= 0
     Plug 'dermusikman/sonicpi.vim'
 endif
 
@@ -274,22 +300,13 @@ Plug 'obreitwi/vim-sort-folds'
 " {{{ neovim
 
 if has('nvim')
-  " Needed because :SudoWrite does not workin neovim
+  " Needed because :SudoWrite does not work in neovim
   Plug 'lambdalisue/suda.vim'
   Plug 'vim-airline/vim-airline'
   Plug 'vim-airline/vim-airline-themes'
   Plug 'raghur/vim-ghost', {'do': ':GhostInstall'}
 endif
 
-" }}}
-
-" {{{ other repositories
-" Only install atp on hosts where latex editing takes place
-" let s:atp_hosts=["juno", "phaelon", "nurikum"]
-let s:atp_hosts=[]
-if index(s:atp_hosts, hostname()) >= 0
-      " Plug 'git://atp-vim.git.sourceforge.net/gitroot/atp-vim/atp-vim'
-endif
 " }}}
 
 " {{{ taskwarrior

@@ -526,10 +526,11 @@ else
     " let g:solarized_diffmode="high"
     " let g:solarized_termtrans=1
     let g:solarized_termcolors=256
-    set background=dark
+    " set background=dark
     " let g:solarized_degrade=1
     " colorscheme solarized
     colorscheme xoria256
+    " colorscheme tigrana-256-dark
 endif
 " This is a test of a line that will exceed 81 characters per line and should trigger the new setting
 " Highlight when a line exceeds 81 characters
@@ -537,7 +538,7 @@ highlight ColorColumn ctermbg=magenta ctermfg=black
 " autocmd Syntax * call SetColorColumn()
 autocmd vimrc BufWinEnter * call SetColorColumn()
 
-highlight ExtraWhitespace ctermbg=red guibg=red
+highlight default link ExtraWhitespace Error
 autocmd vimrc Syntax * syn match ExtraWhitespace /\s\+$\| \+\ze\t/
 
 " trailing whitespace
@@ -664,16 +665,29 @@ endif
 " Disable AlignMaps since they are not being used currently
 let g:loaded_AlignMapsPlugin=1
 " }}}
-" {{{ ale
+" {{{ ALE
 if s:power_online == '0'
     " disable power consuming features of ale when not running on AC power
     let g:ale_lint_on_text_changed = "never"
 endif
 let g:ale_echo_msg_format = '%linter%% (code)%: %s'
 
+let g:ale_linters = {
+\    "c": [],
+\    "cpp": [],
+\}
+
 let g:ale_fixers = {
 \   'python': ['black']
 \}
+
+" Note: Keep in sync with coc-settings.json
+let g:ale_cpp_ccls_init_options = {
+\   'cache': {
+\       'directory': '/tmp/ccls'
+\   }
+\ }
+
 
 nnoremap [ale] <Nop>
 nmap <Leader>a [ale]
@@ -698,6 +712,8 @@ let g:bufExplorerFindActive=0        " Do not go to active window.
 " Mnemonic is <c>ode-<f>ormat
 autocmd vimrc Filetype python nnoremap <buffer><Leader>cf :Black<CR>
 autocmd vimrc Filetype python vnoremap <buffer><Leader>cf :Black<CR>
+
+let g:black_linelength = 79
 " }}}
 " {{{ Bling
 let g:bling_time = 75
@@ -905,7 +921,8 @@ imap <C-G><C-G> <Plug>delimitMateS-Tab
 " {{{ Easymotion
 hi link EasyMotionTarget ErrorMsg
 hi link EasyMotionShade Comment
-let g:EasyMotion_leader_key = 'L'
+" TODO: Check for any errors when easymotion reverted to default setting
+" let g:EasyMotion_leader_key = 'L'
 " }}}
 " {{{ Enhanced Commentify
 
@@ -1096,15 +1113,15 @@ map <leader>st <Plug>(signify-toggle)
 " therefor we have to call setup and then overwrite the keys we need for the
 " time being
 " callc yankstack#setup()
-nmap s <Plug>SneakForward
-nmap S <Plug>SneakBackward
-nmap , <Plug>SneakPrevious
-nmap \ <Plug>SneakPrevious
-xmap s <Plug>VSneakForward
-xmap Z <Plug>VSneakBackward
-xmap ; <Plug>VSneakNext
-xmap , <Plug>VSneakPrevious
-xmap \ <Plug>VSneakPrevious
+" nmap s <Plug>SneakForward
+" nmap S <Plug>SneakBackward
+" nmap , <Plug>SneakPrevious
+" nmap \ <Plug>SneakPrevious
+" xmap s <Plug>VSneakForward
+" xmap Z <Plug>VSneakBackward
+" xmap ; <Plug>VSneakNext
+" xmap , <Plug>VSneakPrevious
+" xmap \ <Plug>VSneakPrevious
 
 " }}}
 " {{{ Syntastic
@@ -1146,6 +1163,11 @@ let g:tlRememberPosition = 1
 " }}}
 " {{{ TaskWarrior
 let g:task_report_name="long"
+" }}}
+" {{{ tidal
+if has("nvim")
+    let g:tidal_target = "terminal"
+endif
 " }}}
 " {{{ Ultisnips
 let g:UltiSnipsSnippetsDir="~/.vim/bundle-own/my-snippets/UltiSnips"
@@ -1292,8 +1314,8 @@ else
 endif
 let g:vimtex_fold_enabled = 1
 " }}}
-" {{{ YouCompleteMe
-if g:ycm_requirements_met && index(g:hosts_ycm, hostname()) >= 0
+" {{{ YouCompleteMe (disabled)
+if 0 && g:ycm_requirements_met && index(g:hosts_ycm, hostname()) >= 0
     let g:ycm_semantic_triggers = {'haskell' : ['.']}
 
     " mappings
