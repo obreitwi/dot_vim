@@ -162,13 +162,24 @@ command! SOvlow let g:solarized_visibility="low" | colorscheme solarized
 command! -nargs=0 -complete=command TS call CreateTimestamp()
 
 " Font settings
-command! FIncon set guifont=Inconsolata\ Medium\ 8
-command! FInconP set guifont=Inconsolata\ for\ Powerline\ Medium\ 8
-command! FDejaP set guifont=DejaVu\ Sans\ Mono\ for\ Powerline\ 8
-command! FInconL set guifont=Inconsolata\ Medium\ 10
-command! FInconPL set guifont=Inconsolata\ for\ Powerline\ Medium\ 10
-command! FDejaPL set guifont=DejaVu\ Sans\ Mono\ for\ Powerline\ 10
-command! FEnvy set guifont=Envy\ Code\ R\ 8
+if !exists("g:neovide")
+    command! FIncon set guifont=Inconsolata\ Medium\ 8
+    command! FInconP set guifont=Inconsolata\ for\ Powerline\ Medium\ 8
+    command! FDejaP set guifont=DejaVu\ Sans\ Mono\ for\ Powerline\ 8
+    command! FInconL set guifont=Inconsolata\ Medium\ 10
+    command! FInconPL set guifont=Inconsolata\ for\ Powerline\ Medium\ 10
+    command! FDejaPL set guifont=DejaVu\ Sans\ Mono\ for\ Powerline\ 10
+    command! FEnvy set guifont=Envy\ Code\ R\ 8
+else
+    " These settings were found experimentally
+    command! FIncon set guifont=Inconsolata\ Medium:h11
+    command! FInconP set guifont=Inconsolata\ for\ Powerline\ Medium:h11
+    command! FDejaP set guifont=DejaVu\ Sans\ Mono\ for\ Powerline:h11
+    command! FInconL set guifont=Inconsolata\ Medium:h16
+    command! FInconPL set guifont=Inconsolata\ for\ Powerline\ Medium:h16
+    command! FDejaPL set guifont=DejaVu\ Sans\ Mono\ for\ Powerline:h16
+    command! FEnvy set guifont=Envy\ Code\ R:h11
+endif
 
 command! Plugs tabe $HOME/.vim/plugs.vim
 
@@ -359,7 +370,7 @@ set autoread
 set diffopt=filler,vertical,context:10
 
 " No menu if we don't need it
-if has("gui_running") 
+if has("gui_running") || exists('g:neovide')
     " No Pop Ups but console
     set guioptions=ck
 end
@@ -484,13 +495,15 @@ let g:qcc_query_command="nottoomuch-addresses-reformatted"
 " }}}
 " {{{ Font config
 " Nicer font in gvim for windows
-if has("gui_running") && (g:opsystem == "windows")
+if g:opsystem == "windows"
     set guifont=Consolas:h10:cANSI
-" elseif has("gui_running") && ( hostname() == "nurikum" )
-elseif has("gui_running")
+else
     FDejaP
-    set clipboard=unnamedplus
 end
+
+if has('gui_running') && g:opsystem != "windows"
+    set clipboard=unnamedplus
+endif
 " }}}
 " {{{ Clipboard settings
 let s:hosts_clipboard_enabled = ["abed"]
@@ -516,7 +529,7 @@ if has( "gui_running" )
     " let g:solarized_menu=1
     colorscheme solarized
     call togglebg#map("<F5>")
-elseif $TERM == "linux"
+elseif $TERM == "linux" && !exists('g:neovide')
     colorscheme default
     " set nolist
 else
@@ -526,7 +539,7 @@ else
     " let g:solarized_diffmode="high"
     " let g:solarized_termtrans=1
     let g:solarized_termcolors=256
-    " set background=dark
+    set background=dark
     " let g:solarized_degrade=1
     " colorscheme solarized
     colorscheme xoria256
@@ -559,6 +572,12 @@ digraph pm 177    " ±
 digraph cm 10003  " ✓
 digraph tu 128077 " :thumbsup:
 digraph td 128078 " :thumbdsdown:
+" }}}
+" {{{ neovide
+if exists("g:neovide")
+    " config options for neovide
+    let g:neovide_cursor_vfx_mode = "railgun"
+endif
 " }}}
 " {{{ Other
 " Call par if availible
@@ -605,8 +624,9 @@ let g:airline_symbols.space = "\ua0"
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#show_buffers = 0
 " let g:airline_theme = 'molokai'
-let g:airline_solarized_bg='dark'
-let g:airline_theme = 'solarized'
+" let g:airline_solarized_bg='dark'
+" let g:airline_theme = 'solarized'
+let g:airline_theme = 'powerlineish'
 
 if !g:powerline_available
     let g:powerline_loaded=1
