@@ -155,8 +155,7 @@ endif
 " }}}
 
 " {{{ colors
-Plug 'altercation/vim-colors-solarized'
-Plug 'lifepillar/vim-solarized8'
+Plug 'icymind/NeoSolarized'
 " tigrana: Tried it, fold headings blend in with the background -> not nice
 " Plug 'iKarith/tigrana'
 " }}}

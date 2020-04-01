@@ -156,8 +156,8 @@ command! -complete=shellcmd -nargs=+ Shell call s:RunShellCommand(<q-args>)
 " Command with output captured
 command! -nargs=+ -complete=command Command call Command(<q-args>)
 
-command! SOvnorm let g:solarized_visibility="normal" | colorscheme solarized
-command! SOvlow let g:solarized_visibility="low" | colorscheme solarized
+command! SOvnorm let g:neosolarized_visibility="normal" | colorscheme NeoSolarized
+command! SOvlow let g:neosolarized_visibility="low" | colorscheme NeoSolarized
 
 command! -nargs=0 -complete=command TS call CreateTimestamp()
 
@@ -515,31 +515,29 @@ end
 " {{{ Color management
 " Set really nice colors
 syntax enable
-if has( "gui_running" )
-    set background=dark
-    " let g:solarized_termtrans=0
-    " let g:solarized_bold=1
-    " let g:solarized_underline=1
-    " let g:solarized_italic=1
-    " let g:solarized_termcolors=16
-    let g:solarized_contrast="normal"
-    let g:solarized_visibility="low"
-    let g:solarized_diffmode="high"
-    " let g:solarized_hitrail=0
-    " let g:solarized_menu=1
-    colorscheme solarized
-    call togglebg#map("<F5>")
+set background=dark
+if exists("g:neovide") || has("gui_running")
+    " let g:neosolarized_termtrans=0
+    " let g:neosolarized_bold=1
+    " let g:neosolarized_underline=1
+    " let g:neosolarized_italic=1
+    " let g:neosolarized_termcolors=16
+    let g:neosolarized_contrast="normal"
+    let g:neosolarized_visibility="low"
+    let g:neosolarized_diffmode="high"
+    " let g:neosolarized_hitrail=0
+    " let g:neosolarized_menu=1
+    colorscheme NeoSolarized
 elseif $TERM == "linux" && !exists('g:neovide')
     colorscheme default
     " set nolist
 else
-    " let g:solarized_termcolors=256
-    " let g:solarized_contrast="normal"
-    " let g:solarized_visibility="low"
-    " let g:solarized_diffmode="high"
-    " let g:solarized_termtrans=1
-    let g:solarized_termcolors=256
-    set background=dark
+    " let g:neosolarized_termcolors=256
+    " let g:neosolarized_contrast="normal"
+    " let g:neosolarized_visibility="low"
+    " let g:neosolarized_diffmode="high"
+    " let g:neosolarized_termtrans=1
+    let g:neosolarized_termcolors=256
     " let g:solarized_degrade=1
     " colorscheme solarized
     colorscheme xoria256
@@ -625,8 +623,11 @@ let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#show_buffers = 0
 " let g:airline_theme = 'molokai'
 " let g:airline_solarized_bg='dark'
-" let g:airline_theme = 'solarized'
-let g:airline_theme = 'powerlineish'
+if exists('g:neovide')
+    let g:airline_theme = 'solarized'
+else
+    let g:airline_theme = 'powerlineish'
+endif
 
 if !g:powerline_available
     let g:powerline_loaded=1
