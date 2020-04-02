@@ -156,6 +156,8 @@ endif
 
 " {{{ colors
 Plug 'icymind/NeoSolarized'
+Plug 'morhetz/gruvbox'
+
 " tigrana: Tried it, fold headings blend in with the background -> not nice
 " Plug 'iKarith/tigrana'
 " }}}

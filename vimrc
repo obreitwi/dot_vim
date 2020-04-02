@@ -161,26 +161,6 @@ command! SOvlow let g:neosolarized_visibility="low" | colorscheme NeoSolarized
 
 command! -nargs=0 -complete=command TS call CreateTimestamp()
 
-" Font settings
-if !exists("g:neovide")
-    command! FIncon set guifont=Inconsolata\ Medium\ 8
-    command! FInconP set guifont=Inconsolata\ for\ Powerline\ Medium\ 8
-    command! FDejaP set guifont=DejaVu\ Sans\ Mono\ for\ Powerline\ 8
-    command! FInconL set guifont=Inconsolata\ Medium\ 10
-    command! FInconPL set guifont=Inconsolata\ for\ Powerline\ Medium\ 10
-    command! FDejaPL set guifont=DejaVu\ Sans\ Mono\ for\ Powerline\ 10
-    command! FEnvy set guifont=Envy\ Code\ R\ 8
-else
-    " These settings were found experimentally
-    command! FIncon set guifont=Inconsolata\ Medium:h11
-    command! FInconP set guifont=Inconsolata\ for\ Powerline\ Medium:h11
-    command! FDejaP set guifont=DejaVu\ Sans\ Mono\ for\ Powerline:h11
-    command! FInconL set guifont=Inconsolata\ Medium:h16
-    command! FInconPL set guifont=Inconsolata\ for\ Powerline\ Medium:h16
-    command! FDejaPL set guifont=DejaVu\ Sans\ Mono\ for\ Powerline:h16
-    command! FEnvy set guifont=Envy\ Code\ R:h11
-endif
-
 command! Plugs tabe $HOME/.vim/plugs.vim
 
 command! -nargs=0 -complete=command MakeTags !ctags -R --c++-kinds=+p --fields=+iaS --extra=+q .
@@ -214,16 +194,6 @@ command! -nargs=0 -complete=command SA setf apache
 if g:opsystem == "Linux"
     source $VIMRUNTIME/ftplugin/man.vim
 end
-
-" Grep helpers
-command! -nargs=+ RGrep :grep -ri <q-args> .
-
-" Apparently decode_qp
-" command! -range=% Decode64 :w | <line1>,<line2>delete | let foo = @"
- " \| perl my $foo=VIM::Eval(foo); my ($r, $c)=$curwin->Cursor(); $curbuf->Append($r-1, split '\n', MIME::Base64::decode($foo));
-
-" command! -range=% DecodeQP :w | <line1>,<line2>delete | let foo = @"
- " \| perl my $foo=VIM::Eval(foo); my ($r, $c)=$curwin->Cursor(); $curbuf->Append($r-1, split '\n', MIME::QuotedPrint::decode_qp($foo));
 
 " }}}
 " {{{ General Mappings
@@ -471,7 +441,7 @@ let g:colorcolumn_custom = {
 \}
 
 " Autohotkey
-autocmd vimrc BufNewFile,BufRead *.ahk setf autohotkey 
+autocmd vimrc BufNewFile,BufRead *.ahk setf autohotkey
 autocmd vimrc BufNewFile,BufRead *.txt setf text
 
 " Apache config files
@@ -494,7 +464,27 @@ let g:qcc_query_command="nottoomuch-addresses-reformatted"
 " }}}
 " }}}
 " {{{ Font config
-" Nicer font in gvim for windows
+" Font settings
+if !exists("g:neovide")
+    command! FIncon set guifont=Inconsolata\ Medium\ 8
+    command! FInconP set guifont=Inconsolata\ for\ Powerline\ Medium\ 8
+    command! FDejaP set guifont=DejaVu\ Sans\ Mono\ for\ Powerline\ 8
+    command! FInconL set guifont=Inconsolata\ Medium\ 10
+    command! FInconPL set guifont=Inconsolata\ for\ Powerline\ Medium\ 10
+    command! FDejaPL set guifont=DejaVu\ Sans\ Mono\ for\ Powerline\ 10
+    command! FEnvy set guifont=Envy\ Code\ R\ 8
+else
+    " These settings were found experimentally
+    command! FIncon set guifont=Inconsolata\ Medium:h11
+    command! FInconP set guifont=Inconsolata\ for\ Powerline\ Medium:h11
+    command! FDejaP set guifont=DejaVu\ Sans\ Mono\ for\ Powerline:h11
+    command! FInconL set guifont=Inconsolata\ Medium:h16
+    command! FInconPL set guifont=Inconsolata\ for\ Powerline\ Medium:h16
+    command! FDejaPL set guifont=DejaVu\ Sans\ Mono\ for\ Powerline:h16
+    command! FEnvy set guifont=Envy\ Code\ R:h11
+endif
+
+" Default font
 if g:opsystem == "windows"
     set guifont=Consolas:h10:cANSI
 else
@@ -514,45 +504,64 @@ end
 " }}}
 " {{{ Color management
 " Set really nice colors
+
+" {{{ gruvbox settings
+" These need to come prior to setting the colorscheme
+let g:gruvbox_contrast_dark='hard'
+let g:gruvbox_guisp_fallback='bg'
+" }}}
+
+" {{{ Common / GUI-Term settings
 syntax enable
 set background=dark
 if exists("g:neovide") || has("gui_running")
-    " let g:neosolarized_termtrans=0
-    " let g:neosolarized_bold=1
-    " let g:neosolarized_underline=1
-    " let g:neosolarized_italic=1
-    " let g:neosolarized_termcolors=16
-    let g:neosolarized_contrast="normal"
-    let g:neosolarized_visibility="low"
-    let g:neosolarized_diffmode="high"
-    " let g:neosolarized_hitrail=0
-    " let g:neosolarized_menu=1
-    colorscheme NeoSolarized
+    " colorscheme NeoSolarized
+    " let g:airline_theme = 'solarized'
+    " let g:neosolarized_contrast="normal"
+    " let g:neosolarized_visibility="low"
+    " let g:neosolarized_diffmode="high"
+    " " let g:neosolarized_termtrans=0
+    " " let g:neosolarized_bold=1
+    " " let g:neosolarized_underline=1
+    " " let g:neosolarized_italic=1
+    " " let g:neosolarized_termcolors=16
+    " " let g:neosolarized_hitrail=0
+    " " let g:neosolarized_menu=1
+
+    colorscheme gruvbox
+    let g:airline_theme = 'gruvbox'
 elseif $TERM == "linux" && !exists('g:neovide')
     colorscheme default
     " set nolist
 else
+    " " let g:neosolarized_termcolors=256
+    " " let g:neosolarized_contrast="normal"
+    " " let g:neosolarized_visibility="low"
+    " " let g:neosolarized_diffmode="high"
+    " " let g:neosolarized_termtrans=1
     " let g:neosolarized_termcolors=256
-    " let g:neosolarized_contrast="normal"
-    " let g:neosolarized_visibility="low"
-    " let g:neosolarized_diffmode="high"
-    " let g:neosolarized_termtrans=1
-    let g:neosolarized_termcolors=256
-    " let g:solarized_degrade=1
-    " colorscheme solarized
-    colorscheme xoria256
+    " " let g:neosolarized_degrade=1
+    " " colorscheme NeoSolarized
+
     " colorscheme tigrana-256-dark
+
+    " let g:airline_theme = 'powerlineish'
+    " colorscheme xoria256
+
+    colorscheme gruvbox
+    let g:airline_theme = 'gruvbox'
 endif
+" }}}
+
 " This is a test of a line that will exceed 81 characters per line and should trigger the new setting
 " Highlight when a line exceeds 81 characters
 highlight ColorColumn ctermbg=magenta ctermfg=black
 " autocmd Syntax * call SetColorColumn()
 autocmd vimrc BufWinEnter * call SetColorColumn()
 
+" trailing whitespace
 highlight default link ExtraWhitespace Error
 autocmd vimrc Syntax * syn match ExtraWhitespace /\s\+$\| \+\ze\t/
-
-" trailing whitespace
 " }}}
 " {{{ Digraphs
 digraph el 8230   " …
@@ -621,13 +630,6 @@ endif
 let g:airline_symbols.space = "\ua0"
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#show_buffers = 0
-" let g:airline_theme = 'molokai'
-" let g:airline_solarized_bg='dark'
-if exists('g:neovide')
-    let g:airline_theme = 'solarized'
-else
-    let g:airline_theme = 'powerlineish'
-endif
 
 if !g:powerline_available
     let g:powerline_loaded=1
