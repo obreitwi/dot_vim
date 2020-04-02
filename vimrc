@@ -337,7 +337,7 @@ set grepprg=grep\ -nH\ $*
 set autoread
 
 " Options for diff mode
-set diffopt=filler,vertical,context:10
+set diffopt=filler,vertical,context:10,internal,indent-heuristic
 
 " No menu if we don't need it
 if has("gui_running") || exists('g:neovide')
