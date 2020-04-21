@@ -101,7 +101,8 @@ endif
 
 " {{{ CoC
 if has('nvim') || v:version >= 802
-  Plug 'neoclide/coc.nvim', {'branch': 'release'}
+  " Plug 'neoclide/coc.nvim', {'branch': 'release'}
+  Plug 'neoclide/coc.nvim', {'do': 'yarn install --frozen-lockfile'}
   Plug 'neoclide/coc-json', {'do': 'yarn install --frozen-lockfile'}
   if executable('python')
     Plug 'neoclide/coc-python', {'do': 'yarn install --frozen-lockfile'}
@@ -111,7 +112,7 @@ if has('nvim') || v:version >= 802
   endif
   if executable('rustc')
     Plug 'fannheyward/coc-rust-analyzer', {'do': 'yarn install --frozen-lockfile'}
-    Plug 'neoclide/coc-rls', {'do': 'yarn install --frozen-lockfile'}
+    " Plug 'neoclide/coc-rls', {'do': 'yarn install --frozen-lockfile'}
   endif
   Plug 'neoclide/coc-vimtex', {'do': 'yarn install --frozen-lockfile'}
   let g:using_coc=1
