@@ -13,10 +13,10 @@ if [ "${PREFIX:+x}" != "x" ]; then
     PREFIX="$HOME/.local"
 fi
 SOURCE_FOLDER="$(dirname "$(readlink -m "$0")")"
-VIMPLUG_FOLDER="${SOURCE_FOLDER}/plugged/plug"
+VIMPLUG_FOLDER="${SOURCE_FOLDER}/plugged/vim-plug"
 VIMPLUG_URL="https://github.com/junegunn/vim-plug" 
 
-if [ ! -d "${SOURCE_FOLDER}/plugged/plug" ]; then
+if [ ! -d "${VIMPLUG_FOLDER}" ]; then
     # Quick install script to setup all symlinks
     git clone "${VIMPLUG_URL}" "${VIMPLUG_FOLDER}"
 else
