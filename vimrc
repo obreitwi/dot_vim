@@ -1015,6 +1015,9 @@ nnoremap <leader>f :Git<CR>:on<CR>
 " nnoremap <silent> sr     :FufRenewCache<CR>
 " }}}
 " {{{ Gundo
+if has('python3')
+    let g:gundo_prefer_python3=1
+endif
 map <Leader>gt :GundoToggle<CR>
 " }}}
 " {{{ Haskellmode
