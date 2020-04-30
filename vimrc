@@ -736,6 +736,9 @@ let g:bufExplorerFindActive=0        " Do not go to active window.
 autocmd vimrc Filetype python nnoremap <buffer><Leader>cf :Black<CR>
 autocmd vimrc Filetype python vnoremap <buffer><Leader>cf :Black<CR>
 
+" have one virtualenv setting for everything
+let g:black_virtualenv="~/.vim/non-tracked/black"
+
 let g:black_linelength = 79
 " }}}
 " {{{ Bling

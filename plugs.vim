@@ -44,7 +44,6 @@ Plug 'mileszs/ack.vim'
 Plug 'nathanaelkane/vim-indent-guides'
 Plug 'nathangrigg/vim-beancount'
 Plug 'prendradjaja/vim-vertigo'
-Plug 'psf/black'
 Plug 'qpkorr/vim-renamer'
 Plug 'rhysd/vim-clang-format'
 Plug 'rkitover/vimpager'
@@ -79,7 +78,7 @@ except Exception:
 endpython3
 
   if g:use_black == 1
-    Plug 'psf/black'
+    Plug 'psf/black', { 'tag': '*' }
   endif
 endif
 " }}}
