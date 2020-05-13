@@ -698,6 +698,7 @@ let g:ale_echo_msg_format = '%linter%% (code)%: %s'
 let g:ale_linters = {
 \    "c": [],
 \    "cpp": [],
+\    "python" : ['black'],
 \}
 
 let g:ale_fixers = {
