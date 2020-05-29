@@ -203,7 +203,7 @@ end
 let mapleader=" "
 let maplocalleader=";"
 
-noremap <Esc><Esc> <Esc>
+" noremap <Esc><Esc> <Esc>
 
 map <f8> :setlocal spell!<CR>
 
