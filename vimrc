@@ -343,6 +343,7 @@ set diffopt=filler,vertical,context:10,internal,indent-heuristic
 if has("gui_running") || exists('g:neovide')
     " No Pop Ups but console
     set guioptions=ck
+    set termguicolors
 end
 
 " Taken form: https://github.com/gregstallings/vimfiles/blob/master/vimrc
@@ -465,10 +466,10 @@ let g:qcc_query_command="nottoomuch-addresses-reformatted"
 " }}}
 " {{{ Font config
 " Font settings
-if !exists("g:neovide")
+if g:opsystem == "windows"
     command! FIncon set guifont=Inconsolata\ Medium\ 8
     command! FInconP set guifont=Inconsolata\ for\ Powerline\ Medium\ 8
-    command! FDejaP set guifont=DejaVu\ Sans\ Mono\ for\ Powerline\ 8
+    command! FDejaP set guifont=DejaVu\ Sans\ Mono\ for\ Powerline\ 6
     command! FInconL set guifont=Inconsolata\ Medium\ 10
     command! FInconPL set guifont=Inconsolata\ for\ Powerline\ Medium\ 10
     command! FDejaPL set guifont=DejaVu\ Sans\ Mono\ for\ Powerline\ 10
