@@ -1200,7 +1200,7 @@ if has("nvim")
 endif
 " }}}
 " {{{ Ultisnips
-let g:UltiSnipsSnippetsDir="~/.vim/bundle-own/my-snippets/UltiSnips"
+let g:UltiSnipsSnippetDirectories=["~/.vim/bundle-own/my-snippets/UltiSnips"]
 " let g:UltiSnipsListSnippets="<leader>ls"
 " let g:UltiSnipsExpandTrigger="<tab>"
 let g:UltiSnipsExpandTrigger="<c-j>"
