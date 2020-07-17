@@ -134,6 +134,15 @@ function! SetColorColumn()
     let w:currentcolorcolumn=matchadd('ColorColumn', '\%' . l:linewidth+1 . 'v', 100)
 endfunction
 
+" Dynamically adjust guifontsize
+function! GuifontsizeModify(adjustment)
+    let l:split = split(&guifont, "h")
+    let l:fontsize = l:split[-1]
+    let l:fontname = join(l:split[:-2], "h")
+    let l:new_font = join([l:fontname, (l:fontsize + a:adjustment)], "h")
+    let &guifont=l:new_font
+endfunction
+
 " Search for the ... arguments separated with whitespace (if no '!'),
 " or with non-word characters (if '!' added to command).
 function! SearchMultiLine(bang, ...)
@@ -210,6 +219,10 @@ map <f8> :setlocal spell!<CR>
 " have Q reformat the current paragraph (or selected text if there is any):
 nnoremap Q gqap
 vnoremap Q gq
+
+" Use <c-f> as prefix for font related commands
+nnoremap <silent> <c-f><c-=> :call GuifontsizeModify(1)<cr>
+nnoremap <silent> <c-f><c--> :call GuifontsizeModify(-1)<cr>
 
 " Make Y work like C and D..
 " changed for yankring
