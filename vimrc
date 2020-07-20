@@ -489,12 +489,13 @@ if g:opsystem == "windows"
     command! FEnvy set guifont=Envy\ Code\ R\ 8
 else
     " These settings were found experimentally
-    command! FIncon set guifont=Inconsolata\ Medium:h11
-    command! FInconP set guifont=Inconsolata\ for\ Powerline\ Medium:h11
-    command! FDejaP set guifont=DejaVu\ Sans\ Mono\ for\ Powerline:h11
+    command! FIncon set guifont=Inconsolata\ Medium:h12
+    command! FInconP set guifont=Inconsolata\ for\ Powerline\ Medium:h12
+    command! FDejaP set guifont=DejaVu\ Sans\ Mono\ for\ Powerline:style=Book:h12
     command! FInconL set guifont=Inconsolata\ Medium:h16
-    command! FInconPL set guifont=Inconsolata\ for\ Powerline\ Medium:h16
-    command! FDejaPL set guifont=DejaVu\ Sans\ Mono\ for\ Powerline:h16
+    command! FInconPL set guifont=Inconsolata\ for\ Powerline\ Medium:h14
+    command! FDejaPL set guifont=DejaVu\ Sans\ Mono\ for\ Powerline:h14
+    command! FDejaPVL set guifont=DejaVu\ Sans\ Mono\ for\ Powerline:h16
     command! FEnvy set guifont=Envy\ Code\ R:h11
 endif
 
@@ -521,6 +522,12 @@ end
 
 " {{{ gruvbox settings
 " These need to come prior to setting the colorscheme
+if exists("g:neovide")
+    let g:gruvbox_italic=1
+    let g:gruvbox_undercurl=1
+    let g:gruvbox_underline=1
+    let g:gruvbox_inverse=1
+endif
 let g:gruvbox_contrast_dark='hard'
 let g:gruvbox_guisp_fallback='bg'
 " }}}
@@ -1124,9 +1131,9 @@ let g:NERDTreeIgnore=[ '\~$', '\.pyo$', '\.pyc$', '\.svn[\//]$', '\.swp$', '\.au
 let g:NERDTreeSortOrder=['^__\.py$', '\/$', '*', '\.swp$', '\.bak$', '\~$']
 let g:NERDTreeHighlightCursorline=1
 let g:NERDSpaceDelims=1
-" Mappings and commands
+" Mappings and commands (not used anymore)
 command! -nargs=0 -complete=command Nt NERDTree
-map <c-f> :NERDTreeToggle<CR>
+" map <c-f> :NERDTreeToggle<CR>
 " }}}
 " {{{ netrw
 " Tweaks for browsing
