@@ -88,7 +88,7 @@ endif
 Plug 'obreitwi/vim-bling'
 " }}}
 
-" {{{ browswer addons
+" {{{ browser addons
 
 " revisit this with more time 
 let s:firenvim_hosts=["abed"]
@@ -135,6 +135,10 @@ else
   endif
 endif
 let g:deoplete#enable_at_startup = 1
+" }}}
+
+" {{{ syntax
+Plug 'jackguo380/vim-lsp-cxx-highlight'
 " }}}
 
 " {{{ snippets

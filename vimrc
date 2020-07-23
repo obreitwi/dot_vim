@@ -491,7 +491,7 @@ else
     " These settings were found experimentally
     command! FIncon set guifont=Inconsolata\ Medium:h12
     command! FInconP set guifont=Inconsolata\ for\ Powerline\ Medium:h12
-    command! FDejaP set guifont=DejaVu\ Sans\ Mono\ for\ Powerline:style=Book:h12
+    command! FDejaP set guifont=DejaVu\ Sans\ Mono\ for\ Powerline:style=Book:h11
     command! FInconL set guifont=Inconsolata\ Medium:h16
     command! FInconPL set guifont=Inconsolata\ for\ Powerline\ Medium:h14
     command! FDejaPL set guifont=DejaVu\ Sans\ Mono\ for\ Powerline:h14
