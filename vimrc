@@ -652,7 +652,7 @@ let g:airline_symbols.space = "\ua0"
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#show_buffers = 0
 
-if !g:powerline_available
+if 0 && !g:powerline_available
     let g:powerline_loaded=1
     set showmode
 
