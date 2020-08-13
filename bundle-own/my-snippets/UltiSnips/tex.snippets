@@ -1,3 +1,4 @@
+extends tex
 
 snippet efg "Insert a figure."
 \begin{figure}[${1:htbp!}]
@@ -119,4 +120,53 @@ snippet acro "DeclareAcronym"
   short=${2:$1},
   long=${3}
 }
+endsnippet
+
+# Arrows arrows arrows
+snippet -> "rightarrow" w
+$\rightarrow$
+endsnippet
+
+snippet --> "long rightarrow" w
+$\longrightarrow$
+endsnippet
+
+snippet => "Rightarrow" w
+$\Rightarrow$
+endsnippet
+
+snippet ==> "long Rightarrow" w
+$\Longrightarrow$
+endsnippet
+
+snippet <- "leftarrow" w
+$\leftarrow$
+endsnippet
+
+snippet <-- "long leftarrow" w
+$\longleftarrow$
+endsnippet
+
+snippet <= "Leftarrow" w
+$\Leftarrow$
+endsnippet
+
+snippet <== "long Leftarrow" w
+$\Longleftarrow$
+endsnippet
+
+snippet <-> "left-right arrow" w
+$\leftrightarrow$
+endsnippet
+
+snippet <--> "long left-right arrow" w
+$\Longleftrightarrow$
+endsnippet
+
+snippet <==> "Left-Right arrow" w
+$\Leftrightarrow$
+endsnippet
+
+snippet <=> "long Left-Right arrow" w
+$\Longleftrightarrow$
 endsnippet
