@@ -139,6 +139,7 @@ let g:deoplete#enable_at_startup = 1
 
 " {{{ syntax
 Plug 'jackguo380/vim-lsp-cxx-highlight'
+Plug 'cespare/vim-toml'
 " }}}
 
 " {{{ snippets
