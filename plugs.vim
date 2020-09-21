@@ -62,7 +62,8 @@ Plug 'vim-scripts/ReplaceWithRegister'
 Plug 'vimwiki/vimwiki'
 Plug 'w0rp/ale'
 Plug 'terryma/vim-expand-region'
-Plug 'justinmk/vim-sneak' " evaluate if useful
+Plug 'justinmk/vim-sneak'
+Plug 'tkhren/vim-fake'
 " }}}
 
 " {{{ black
