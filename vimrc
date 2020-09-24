@@ -696,7 +696,11 @@ elseif executable('ag')
     let g:ackprg = 'ag --nogroup --nocolor --column --follow --silent'
 endif
 
-noremap <leader>af :AckFromSearch
+" NOTE: <leader>a is also used for ale bindings
+noremap <leader>af  :AckFromSearch
+noremap <leader>aff :AckFromSearch
+noremap <leader>ai  :Ack --no-ignore-files
+noremap <leader>afi :AckFromSearch --no-ignore-files 
 
 " There is something iffy with the module environment
 let s:no_dispatch_hosts = ["dopamine", "ice", "ignatz", "hel", "beli"]
