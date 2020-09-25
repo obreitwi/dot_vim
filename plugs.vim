@@ -100,7 +100,9 @@ endif
 " }}}
 
 " {{{ CoC
-if has('nvim') || v:version >= 802
+let s:coc_hosts=["abed", "mucku", "helvetica.kip.uni-heidelberg.de"]
+let s:coc_enabled = (has('nvim') || v:version >= 802) && index(s:coc_hosts, s:hostname) >= 0
+if s:coc_enabled
   " Plug 'neoclide/coc.nvim', {'branch': 'release'}
   Plug 'neoclide/coc.nvim', {'do': 'yarn install --frozen-lockfile'}
   Plug 'neoclide/coc-json', {'do': 'yarn install --frozen-lockfile'}
@@ -135,12 +137,17 @@ else
     Plug 'roxma/vim-hug-neovim-rpc'
   endif
 endif
+
 let g:deoplete#enable_at_startup = 1
+
 " }}}
 
+
 " {{{ syntax
-Plug 'jackguo380/vim-lsp-cxx-highlight'
 Plug 'cespare/vim-toml'
+if s:coc_enabled
+  Plug 'jackguo380/vim-lsp-cxx-highlight'
+endif
 " }}}
 
 " {{{ snippets
@@ -148,7 +155,7 @@ if v:version >= 703
       " Plug 'chrisbra/histwin.vim'
 endif
 if v:version >= 704
-    Plug 'SirVer/ultisnips'
+  Plug 'SirVer/ultisnips'
 endif
 " }}}
 
