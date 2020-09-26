@@ -33,6 +33,12 @@ snippet nc "Nice comment" !b
  */
 endsnippet
 
+snippet dc "Doxygen comment" !b
+/**
+ * ${1}
+ */
+endsnippet
+
 
 snippet indef "Insert debug macro" !b
 #ifndef NDEBUG
@@ -64,5 +70,51 @@ snippet scis "Paste code with scissors"
 ${2}
 // ^^^ ------8<-----------
 ${3}
+endsnippet
+
+global !p
+def extract_types(text):
+	"""
+	Extract the names from typename specifies in templates (very crude!)
+	"""
+	return re.sub(r'(?:^|\btypename\b)\s*(\w+)(?:\s*=.*?(,|$))?', r'\1\2', text).strip()
+endglobal
+
+snippet ttf "Template type-based meta-function"
+template <typename${1: T}>
+struct ${2}
+{
+	using type = $0;
+};
+
+template <typename$1>
+using $2_t = typename $2<`!p snip.rv = extract_types(t[1])`>::type;
+endsnippet
+
+snippet tts "Template type-based meta-function specialization"
+template <typename${1: T}>
+struct ${2}
+{
+	using type = $0;
+};
+endsnippet
+
+snippet tvf "Template value-based meta-function"
+template <typename${1: T}>
+struct ${2}
+{
+	static constexpr ${3:bool} type = $0;
+};
+
+template <typename${1: T}>
+inline constexpr $3 $2_t = $2<`!p snip.rv = extract_types(t[1])`>::value;
+endsnippet
+
+snippet tvs "Template value-based meta-function specialization"
+template <typename${1: T}>
+struct ${2}
+{
+	static constexptr value = $0;
+};
 endsnippet
 
