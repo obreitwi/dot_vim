@@ -77,7 +77,9 @@ def extract_types(text):
 	"""
 	Extract the names from typename specifies in templates (very crude!)
 	"""
-	return re.sub(r'(?:^|\btypename\b)\s*(\w+)(?:\s*=.*?(,|$))?', r'\1\2', text).strip()
+	# remove defaulted typenames
+	text = re.sub(r'(?:^|\btypename\b)\s*(?:\s*=.*?(,|$))?', r'', text).strip()
+	return re.sub(r'(?:^|\btypename|auto\b)\s*(\w+)(?:\s*=.*?(,|$))?', r'\1\2', text).strip()
 endglobal
 
 snippet ttf "Template type-based meta-function"
@@ -103,11 +105,11 @@ snippet tvf "Template value-based meta-function"
 template <typename${1: T}>
 struct ${2}
 {
-	static constexpr ${3:bool} type = $0;
+	static constexpr ${3:bool} value = $0;
 };
 
-template <typename${1: T}>
-inline constexpr $3 $2_t = $2<`!p snip.rv = extract_types(t[1])`>::value;
+template <typename$1>
+inline constexpr $3 $2_v = $2<`!p snip.rv = extract_types(t[1])`>::value;
 endsnippet
 
 snippet tvs "Template value-based meta-function specialization"
@@ -116,5 +118,24 @@ struct ${2}
 {
 	static constexptr value = $0;
 };
+endsnippet
+
+snippet tbf "Template bool-based meta-function"
+template <typename${1: T}, typename = void>
+struct ${2} : public std::${3:false}_type
+{};
+
+template <typename$1>
+struct $2<T, $0> : public std::${3:true}_type
+{};
+
+template <typename$1>
+inline constexpr bool $2_v = $2<`!p snip.rv = extract_types(t[1])`>::value;
+endsnippet
+
+snippet tbs "Template bool-based meta-function specialization"
+template <typename${1: T}, typename = void>
+struct ${2}<T, $0> : public std::${3:true}_type
+{};
 endsnippet
 
