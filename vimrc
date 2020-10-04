@@ -449,6 +449,9 @@ autocmd vimrc FileType sh          setlocal tabstop=4 |     setlocal softtabstop
 
 autocmd vimrc FileType cpp         setlocal cinoptions=g0,hs,N-s,+0
 
+" NOTE: If editing other tex-flavors, set locally..
+let g:tex_flavor = "latex"
+
 " Put a linewidth indicator on a custom colum instead of the default 80
 let g:colorcolumn_custom = {
 \   'python': 88
@@ -1391,7 +1394,7 @@ let g:yankstack_map_keys = 0
 let g:vimfiler_as_default_explorer = 1
 " }}}
 " {{{ vimtex
-if hostname() == "abed"
+if hostname() == "abed" || hostname() == "mucku"
     let g:vimtex_view_general_viewer = 'zathura'
 else
     let g:vimtex_view_general_viewer = 'okular'

@@ -35,7 +35,6 @@ Plug 'kana/vim-textobj-entire'
 Plug 'kana/vim-textobj-indent'
 Plug 'kana/vim-textobj-user'
 Plug 'kien/ctrlp.vim'
-Plug 'lervag/vimtex'
 Plug 'majutsushi/tagbar'
 Plug 'mantiz/vim-plugin-dirsettings'
 Plug 'mhinz/vim-signify'
@@ -99,6 +98,15 @@ endif
 
 " }}}
 
+" {{{ latex
+let s:latex_hosts=["abed", "mucku"]
+let s:latex_enabled = index(s:latex_hosts, s:hostname) >= 0
+
+if s:latex_enabled
+  Plug 'lervag/vimtex'
+endif
+" }}}
+
 " {{{ CoC
 let s:coc_hosts=["abed", "mucku", "helvetica.kip.uni-heidelberg.de"]
 let s:coc_enabled = (has('nvim') || v:version >= 802) && index(s:coc_hosts, s:hostname) >= 0
@@ -117,6 +125,11 @@ if s:coc_enabled
     " Plug 'neoclide/coc-rls', {'do': 'yarn install --frozen-lockfile'}
   endif
   Plug 'neoclide/coc-vimtex', {'do': 'yarn install --frozen-lockfile'}
+
+  if s:latex_enabled
+    Plug 'fannheyward/coc-texlab', {'do': 'yarn install --frozen-lockfile'}
+  endif
+
   let g:using_coc=1
   " Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 else
@@ -141,7 +154,6 @@ endif
 let g:deoplete#enable_at_startup = 1
 
 " }}}
-
 
 " {{{ syntax
 Plug 'cespare/vim-toml'
