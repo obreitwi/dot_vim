@@ -575,6 +575,11 @@ else
     colorscheme gruvbox
     let g:airline_theme = 'gruvbox'
 endif
+
+if $COLORTERM == "truecolor"
+    " Set 24-bit colors if terminal supports it
+    set termguicolors
+endif
 " }}}
 
 " This is a test of a line that will exceed 81 characters per line and should trigger the new setting
