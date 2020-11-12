@@ -119,7 +119,7 @@ function! NextClosedFold(dir)
 endfunction
 
 " Set the color column depending on what filetype is set
-function! SetColorColumn()
+function! SetCustomColorColumn()
     if get(w:, "currentcolorcolumn") > 0
         call matchdelete(w:currentcolorcolumn)
         let w:currentcolorcolumn = 0
@@ -131,7 +131,7 @@ function! SetColorColumn()
     else
         let l:linewidth = 80
     endif
-    let w:currentcolorcolumn=matchadd('ColorColumn', '\%' . l:linewidth+1 . 'v', 100)
+    let w:currentcolorcolumn=matchadd("CustomColorColumn", "\%" . l:linewidth+1 . "v")
 endfunction
 
 " Dynamically adjust guifontsize
@@ -584,9 +584,9 @@ endif
 
 " This is a test of a line that will exceed 81 characters per line and should trigger the new setting
 " Highlight when a line exceeds 81 characters
-highlight ColorColumn ctermbg=magenta ctermfg=black
-" autocmd Syntax * call SetColorColumn()
-autocmd vimrc BufWinEnter * call SetColorColumn()
+highlight CustomColorColumn ctermbg=magenta ctermfg=black
+" autocmd Syntax * call SetCustomColorColumn()
+autocmd vimrc BufWinEnter * call SetCustomColorColumn()
 
 " trailing whitespace
 highlight default link ExtraWhitespace Error
