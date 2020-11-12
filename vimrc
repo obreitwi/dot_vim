@@ -1405,6 +1405,12 @@ else
     let g:vimtex_view_general_viewer = 'okular'
 endif
 let g:vimtex_fold_enabled = 1
+let g:vimtex_view_automatic = 0
+let g:tex_flavor='latex'
+
+if executable('tectonic')
+    let g:vimtex_compiler_method='tectonic'
+endif
 " }}}
 " {{{ YouCompleteMe (disabled)
 if 0 && g:ycm_requirements_met && index(g:hosts_ycm, hostname()) >= 0
