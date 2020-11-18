@@ -1077,6 +1077,12 @@ nnoremap <leader>F :tab G<CR>
 " nnoremap <silent> se     :FufEditDataFile<CR>
 " nnoremap <silent> sr     :FufRenewCache<CR>
 " }}}
+" {{{ fzf
+if g:fzf_found
+    nmap <silent> <leader>be :Buffers<CR>
+    nmap <silent> <c-p> :GFiles<CR>
+endif
+" }}}
 " {{{ Gundo
 if has('python3')
     let g:gundo_prefer_python3=1
@@ -1277,6 +1283,7 @@ map <silent> [usnips]e :UltiSnipsEdit<CR>
 " }}}
 " {{{ Unite
 let g:unite_enable_start_insert = 1
+
 let g:unite_split_rule = "botright"
 
 let g:neomru#file_mru_limit = 10000
@@ -1306,7 +1313,9 @@ nmap <Leader>u [unite]
 
 " nmap <silent> [unite]b :Unite -start-insert buffer<CR>
 " backward compatible mapping to BufferExplorer
-nmap <silent> <leader>be :Unite -no-start-insert buffer<CR>
+if !g:fzf_found
+    nmap <silent> <leader>be :Unite -no-start-insert buffer<CR>
+endif
 nmap <silent> [unite]m :Unite -no-start-insert file_mru<CR>
 nmap <silent> [unite]f :Unite -start-insert file_rec/async<CR>
 nmap <silent> [unite]g :Unite -no-quit -no-start-insert grep:.<CR>

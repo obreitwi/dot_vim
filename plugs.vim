@@ -34,7 +34,6 @@ Plug 'jceb/vim-orgmode'
 Plug 'kana/vim-textobj-entire'
 Plug 'kana/vim-textobj-indent'
 Plug 'kana/vim-textobj-user'
-Plug 'kien/ctrlp.vim'
 Plug 'majutsushi/tagbar'
 Plug 'mantiz/vim-plugin-dirsettings'
 Plug 'mhinz/vim-signify'
@@ -94,6 +93,21 @@ Plug 'obreitwi/vim-bling'
 let s:firenvim_hosts=["abed"]
 if 0 && index(s:firenvim_hosts, s:hostname) >= 0
   Plug 'glacambre/firenvim', { 'do': { _ -> firenvim#install(0) } }
+endif
+
+" }}}
+
+" {{{ fzf
+
+if executable('fzf')
+  let g:fzf_found = 1
+  " We rely on fzf being installed system-wide -> no call to #install()
+  Plug 'junegunn/fzf'
+  Plug 'junegunn/fzf.vim'
+else
+  let g:fzf_found = 0
+  " Fallback onto ctrlp
+  Plug 'kien/ctrlp.vim'
 endif
 
 " }}}
