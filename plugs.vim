@@ -138,9 +138,9 @@ if s:coc_enabled
     Plug 'fannheyward/coc-rust-analyzer', {'do': 'yarn install --frozen-lockfile'}
     " Plug 'neoclide/coc-rls', {'do': 'yarn install --frozen-lockfile'}
   endif
-  Plug 'neoclide/coc-vimtex', {'do': 'yarn install --frozen-lockfile'}
 
   if s:latex_enabled
+    Plug 'neoclide/coc-vimtex', {'do': 'yarn install --frozen-lockfile'}
     Plug 'fannheyward/coc-texlab', {'do': 'yarn install --frozen-lockfile'}
   endif
 
