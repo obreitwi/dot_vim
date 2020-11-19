@@ -1029,8 +1029,7 @@ au! BufEnter *.hpp let b:fswitchdst = 'cpp,cxx,cc' | let b:fswitchlocs = './'
 " {{{ Fugitive
 " Clean git objects when buffer is left
 autocmd vimrc BufReadPost fugitive://* set bufhidden=delete
-nnoremap <leader>f :Git<CR>:on<CR>
-nnoremap <leader>F :tab G<CR>
+nnoremap <leader>F :Git<CR>:on<CR>
 " }}}
 " {{{ Fuzzyfinder
 " let g:fuf_modesDisable = []
@@ -1079,8 +1078,15 @@ nnoremap <leader>F :tab G<CR>
 " }}}
 " {{{ fzf
 if g:fzf_found
+    nnoremap [fzf] <Nop>
+    nmap <leader>f [fzf]
     nmap <silent> <leader>be :Buffers<CR>
+    nmap <silent> [fzf]m :History<CR>
     nmap <silent> <c-p> :GFiles<CR>
+    nmap <silent> [fzf]f :Files<CR>
+    " Helptags shadowed by pathogen
+    command! -bar -bang FzfHelptags call fzf#vim#helptags(<bang>0)
+    nmap <silent> [fzf]h :FzfHelptags<CR>
 endif
 " }}}
 " {{{ Gundo
