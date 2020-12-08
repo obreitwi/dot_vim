@@ -1421,7 +1421,14 @@ else
 endif
 let g:vimtex_fold_enabled = 1
 let g:vimtex_view_automatic = 0
-let g:tex_flavor='latex'
+" let g:tex_flavor='latex'
+
+" Complete on cite= entries in acronyms
+let g:vimtex_complete_bib = {}
+let g:vimtex_complete_bib.custom_patterns = [ "\vcite=(\{[^\}]*|\a\w*)" ]
+
+" declare mintedbox as mintedenv
+autocmd vimrc Filetype tex call vimtex#syntax#core#new_region_env('texMintedZone', 'mintedbox', {'contains': 'texCmdEnv,texMintedEnvBgn'})
 
 if executable('tectonic')
     let g:vimtex_compiler_method='tectonic'
