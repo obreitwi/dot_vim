@@ -576,7 +576,7 @@ else
     let g:airline_theme = 'gruvbox'
 endif
 
-if $COLORTERM == "truecolor"
+if $COLORTERM == "truecolor" && has('nvim')
     " Set 24-bit colors if terminal supports it
     set termguicolors
 endif
