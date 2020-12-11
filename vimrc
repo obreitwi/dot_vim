@@ -1427,9 +1427,6 @@ let g:vimtex_view_automatic = 0
 let g:vimtex_complete_bib = {}
 let g:vimtex_complete_bib.custom_patterns = [ "\vcite=(\{[^\}]*|\a\w*)" ]
 
-" declare mintedbox as mintedenv
-autocmd vimrc Filetype tex call vimtex#syntax#core#new_region_env('texMintedZone', 'mintedbox', {'contains': 'texCmdEnv,texMintedEnvBgn'})
-
 if executable('tectonic')
     let g:vimtex_compiler_method='tectonic'
 endif
