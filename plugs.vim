@@ -129,7 +129,7 @@ if s:coc_enabled
   Plug 'neoclide/coc.nvim', {'do': 'yarn install --frozen-lockfile'}
   Plug 'neoclide/coc-json', {'do': 'yarn install --frozen-lockfile'}
   if executable('python')
-    Plug 'neoclide/coc-python', {'do': 'yarn install --frozen-lockfile'}
+    Plug 'fannheyward/coc-pyright', {'do': 'yarn install --frozen-lockfile'}
   endif
   if executable('java')
     Plug 'neoclide/coc-java', {'do': 'yarn install --frozen-lockfile'}
