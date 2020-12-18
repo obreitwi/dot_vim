@@ -912,6 +912,8 @@ if exists("g:using_coc") && g:using_coc == 1
     " use `:OR` for organize import of current buffer
     command! -nargs=0 OR   :call     CocAction('runCommand', 'editor.action.organizeImport')
 
+    command! -nargs=0 -complete=command CocSettings tabe $HOME/.vim/coc-settings.json
+
     " Using CocList
     " Show all diagnostics
     nnoremap <silent> [coc]a  :<C-u>CocList diagnostics<cr>
