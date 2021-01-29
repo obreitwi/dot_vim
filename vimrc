@@ -1428,6 +1428,7 @@ let g:vimtex_view_automatic = 0
 " Complete on cite= entries in acronyms
 let g:vimtex_complete_bib = {}
 let g:vimtex_complete_bib.custom_patterns = [ "\vcite=(\{[^\}]*|\a\w*)" ]
+let g:vimtex_compiler_latexmk = { 'continuous': 0 }
 
 if executable('tectonic')
     let g:vimtex_compiler_method='tectonic'
