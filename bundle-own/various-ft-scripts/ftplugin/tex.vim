@@ -9,6 +9,7 @@ setlocal wrap
 setlocal linebreak
 setlocal wrapmargin=8
 setlocal fo-=t
+setlocal modelineexpr
 " setlocal formatprg=par\ -w120qrg
 " setlocal formatprg=PARPROTECT\=_x09\ par\ -w120qrg
 " setlocal formatprg=PARQUOTE\=_x09\ par\ -w120qrgT2
@@ -168,3 +169,12 @@ setlocal iskeyword+=:
   " let g:Tex_ViewRule_pdf = "evince"
 " endif
 
+function! TexFoldAcronyms()
+  if getline(v:lnum) =~ '^\\DeclareAcronym{.*$'
+    return ">1"
+  elseif getline(v:lnum) =~ '^\\acro{.*$'
+    return ">1"
+  else
+    return "="
+  endif
+endfunction
