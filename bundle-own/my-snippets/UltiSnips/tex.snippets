@@ -174,3 +174,11 @@ endsnippet
 snippet th "Add -th" i
 $^\text{${1:th}}$
 endsnippet
+
+snippet url "URL with current date" i
+\url{$1} (visited on `date --iso`)
+endsnippet
+
+snippet furl "Footnote URL with current date" i
+\footnote{\url{$1} (visited on `date --iso`)}
+endsnippet

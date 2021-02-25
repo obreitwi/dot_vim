@@ -1227,6 +1227,9 @@ map <leader>st <Plug>(signify-toggle)
 " xmap \ <Plug>VSneakPrevious
 
 " }}}
+" {{{ sort-folds
+autocmd vimrc FileType bib let g:sort_folds_key_function="get_citekey"
+" }}}
 " {{{ Syntastic
 
 let g:syntastic_error_symbol='✗'
@@ -1428,7 +1431,15 @@ let g:vimtex_view_automatic = 0
 " Complete on cite= entries in acronyms
 let g:vimtex_complete_bib = {}
 let g:vimtex_complete_bib.custom_patterns = [ "\vcite=(\{[^\}]*|\a\w*)" ]
-let g:vimtex_compiler_latexmk = { 'continuous': 0 }
+" let g:vimtex_compiler_latexmk = { 'continuous': 0 }
+
+if filereadable("/opt/textidote/textidote.jar")
+    let g:vimtex_grammar_textidote = {
+          \ 'jar': '/opt/textidote/textidote.jar',
+          \ 'args': '',
+          \}
+    autocmd vimrc FileType tex      compiler textidote
+endif
 
 if executable('tectonic')
     let g:vimtex_compiler_method='tectonic'
