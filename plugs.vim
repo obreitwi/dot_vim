@@ -89,9 +89,9 @@ Plug 'obreitwi/vim-bling'
 
 " {{{ browser addons
 
-" revisit this with more time 
-let s:firenvim_hosts=["abed"]
-if 0 && index(s:firenvim_hosts, s:hostname) >= 0
+" revisit this with more time
+let s:firenvim_hosts=["mucku"]
+if index(s:firenvim_hosts, s:hostname) >= 0
   Plug 'glacambre/firenvim', { 'do': { _ -> firenvim#install(0) } }
 endif
 

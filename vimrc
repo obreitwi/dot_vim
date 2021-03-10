@@ -496,6 +496,7 @@ else
     command! FInconP set guifont=Inconsolata\ for\ Powerline\ Medium:h12
     command! FDejaP set guifont=DejaVu\ Sans\ Mono\ for\ Powerline:style=Book:h11
     command! FInconL set guifont=Inconsolata\ Medium:h16
+    command! FDejaPS set guifont=DejaVu\ Sans\ Mono\ for\ Powerline:h8
     command! FInconPL set guifont=Inconsolata\ for\ Powerline\ Medium:h14
     command! FDejaPL set guifont=DejaVu\ Sans\ Mono\ for\ Powerline:h14
     command! FDejaPVL set guifont=DejaVu\ Sans\ Mono\ for\ Powerline:h16
@@ -505,6 +506,8 @@ endif
 " Default font
 if g:opsystem == "windows"
     set guifont=Consolas:h10:cANSI
+elseif exists('g:started_by_firenvim')
+    FDejaPS
 else
     FDejaP
 end
@@ -538,7 +541,7 @@ let g:gruvbox_guisp_fallback='bg'
 " {{{ Common / GUI-Term settings
 syntax enable
 set background=dark
-if exists("g:neovide") || has("gui_running")
+if exists("g:neovide") || has("gui_running") || exists('g:started_by_firenvim')
     " colorscheme NeoSolarized
     " let g:airline_theme = 'solarized'
     " let g:neosolarized_contrast="normal"
