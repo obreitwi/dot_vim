@@ -446,6 +446,7 @@ autocmd vimrc FileType mail        setlocal textwidth=72 |  setlocal wrapmargin=
 autocmd vimrc FileType text        setlocal expandtab |     setlocal comments=fb:*,fb:#
 autocmd vimrc FileType zsh         setlocal expandtab |     setlocal tabstop=4 |     setlocal shiftwidth=4
 autocmd vimrc FileType sh          setlocal tabstop=4 |     setlocal softtabstop=4 | setlocal shiftwidth=4  | setlocal expandtab
+autocmd vimrc FileType gitcommit   setlocal tabstop=2 |     setlocal softtabstop=2 | setlocal shiftwidth=2  | setlocal expandtab
 
 autocmd vimrc FileType cpp         setlocal cinoptions=g0,hs,N-s,+0
 
