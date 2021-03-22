@@ -1028,6 +1028,31 @@ function! s:FakeInit()
 endfunction
 command! -nargs=0 FakeInit :call s:FakeInit()
 " }}}
+" {{{ firenvim
+if exists('g:started_by_firenvim')
+    let g:firenvim_config = {
+        \ 'globalSettings': {
+            \ 'alt': 'all',
+        \  },
+        \ 'localSettings': {
+            \ '.*': {
+                \ 'cmdline': 'neovim',
+                \ 'content': 'text',
+                \ 'priority': 0,
+                \ 'selector': 'textarea',
+                \ 'takeover': 'never',
+            \ },
+        \ }
+    \ }
+    au! vimrc VimEnter * AirlineToggle
+    set wrap
+    set noshowmode
+    set noruler
+    set laststatus=0
+    set noshowcmd
+    set cmdheight=1
+endif
+" }}}
 " {{{ FSwitch
 au! BufEnter *.cpp let b:fswitchdst = 'hpp,h' | let b:fswitchlocs = './'
 au! BufEnter *.hpp let b:fswitchdst = 'cpp,cxx,cc' | let b:fswitchlocs = './'
