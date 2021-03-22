@@ -477,7 +477,7 @@ autocmd vimrc BufNewFile,BufRead *.sli setf sli
 
 " {{{ mutt
 " au BufRead,BufNewFile /tmp/mutt-* set filetype=mail | nohl | set bg=dark | colo solarized | setlocal omnifunc=QueryCommandComplete
-au BufRead,BufNewFile /tmp/*mutt-* set filetype=mail | nohl | setlocal omnifunc=QueryCommandComplete
+au vimrc BufRead,BufNewFile /tmp/*mutt-* set filetype=mail | nohl | setlocal omnifunc=QueryCommandComplete
 let g:qcc_query_command="nottoomuch-addresses-reformatted"
 " }}}
 " }}}
