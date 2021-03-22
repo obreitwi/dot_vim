@@ -36,7 +36,6 @@ Plug 'kana/vim-textobj-indent'
 Plug 'kana/vim-textobj-user'
 Plug 'majutsushi/tagbar'
 Plug 'mantiz/vim-plugin-dirsettings'
-Plug 'mhinz/vim-signify'
 Plug 'michaeljsmith/vim-indent-object'
 Plug 'mileszs/ack.vim'
 Plug 'nathanaelkane/vim-indent-guides'
@@ -199,6 +198,12 @@ Plug 'morhetz/gruvbox'
 
 " tigrana: Tried it, fold headings blend in with the background -> not nice
 " Plug 'iKarith/tigrana'
+" }}}
+
+" {{{ git
+" See also fugitive and vim-git under tpope
+Plug 'airblade/vim-gitgutter'
+" Plug 'mhinz/vim-signify'
 " }}}
 
 " {{{ disabled stuff:
