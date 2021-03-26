@@ -90,7 +90,7 @@ Plug 'obreitwi/vim-bling'
 
 " revisit this with more time
 let s:firenvim_hosts=["mucku"]
-if index(s:firenvim_hosts, s:hostname) >= 0
+if index(s:firenvim_hosts, s:hostname) >= 0 && has('nvim')
   Plug 'glacambre/firenvim', { 'do': { _ -> firenvim#install(0) } }
 endif
 
