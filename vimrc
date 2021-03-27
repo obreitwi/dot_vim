@@ -1477,6 +1477,7 @@ endif
 " {{{ vimtex
 if hostname() == "abed" || hostname() == "mucku"
     let g:vimtex_view_general_viewer = 'zathura'
+    let g:vimtex_view_method = 'zathura'
 else
     let g:vimtex_view_general_viewer = 'okular'
 endif
@@ -1488,6 +1489,12 @@ let g:vimtex_view_automatic = 0
 let g:vimtex_complete_bib = {}
 let g:vimtex_complete_bib.custom_patterns = [ "\vcite=(\{[^\}]*|\a\w*)" ]
 " let g:vimtex_compiler_latexmk = { 'continuous': 0 }
+
+let g:vimtex_view_use_temp_files = 1
+
+if has('nvim')
+    let g:vimtex_latexmk_progname = 'nvr'
+endif
 
 if filereadable("/opt/textidote/textidote.jar")
     let g:vimtex_grammar_textidote = {
