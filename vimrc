@@ -691,40 +691,6 @@ if 0 && !g:powerline_available
 endif
 " }}}
 " {{{ Plugins
-" {{{ Ack.vim
-" ack is called differently on debian
-let s:true_ack_hosts = ["nurikum", "phaelon", "juno"]
-if index(s:true_ack_hosts, hostname()) < 0
-    let g:ackprg="ack-grep -H --nocolor --nogroup --column"
-else
-    let g:ackprg="ack -H --nocolor --nogroup --column"
-endif
-
-" see if there are alternatives
-if executable('rg')
-    let g:ackprg = 'rg --vimgrep'
-elseif executable('ag')
-    " Setup ag to be ack
-    let g:ackprg = 'ag --nogroup --nocolor --column --follow --silent'
-endif
-
-" NOTE: <leader>a is also used for ale bindings
-noremap <leader>af  :AckFromSearch
-noremap <leader>aff :AckFromSearch
-noremap <leader>ai  :Ack --no-ignore
-noremap <leader>afi :AckFromSearch --no-ignore
-
-" There is something iffy with the module environment
-let s:no_dispatch_hosts = ["dopamine", "ice", "ignatz", "hel", "beli"]
-if index(s:no_dispatch_hosts, hostname()) < 0
-    let g:ack_use_dispatch=1
-endif
-
-" }}}
-" {{{ AlignMaps
-" Disable AlignMaps since they are not being used currently
-let g:loaded_AlignMapsPlugin=1
-" }}}
 " {{{ ALE
 if s:power_online == '0'
     " disable power consuming features of ale when not running on AC power
@@ -766,22 +732,46 @@ map <silent> [ale]b <Plug>(ale_toggle_buffer)
 " let g:atp_imap_leader_2 = "/"
 " " au FileType tex au BufEnter imap <c-l> <c-x><c-o>
 " "}}}
-" {{{ BufferExplorer
-let g:bufExplorerFindActive=0        " Do not go to active window.
+" {{{ Ack.vim
+" ack is called differently on debian
+let s:true_ack_hosts = ["nurikum", "phaelon", "juno"]
+if index(s:true_ack_hosts, hostname()) < 0
+    let g:ackprg="ack-grep -H --nocolor --nogroup --column"
+else
+    let g:ackprg="ack -H --nocolor --nogroup --column"
+endif
+
+" see if there are alternatives
+if executable('rg')
+    let g:ackprg = 'rg --vimgrep'
+elseif executable('ag')
+    " Setup ag to be ack
+    let g:ackprg = 'ag --nogroup --nocolor --column --follow --silent'
+endif
+
+" NOTE: <leader>a is also used for ale bindings
+noremap <leader>af  :AckFromSearch
+noremap <leader>aff :AckFromSearch
+noremap <leader>ai  :Ack --no-ignore
+noremap <leader>afi :AckFromSearch --no-ignore
+
+" There is something iffy with the module environment
+let s:no_dispatch_hosts = ["dopamine", "ice", "ignatz", "hel", "beli"]
+if index(s:no_dispatch_hosts, hostname()) < 0
+    let g:ack_use_dispatch=1
+endif
+
 " }}}
-" {{{ black
-" Mnemonic is <c>ode-<f>ormat
-autocmd vimrc Filetype python nnoremap <buffer><Leader>cf :Black<CR>
-autocmd vimrc Filetype python vnoremap <buffer><Leader>cf :Black<CR>
-
-" have one virtualenv setting for everything
-let g:black_virtualenv="~/.vim/non-tracked/black"
-
-let g:black_linelength = 79
+" {{{ AlignMaps
+" Disable AlignMaps since they are not being used currently
+let g:loaded_AlignMapsPlugin=1
 " }}}
 " {{{ Bling
 let g:bling_time = 75
 let g:bling_count = 2
+" }}}
+" {{{ BufferExplorer
+let g:bufExplorerFindActive=0        " Do not go to active window.
 " }}}
 " {{{ Clang Complete
 
@@ -802,14 +792,448 @@ let g:clang_snippets = 1
 autocmd vimrc FileType c,cpp inoremap <c-l> <c-x><c-u>
 
 " }}}
+" {{{ Clewn
+command! SourceClewn source /usr/share/vim/vimfiles/macros/clewn_mappings.vim
+command! ResetClewn normal <F7>:source ~/.vimrc<CR>
+" }}}
+" {{{ CtrlP
+map <Leader>cm :CtrlPMRU<CR>
+let g:ctrlp_switch_buffer = 'et'
+set wildignore+=*/.git/*,*/.hg/*,*/.svn/*,*.pyc        " Linux/MacOSX
+" set wildignore+=*\\.git\\*,*\\.hg\\*,*\\.svn\\*  " Windows ('noshellslash')
+
+ " Sane Ignore 
+let g:ctrlp_custom_ignore = {
+    \ 'dir': '\.git$\|\.hg$\|\.svn$\|\.yardoc\|public\/images\|public\/system\|data\|log\|tmp$',
+    \ 'file': '\.exe$\|\.so$\|\.dat$'
+    \ }
+
+" Set the max files
+let g:ctrlp_max_files = 10000
+ 
+" Optimize file searching
+if has("unix")
+    let g:ctrlp_user_command = {
+    \ 'types': {
+    \ 1: ['.git/', 'cd %s && git ls-files']
+    \ },
+    \ 'fallback': 'find %s -type f | head -' . g:ctrlp_max_files
+    \ }
+endif
+" }}}
+" {{{ CtrlSF
+vmap <Leader>csf <Plug>CtrlSFVwordPath
+nmap <Leader>csf <Plug>CtrlSFPrompt
+" }}}
+" {{{ DelimitMate
+autocmd vimrc FileType tex let b:delimitMate_quotes = "\" ' $"
+autocmd vimrc FileType django let b:delimitMate_quotes = "\" ' %"
+autocmd vimrc FileType markdown let b:delimitMate_quotes = "\" ' *"
+let g:delimitMate_expand_cr = 1
+inoremap <C-Tab> <C-R>=delimitMate#JumpAny("\<C-Tab>")<CR>
+imap <C-G><C-G> <Plug>delimitMateS-Tab
+" }}}
+" {{{ Dispatch
+" let g:dispatch_handlers = [
+        " \ 'windows',
+        " \ 'iterm',
+        " \ 'x11',
+        " \ 'headless',
+        " \ 'tmux',
+        " \ 'screen',
+        " \ ]
+" }}}
+" {{{ Easymotion
+hi link EasyMotionTarget ErrorMsg
+hi link EasyMotionShade Comment
+" TODO: Check for any errors when easymotion reverted to default setting
+" let g:EasyMotion_leader_key = 'L'
+" }}}
+" {{{ Enhanced Commentify
+
+let g:EnhCommentifyPretty = 'Yes'
+let g:EnhCommentifyTraditionalMode = 'No'
+let g:EnhCommentifyFirstLineMode = 'Yes'
+" let g:EnhCommentifyRespectIndent = 'Yes'
+let g:EnhCommentifyRespectIndent = 'No'
+let g:EnhCommentifyBindInInsert = 'No'
+let g:EnhCommentifyUserBindings = 'yes'
+vmap <Leader>x <Plug>VisualFirstLine
+nmap <Leader>x <Plug>FirstLine
+
+" }}}
+" {{{ FSwitch
+au! BufEnter *.cpp let b:fswitchdst = 'hpp,h' | let b:fswitchlocs = './'
+au! BufEnter *.hpp let b:fswitchdst = 'cpp,cxx,cc' | let b:fswitchlocs = './'
+" }}}
+" {{{ Fugitive
+" Clean git objects when buffer is left
+autocmd vimrc BufReadPost fugitive://* set bufhidden=delete
+nnoremap <leader>F :Git<CR>:on<CR>
+" }}}
+" {{{ Fuzzyfinder
+" let g:fuf_modesDisable = []
+" let g:fuf_mrufile_maxItem = 400
+" let g:fuf_mrucmd_maxItem = 400
+" nnoremap <silent> sj     :FufBuffer<CR>
+" nnoremap <silent> sk     :FufFileWithCurrentBufferDir<CR>
+" nnoremap <silent> sK     :FufFileWithFullCwd<CR>
+" nnoremap <silent> s<C-k> :FufFile<CR>
+" nnoremap <silent> sl     :FufCoverageFileChange<CR>
+" nnoremap <silent> sL     :FufCoverageFileChange<CR>
+" nnoremap <silent> s<C-l> :FufCoverageFileRegister<CR>
+" nnoremap <silent> sd     :FufDirWithCurrentBufferDir<CR>
+" nnoremap <silent> sD     :FufDirWithFullCwd<CR>
+" nnoremap <silent> s<C-d> :FufDir<CR>
+" nnoremap <silent> sn     :FufMruFile<CR>
+" nnoremap <silent> sN     :FufMruFileInCwd<CR>
+" nnoremap <silent> sm     :FufMruCmd<CR>
+" nnoremap <silent> su     :FufBookmarkFile<CR>
+" nnoremap <silent> s<C-u> :FufBookmarkFileAdd<CR>
+" vnoremap <silent> s<C-u> :FufBookmarkFileAddAsSelectedText<CR>
+" nnoremap <silent> si     :FufBookmarkDir<CR>
+" nnoremap <silent> s<C-i> :FufBookmarkDirAdd<CR>
+" nnoremap <silent> st     :FufTag<CR>
+" nnoremap <silent> sT     :FufTag!<CR>
+" nnoremap <silent> s<C-]> :FufTagWithCursorWord!<CR>
+" nnoremap <silent> s,     :FufBufferTag<CR>
+" nnoremap <silent> s<     :FufBufferTag!<CR>
+" vnoremap <silent> s,     :FufBufferTagWithSelectedText!<CR>
+" vnoremap <silent> s<     :FufBufferTagWithSelectedText<CR>
+" nnoremap <silent> s}     :FufBufferTagWithCursorWord!<CR>
+" nnoremap <silent> s.     :FufBufferTagAll<CR>
+" nnoremap <silent> s>     :FufBufferTagAll!<CR>
+" vnoremap <silent> s.     :FufBufferTagAllWithSelectedText!<CR>
+" vnoremap <silent> s>     :FufBufferTagAllWithSelectedText<CR>
+" nnoremap <silent> s]     :FufBufferTagAllWithCursorWord!<CR>
+" nnoremap <silent> sg     :FufTaggedFile<CR>
+" nnoremap <silent> sG     :FufTaggedFile!<CR>
+" nnoremap <silent> so     :FufJumpList<CR>
+" nnoremap <silent> sp     :FufChangeList<CR>
+" nnoremap <silent> sq     :FufQuickfix<CR>
+" nnoremap <silent> sy     :FufLine<CR>
+" nnoremap <silent> sh     :FufHelp<CR>
+" nnoremap <silent> se     :FufEditDataFile<CR>
+" nnoremap <silent> sr     :FufRenewCache<CR>
+" }}}
+" {{{ Gundo
+if has('python3')
+    let g:gundo_prefer_python3=1
+endif
+map <Leader>gt :GundoToggle<CR>
+" }}}
+" {{{ Haskellmode
+let g:haddock_browser="/usr/bin/firefox"
+let g:haddock_docdir="/usr/share/doc/ghc/html/"
+" }}}
+" {{{ Histwin
+" map <Leader>u :Histwin<CR>
+" }}}
+" {{{ Jedi
+let g:jedi#documentation_command="<leader>k"
+let g:jedi#popup_on_dot=1
+let g:jedi#use_tabs_not_buffers=0
+" }}}
+" {{{ Large Files
+let g:LargeFile=100
+" }}}
+" {{{ Latex Journal
+" (my very first plugin, utterly useless, but I keep the " config for
+" sentimental sake)
+if g:opsystem == "CYGWIN_NT-6.1-WOW64"
+    let g:LatexNotesBase = "/cygdrive/c/Users/Desoxy/latexNotes/"
+elseif g:opsystem == "Linux"
+    let g:LatexNotesBase = "/home/obreitwi/.notes/"
+elseif g:opsystem == "windows"
+    let g:LatexNotesBase = "C:/Users/Desoxy/latexNotes"
+endif
+" }}}
+" {{{ Latex-Box
+let g:LatexBox_latexmk_async=1
+let g:LatexBox_output_type="pdf"
+let g:LatexBox_quickfix=2
+let g:LatexBox_show_warnings=0
+let g:LatexBox_latexmk_options="-pdf -pdflatex='pdflatex --shell-escape -synctex=1 \%O \%S'"
+let g:LatexBox_viewer="zathura"
+let g:LatexBox_fold_toc=0
+let g:tex_flavor='latex'
+" map <leader>ltt :LatexTOCToggle<CR>
+let g:LatexBox_custom_inden=0
+" }}}
+" {{{ LineDiff
+map <leader>ld :Linediff<CR>
+map <leader>dr :LinediffReset<CR>
+" }}}
+" {{{ Lusty
+let g:LustyJugglerSuppressRubyWarning = 1
+let g:LustyExplorerSuppressRubyWarning = 1
+map <leader>bg :LustyBufferGrep<CR>
+" }}}
+" {{{ NERDCommenter
+let g:NERDCustomDelimiters = {
+\ 'gitolite': { 'left': '#' },
+\ 'jinja' : { 'left': '{#', 'right': '#}'},
+\ 'less' : { 'left': '//' },
+\ 'sli' : { 'left': '%' },
+\ }
+" \ 'ruby': { 'left': '#', 'leftAlt': 'FOO', 'rightAlt': 'BAR' },
+" }}}
+" {{{ NERDTree
+let g:NERDTreeWinPos='right'
+let g:NERDTreeChDirMode='2'
+let g:NERDTreeIgnore=[ '\~$', '\.pyo$', '\.pyc$', '\.svn[\//]$', '\.swp$', '\.aux$' ]
+let g:NERDTreeSortOrder=['^__\.py$', '\/$', '*', '\.swp$', '\.bak$', '\~$']
+let g:NERDTreeHighlightCursorline=1
+let g:NERDSpaceDelims=1
+" Mappings and commands (not used anymore)
+command! -nargs=0 -complete=command Nt NERDTree
+" map <c-f> :NERDTreeToggle<CR>
+" }}}
+" {{{ Signify
+map <leader>st <Plug>(signify-toggle)
+" }}}
+" {{{ SimplyFold
+" autocmd BufWinEnter *.py setlocal foldexpr=SimpylFold(v:lnum) foldmethod=expr
+" autocmd BufWinLeave *.py setlocal foldexpr< foldmethod<
+" }}}
+" {{{ Sneak
+
+" yankstack conflicts with its mappings and has to option to turn them off
+" therefor we have to call setup and then overwrite the keys we need for the
+" time being
+" callc yankstack#setup()
+" nmap s <Plug>SneakForward
+" nmap S <Plug>SneakBackward
+" nmap , <Plug>SneakPrevious
+" nmap \ <Plug>SneakPrevious
+" xmap s <Plug>VSneakForward
+" xmap Z <Plug>VSneakBackward
+" xmap ; <Plug>VSneakNext
+" xmap , <Plug>VSneakPrevious
+" xmap \ <Plug>VSneakPrevious
+
+" }}}
+" {{{ Syntastic
+
+let g:syntastic_error_symbol='✗'
+" let g:syntastic_warning_symbol='⚠'
+let g:syntastic_warning_symbol='⚐'
+" let g:syntastic_warning_symbol='☇'
+let g:syntastic_enable_signs=1
+if hostname() == "phaelon"
+    let g:syntastic_python_checkers = ['pylint2']
+endif
+if hostname() == "dopamine"
+    let g:syntastic_python_checkers = ['pyflakes']
+endif
+let g:syntastic_python_pylint_post_args = '-d C0103,C0111,W0603'
+
+" }}}
+" {{{ Tabularize 
+map <Leader>tb :Tabularize/
+map <Leader>tt :Tabularize<CR>
+map <Leader>t<Leader> :Tabularize 
+map <Leader>tm :tabe ~/.vim/bundle-own/tabular-maps/after/plugin/TabularMaps.vim<CR>
+" map <Leader>t :Tabularize
+" }}}
+" {{{ Tagbar
+nnoremap <c-y> :TagbarToggle<CR>
+let g:tagbar_autofocus = 1
+" }}}
+" {{{ Taglist
+nnoremap <c-s> :TlistToggle<CR>
+command! -nargs=0 -complete=command TU :TlistUpdate
+
+" }}}
+" {{{ TaskWarrior
+let g:task_report_name="long"
+" }}}
+" {{{ Tasklist
+map <Leader>tl <Plug>TaskList
+let g:tlRememberPosition = 1
+" command! -nargs=0 -complete=command TL TaskList
+" }}}
+" {{{ Ultisnips
+let g:UltiSnipsSnippetDirectories=["~/.vim/bundle-own/my-snippets/UltiSnips"]
+" let g:UltiSnipsListSnippets="<leader>ls"
+" let g:UltiSnipsExpandTrigger="<tab>"
+let g:UltiSnipsExpandTrigger="<c-j>"
+let g:UltiSnipsJumpForwardTrigger="<c-l>"
+let g:UltiSnipsJumpBackwardTrigger="<c-h>"
+if !has('python3') && !has('pythonx')
+    let g:UltiSnipsUsePythonVersion=2
+endif
+
+nnoremap [usnips] <Nop>
+nmap <Leader>s [usnips]
+
+map <silent> [usnips]l <Esc>:call UltiSnips#ListSnippets()<CR>
+map <silent> [usnips]e :UltiSnipsEdit<CR>
+" }}}
+" {{{ Unite
+let g:unite_enable_start_insert = 1
+
+let g:unite_split_rule = "botright"
+
+let g:neomru#file_mru_limit = 10000
+let g:neomru#directory_mru_limit = 10000
+
+" this causes a lot of stress for NFS systems
+let g:neomru#do_validate = 0
+" note: use :NeoMRUReload to update the mru files
+
+let g:unite_source_rec_async_command = 'ag --nocolor --nogroup --hidden -f -g ""'
+
+let g:unite_source_grep_max_candidates = 10000
+
+" from unite doc :help unit-source-grep
+if executable('ag')
+  " Use ag (the silver searcher)
+  " https://github.com/ggreer/the_silver_searcher
+  let g:unite_source_grep_command = 'ag'
+  let g:unite_source_grep_default_opts =
+  \ '-f --vimgrep --smart-case --hidden --nocolor ' .
+  \ '--ignore ''.hg'' --ignore ''.svn'' --ignore ''.git'' --ignore ''.bzr'''
+  let g:unite_source_grep_recursive_opt = ''
+endif
+
+nnoremap [unite] <Nop>
+nmap <Leader>u [unite]
+
+" nmap <silent> [unite]b :Unite -start-insert buffer<CR>
+" backward compatible mapping to BufferExplorer
+if !g:fzf_found
+    nmap <silent> <leader>be :Unite -no-start-insert buffer<CR>
+endif
+nmap <silent> [unite]m :Unite -no-start-insert file_mru<CR>
+nmap <silent> [unite]f :Unite -start-insert file_rec/async<CR>
+nmap <silent> [unite]g :Unite -no-quit -no-start-insert grep:.<CR>
+nmap <silent> [unite]y :Unite -no-start-insert history/yank<CR>
+" Unite-Outline
+nmap <silent> [Unite]o :Unite outline<CR>
+" neoyank-specific
+let g:neoyank#save_registers = ['"', '1']
+" }}}
+" {{{ Vertigo
+nnoremap <silent> <Space>j :<C-U>VertigoDown n<CR>
+vnoremap <silent> <Space>j :<C-U>VertigoDown v<CR>
+onoremap <silent> <Space>j :<C-U>VertigoDown o<CR>
+nnoremap <silent> <Space>k :<C-U>VertigoUp n<CR>
+vnoremap <silent> <Space>k :<C-U>VertigoUp v<CR>
+onoremap <silent> <Space>k :<C-U>VertigoUp o<CR>
+" }}}
+" {{{ VimFiler
+let g:vimfiler_as_default_explorer = 1
+" }}}
+" {{{ Vimpad
+" if hostname() == "phaelon" || hostname() == "nurikum"
+    " let g:pad_use_default_mappings = 0
+    " " exec "au BufReadPre ".g:pad_dir."* setlocal directory = /tmp/"
+    " let g:pad_dir = "~/.notes/"
+    " autocmd vimrc BufReadPre,FileReadPre ~/.notes/* setlocal noswapfile | setlocal directory=~/tmp | setlocal swapfile | setlocal bufhidden=delete
+    " nmap <Leader><esc> :ListPads<CR>
+    " nmap <Leader>s :call pad#SearchPads()<CR>
+    " nmap <Leader>n :OpenPad<CR>
+    " autocmd vimrc BufReadPost __pad__ setlocal bufhidden=delete
+" else
+    " let g:loaded_pad = 1
+" endif
+" }}}
+" {{{ Vimux
+" Run the current file with rspec
+map <Leader>rb :call VimuxRunCommand("clear; rspec " . bufname("%"))<CR>
+" Prompt for a command to run
+map <Leader>rp :VimuxPromptCommand<CR>
+" Run last command executed by VimuxRunCommand
+map <Leader>rl :VimuxRunLastCommand<CR>
+" Inspect runner pane
+map <Leader>ri :VimuxInspectRunner<CR>
+" Close all other tmux panes in current window
+map <Leader>rx :VimuxClosePanes<CR>
+" Close vim tmux runner opened by VimuxRunCommand
+map <Leader>rq :VimuxCloseRunner<CR>
+" Interrupt any command running in the runner pane
+map <Leader>rs :VimuxInterruptRunner<CR>
+command! -nargs=+ -complete=file RR call VimuxRunCommand("clear; " . expand(<q-args>))
+" }}}
+" {{{ Vimwiki
+let g:vimwiki_table_mappings = 0
+" No vimwiki syntax for markdown files outside of wiki path
+let g:vimwiki_global_ext = 0
+
+let wiki_sync = {}
+let wiki_sync.path = '~/.vimwiki/'
+let wiki_sync.path_html = '~/doc/wiki_html/'
+let wiki_sync.syntax = 'markdown'
+let wiki_sync.ext = '.md'
+
+" let wiki_sync.html_template = '~/public_html/template.tpl'
+let wiki_sync.nested_syntaxes = {'python': 'python', 'c++': 'cpp', 'rust': 'rs', 'haskell': 'hs'}
+
+let g:vimwiki_list = [wiki_sync]
+
+map ]d <Plug>VimwikiDiaryNextDay
+map [d <Plug>VimwikiDiaryPrevDay
+
+" nmap <leader>ws :VimwikiSearch 
+
+" Folding
+let g:vimwiki_folding='expr'
+" }}}
+" {{{ XPTemplate
+" let g:xptemplate_key='<c-m>'
+let g:xptemplate_brace_complete=1
+let g:xptemplate_vars="$author=Oliver Breitwieser&$email=oliver.breitwieser@gmail.com"
+let g:snips_author = 'Oliver Breitwieser'
+autocmd vimrc FileType tex let g:xptemplate_brace_completes=0
+autocmd vimrc FileType vim let g:xptemplate_brace_completes=0
+" }}}
+" {{{ Yank Stack
+let g:yankstack_map_keys = 0
+" call yankstack#setup() " currently called in sneak configuration
+" Mappings
+" nmap <leader>y :Yanks<CR>
+" nmap <leader>p <Plug>yankstack_substitute_older_paste
+" nmap <leader>P <Plug>yankstack_substitute_newer_paste
+" }}}
+" {{{ YouCompleteMe (disabled)
+if 0 && g:ycm_requirements_met && index(g:hosts_ycm, hostname()) >= 0
+    let g:ycm_semantic_triggers = {'haskell' : ['.']}
+
+    " mappings
+    nnoremap [ycm] <Nop>
+    nmap <Leader>y [ycm]
+    nnoremap [ycm]y :YcmCompleter 
+    nnoremap [ycm]g :YcmCompleter GoTo<CR>
+    nnoremap [ycm]f :YcmCompleter GoToDefinition<CR>
+    nnoremap [ycm]d :YcmCompleter GetDoc<CR>
+    nnoremap [ycm]t :YcmCompleter GetType<CR>
+
+    let g:ycm_confirm_extra_conf=0
+
+    " Recommendations from https://clang.llvm.org/extra/clangd/Installation.html
+    " Let clangd fully control code completion
+    let g:ycm_clangd_uses_ycmd_caching = 0
+    " Use installed clangd, not YCM-bundled clangd which doesn't get updates.
+    let g:ycm_clangd_binary_path = exepath('clangd')
+    " let g:ycm_clangd_binary_path = exepath('strace') . ' -o /tmp/clangd.log -e trace=%file ' . exepath('clangd')
+    " let g:ycm_clangd_args=['-ferror-limit=0']
+endif
+" }}}
+" {{{ black
+" Mnemonic is <c>ode-<f>ormat
+autocmd vimrc Filetype python nnoremap <buffer><Leader>cf :Black<CR>
+autocmd vimrc Filetype python vnoremap <buffer><Leader>cf :Black<CR>
+
+" have one virtualenv setting for everything
+let g:black_virtualenv="~/.vim/non-tracked/black"
+
+let g:black_linelength = 79
+" }}}
 " {{{ clang-format
 autocmd vimrc Filetype c,cpp nnoremap <buffer><Leader>cf :ClangFormat<CR>
 autocmd vimrc Filetype c,cpp vnoremap <buffer><Leader>cf :ClangFormat<CR>
 autocmd vimrc Filetype c,cpp map <buffer><Leader>x <Plug>(operator-clang-format)
-" }}}
-" {{{ Clewn
-command! SourceClewn source /usr/share/vim/vimfiles/macros/clewn_mappings.vim
-command! ResetClewn normal <F7>:source ~/.vimrc<CR>
 " }}}
 " {{{ coc
 if exists("g:using_coc") && g:using_coc == 1
@@ -937,72 +1361,6 @@ if exists("g:using_coc") && g:using_coc == 1
     nnoremap <silent> [coc]p  :<C-u>CocListResume<CR>
 endif
 " }}}
-" {{{ CtrlSF
-vmap <Leader>csf <Plug>CtrlSFVwordPath
-nmap <Leader>csf <Plug>CtrlSFPrompt
-" }}}
-" {{{ CtrlP
-map <Leader>cm :CtrlPMRU<CR>
-let g:ctrlp_switch_buffer = 'et'
-set wildignore+=*/.git/*,*/.hg/*,*/.svn/*,*.pyc        " Linux/MacOSX
-" set wildignore+=*\\.git\\*,*\\.hg\\*,*\\.svn\\*  " Windows ('noshellslash')
-
- " Sane Ignore 
-let g:ctrlp_custom_ignore = {
-    \ 'dir': '\.git$\|\.hg$\|\.svn$\|\.yardoc\|public\/images\|public\/system\|data\|log\|tmp$',
-    \ 'file': '\.exe$\|\.so$\|\.dat$'
-    \ }
-
-" Set the max files
-let g:ctrlp_max_files = 10000
- 
-" Optimize file searching
-if has("unix")
-    let g:ctrlp_user_command = {
-    \ 'types': {
-    \ 1: ['.git/', 'cd %s && git ls-files']
-    \ },
-    \ 'fallback': 'find %s -type f | head -' . g:ctrlp_max_files
-    \ }
-endif
-" }}}
-" {{{ DelimitMate
-autocmd vimrc FileType tex let b:delimitMate_quotes = "\" ' $"
-autocmd vimrc FileType django let b:delimitMate_quotes = "\" ' %"
-autocmd vimrc FileType markdown let b:delimitMate_quotes = "\" ' *"
-let g:delimitMate_expand_cr = 1
-inoremap <C-Tab> <C-R>=delimitMate#JumpAny("\<C-Tab>")<CR>
-imap <C-G><C-G> <Plug>delimitMateS-Tab
-" }}}
-" {{{ Dispatch
-" let g:dispatch_handlers = [
-        " \ 'windows',
-        " \ 'iterm',
-        " \ 'x11',
-        " \ 'headless',
-        " \ 'tmux',
-        " \ 'screen',
-        " \ ]
-" }}}
-" {{{ Easymotion
-hi link EasyMotionTarget ErrorMsg
-hi link EasyMotionShade Comment
-" TODO: Check for any errors when easymotion reverted to default setting
-" let g:EasyMotion_leader_key = 'L'
-" }}}
-" {{{ Enhanced Commentify
-
-let g:EnhCommentifyPretty = 'Yes'
-let g:EnhCommentifyTraditionalMode = 'No'
-let g:EnhCommentifyFirstLineMode = 'Yes'
-" let g:EnhCommentifyRespectIndent = 'Yes'
-let g:EnhCommentifyRespectIndent = 'No'
-let g:EnhCommentifyBindInInsert = 'No'
-let g:EnhCommentifyUserBindings = 'yes'
-vmap <Leader>x <Plug>VisualFirstLine
-nmap <Leader>x <Plug>FirstLine
-
-" }}}
 " {{{ fake
 function! s:FakeInit()
     "" Choose a random element from a list
@@ -1053,60 +1411,6 @@ if exists('g:started_by_firenvim')
     set cmdheight=1
 endif
 " }}}
-" {{{ FSwitch
-au! BufEnter *.cpp let b:fswitchdst = 'hpp,h' | let b:fswitchlocs = './'
-au! BufEnter *.hpp let b:fswitchdst = 'cpp,cxx,cc' | let b:fswitchlocs = './'
-" }}}
-" {{{ Fugitive
-" Clean git objects when buffer is left
-autocmd vimrc BufReadPost fugitive://* set bufhidden=delete
-nnoremap <leader>F :Git<CR>:on<CR>
-" }}}
-" {{{ Fuzzyfinder
-" let g:fuf_modesDisable = []
-" let g:fuf_mrufile_maxItem = 400
-" let g:fuf_mrucmd_maxItem = 400
-" nnoremap <silent> sj     :FufBuffer<CR>
-" nnoremap <silent> sk     :FufFileWithCurrentBufferDir<CR>
-" nnoremap <silent> sK     :FufFileWithFullCwd<CR>
-" nnoremap <silent> s<C-k> :FufFile<CR>
-" nnoremap <silent> sl     :FufCoverageFileChange<CR>
-" nnoremap <silent> sL     :FufCoverageFileChange<CR>
-" nnoremap <silent> s<C-l> :FufCoverageFileRegister<CR>
-" nnoremap <silent> sd     :FufDirWithCurrentBufferDir<CR>
-" nnoremap <silent> sD     :FufDirWithFullCwd<CR>
-" nnoremap <silent> s<C-d> :FufDir<CR>
-" nnoremap <silent> sn     :FufMruFile<CR>
-" nnoremap <silent> sN     :FufMruFileInCwd<CR>
-" nnoremap <silent> sm     :FufMruCmd<CR>
-" nnoremap <silent> su     :FufBookmarkFile<CR>
-" nnoremap <silent> s<C-u> :FufBookmarkFileAdd<CR>
-" vnoremap <silent> s<C-u> :FufBookmarkFileAddAsSelectedText<CR>
-" nnoremap <silent> si     :FufBookmarkDir<CR>
-" nnoremap <silent> s<C-i> :FufBookmarkDirAdd<CR>
-" nnoremap <silent> st     :FufTag<CR>
-" nnoremap <silent> sT     :FufTag!<CR>
-" nnoremap <silent> s<C-]> :FufTagWithCursorWord!<CR>
-" nnoremap <silent> s,     :FufBufferTag<CR>
-" nnoremap <silent> s<     :FufBufferTag!<CR>
-" vnoremap <silent> s,     :FufBufferTagWithSelectedText!<CR>
-" vnoremap <silent> s<     :FufBufferTagWithSelectedText<CR>
-" nnoremap <silent> s}     :FufBufferTagWithCursorWord!<CR>
-" nnoremap <silent> s.     :FufBufferTagAll<CR>
-" nnoremap <silent> s>     :FufBufferTagAll!<CR>
-" vnoremap <silent> s.     :FufBufferTagAllWithSelectedText!<CR>
-" vnoremap <silent> s>     :FufBufferTagAllWithSelectedText<CR>
-" nnoremap <silent> s]     :FufBufferTagAllWithCursorWord!<CR>
-" nnoremap <silent> sg     :FufTaggedFile<CR>
-" nnoremap <silent> sG     :FufTaggedFile!<CR>
-" nnoremap <silent> so     :FufJumpList<CR>
-" nnoremap <silent> sp     :FufChangeList<CR>
-" nnoremap <silent> sq     :FufQuickfix<CR>
-" nnoremap <silent> sy     :FufLine<CR>
-" nnoremap <silent> sh     :FufHelp<CR>
-" nnoremap <silent> se     :FufEditDataFile<CR>
-" nnoremap <silent> sr     :FufRenewCache<CR>
-" }}}
 " {{{ fzf
 if g:fzf_found
     nnoremap [fzf] <Nop>
@@ -1123,18 +1427,8 @@ endif
 " {{{ gitgutter
 nmap <leader>gf :GitGutterFold<CR>
 " }}}
-" {{{ Gundo
-if has('python3')
-    let g:gundo_prefer_python3=1
-endif
-map <Leader>gt :GundoToggle<CR>
-" }}}
-" {{{ Haskellmode
-let g:haddock_browser="/usr/bin/firefox"
-let g:haddock_docdir="/usr/share/doc/ghc/html/"
-" }}}
-" {{{ Histwin
-" map <Leader>u :Histwin<CR>
+" {{{ iPython
+vmap <silent> <leader>ss :python dedent_run_these_lines()<CR>
 " }}}
 " {{{ intero
 nnoremap [intero] <Nop>
@@ -1149,74 +1443,11 @@ nnoremap <silent> [intero]t :InteroGenericType<CR>
 nnoremap <silent> [intero]T :InteroType<CR>
 " nnoremap <silent> [intero]t <Plug>InteroGenericType
 " }}}
-" {{{ iPython
-vmap <silent> <leader>ss :python dedent_run_these_lines()<CR>
-" }}}
-" {{{ Jedi
-let g:jedi#documentation_command="<leader>k"
-let g:jedi#popup_on_dot=1
-let g:jedi#use_tabs_not_buffers=0
-" }}}
-" {{{ Latex-Box
-let g:LatexBox_latexmk_async=1
-let g:LatexBox_output_type="pdf"
-let g:LatexBox_quickfix=2
-let g:LatexBox_show_warnings=0
-let g:LatexBox_latexmk_options="-pdf -pdflatex='pdflatex --shell-escape -synctex=1 \%O \%S'"
-let g:LatexBox_viewer="zathura"
-let g:LatexBox_fold_toc=0
-let g:tex_flavor='latex'
-" map <leader>ltt :LatexTOCToggle<CR>
-let g:LatexBox_custom_inden=0
-" }}}
-" {{{ Large Files
-let g:LargeFile=100
-" }}}
-" {{{ Latex Journal
-" (my very first plugin, utterly useless, but I keep the " config for
-" sentimental sake)
-if g:opsystem == "CYGWIN_NT-6.1-WOW64"
-    let g:LatexNotesBase = "/cygdrive/c/Users/Desoxy/latexNotes/"
-elseif g:opsystem == "Linux"
-    let g:LatexNotesBase = "/home/obreitwi/.notes/"
-elseif g:opsystem == "windows"
-    let g:LatexNotesBase = "C:/Users/Desoxy/latexNotes"
-endif
-" }}}
-" {{{ LineDiff
-map <leader>ld :Linediff<CR>
-map <leader>dr :LinediffReset<CR>
-" }}}
 " {{{ ledger
 " let g:ledger_bin="hledger"
 let g:ledger_maxwith = 80
 let g:ledger_fillstring = "······"
 let g:ledger_detailed_first = 1
-" }}}
-" {{{ Lusty
-let g:LustyJugglerSuppressRubyWarning = 1
-let g:LustyExplorerSuppressRubyWarning = 1
-map <leader>bg :LustyBufferGrep<CR>
-" }}}
-" {{{ NERDCommenter
-let g:NERDCustomDelimiters = {
-\ 'gitolite': { 'left': '#' },
-\ 'jinja' : { 'left': '{#', 'right': '#}'},
-\ 'less' : { 'left': '//' },
-\ 'sli' : { 'left': '%' },
-\ }
-" \ 'ruby': { 'left': '#', 'leftAlt': 'FOO', 'rightAlt': 'BAR' },
-" }}}
-" {{{ NERDTree
-let g:NERDTreeWinPos='right'
-let g:NERDTreeChDirMode='2'
-let g:NERDTreeIgnore=[ '\~$', '\.pyo$', '\.pyc$', '\.svn[\//]$', '\.swp$', '\.aux$' ]
-let g:NERDTreeSortOrder=['^__\.py$', '\/$', '*', '\.swp$', '\.bak$', '\~$']
-let g:NERDTreeHighlightCursorline=1
-let g:NERDSpaceDelims=1
-" Mappings and commands (not used anymore)
-command! -nargs=0 -complete=command Nt NERDTree
-" map <c-f> :NERDTreeToggle<CR>
 " }}}
 " {{{ netrw
 " Tweaks for browsing
@@ -1235,220 +1466,13 @@ let g:rainbow_active=0
 autocmd vimrc Filetype rust nnoremap <buffer><Leader>cf :RustFmt<CR>
 autocmd vimrc Filetype rust vnoremap <buffer><Leader>cf :RustFmtRange<CR>
 " }}}
-" {{{ Signify
-map <leader>st <Plug>(signify-toggle)
-" }}}
-" {{{ SimplyFold
-" autocmd BufWinEnter *.py setlocal foldexpr=SimpylFold(v:lnum) foldmethod=expr
-" autocmd BufWinLeave *.py setlocal foldexpr< foldmethod<
-" }}}
-" {{{ Sneak
-
-" yankstack conflicts with its mappings and has to option to turn them off
-" therefor we have to call setup and then overwrite the keys we need for the
-" time being
-" callc yankstack#setup()
-" nmap s <Plug>SneakForward
-" nmap S <Plug>SneakBackward
-" nmap , <Plug>SneakPrevious
-" nmap \ <Plug>SneakPrevious
-" xmap s <Plug>VSneakForward
-" xmap Z <Plug>VSneakBackward
-" xmap ; <Plug>VSneakNext
-" xmap , <Plug>VSneakPrevious
-" xmap \ <Plug>VSneakPrevious
-
-" }}}
 " {{{ sort-folds
 autocmd vimrc FileType bib let g:sort_folds_key_function="get_citekey"
-" }}}
-" {{{ Syntastic
-
-let g:syntastic_error_symbol='✗'
-" let g:syntastic_warning_symbol='⚠'
-let g:syntastic_warning_symbol='⚐'
-" let g:syntastic_warning_symbol='☇'
-let g:syntastic_enable_signs=1
-if hostname() == "phaelon"
-    let g:syntastic_python_checkers = ['pylint2']
-endif
-if hostname() == "dopamine"
-    let g:syntastic_python_checkers = ['pyflakes']
-endif
-let g:syntastic_python_pylint_post_args = '-d C0103,C0111,W0603'
-
-" }}}
-" {{{ Tabularize 
-map <Leader>tb :Tabularize/
-map <Leader>tt :Tabularize<CR>
-map <Leader>t<Leader> :Tabularize 
-map <Leader>tm :tabe ~/.vim/bundle-own/tabular-maps/after/plugin/TabularMaps.vim<CR>
-" map <Leader>t :Tabularize
-" }}}
-" {{{ Tagbar
-nnoremap <c-y> :TagbarToggle<CR>
-let g:tagbar_autofocus = 1
-" }}}
-" {{{ Taglist
-nnoremap <c-s> :TlistToggle<CR>
-command! -nargs=0 -complete=command TU :TlistUpdate
-
-" }}}
-" {{{ Tasklist
-map <Leader>tl <Plug>TaskList
-let g:tlRememberPosition = 1
-" command! -nargs=0 -complete=command TL TaskList
-" }}}
-" {{{ TaskWarrior
-let g:task_report_name="long"
 " }}}
 " {{{ tidal
 if has("nvim")
     let g:tidal_target = "terminal"
 endif
-" }}}
-" {{{ Ultisnips
-let g:UltiSnipsSnippetDirectories=["~/.vim/bundle-own/my-snippets/UltiSnips"]
-" let g:UltiSnipsListSnippets="<leader>ls"
-" let g:UltiSnipsExpandTrigger="<tab>"
-let g:UltiSnipsExpandTrigger="<c-j>"
-let g:UltiSnipsJumpForwardTrigger="<c-l>"
-let g:UltiSnipsJumpBackwardTrigger="<c-h>"
-if !has('python3') && !has('pythonx')
-    let g:UltiSnipsUsePythonVersion=2
-endif
-
-nnoremap [usnips] <Nop>
-nmap <Leader>s [usnips]
-
-map <silent> [usnips]l <Esc>:call UltiSnips#ListSnippets()<CR>
-map <silent> [usnips]e :UltiSnipsEdit<CR>
-" }}}
-" {{{ Unite
-let g:unite_enable_start_insert = 1
-
-let g:unite_split_rule = "botright"
-
-let g:neomru#file_mru_limit = 10000
-let g:neomru#directory_mru_limit = 10000
-
-" this causes a lot of stress for NFS systems
-let g:neomru#do_validate = 0
-" note: use :NeoMRUReload to update the mru files
-
-let g:unite_source_rec_async_command = 'ag --nocolor --nogroup --hidden -f -g ""'
-
-let g:unite_source_grep_max_candidates = 10000
-
-" from unite doc :help unit-source-grep
-if executable('ag')
-  " Use ag (the silver searcher)
-  " https://github.com/ggreer/the_silver_searcher
-  let g:unite_source_grep_command = 'ag'
-  let g:unite_source_grep_default_opts =
-  \ '-f --vimgrep --smart-case --hidden --nocolor ' .
-  \ '--ignore ''.hg'' --ignore ''.svn'' --ignore ''.git'' --ignore ''.bzr'''
-  let g:unite_source_grep_recursive_opt = ''
-endif
-
-nnoremap [unite] <Nop>
-nmap <Leader>u [unite]
-
-" nmap <silent> [unite]b :Unite -start-insert buffer<CR>
-" backward compatible mapping to BufferExplorer
-if !g:fzf_found
-    nmap <silent> <leader>be :Unite -no-start-insert buffer<CR>
-endif
-nmap <silent> [unite]m :Unite -no-start-insert file_mru<CR>
-nmap <silent> [unite]f :Unite -start-insert file_rec/async<CR>
-nmap <silent> [unite]g :Unite -no-quit -no-start-insert grep:.<CR>
-nmap <silent> [unite]y :Unite -no-start-insert history/yank<CR>
-" Unite-Outline
-nmap <silent> [Unite]o :Unite outline<CR>
-" neoyank-specific
-let g:neoyank#save_registers = ['"', '1']
-" }}}
-" {{{ Vertigo
-nnoremap <silent> <Space>j :<C-U>VertigoDown n<CR>
-vnoremap <silent> <Space>j :<C-U>VertigoDown v<CR>
-onoremap <silent> <Space>j :<C-U>VertigoDown o<CR>
-nnoremap <silent> <Space>k :<C-U>VertigoUp n<CR>
-vnoremap <silent> <Space>k :<C-U>VertigoUp v<CR>
-onoremap <silent> <Space>k :<C-U>VertigoUp o<CR>
-" }}}
-" {{{ Vimpad
-" if hostname() == "phaelon" || hostname() == "nurikum"
-    " let g:pad_use_default_mappings = 0
-    " " exec "au BufReadPre ".g:pad_dir."* setlocal directory = /tmp/"
-    " let g:pad_dir = "~/.notes/"
-    " autocmd vimrc BufReadPre,FileReadPre ~/.notes/* setlocal noswapfile | setlocal directory=~/tmp | setlocal swapfile | setlocal bufhidden=delete
-    " nmap <Leader><esc> :ListPads<CR>
-    " nmap <Leader>s :call pad#SearchPads()<CR>
-    " nmap <Leader>n :OpenPad<CR>
-    " autocmd vimrc BufReadPost __pad__ setlocal bufhidden=delete
-" else
-    " let g:loaded_pad = 1
-" endif
-" }}}
-" {{{ Vimux
-" Run the current file with rspec
-map <Leader>rb :call VimuxRunCommand("clear; rspec " . bufname("%"))<CR>
-" Prompt for a command to run
-map <Leader>rp :VimuxPromptCommand<CR>
-" Run last command executed by VimuxRunCommand
-map <Leader>rl :VimuxRunLastCommand<CR>
-" Inspect runner pane
-map <Leader>ri :VimuxInspectRunner<CR>
-" Close all other tmux panes in current window
-map <Leader>rx :VimuxClosePanes<CR>
-" Close vim tmux runner opened by VimuxRunCommand
-map <Leader>rq :VimuxCloseRunner<CR>
-" Interrupt any command running in the runner pane
-map <Leader>rs :VimuxInterruptRunner<CR>
-command! -nargs=+ -complete=file RR call VimuxRunCommand("clear; " . expand(<q-args>))
-" }}}
-" {{{ Vimwiki
-let g:vimwiki_table_mappings = 0
-" No vimwiki syntax for markdown files outside of wiki path
-let g:vimwiki_global_ext = 0
-
-let wiki_sync = {}
-let wiki_sync.path = '~/.vimwiki/'
-let wiki_sync.path_html = '~/doc/wiki_html/'
-let wiki_sync.syntax = 'markdown'
-let wiki_sync.ext = '.md'
-
-" let wiki_sync.html_template = '~/public_html/template.tpl'
-let wiki_sync.nested_syntaxes = {'python': 'python', 'c++': 'cpp', 'rust': 'rs', 'haskell': 'hs'}
-
-let g:vimwiki_list = [wiki_sync]
-
-map ]d <Plug>VimwikiDiaryNextDay
-map [d <Plug>VimwikiDiaryPrevDay
-
-" nmap <leader>ws :VimwikiSearch 
-
-" Folding
-let g:vimwiki_folding='expr'
-" }}}
-" {{{ XPTemplate
-" let g:xptemplate_key='<c-m>'
-let g:xptemplate_brace_complete=1
-let g:xptemplate_vars="$author=Oliver Breitwieser&$email=oliver.breitwieser@gmail.com"
-let g:snips_author = 'Oliver Breitwieser'
-autocmd vimrc FileType tex let g:xptemplate_brace_completes=0
-autocmd vimrc FileType vim let g:xptemplate_brace_completes=0
-" }}}
-" {{{ Yank Stack
-let g:yankstack_map_keys = 0
-" call yankstack#setup() " currently called in sneak configuration
-" Mappings
-" nmap <leader>y :Yanks<CR>
-" nmap <leader>p <Plug>yankstack_substitute_older_paste
-" nmap <leader>P <Plug>yankstack_substitute_newer_paste
-" }}}
-" {{{ VimFiler
-let g:vimfiler_as_default_explorer = 1
 " }}}
 " {{{ vimtex
 if hostname() == "abed" || hostname() == "mucku"
@@ -1475,30 +1499,6 @@ endif
 
 if executable('tectonic')
     let g:vimtex_compiler_method='tectonic'
-endif
-" }}}
-" {{{ YouCompleteMe (disabled)
-if 0 && g:ycm_requirements_met && index(g:hosts_ycm, hostname()) >= 0
-    let g:ycm_semantic_triggers = {'haskell' : ['.']}
-
-    " mappings
-    nnoremap [ycm] <Nop>
-    nmap <Leader>y [ycm]
-    nnoremap [ycm]y :YcmCompleter 
-    nnoremap [ycm]g :YcmCompleter GoTo<CR>
-    nnoremap [ycm]f :YcmCompleter GoToDefinition<CR>
-    nnoremap [ycm]d :YcmCompleter GetDoc<CR>
-    nnoremap [ycm]t :YcmCompleter GetType<CR>
-
-    let g:ycm_confirm_extra_conf=0
-
-    " Recommendations from https://clang.llvm.org/extra/clangd/Installation.html
-    " Let clangd fully control code completion
-    let g:ycm_clangd_uses_ycmd_caching = 0
-    " Use installed clangd, not YCM-bundled clangd which doesn't get updates.
-    let g:ycm_clangd_binary_path = exepath('clangd')
-    " let g:ycm_clangd_binary_path = exepath('strace') . ' -o /tmp/clangd.log -e trace=%file ' . exepath('clangd')
-    " let g:ycm_clangd_args=['-ferror-limit=0']
 endif
 " }}}
 " }}}
