@@ -18,8 +18,8 @@ setlocal spell
 " Apparently NERDTreeIngore cannot be a buffer variable
 let g:NERDTreeIgnore+=[ "\._log$", "\._aux$", "\.bbl$", "\.blg$", "\.idx", "\.log$", "\.toc$", "\.out$" ]
 
-setlocal iskeyword+=@-@
-setlocal iskeyword+=:
+" setlocal iskeyword+=@-@
+" setlocal iskeyword+=:
 
 function! TexFoldAcronyms()
   if getline(v:lnum) =~ '^\\DeclareAcronym{.*$'

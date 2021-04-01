@@ -1489,6 +1489,20 @@ let g:vimtex_view_automatic = 0
 let g:vimtex_complete_bib = {}
 let g:vimtex_complete_bib.custom_patterns = [ "\vcite=(\{[^\}]*|\a\w*)" ]
 " let g:vimtex_compiler_latexmk = { 'continuous': 0 }
+let g:vimtex_compiler_latexmk = {
+    \ 'build_dir' : '',
+    \ 'callback' : 1,
+    \ 'continuous' : 1,
+    \ 'executable' : 'latexmk',
+    \ 'hooks' : [],
+    \ 'options' : [
+    \   '-verbose',
+    \   '-file-line-error',
+    \   '-synctex=1',
+    \   '-interaction=nonstopmode',
+    \   '-shell-escape',
+    \ ],
+    \}
 
 let g:vimtex_view_use_temp_files = 1
 
