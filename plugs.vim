@@ -194,6 +194,11 @@ if v:version >= 704
 endif
 " }}}
 
+" {{{ statusline
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
+" }}}
+
 " {{{ audio stuff
 let s:tidal_hosts=["abed"]
 if index(s:tidal_hosts, s:hostname) >= 0
@@ -357,8 +362,6 @@ Plug 'obreitwi/vim-sort-folds'
 if has('nvim')
   " Needed because :SudoWrite does not work in neovim
   Plug 'lambdalisue/suda.vim'
-  Plug 'vim-airline/vim-airline'
-  Plug 'vim-airline/vim-airline-themes'
   Plug 'raghur/vim-ghost', {'do': ':GhostInstall'}
 endif
 
