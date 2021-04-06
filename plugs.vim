@@ -63,6 +63,16 @@ Plug 'justinmk/vim-sneak'
 Plug 'tkhren/vim-fake'
 " }}}
 
+" {{{ To evaluate
+" {{{ diffchar:
+" Expectations:
+" * Should improve diff readability.
+" Possible Problems:
+" * Might slow down larger diffs.
+Plug 'rickhowe/diffchar.vim'
+" }}}
+" }}}
+
 " {{{ black
 if has("python3")
 python3 << endpython3
