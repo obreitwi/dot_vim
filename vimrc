@@ -1524,6 +1524,8 @@ endif
 " }}}
 " }}}
 " {{{ Postscript
-augroup end
+" {{{ Fix airline sometimes not rendering when splitting
+au vimrc BufEnter * AirlineRefresh
+" }}}
 " vim: fdm=marker ts=4 sw=4 sts=4
 " }}}
