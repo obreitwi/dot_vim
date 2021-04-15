@@ -969,6 +969,9 @@ let g:LustyJugglerSuppressRubyWarning = 1
 let g:LustyExplorerSuppressRubyWarning = 1
 map <leader>bg :LustyBufferGrep<CR>
 " }}}
+" {{{ Mundo
+map <Leader>mt :MundoToggle<CR>
+" }}}
 " {{{ NERDCommenter
 let g:NERDCustomDelimiters = {
 \ 'gitolite': { 'left': '#' },

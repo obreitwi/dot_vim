@@ -71,6 +71,11 @@ Plug 'tkhren/vim-fake'
 " * Might slow down larger diffs.
 Plug 'rickhowe/diffchar.vim'
 " }}}
+" {{{ mundo
+" Expectations:
+" * Should be faster than gundo
+Plug 'simnalamburt/vim-mundo'
+" }}}
 " }}}
 
 " {{{ black
