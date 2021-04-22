@@ -74,6 +74,8 @@ Plug 'rickhowe/diffchar.vim'
 " {{{ mundo
 " Expectations:
 " * Should be faster than gundo
+" Notes:
+" * Seems to be as slow if history is large
 Plug 'simnalamburt/vim-mundo'
 " }}}
 " }}}
