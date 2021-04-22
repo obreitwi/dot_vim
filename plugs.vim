@@ -78,6 +78,11 @@ Plug 'rickhowe/diffchar.vim'
 " * Seems to be as slow if history is large
 Plug 'simnalamburt/vim-mundo'
 " }}}
+" {{{ latex-unicoder
+" Expectations:
+" * Should be faster than gundo
+Plug 'joom/latex-unicoder.vim'
+" }}}
 " }}}
 
 " {{{ black
