@@ -75,12 +75,11 @@ Plug 'rickhowe/diffchar.vim'
 " Expectations:
 " * Should be faster than gundo
 " Notes:
-" * Seems to be as slow if history is large
+" * It is as slow to open as gundo for large histories
+" * Seems faster on subsequent openings
 Plug 'simnalamburt/vim-mundo'
 " }}}
 " {{{ latex-unicoder
-" Expectations:
-" * Should be faster than gundo
 Plug 'joom/latex-unicoder.vim'
 " }}}
 " {{{ vim-titlecase

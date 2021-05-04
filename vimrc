@@ -970,7 +970,7 @@ let g:LustyExplorerSuppressRubyWarning = 1
 map <leader>bg :LustyBufferGrep<CR>
 " }}}
 " {{{ Mundo
-map <Leader>mt :MundoToggle<CR>
+map <Leader>mt :GundoToggle<CR>
 " }}}
 " {{{ NERDCommenter
 let g:NERDCustomDelimiters = {
@@ -1115,7 +1115,8 @@ nmap <silent> [unite]y :Unite -no-start-insert history/yank<CR>
 " Unite-Outline
 nmap <silent> [Unite]o :Unite outline<CR>
 " neoyank-specific
-let g:neoyank#save_registers = ['"', '1']
+let g:neoyank#save_registers = ['"', '1', '+']
+call neoyank#update()
 " }}}
 " {{{ Vertigo
 nnoremap <silent> <Space>j :<C-U>VertigoDown n<CR>
