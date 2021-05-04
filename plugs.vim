@@ -83,6 +83,11 @@ Plug 'simnalamburt/vim-mundo'
 " * Should be faster than gundo
 Plug 'joom/latex-unicoder.vim'
 " }}}
+" {{{ vim-titlecase
+" Expectations:
+" * Should not slow done text handling in large LaTeX files
+Plug 'christoomey/vim-titlecase'
+" }}}
 " }}}
 
 " {{{ black

@@ -1485,6 +1485,11 @@ if has("nvim")
     let g:tidal_target = "terminal"
 endif
 " }}}
+" {{{ titlecase
+" Add support for repeat (does not work this easily unfortunately)
+" silent! call repeat#set("\<Plug>Titlecase", v:count)
+" silent! call repeat#set("\<Plug>TitlecaseLine", v:count)
+" }}}
 " {{{ vimtex
 if hostname() == "abed" || hostname() == "mucku"
     let g:vimtex_view_general_viewer = 'zathura'
