@@ -970,7 +970,7 @@ let g:LustyExplorerSuppressRubyWarning = 1
 map <leader>bg :LustyBufferGrep<CR>
 " }}}
 " {{{ Mundo
-map <Leader>mt :GundoToggle<CR>
+" map <Leader>mt :GundoToggle<CR>
 " }}}
 " {{{ NERDCommenter
 let g:NERDCustomDelimiters = {
