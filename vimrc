@@ -870,6 +870,7 @@ au! BufEnter *.hpp let b:fswitchdst = 'cpp,cxx,cc' | let b:fswitchlocs = './'
 " Clean git objects when buffer is left
 autocmd vimrc BufReadPost fugitive://* set bufhidden=delete
 nnoremap <leader>F :Git<CR>:on<CR>
+nnoremap <leader>fa :Git add %<CR>
 nnoremap <leader>fc q:iGit commit -m ""<Left>
 " }}}
 " {{{ Fuzzyfinder
