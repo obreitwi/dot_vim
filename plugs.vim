@@ -143,6 +143,8 @@ let s:latex_enabled = index(s:latex_hosts, s:hostname) >= 0
 
 if s:latex_enabled
   Plug 'lervag/vimtex'
+  " Plug 'dpelle/vim-LanguageTool' Does not work!
+  Plug 'rhysd/vim-grammarous'
 endif
 " }}}
 
