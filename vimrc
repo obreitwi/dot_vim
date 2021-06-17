@@ -1436,6 +1436,9 @@ endif
 " {{{ gitgutter
 nmap <leader>gf :GitGutterFold<CR>
 " }}}
+" {{{ gofmt
+autocmd vimrc Filetype go nnoremap <buffer><Leader>cf :GoImports<CR>
+" }}}
 " {{{ iPython
 vmap <silent> <leader>ss :python dedent_run_these_lines()<CR>
 " }}}
