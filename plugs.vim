@@ -239,6 +239,13 @@ Plug 'airblade/vim-gitgutter'
 " Plug 'mhinz/vim-signify'
 " }}}
 
+" {{{ golang
+if executable('go')
+  Plug 'josa42/coc-go', {'do': 'yarn install --frozen-lockfile'}
+  Plug 'darrikonn/vim-gofmt'
+endif
+" }}}
+
 " {{{ disabled stuff:
 " {{{ plugin detox 
 " {{{ 2019
