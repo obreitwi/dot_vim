@@ -392,8 +392,13 @@ set backup
 " persistent undo
 if g:opsystem != "windows"
     " keep .vim repository free from temporary files
-    call EnsureDirExists( $HOME . '/.vimundo' )
-    set undodir=~/.vimundo//
+    if has("nvim-0.5.0")
+        call EnsureDirExists( $HOME . '/.cache/nvim/undo' )
+        set undodir=~/.cache/nvim/undo//
+    else
+        call EnsureDirExists( $HOME . '/.vimundo' )
+        set undodir=~/.vimundo//
+    endif
     set undofile
 endif
 
