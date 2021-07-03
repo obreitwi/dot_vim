@@ -393,8 +393,8 @@ set backup
 if g:opsystem != "windows"
     " keep .vim repository free from temporary files
     if has("nvim-0.5.0")
-        call EnsureDirExists( $HOME . '/.cache/nvim/undo' )
-        set undodir=~/.cache/nvim/undo//
+        call EnsureDirExists( $HOME . '/.local/share/nvim/undo' )
+        set undodir=~/.local/share/nvim/undo//
     else
         call EnsureDirExists( $HOME . '/.vimundo' )
         set undodir=~/.vimundo//
