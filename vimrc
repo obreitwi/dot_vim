@@ -752,10 +752,10 @@ else
 endif
 
 " NOTE: <leader>a is also used for ale bindings
-noremap <leader>af  :AckFromSearch
-noremap <leader>aff :AckFromSearch
-noremap <leader>ai  :Ack --no-ignore
-noremap <leader>afi :AckFromSearch --no-ignore
+noremap <leader>af  :AckFromSearch!
+noremap <leader>aff :AckFromSearch!
+noremap <leader>ai  :Ack! --no-ignore
+noremap <leader>afi :AckFromSearch! --no-ignore
 
 " There is something iffy with the module environment
 let s:no_dispatch_hosts = ["dopamine", "ice", "ignatz", "hel", "beli"]
