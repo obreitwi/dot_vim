@@ -738,20 +738,17 @@ map <silent> [ale]b <Plug>(ale_toggle_buffer)
 " " au FileType tex au BufEnter imap <c-l> <c-x><c-o>
 " "}}}
 " {{{ Ack.vim
-" ack is called differently on debian
-let s:true_ack_hosts = ["nurikum", "phaelon", "juno"]
-if index(s:true_ack_hosts, hostname()) < 0
-    let g:ackprg="ack-grep -H --nocolor --nogroup --column"
-else
-    let g:ackprg="ack -H --nocolor --nogroup --column"
-endif
-
-" see if there are alternatives
+" Try to load alternatives in order of precedence
 if executable('rg')
     let g:ackprg = 'rg --vimgrep'
 elseif executable('ag')
     " Setup ag to be ack
     let g:ackprg = 'ag --nogroup --nocolor --column --follow --silent'
+elseif executable('ack-grep')
+    " ack is called differently on debian
+    let g:ackprg="ack-grep -H --nocolor --nogroup --column"
+else
+    let g:ackprg="ack -H --nocolor --nogroup --column"
 endif
 
 " NOTE: <leader>a is also used for ale bindings
