@@ -843,6 +843,8 @@ inoremap <C-Tab> <C-R>=delimitMate#JumpAny("\<C-Tab>")<CR>
 imap <C-G><C-G> <Plug>delimitMateS-Tab
 " }}}
 " {{{ Dispatch
+" Make on its own calls `cargo` -> typing 'build' is annoying
+autocmd vimrc Filetype rust nnoremap <buffer><localleader>ll :Make build<CR>
 " let g:dispatch_handlers = [
         " \ 'windows',
         " \ 'iterm',
@@ -1490,6 +1492,10 @@ let g:netrw_list_hide.=',\(^\|\s\s\)\zs\.\S\+'
 " }}}
 " {{{ rainbow
 let g:rainbow_active=0
+" }}}
+" {{{ rust
+autocmd vimrc Filetype rust nnoremap <buffer><Leader>cf :RustFmt<CR>
+autocmd vimrc Filetype rust vnoremap <buffer><Leader>cf :RustFmtRange<CR>
 " }}}
 " {{{ sort-folds
 autocmd vimrc FileType bib let g:sort_folds_key_function="get_citekey"
