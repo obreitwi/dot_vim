@@ -415,9 +415,12 @@ endif
 " }}}
 " }}}
 " {{{ Filetype Settings
+" {{{ Common
 filetype plugin on
-
 filetype indent on
+autocmd vimrc BufNewFile,BufRead wscript* set filetype=python
+autocmd filetype tex hi MatchParen ctermbg=black guibg=black
+" }}}
 
 " Reload vimrc after writing (does not work as well as it used to)
 " autocmd! vimrc BufWritePost .vimrc source $MYVIMRC
@@ -425,10 +428,7 @@ filetype indent on
 
 " autocmd vimrc FileType python setlocal omnifunc=pythoncomplete#Complete
 
-autocmd vimrc BufNewFile,BufRead wscript* set filetype=python
-
-autocmd filetype tex hi MatchParen ctermbg=black guibg=black
-
+" {{{ Tab-Settings
 autocmd vimrc FileType arduino     setlocal tabstop=4 |     setlocal shiftwidth=4 |  setlocal softtabstop=4
 autocmd vimrc FileType c           setlocal tabstop=4 |     setlocal shiftwidth=4 |  setlocal softtabstop=4
 autocmd vimrc FileType cpp         setlocal tabstop=4 |     setlocal shiftwidth=4 |  setlocal softtabstop=4
@@ -452,17 +452,15 @@ autocmd vimrc FileType vim         setlocal tabstop=2 |     setlocal shiftwidth=
 autocmd vimrc FileType vimwiki     setlocal tabstop=2 |     setlocal shiftwidth=2 |  setlocal expandtab | setlocal foldlevel=0 |   setlocal comments=fb:*,fb:#
 autocmd vimrc FileType yaml        setlocal tabstop=2 |     setlocal shiftwidth=2 |  setlocal expandtab
 autocmd vimrc FileType zsh         setlocal expandtab |     setlocal tabstop=4 |     setlocal shiftwidth=4
+" }}}
 
+" {{{ cpp
 autocmd vimrc FileType cpp         setlocal cinoptions=g0,hs,N-s,+0
-
+" }}}
+" {{{ Latex
 " NOTE: If editing other tex-flavors, set locally..
 let g:tex_flavor = "latex"
-
-" Put a linewidth indicator on a custom colum instead of the default 80
-let g:colorcolumn_custom = {
-\   'python': 88
-\}
-
+" "}}}
 " Autohotkey
 autocmd vimrc BufNewFile,BufRead *.ahk setf autohotkey
 autocmd vimrc BufNewFile,BufRead *.txt setf text
@@ -474,12 +472,16 @@ autocmd vimrc BufNewFile,BufRead /etc/apache2/* setf apache
 autocmd vimrc BufNewFile,BufRead Jenkinsfile setf groovy
 autocmd vimrc BufNewFile,BufRead *.Jenkinsfile setf groovy
 
-" SLI
+" {{{ SLI
 autocmd vimrc BufNewFile,BufRead *.sli setf sli
-
-" Haskell
+" }}}
+" {{{ rust
+autocmd vimrc Filetype rust nnoremap <buffer><Leader>cf :RustFmt<CR>
+autocmd vimrc Filetype rust vnoremap <buffer><Leader>cf :RustFmtRange<CR>
+" }}}
+" {{{ Haskell
 " autocmd vimrc BufEnter *.hs compiler ghc
-
+" }}}
 " {{{ mutt
 " au BufRead,BufNewFile /tmp/mutt-* set filetype=mail | nohl | set bg=dark | colo solarized | setlocal omnifunc=QueryCommandComplete
 au vimrc BufRead,BufNewFile /tmp/*mutt-* set filetype=mail | nohl | setlocal omnifunc=QueryCommandComplete
@@ -530,7 +532,11 @@ if index(s:hosts_clipboard_enabled, hostname()) < 0 && !has('nvim')
 end
 " }}}
 " {{{ Color management
-" Set really nice colors
+
+" Put a linewidth indicator on a custom colum instead of the default 80
+let g:colorcolumn_custom = {
+\   'python': 88
+\}
 
 " {{{ gruvbox settings
 " These need to come prior to setting the colorscheme
@@ -1483,10 +1489,6 @@ let g:netrw_list_hide.=',\(^\|\s\s\)\zs\.\S\+'
 " }}}
 " {{{ rainbow
 let g:rainbow_active=0
-" }}}
-" {{{ rust
-autocmd vimrc Filetype rust nnoremap <buffer><Leader>cf :RustFmt<CR>
-autocmd vimrc Filetype rust vnoremap <buffer><Leader>cf :RustFmtRange<CR>
 " }}}
 " {{{ sort-folds
 autocmd vimrc FileType bib let g:sort_folds_key_function="get_citekey"
