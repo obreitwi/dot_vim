@@ -461,17 +461,17 @@ autocmd vimrc FileType cpp         setlocal cinoptions=g0,hs,N-s,+0
 " NOTE: If editing other tex-flavors, set locally..
 let g:tex_flavor = "latex"
 " "}}}
-" Autohotkey
+" {{{ Autohotkey
 autocmd vimrc BufNewFile,BufRead *.ahk setf autohotkey
 autocmd vimrc BufNewFile,BufRead *.txt setf text
-
-" Apache config files
+" }}}
+" {{{ Apache config files
 autocmd vimrc BufNewFile,BufRead /etc/apache2/* setf apache
-
-" Jenkinfiles
+" }}}
+" {{{ Jenkinfiles
 autocmd vimrc BufNewFile,BufRead Jenkinsfile setf groovy
 autocmd vimrc BufNewFile,BufRead *.Jenkinsfile setf groovy
-
+" }}}
 " {{{ SLI
 autocmd vimrc BufNewFile,BufRead *.sli setf sli
 " }}}
