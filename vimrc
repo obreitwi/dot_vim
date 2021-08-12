@@ -475,11 +475,6 @@ autocmd vimrc BufNewFile,BufRead *.Jenkinsfile setf groovy
 " {{{ SLI
 autocmd vimrc BufNewFile,BufRead *.sli setf sli
 " }}}
-" {{{ rust
-autocmd vimrc Filetype rust nnoremap <buffer><Leader>cf :RustFmt<CR>
-autocmd vimrc Filetype rust vnoremap <buffer><Leader>cf :RustFmtRange<CR>
-autocmd vimrc Filetype rust nnoremap <buffer><localleader>ll :Make build<CR>
-" }}}
 " {{{ Haskell
 " autocmd vimrc BufEnter *.hs compiler ghc
 " }}}
