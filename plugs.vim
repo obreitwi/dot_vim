@@ -116,7 +116,7 @@ Plug 'obreitwi/vim-bling'
 " {{{ browser addons
 
 " revisit this with more time
-let s:firenvim_hosts=["mucku"]
+let s:firenvim_hosts=["mucku", "mimir"]
 if index(s:firenvim_hosts, s:hostname) >= 0 && has('nvim')
   Plug 'glacambre/firenvim', { 'do': { _ -> firenvim#install(0) } }
 endif
@@ -150,7 +150,7 @@ endif
 " }}}
 
 " {{{ CoC
-let s:coc_hosts=["abed", "mucku", "helvetica.kip.uni-heidelberg.de"]
+let s:coc_hosts=["abed", "mucku", "helvetica.kip.uni-heidelberg.de", "mimir"]
 let s:coc_enabled = (has('nvim') || v:version >= 802) && index(s:coc_hosts, s:hostname) >= 0
 if s:coc_enabled
   " Plug 'neoclide/coc.nvim', {'branch': 'release'}
@@ -388,7 +388,8 @@ Plug 'obreitwi/vim-sort-folds'
 if has('nvim')
   " Needed because :SudoWrite does not work in neovim
   Plug 'lambdalisue/suda.vim'
-  Plug 'raghur/vim-ghost', {'do': ':GhostInstall'}
+  " TODO: Evaluate against fire-nvim
+  " Plug 'raghur/vim-ghost', {'do': ':GhostInstall'}
 endif
 
 " }}}
