@@ -972,7 +972,7 @@ let g:LatexBox_custom_inden=0
 let g:languagetool_jar="/usr/share/java/languagetool/languagetool-commandline.jar"
 " }}}
 " {{{ LineDiff
-map <leader>ld :Linediff<CR>
+map <leader>dl :Linediff<CR>
 map <leader>dr :LinediffReset<CR>
 " }}}
 " {{{ Lusty
