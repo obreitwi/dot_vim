@@ -234,6 +234,16 @@ Plug 'morhetz/gruvbox'
 " Plug 'iKarith/tigrana'
 " }}}
 
+" {{{ dart
+if executable('dart')
+  Plug 'dart-lang/dart-vim-plugin'
+  Plug 'natebosch/vim-lsc'
+  Plug 'natebosch/vim-lsc-dart'
+
+  let g:lsc_auto_map = v:true
+endif
+" }}}
+
 " {{{ git
 " See also fugitive and vim-git under tpope
 Plug 'airblade/vim-gitgutter'
