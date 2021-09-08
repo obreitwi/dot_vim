@@ -1553,6 +1553,14 @@ if executable('tectonic')
     let g:vimtex_compiler_method='tectonic'
 endif
 " }}}
+" {{{ vim-go
+" Completion is handles by coc-go
+let g:go_code_completion_enabled = 0
+
+" We want a custom mapping for GoDoc
+let g:go_doc_keywordprg_enabled = 0
+autocmd vimrc filetype go    nnoremap <buffer> <silent> <leader>K :GoDoc<cr>
+" }}}
 " }}}
 " {{{ Postscript
 " {{{ Fix airline sometimes not rendering when splitting
