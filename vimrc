@@ -419,7 +419,7 @@ endif
 filetype plugin on
 filetype indent on
 autocmd vimrc BufNewFile,BufRead wscript* set filetype=python
-autocmd filetype tex hi MatchParen ctermbg=black guibg=black
+autocmd vimrc filetype tex hi MatchParen ctermbg=black guibg=black
 " }}}
 
 " Reload vimrc after writing (does not work as well as it used to)
