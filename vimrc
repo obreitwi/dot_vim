@@ -1377,6 +1377,29 @@ if exists("g:using_coc") && g:using_coc == 1
     nnoremap <silent> [coc]p  :<C-u>CocListResume<CR>
 endif
 " }}}
+" {{{ delve
+if executable('dlv')
+    nnoremap [dbg] <Nop>
+    nmap <leader>d [dbg]
+    " nnoremap <silent> [dbg]b :DlvAddBreakpoint<CR>
+    " nnoremap <silent> [dbg]t :DlvAddTracepoint<CR>
+    " :DlvAttach <PID> attach to process
+    nnoremap <silent> [dbg]a :DlvAttach 
+    nnoremap <silent> [dbg]ca :DlvClearAll<CR>
+    " DlvCore <bin> <dump> [flags]	Debug core dumps using dlv core.
+    " DlvConnect host:port [flags]	Connect to a remote Delve server on the given host:port.
+    " DlvDebug [flags]	Run dlv debug for the current session. Use this to test main packages.
+    nnoremap <silent> [dbg]d :DlvDebug<CR>
+    " DlvExec <bin> [flags]	Start dlv on a pre-built executable.
+    nnoremap <silent> [dbg]e :DlvExec 
+    " nnoremap <silent> [dbg]rb DlvRemoveBreakpoint<CR>
+    " nnoremap <silent> [dbg]rt DlvRemoveTracepoint<CR>
+    nnoremap <silent> [dbg]t :DlvTest<CR>
+    nnoremap <silent> [dbg]b :DlvToggleBreakpoint<CR>
+    nnoremap <silent> [dbg]t :DlvToggleTracepoint<C>R
+    " DlvVersion	Print the dlv version.
+endif
+" }}}
 " {{{ fake
 function! s:FakeInit()
     "" Choose a random element from a list

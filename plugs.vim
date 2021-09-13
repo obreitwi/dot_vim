@@ -256,6 +256,10 @@ if executable('go')
   " Plug 'darrikonn/vim-gofmt'
   Plug 'fatih/vim-go'
 endif
+
+if executable('dlv')
+  Plug 'sebdah/vim-delve'
+endif
 " }}}
 
 " {{{ disabled stuff:
