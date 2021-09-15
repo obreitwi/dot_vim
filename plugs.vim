@@ -237,10 +237,16 @@ Plug 'morhetz/gruvbox'
 " {{{ dart
 if executable('dart')
   Plug 'dart-lang/dart-vim-plugin'
-  Plug 'natebosch/vim-lsc'
-  Plug 'natebosch/vim-lsc-dart'
-
+  " Using CoC as client instead
+  " Plug 'natebosch/vim-lsc'
+  " Plug 'natebosch/vim-lsc-dart'
   let g:lsc_auto_map = v:true
+endif
+
+if executable('flutter')
+  Plug 'thosakwe/vim-flutter'
+  Plug 'iamcco/coc-flutter', {'do': 'yarn install --frozen-lockfile'}
+  " Plug 'theniceboy/coc-flutter-tools', {'do': 'yarn install --frozen-lockfile'} 
 endif
 " }}}
 
