@@ -1377,6 +1377,9 @@ if exists("g:using_coc") && g:using_coc == 1
     nnoremap <silent> [coc]p  :<C-u>CocListResume<CR>
 endif
 " }}}
+" {{{ dart-vim-plugin
+autocmd vimrc Filetype dart nnoremap <buffer><Leader>cf :DartFmt<CR>
+" }}}
 " {{{ delve
 if executable('dlv')
     nnoremap [dbg] <Nop>
