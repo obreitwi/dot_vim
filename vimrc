@@ -550,7 +550,11 @@ let g:gruvbox_guisp_fallback='bg'
 
 " {{{ Common / GUI-Term settings
 syntax enable
-set background=dark
+if $BG == "dark" || ($BG == "light")
+    execute 'set background=' . $BG
+else
+    set background=dark
+endif
 if exists("g:neovide") || has("gui_running") || exists('g:started_by_firenvim')
     " colorscheme NeoSolarized
     " let g:airline_theme = 'solarized'
