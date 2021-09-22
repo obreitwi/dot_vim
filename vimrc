@@ -432,6 +432,7 @@ autocmd vimrc filetype tex hi MatchParen ctermbg=black guibg=black
 autocmd vimrc FileType arduino     setlocal tabstop=4 |     setlocal shiftwidth=4 |  setlocal softtabstop=4
 autocmd vimrc FileType c           setlocal tabstop=4 |     setlocal shiftwidth=4 |  setlocal softtabstop=4
 autocmd vimrc FileType cpp         setlocal tabstop=4 |     setlocal shiftwidth=4 |  setlocal softtabstop=4
+autocmd vimrc FileType dart        setlocal tabstop=2 |     setlocal shiftwidth=2 |  setlocal softtabstop=2
 autocmd vimrc FileType exim        setlocal tabstop=4 |     setlocal shiftwidth=4 |  setlocal softtabstop=4 | setlocal expandtab
 autocmd vimrc FileType gitcommit   setlocal tabstop=2 |     setlocal softtabstop=2 | setlocal shiftwidth=2  | setlocal expandtab
 autocmd vimrc FileType go          setlocal tabstop=4 |     setlocal softtabstop=4 | setlocal shiftwidth=4  | setlocal noexpandtab
