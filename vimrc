@@ -710,6 +710,8 @@ let g:ale_linters = {
 \    "c": [],
 \    "cpp": [],
 \    "python" : ['black'],
+\    "dart": [],
+\    "go": ['golangci-lint']
 \}
 
 let g:ale_fixers = {
@@ -926,10 +928,10 @@ nnoremap <leader>fc q:iGit commit -m ""<Left>
 " nnoremap <silent> sr     :FufRenewCache<CR>
 " }}}
 " {{{ Gundo
-if has('python3')
-    let g:gundo_prefer_python3=1
-endif
-map <Leader>gt :GundoToggle<CR>
+" if has('python3')
+    " let g:gundo_prefer_python3=1
+" endif
+" map <Leader>gt :MundoToggle<CR>
 " }}}
 " {{{ Haskellmode
 let g:haddock_browser="/usr/bin/firefox"
@@ -982,7 +984,7 @@ let g:LustyExplorerSuppressRubyWarning = 1
 map <leader>bg :LustyBufferGrep<CR>
 " }}}
 " {{{ Mundo
-" map <Leader>mt :GundoToggle<CR>
+map <Leader>gt :MundoToggle<CR>
 " }}}
 " {{{ NERDCommenter
 let g:NERDCustomDelimiters = {

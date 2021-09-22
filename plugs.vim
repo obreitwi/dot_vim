@@ -50,7 +50,6 @@ Plug 'sanjayankur31/sli.vim'
 Plug 'scrooloose/nerdcommenter'
 Plug 'sickill/vim-pasta'
 Plug 'sjbach/lusty'
-Plug 'sjl/gundo.vim'
 Plug 'tmhedberg/SimpylFold'
 Plug 'tommcdo/vim-exchange'
 Plug 'trapd00r/vim-syntax-vidir-ls'
@@ -78,7 +77,7 @@ Plug 'rickhowe/diffchar.vim'
 " Notes:
 " * It is as slow to open as gundo for large histories
 " * Seems faster on subsequent openings
-" Plug 'simnalamburt/vim-mundo'
+Plug 'simnalamburt/vim-mundo'
 " }}}
 " {{{ latex-unicoder
 Plug 'joom/latex-unicoder.vim'
@@ -315,6 +314,9 @@ endif
 "     Plug 'davidhalter/jedi-vim'
 " endif
 " }}}
+" {{{ 2021
+" Replaced by mundo:
+" Plug 'sjl/gundo.vim'
 " }}}
 " }}}
 " {{{ other
