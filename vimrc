@@ -1013,7 +1013,7 @@ command! -nargs=0 -complete=command Nt NERDTree
 " }}}
 " {{{ ReplaceWithRegister
 nmap <Leader>r  <Plug>ReplaceWithRegisterOperator
-nmap <Leader>rr <Plug>ReplaceWithRegisterLine
+nmap <Leader>rl <Plug>ReplaceWithRegisterLine
 xmap <Leader>r  <Plug>ReplaceWithRegisterVisual
 " }}}
 " {{{ Signify
