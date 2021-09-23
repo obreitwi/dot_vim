@@ -1011,6 +1011,11 @@ let g:NERDSpaceDelims=1
 command! -nargs=0 -complete=command Nt NERDTree
 " map <c-f> :NERDTreeToggle<CR>
 " }}}
+" {{{ ReplaceWithRegister
+nmap <Leader>r  <Plug>ReplaceWithRegisterOperator
+nmap <Leader>rr <Plug>ReplaceWithRegisterLine
+xmap <Leader>r  <Plug>ReplaceWithRegisterVisual
+" }}}
 " {{{ Signify
 map <leader>st <Plug>(signify-toggle)
 " }}}
