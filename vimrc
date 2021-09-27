@@ -1548,7 +1548,7 @@ endif
 " silent! call repeat#set("\<Plug>TitlecaseLine", v:count)
 " }}}
 " {{{ vimtex
-if hostname() == "abed" || hostname() == "mucku"
+if hostname() == "mimir" || hostname() == "mucku"
     let g:vimtex_view_general_viewer = 'zathura'
     let g:vimtex_view_method = 'zathura'
 else

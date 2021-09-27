@@ -148,7 +148,7 @@ endif
 " }}}
 
 " {{{ latex
-let s:latex_hosts=["abed", "mucku"]
+let s:latex_hosts=["abed", "mucku", "mimir"]
 let s:latex_enabled = index(s:latex_hosts, s:hostname) >= 0
 
 if s:latex_enabled
