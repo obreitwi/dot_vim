@@ -1482,6 +1482,9 @@ autocmd vimrc Filetype go nnoremap <buffer><Leader>cf :GoImports<CR>
 " {{{ iPython
 vmap <silent> <leader>ss :python dedent_run_these_lines()<CR>
 " }}}
+" {{{ indent-blankline
+let g:indent_blankline_show_current_context = v:true
+" }}}
 " {{{ intero
 nnoremap [intero] <Nop>
 nmap <Leader>i [intero]

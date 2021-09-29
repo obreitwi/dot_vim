@@ -61,6 +61,9 @@ Plug 'w0rp/ale'
 Plug 'terryma/vim-expand-region'
 Plug 'justinmk/vim-sneak'
 Plug 'tkhren/vim-fake'
+if has('nvim-0.5')
+  Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}  " We recommend updating the parsers on update
+endif
 " }}}
 
 " {{{ To evaluate
@@ -120,6 +123,13 @@ if index(s:firenvim_hosts, s:hostname) >= 0 && has('nvim')
   Plug 'glacambre/firenvim', { 'do': { _ -> firenvim#install(0) } }
 endif
 
+" }}}
+
+" {{{ highlighting
+if has('nvim-0.5')
+  Plug 'lukas-reineke/indent-blankline.nvim'
+  Plug 'p00f/nvim-ts-rainbow'
+endif
 " }}}
 
 " {{{ fzf
