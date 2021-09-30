@@ -1585,7 +1585,7 @@ let g:vimtex_compiler_latexmk = {
 let g:vimtex_view_use_temp_files = 1
 
 if has('nvim')
-    let g:vimtex_latexmk_progname = 'nvr'
+    let g:vimtex_compiler_progname = 'nvr'
 endif
 
 if filereadable("/opt/textidote/textidote.jar")
