@@ -90,6 +90,10 @@ Plug 'joom/latex-unicoder.vim'
 " * Should not slow done text handling in large LaTeX files
 Plug 'christoomey/vim-titlecase'
 " }}}
+" {{{ vim-devicons
+" Expectations: Productivity increase
+Plug 'ryanoasis/vim-devicons'
+" }}}
 " }}}
 
 " {{{ black
