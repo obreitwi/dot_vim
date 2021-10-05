@@ -1547,6 +1547,19 @@ if has("nvim")
     let g:tidal_target = "terminal"
 endif
 " }}}
+" {{{ ts-rainbow
+lua << EOF
+require'nvim-treesitter.configs'.setup {
+  rainbow = {
+    enable = true,
+    extended_mode = true, -- Also highlight non-bracket delimiters like html tags, boolean or table: lang -> boolean
+    max_file_lines = nil, -- Do not enable for files with more than n lines, int
+    -- colors = {}, -- table of hex strings
+    -- termcolors = {} -- table of colour name strings
+  }
+}
+EOF
+" }}}
 " {{{ titlecase
 " Add support for repeat (does not work this easily unfortunately)
 " silent! call repeat#set("\<Plug>Titlecase", v:count)
