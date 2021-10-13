@@ -716,7 +716,7 @@ let g:ale_linters = {
 \    "cpp": [],
 \    "python" : ['black'],
 \    "dart": [],
-\    "go": ['golangci-lint']
+\    "go": []
 \}
 
 let g:ale_fixers = {
@@ -1617,9 +1617,14 @@ endif
 " Completion is handles by coc-go
 let g:go_code_completion_enabled = 0
 
+let g:go_metalinter_command = 'golangci-lint'
+
+
+
 " We want a custom mapping for GoDoc
 let g:go_doc_keywordprg_enabled = 0
 autocmd vimrc filetype go    nnoremap <buffer> <silent> <leader>K :GoDoc<cr>
+autocmd vimrc filetype go    nnoremap <buffer> <silent> [coc]m :GoMetaLinter<cr>
 " }}}
 " }}}
 " {{{ Postscript
