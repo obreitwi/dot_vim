@@ -152,6 +152,13 @@ function! SearchMultiLine(bang, ...)
   endif
 endfunction
 
+" TODO: Push upstream 
+function! RgFromSearch() "{{{
+  let search = getreg('/')
+  " translate vim word boundaries
+  let search = substitute(search, '\(\\<\|\\>\)', '\\b', 'g')
+  call fzf#vim#grep("rg --column --line-number --no-heading --color=always --smart-case -- ".shellescape(search), 1, fzf#vim#with_preview(), 0)
+endfunction "}}}
 " }}}
 " {{{ Commands
 command! -bang -nargs=* -complete=tag S call SearchMultiLine(<bang>0, <f-args>)|normal! /<C-R>/<CR
@@ -1472,6 +1479,8 @@ endif
 " }}}
 " {{{ fzf
 if g:fzf_found
+    command! RgFromSearch call RgFromSearch()
+
     " nnoremap [fzf] <Nop>
     " nmap <leader>f [fzf]
     " Keep muscle memory from unite bindings
@@ -1482,6 +1491,7 @@ if g:fzf_found
     nmap <silent> [unite]f :Files<CR>
     nmap <silent> [unite]m :History<CR>
     nmap <silent> [unite]s :Snippets<CR>
+    nmap <silent> [unite]r :RgFromSearch<CR>
     " Helptags shadowed by pathogen
     command! -bar -bang FzfHelptags call fzf#vim#helptags(<bang>0)
     nmap <silent> [unite]h :FzfHelptags<CR>
