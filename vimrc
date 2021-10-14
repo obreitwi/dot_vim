@@ -1131,11 +1131,11 @@ nmap <Leader>u [unite]
 " backward compatible mapping to BufferExplorer
 if !g:fzf_found
     nmap <silent> <leader>be :Unite -no-start-insert buffer<CR>
+    nmap <silent> [unite]m :Unite -no-start-insert file_mru<CR>
+    nmap <silent> [unite]f :Unite -start-insert file_rec/async<CR>
+    nmap <silent> [unite]g :Unite -no-quit -no-start-insert grep:.<CR>
+    nmap <silent> [unite]y :Unite -no-start-insert history/yank<CR>
 endif
-nmap <silent> [unite]m :Unite -no-start-insert file_mru<CR>
-nmap <silent> [unite]f :Unite -start-insert file_rec/async<CR>
-nmap <silent> [unite]g :Unite -no-quit -no-start-insert grep:.<CR>
-nmap <silent> [unite]y :Unite -no-start-insert history/yank<CR>
 " Unite-Outline
 nmap <silent> [Unite]o :Unite outline<CR>
 " neoyank-specific
@@ -1472,15 +1472,19 @@ endif
 " }}}
 " {{{ fzf
 if g:fzf_found
-    nnoremap [fzf] <Nop>
-    nmap <leader>f [fzf]
-    nmap <silent> <leader>be :Buffers<CR>
-    nmap <silent> [fzf]m :History<CR>
+    " nnoremap [fzf] <Nop>
+    " nmap <leader>f [fzf]
+    " Keep muscle memory from unite bindings
     nmap <silent> <c-p> :GFiles<CR>
-    nmap <silent> [fzf]f :Files<CR>
+    nmap <silent> <leader>be :Buffers<CR>
+    nmap <silent> [unite]/ :History/<CR>
+    nmap <silent> [unite]: :History:<CR>
+    nmap <silent> [unite]f :Files<CR>
+    nmap <silent> [unite]m :History<CR>
+    nmap <silent> [unite]s :Snippets<CR>
     " Helptags shadowed by pathogen
     command! -bar -bang FzfHelptags call fzf#vim#helptags(<bang>0)
-    nmap <silent> [fzf]h :FzfHelptags<CR>
+    nmap <silent> [unite]h :FzfHelptags<CR>
 endif
 " }}}
 " {{{ gitgutter
