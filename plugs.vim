@@ -74,14 +74,6 @@ endif
 " * Might slow down larger diffs.
 Plug 'rickhowe/diffchar.vim'
 " }}}
-" {{{ mundo
-" Expectations:
-" * Should be faster than gundo
-" Notes:
-" * It is as slow to open as gundo for large histories
-" * Seems faster on subsequent openings
-Plug 'simnalamburt/vim-mundo'
-" }}}
 " {{{ latex-unicoder
 Plug 'joom/latex-unicoder.vim'
 " }}}
@@ -94,6 +86,21 @@ Plug 'christoomey/vim-titlecase'
 " Expectations: Productivity increase
 Plug 'ryanoasis/vim-devicons'
 " }}}
+" }}}
+
+" {{{ latex-unicoder
+Plug 'joom/latex-unicoder.vim'
+" }}}
+
+" {{{ mundo
+" Expectations:
+" * Should be faster than gundo
+" Notes:
+" * It is as slow to open as gundo for large histories
+" * Seems faster on subsequent openings
+" Verdict:
+" * Is faster than gundo → accepted
+Plug 'simnalamburt/vim-mundo'
 " }}}
 
 " {{{ black
