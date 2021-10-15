@@ -1644,8 +1644,6 @@ let g:go_code_completion_enabled = 0
 
 let g:go_metalinter_command = 'golangci-lint'
 
-
-
 " We want a custom mapping for GoDoc
 let g:go_doc_keywordprg_enabled = 0
 autocmd vimrc filetype go    nnoremap <buffer> <silent> <leader>K :GoDoc<cr>
