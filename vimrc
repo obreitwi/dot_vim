@@ -1088,7 +1088,8 @@ let g:tlRememberPosition = 1
 " command! -nargs=0 -complete=command TL TaskList
 " }}}
 " {{{ Ultisnips
-let g:UltiSnipsSnippetDirectories=["~/.vim/bundle-own/my-snippets/UltiSnips"]
+" ultisnips now finds snippets on its own
+" let g:UltiSnipsSnippetDirectories=["~/.vim/bundle-own/my-snippets/UltiSnips"]
 " let g:UltiSnipsListSnippets="<leader>ls"
 " let g:UltiSnipsExpandTrigger="<tab>"
 let g:UltiSnipsExpandTrigger="<c-j>"
