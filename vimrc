@@ -1423,6 +1423,14 @@ if executable('dlv')
     " DlvVersion	Print the dlv version.
 endif
 " }}}
+" {{{ diffchar
+nmap [disableDiffchhar1] <Plug>GetDiffCharPair
+nmap [disableDiffchhar2] <Plug>JumpDiffCharNextEnd
+nmap [disableDiffchhar3] <Plug>JumpDiffCharNextStart
+nmap [disableDiffchhar4] <Plug>JumpDiffCharPrevEnd
+nmap [disableDiffchhar5] <Plug>JumpDiffCharPrevStart
+nmap [disableDiffchhar6] <Plug>PutDiffCharPair
+" }}}
 " {{{ fake
 let g:fake_bootstrap = 1
 " function! s:FakeInit()
