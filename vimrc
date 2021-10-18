@@ -996,7 +996,7 @@ let g:LustyExplorerSuppressRubyWarning = 1
 map <leader>bg :LustyBufferGrep<CR>
 " }}}
 " {{{ Mundo
-map <Leader>gt :MundoToggle<CR>
+map gt :MundoToggle<CR>
 " }}}
 " {{{ NERDCommenter
 let g:NERDCustomDelimiters = {
@@ -1646,8 +1646,9 @@ let g:go_metalinter_command = 'golangci-lint'
 
 " We want a custom mapping for GoDoc
 let g:go_doc_keywordprg_enabled = 0
-autocmd vimrc filetype go    nnoremap <buffer> <silent> <leader>K :GoDoc<cr>
-autocmd vimrc filetype go    nnoremap <buffer> <silent> [coc]m :GoMetaLinter<cr>
+autocmd vimrc filetype go nmap <buffer> <silent> <leader>K <Plug>(go-doc)
+autocmd vimrc filetype go nmap <buffer> <silent> [coc]t <Plug>(go-test)
+autocmd vimrc filetype go nmap <buffer> <silent> [coc]m <Plug>(go-metalinter)
 " }}}
 " }}}
 " {{{ Postscript
