@@ -63,6 +63,9 @@ Plug 'justinmk/vim-sneak'
 Plug 'tkhren/vim-fake'
 if has('nvim-0.5')
   Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}  " We recommend updating the parsers on update
+  let g:use_treesitter = 1
+else
+  let g:use_treesitter = 0
 endif
 " }}}
 

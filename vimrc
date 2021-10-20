@@ -175,36 +175,36 @@ command! -nargs=+ -complete=command Command call Command(<q-args>)
 command! SOvnorm let g:neosolarized_visibility="normal" | colorscheme NeoSolarized
 command! SOvlow let g:neosolarized_visibility="low" | colorscheme NeoSolarized
 
-command! -nargs=0 -complete=command TS call CreateTimestamp()
+command! -nargs=0 TS call CreateTimestamp()
 
 command! Plugs tabe $HOME/.vim/plugs.vim
 
-command! -nargs=0 -complete=command MakeTags !ctags -R --c++-kinds=+p --fields=+iaS --extra=+q .
+command! -nargs=0 MakeTags !ctags -R --c++-kinds=+p --fields=+iaS --extra=+q .
 
 " Open vimrc/tex in new tab
 if g:opsystem != "windows"
     if has('nvim')
-        command! -nargs=0 -complete=command Vimrc tabe $HOME/.vimrc
+        command! -nargs=0 Vimrc tabe $HOME/.vimrc
     else
-        command! -nargs=0 -complete=command Vimrc tabe $MYVIMRC
+        command! -nargs=0 Vimrc tabe $MYVIMRC
     endif
 else
-    command! -nargs=0 -complete=command Vimrc tabe $VIM/vimfiles/vimrc
+    command! -nargs=0 Vimrc tabe $VIM/vimfiles/vimrc
 endif
 
-command! -nargs=0 -complete=command FT call OpenCustomFT("ftplugin")
-command! -nargs=0 -complete=command FTA call OpenCustomFT("after")
+command! -nargs=0 FT call OpenCustomFT("ftplugin")
+command! -nargs=0 FTA call OpenCustomFT("after")
 
 " Spelling
-command! -nargs=0 -complete=command Spde setlocal spelllang=de
-command! -nargs=0 -complete=command Thde setlocal thesaurus=
+command! -nargs=0 Spde setlocal spelllang=de
+command! -nargs=0 Thde setlocal thesaurus=
 \   /usr/share/mythes/th_de_DE.v2.dat
-command! -nargs=0 -complete=command Spen setlocal spelllang=en
-command! -nargs=0 -complete=command Then setlocal thesaurus=
+command! -nargs=0 Spen setlocal spelllang=en
+command! -nargs=0 Then setlocal thesaurus=
 \   /usr/share/mythes/th_en_US.v2.dat
 
 " Lazy bunch
-command! -nargs=0 -complete=command SA setf apache
+command! -nargs=0 SA setf apache
 
 " :Man command
 if g:opsystem == "Linux"
@@ -647,7 +647,7 @@ if executable("par") && system( "par help | wc -l" ) == 22
     " set formatprg=par\ -w80qrg
     autocmd FileType mail set formatprg=par\ -w72qrg
     " PARPROTECT prevents tabs from being converted!
-    command! -nargs=0 -complete=command Parwide setlocal formatprg=par\ -w100
+    command! -nargs=0 Parwide setlocal formatprg=par\ -w100
     " autocmd FileType markdown  setlocal formatprg=PARQUOTE\=_x09\ par\ -w80T4
 endif
 
@@ -1015,7 +1015,7 @@ let g:NERDTreeSortOrder=['^__\.py$', '\/$', '*', '\.swp$', '\.bak$', '\~$']
 let g:NERDTreeHighlightCursorline=1
 let g:NERDSpaceDelims=1
 " Mappings and commands (not used anymore)
-command! -nargs=0 -complete=command Nt NERDTree
+command! -nargs=0 Nt NERDTree
 " map <c-f> :NERDTreeToggle<CR>
 " }}}
 " {{{ ReplaceWithRegister
@@ -1076,7 +1076,7 @@ let g:tagbar_autofocus = 1
 " }}}
 " {{{ Taglist
 nnoremap <c-s> :TlistToggle<CR>
-command! -nargs=0 -complete=command TU :TlistUpdate
+command! -nargs=0 TU :TlistUpdate
 
 " }}}
 " {{{ TaskWarrior
@@ -1085,7 +1085,7 @@ let g:task_report_name="long"
 " {{{ Tasklist
 map <Leader>tl <Plug>TaskList
 let g:tlRememberPosition = 1
-" command! -nargs=0 -complete=command TL TaskList
+" command! -nargs=0 TL TaskList
 " }}}
 " {{{ Ultisnips
 " ultisnips now finds snippets on its own
@@ -1376,7 +1376,7 @@ if exists("g:using_coc") && g:using_coc == 1
     " use `:OR` for organize import of current buffer
     command! -nargs=0 OR   :call     CocAction('runCommand', 'editor.action.organizeImport')
 
-    command! -nargs=0 -complete=command CocSettings tabe $HOME/.vim/coc-settings.json
+    command! -nargs=0 CocSettings tabe $HOME/.vim/coc-settings.json
 
     " Using CocList
     " Show all diagnostics
@@ -1573,6 +1573,7 @@ if has("nvim")
 endif
 " }}}
 " {{{ ts-rainbow
+if g:use_treesitter
 lua << EOF
 require'nvim-treesitter.configs'.setup {
   rainbow = {
@@ -1584,6 +1585,7 @@ require'nvim-treesitter.configs'.setup {
   }
 }
 EOF
+endif
 " }}}
 " {{{ titlecase
 " Add support for repeat (does not work this easily unfortunately)
