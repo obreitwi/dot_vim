@@ -25,7 +25,6 @@ Plug 'coderifous/textobj-word-column.vim'
 Plug 'dyng/ctrlsf.vim'
 Plug 'ehamberg/vim-cute-python'
 Plug 'godlygeek/tabular'
-Plug 'gregsexton/gitv'
 Plug 'groenewege/vim-less'
 Plug 'guns/xterm-color-table.vim'
 Plug 'honza/vim-snippets'
@@ -276,6 +275,8 @@ endif
 " {{{ git
 " See also fugitive and vim-git under tpope
 Plug 'airblade/vim-gitgutter'
+" Faster gitv replacment
+Plug 'junegunn/gv.vim'
 " Plug 'mhinz/vim-signify'
 " }}}
 
@@ -382,6 +383,7 @@ endif
 " Plug 'scrooloose/syntastic'
 " Plug 'LaTeX-Box-Team/LaTeX-Box' " not async
 " Plug 'gyim/vim-boxdraw' " does not play well with vim-plug
+" Plug 'gregsexton/gitv' " Superseeded by 'junegunn/gv.vim/
 " }}}
 " }}}
 
