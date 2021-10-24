@@ -14,7 +14,6 @@ Plug 'tpope/vim-pathogen'
 Plug 'AndrewRadev/id3.vim'
 Plug 'AndrewRadev/linediff.vim'
 Plug 'Glench/Vim-Jinja2-Syntax'
-Plug 'Lokaltog/vim-easymotion'
 Plug 'PeterRincker/vim-argumentative'
 Plug 'Raimondi/delimitMate'
 Plug 'Twinside/vim-haskellConceal'
@@ -58,7 +57,6 @@ Plug 'vim-scripts/ReplaceWithRegister'
 Plug 'vimwiki/vimwiki'
 Plug 'w0rp/ale'
 Plug 'terryma/vim-expand-region'
-Plug 'justinmk/vim-sneak'
 Plug 'tkhren/vim-fake'
 if has('nvim-0.5')
   Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}  " We recommend updating the parsers on update
@@ -88,7 +86,20 @@ Plug 'christoomey/vim-titlecase'
 " Expectations: Productivity increase
 Plug 'ryanoasis/vim-devicons'
 " }}}
+" {{{ nop as faster easymotion
+" Expections:
+" * Easy of use
+" * Actually gets used
+let g:use_easymotion = 0
+if has('nvim') && !g:use_easymotion
+  Plug 'phaazon/hop.nvim'
+else
+  Plug 'Lokaltog/vim-easymotion'
+  Plug 'justinmk/vim-sneak'
+endif
 " }}}
+" }}}
+
 
 " {{{ latex-unicoder
 Plug 'joom/latex-unicoder.vim'

@@ -865,8 +865,10 @@ autocmd vimrc Filetype rust nnoremap <buffer><localleader>ll :Make build<CR>
         " \ ]
 " }}}
 " {{{ Easymotion
-hi link EasyMotionTarget ErrorMsg
-hi link EasyMotionShade Comment
+if !has('nvim')
+    hi link EasyMotionTarget ErrorMsg
+    hi link EasyMotionShade Comment
+endif
 " TODO: Check for any errors when easymotion reverted to default setting
 " let g:EasyMotion_leader_key = 'L'
 " }}}
@@ -1511,6 +1513,24 @@ nmap <leader>gf :GitGutterFold<CR>
 " }}}
 " {{{ gofmt
 autocmd vimrc Filetype go nnoremap <buffer><Leader>cf :GoImports<CR>
+" }}}
+" {{{ hop
+if has('nvim') && !g:use_easymotion
+    lua << EOF
+require'hop'.setup()
+EOF
+
+nnoremap [hop] <Nop>
+nmap <leader><leader> [hop]
+nmap [hop]w :HopWordAC<CR>
+nmap [hop]b :HopWordBC<CR>
+nmap [hop]/ :HopPatternAC<CR>
+nmap [hop]? :HopPatternBC<CR>
+nmap [hop]f :HopChar1AC<CR>
+nmap [hop]F :HopChar1BC<CR>
+nmap [hop]c :HopChar2AC<CR>
+nmap [hop]C :HopChar2BC<CR>
+endif
 " }}}
 " {{{ iPython
 vmap <silent> <leader>ss :python dedent_run_these_lines()<CR>
