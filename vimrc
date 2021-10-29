@@ -1538,7 +1538,7 @@ vmap <silent> <leader>ss :python dedent_run_these_lines()<CR>
 " {{{ indent-blankline
 let g:indent_blankline_show_current_context = v:true
 " Disable in some cases 
-autocmd vimrc FileType help           IndentBlanklineDisable
+let g:indent_blankline_filetype_exclude = ['help']
 " }}}
 " {{{ intero
 nnoremap [intero] <Nop>
