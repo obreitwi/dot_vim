@@ -1660,6 +1660,18 @@ if executable('tectonic')
     let g:vimtex_compiler_method='tectonic'
 endif
 " }}}
+" {{{ vim-flutter
+" Enable Flutter menu (useless without gui)
+" call FlutterMenu()
+
+" Some of these key choices were arbitrary;
+" it's just an example.
+nnoremap <leader>fg :FlutterRun<cr>
+nnoremap <leader>fq :FlutterQuit<cr>
+nnoremap <leader>fr :FlutterHotReload<cr>
+nnoremap <leader>fR :FlutterHotRestart<cr>
+nnoremap <leader>fD :FlutterVisualDebug<cr>
+" }}}
 " {{{ vim-go
 " Completion is handles by coc-go
 let g:go_code_completion_enabled = 0
