@@ -205,6 +205,10 @@ if s:coc_enabled
     Plug 'fannheyward/coc-texlab', {'do': 'yarn install --frozen-lockfile'}
   endif
 
+  if g:fzf_found
+    Plug 'antoinemadec/coc-fzf'
+  endif
+
   let g:using_coc=1
   " Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 else
