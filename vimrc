@@ -1538,20 +1538,21 @@ vmap <silent> <leader>ss :python dedent_run_these_lines()<CR>
 " {{{ indent-blankline
 let g:indent_blankline_show_current_context = v:true
 " Disable in some cases 
-let g:indent_blankline_filetype_exclude = ['help']
+let g:indent_blankline_filetype_exclude = ['help', 'text']
+nnoremap <leader>it :IndentBlanklineToggle<CR>
 " }}}
 " {{{ intero
-nnoremap [intero] <Nop>
-nmap <Leader>i [intero]
-" close is easier to remember than "hide"
-nnoremap <silent> [intero]c :InteroHide<CR>
-nnoremap <silent> [intero]g :InteroGoToDef<CR>
-nnoremap <silent> [intero]l :InteroLoadCurrentFile<CR>
-nnoremap <silent> [intero]o :InteroOpen<CR>
-nnoremap <silent> [intero]r :InteroReload<CR>
-nnoremap <silent> [intero]t :InteroGenericType<CR>
-nnoremap <silent> [intero]T :InteroType<CR>
-" nnoremap <silent> [intero]t <Plug>InteroGenericType
+" nnoremap [intero] <Nop>
+" nmap <Leader>i [intero]
+" " close is easier to remember than "hide"
+" nnoremap <silent> [intero]c :InteroHide<CR>
+" nnoremap <silent> [intero]g :InteroGoToDef<CR>
+" nnoremap <silent> [intero]l :InteroLoadCurrentFile<CR>
+" nnoremap <silent> [intero]o :InteroOpen<CR>
+" nnoremap <silent> [intero]r :InteroReload<CR>
+" nnoremap <silent> [intero]t :InteroGenericType<CR>
+" nnoremap <silent> [intero]T :InteroType<CR>
+" " nnoremap <silent> [intero]t <Plug>InteroGenericType
 " }}}
 " {{{ latex-unicoder
 let g:unicoder_cancel_normal = 1
@@ -1629,7 +1630,7 @@ function _G.Toggle_venn()
         -- draw a box by pressing "f" with visual selection
         vim.api.nvim_buf_set_keymap(0, "v", "f", ":VBox<CR>", {noremap = true})
     else
-        vim.cmd[[setlocal ve=]]
+        -- vim.cmd[[setlocal ve=]]
         vim.cmd[[mapclear <buffer>]]
         vim.b.venn_enabled = nil
     end
