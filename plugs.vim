@@ -98,8 +98,13 @@ else
   Plug 'justinmk/vim-sneak'
 endif
 " }}}
+" {{{ venn.nvim
+" Expectations: Draw useful boxes
+if has('nvim')
+  Plug 'jbyuki/venn.nvim'
+endif
 " }}}
-
+" }}}
 
 " {{{ latex-unicoder
 Plug 'joom/latex-unicoder.vim'
