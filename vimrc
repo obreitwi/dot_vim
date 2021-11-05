@@ -1508,6 +1508,9 @@ if g:fzf_found
     nmap <silent> [unite]h :FzfHelptags<CR>
 endif
 " }}}
+" {{{ gh-line
+let g:gh_open_command = 'fn() { echo "$@" | xclip -selection copy; }; fn '
+" }}}
 " {{{ gitgutter
 nmap <leader>gf :GitGutterFold<CR>
 " }}}

@@ -104,6 +104,9 @@ if has('nvim')
   Plug 'jbyuki/venn.nvim'
 endif
 " }}}
+" {{{ vim-gh-line
+" Expectations: Useful to quickly share codelines.
+Plug 'ruanyl/vim-gh-line'
 " }}}
 
 " {{{ latex-unicoder
