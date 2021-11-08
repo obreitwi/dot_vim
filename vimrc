@@ -256,6 +256,12 @@ if v:version >= 703
     nnoremap <leader>ss :set rnu!<CR>
 endif
 
+" copy current filename to clipboard
+nnoremap <leader>cp :let @" = expand("%")<CR>
+
+" copy full current filename to clipboard
+nnoremap <leader>cP :let @" = expand("%:p")<CR>
+
 " Toggle character listing (col in unimpaired)w
 " nmap <Leader>ll :set list!<CR>
 
