@@ -152,16 +152,20 @@ function! SearchMultiLine(bang, ...)
   endif
 endfunction
 
-" TODO: Push upstream 
+if !exists(":RgFromSearch")
+" TODO: Push upstream
 function! RgFromSearch() "{{{
   let search = getreg('/')
   " translate vim word boundaries
   let search = substitute(search, '\(\\<\|\\>\)', '\\b', 'g')
   call fzf#vim#grep("rg --column --line-number --no-heading --color=always --smart-case -- ".shellescape(search), 1, fzf#vim#with_preview(), 0)
 endfunction "}}}
+endif
 " }}}
 " {{{ Commands
 command! -bang -nargs=* -complete=tag S call SearchMultiLine(<bang>0, <f-args>)|normal! /<C-R>/<CR
+
+command! RgFromSearch call RgFromSearch()
 
 " Enable folding
 command! Folds set fdm=syntax
@@ -1497,8 +1501,6 @@ endif
 " }}}
 " {{{ fzf
 if g:fzf_found
-    command! RgFromSearch call RgFromSearch()
-
     " nnoremap [fzf] <Nop>
     " nmap <leader>f [fzf]
     " Keep muscle memory from unite bindings
