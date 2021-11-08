@@ -482,13 +482,17 @@ Plug 'tpope/vim-unimpaired'
 
 " {{{ unite
 
-Plug 'Shougo/unite.vim'
-Plug 'Shougo/neomru.vim'
-Plug 'Shougo/vimproc.vim'
-Plug 'shougo/unite-outline'
-Plug 'shougo/neoyank.vim'
-Plug 'Shougo/vimfiler.vim'
-Plug 'Shougo/neossh.vim'
+let g:unite_enabled = 0
+if !s:coc_enabled || !g:fzf_found
+  let g:unite_enabled = 1
+  Plug 'Shougo/unite.vim'
+  Plug 'Shougo/neomru.vim'
+  Plug 'Shougo/vimproc.vim'
+  Plug 'shougo/unite-outline'
+  Plug 'shougo/neoyank.vim'
+  Plug 'Shougo/vimfiler.vim'
+  Plug 'Shougo/neossh.vim'
+endif
 
 " }}}
 

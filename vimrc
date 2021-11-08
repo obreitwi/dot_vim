@@ -1145,18 +1145,19 @@ nmap <Leader>u [unite]
 
 " nmap <silent> [unite]b :Unite -start-insert buffer<CR>
 " backward compatible mapping to BufferExplorer
-if !g:fzf_found
+if g:unite_enabled
     nmap <silent> <leader>be :Unite -no-start-insert buffer<CR>
     nmap <silent> [unite]m :Unite -no-start-insert file_mru<CR>
     nmap <silent> [unite]f :Unite -start-insert file_rec/async<CR>
     nmap <silent> [unite]g :Unite -no-quit -no-start-insert grep:.<CR>
     nmap <silent> [unite]y :Unite -no-start-insert history/yank<CR>
+
+    " Unite-Outline
+    nmap <silent> [Unite]o :Unite outline<CR>
+    " neoyank-specific
+    let g:neoyank#save_registers = ['"', '1', '+']
+    call neoyank#update()
 endif
-" Unite-Outline
-nmap <silent> [Unite]o :Unite outline<CR>
-" neoyank-specific
-let g:neoyank#save_registers = ['"', '1', '+']
-call neoyank#update()
 " }}}
 " {{{ Vertigo
 nnoremap <silent> <Space>j :<C-U>VertigoDown n<CR>
@@ -1512,6 +1513,22 @@ if g:fzf_found
     " Helptags shadowed by pathogen
     command! -bar -bang FzfHelptags call fzf#vim#helptags(<bang>0)
     nmap <silent> [unite]h :FzfHelptags<CR>
+
+    function! s:copy_results(lines)
+        let joined_lines = join(a:lines, "\n")
+        if len(a:lines) > 1
+            let joined_lines .= "\n"
+        endif
+        let @+ = joined_lines
+    endfunction
+
+    let g:fzf_action = {
+                \ 'ctrl-t': 'tab split',
+                \ 'ctrl-x': 'split',
+                \ 'ctrl-v': 'vsplit',
+                \ 'ctrl-y': function('s:copy_results')}
+
+    let $FZF_DEFAULT_OPTS = '--bind ctrl-a:select-all'
 endif
 " }}}
 " {{{ gh-line
