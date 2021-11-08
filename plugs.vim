@@ -405,6 +405,7 @@ endif
 " Plug 'gregsexton/gitv' " Superseeded by 'junegunn/gv.vim/
 " }}}
 " }}}
+" }}}
 
 " {{{ haskell
 if executable('ghc') && !has('nvim')
