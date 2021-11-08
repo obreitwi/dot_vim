@@ -72,21 +72,16 @@ endif
 " * Should improve diff readability.
 " Possible Problems:
 " * Might slow down larger diffs.
+" Realizations:
+" * So far no problems found --obreitwi, 08-11-21 10:44:05 
 Plug 'rickhowe/diffchar.vim'
-" }}}
-" {{{ latex-unicoder
-Plug 'joom/latex-unicoder.vim'
 " }}}
 " {{{ vim-titlecase
 " Expectations:
 " * Should not slow done text handling in large LaTeX files
 Plug 'christoomey/vim-titlecase'
 " }}}
-" {{{ vim-devicons
-" Expectations: Productivity increase
-Plug 'ryanoasis/vim-devicons'
-" }}}
-" {{{ nop as faster easymotion
+" {{{ hop as faster easymotion
 " Expections:
 " * Easy of use
 " * Actually gets used
@@ -108,9 +103,6 @@ endif
 " Expectations: Useful to quickly share codelines.
 Plug 'ruanyl/vim-gh-line'
 " }}}
-
-" {{{ latex-unicoder
-Plug 'joom/latex-unicoder.vim'
 " }}}
 
 " {{{ mundo
@@ -180,6 +172,9 @@ endif
 " }}}
 
 " {{{ latex
+" Insert unicode symbols based on their latex names
+Plug 'joom/latex-unicoder.vim'
+
 let s:latex_hosts=["abed", "mucku", "mimir"]
 let s:latex_enabled = index(s:latex_hosts, s:hostname) >= 0
 
@@ -261,6 +256,7 @@ endif
 " {{{ statusline
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
+Plug 'ryanoasis/vim-devicons'
 " }}}
 
 " {{{ audio stuff
