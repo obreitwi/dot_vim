@@ -1524,7 +1524,7 @@ require'hop'.setup()
 EOF
 
 nnoremap [hop] <Nop>
-nmap <leader><leader> [hop]
+nmap <leader>h [hop]
 nmap [hop]w :HopWordAC<CR>
 nmap [hop]b :HopWordBC<CR>
 nmap [hop]/ :HopPatternAC<CR>
