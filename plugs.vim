@@ -163,6 +163,10 @@ if executable('fzf')
   " We rely on fzf being installed system-wide -> no call to #install()
   Plug 'junegunn/fzf'
   Plug 'junegunn/fzf.vim'
+
+  if executable('rg')
+    Plug 'yazgoo/yank-history'
+  endif
 else
   let g:fzf_found = 0
   " Fallback onto ctrlp

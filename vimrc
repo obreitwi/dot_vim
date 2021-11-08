@@ -1531,6 +1531,13 @@ if g:fzf_found
     let $FZF_DEFAULT_OPTS = '--bind ctrl-a:select-all'
 endif
 " }}}
+" {{{ fzf-yank-history
+if g:fzf_found
+    nmap <silent> [unite]y :YankHistoryRgPaste<CR>
+    let g:yank_history_dir = $HOME . '/.cache/vim/yank-history'
+    let g:yank_history_max_size = 100
+endif
+" }}}
 " {{{ gh-line
 let g:gh_open_command = 'fn() { echo "$@" | xclip -selection copy; }; fn '
 " }}}
