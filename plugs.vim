@@ -246,6 +246,8 @@ Plug 'cespare/vim-toml'
 if s:coc_enabled
   Plug 'jackguo380/vim-lsp-cxx-highlight'
 endif
+
+Plug 'hashivim/vim-terraform'
 " }}}
 
 " {{{ snippets
