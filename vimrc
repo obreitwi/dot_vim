@@ -215,6 +215,8 @@ if g:opsystem == "Linux"
     source $VIMRUNTIME/ftplugin/man.vim
 end
 
+command! -nargs=0 GoLines % !golines %
+
 " }}}
 " {{{ General Mappings
 " Plugin specific mappings are found in Plugins-section
@@ -1747,6 +1749,8 @@ let g:go_doc_keywordprg_enabled = 0
 autocmd vimrc filetype go nmap <buffer> <silent> <leader>K <Plug>(go-doc)
 autocmd vimrc filetype go nmap <buffer> <silent> [coc]t <Plug>(go-test)
 autocmd vimrc filetype go nmap <buffer> <silent> [coc]m <Plug>(go-metalinter)
+
+nmap <silent> [coc]l :GoLines<CR>
 " }}}
 " }}}
 " {{{ Postscript
