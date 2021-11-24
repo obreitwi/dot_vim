@@ -1010,7 +1010,9 @@ let g:LustyExplorerSuppressRubyWarning = 1
 map <leader>bg :LustyBufferGrep<CR>
 " }}}
 " {{{ Mundo
+" decide which mapping to keep
 map gt :MundoToggle<CR>
+map <leader>mt :MundoToggle<CR>
 " }}}
 " {{{ NERDCommenter
 let g:NERDCustomDelimiters = {
