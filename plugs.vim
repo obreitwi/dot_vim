@@ -103,6 +103,11 @@ endif
 " Expectations: Useful to quickly share codelines.
 Plug 'ruanyl/vim-gh-line'
 " }}}
+" {{{
+" vim-move
+" Expectations: is actually used
+Plug 'matze/vim-move'
+" }}}
 " }}}
 
 " {{{ mundo
