@@ -175,7 +175,7 @@ if executable('fzf')
 else
   let g:fzf_found = 0
   " Fallback onto ctrlp
-  Plug 'kien/ctrlp.vim'
+  Plug 'ctrlpvim/ctrlp.vim'
 endif
 
 " }}}
@@ -245,6 +245,7 @@ endif
 let g:deoplete#enable_at_startup = 1
 
 " }}}
+
 
 " {{{ syntax
 Plug 'cespare/vim-toml'
