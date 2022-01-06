@@ -492,6 +492,7 @@ autocmd vimrc BufNewFile,BufRead /etc/apache2/* setf apache
 " {{{ Jenkinfiles
 autocmd vimrc BufNewFile,BufRead Jenkinsfile setf groovy
 autocmd vimrc BufNewFile,BufRead *.Jenkinsfile setf groovy
+autocmd vimrc BufNewFile,BufRead Jenkinsfile.* setf groovy
 " }}}
 " {{{ SLI
 autocmd vimrc BufNewFile,BufRead *.sli setf sli
