@@ -1750,10 +1750,11 @@ let g:go_metalinter_command = 'golangci-lint'
 " We want a custom mapping for GoDoc
 let g:go_doc_keywordprg_enabled = 0
 autocmd vimrc filetype go nmap <buffer> <silent> <leader>K <Plug>(go-doc)
-autocmd vimrc filetype go nmap <buffer> <silent> [coc]t <Plug>(go-test)
+autocmd vimrc filetype go nmap <buffer> <silent> [coc]e :GoIfErr<CR>
+autocmd vimrc filetype go nmap <buffer> <silent> [coc]l :GoLines<CR>
 autocmd vimrc filetype go nmap <buffer> <silent> [coc]m <Plug>(go-metalinter)
-
-nmap <silent> [coc]l :GoLines<CR>
+autocmd vimrc filetype go nmap <buffer> <silent> [coc]s :GoFillStruct<CR>
+autocmd vimrc filetype go nmap <buffer> <silent> [coc]t <Plug>(go-test)
 " }}}
 " }}}
 " {{{ Postscript
