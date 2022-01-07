@@ -207,6 +207,10 @@ command! -nargs=0 Spen setlocal spelllang=en
 command! -nargs=0 Then setlocal thesaurus=
 \   /usr/share/mythes/th_en_US.v2.dat
 
+" Compute how often each item appears in time log
+command! TimeStats exec '/^# Time log/+2,$w !sed -e "s/..:.. \?//g" -e "/^$/d" | sort | uniq -c'
+command! TS TimeStats
+
 " Lazy bunch
 command! -nargs=0 SA setf apache
 
