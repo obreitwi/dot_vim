@@ -179,8 +179,6 @@ command! -nargs=+ -complete=command Command call Command(<q-args>)
 command! SOvnorm let g:neosolarized_visibility="normal" | colorscheme NeoSolarized
 command! SOvlow let g:neosolarized_visibility="low" | colorscheme NeoSolarized
 
-command! -nargs=0 TS call CreateTimestamp()
-
 command! Plugs tabe $HOME/.vim/plugs.vim
 
 command! -nargs=0 MakeTags !ctags -R --c++-kinds=+p --fields=+iaS --extra=+q .
@@ -208,7 +206,7 @@ command! -nargs=0 Then setlocal thesaurus=
 \   /usr/share/mythes/th_en_US.v2.dat
 
 " Compute how often each item appears in time log
-command! TimeStats exec '/^# Time log/+2,$w !sed -e "s/..:.. \?//g" -e "/^$/d" | sort | uniq -c'
+command! TimeStats exec '0/^# Time log$/+2,$w !sed -e "s/^..:.. \?//g" -e "/^$/d" -e "/^\s*\*/d" | sort | uniq -c'
 command! TS TimeStats
 
 " Lazy bunch
