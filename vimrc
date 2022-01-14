@@ -299,6 +299,10 @@ nnoremap <c-e><c-l> :tabn<CR>
 nnoremap <Leader>Q :%s/=\(\x\x\<BAR>\n\)/\=submatch(1)=='\n'?'':nr2char('0x'.submatch(1))/ge<CR>
 vnoremap <Leader>Q :s/=\(\x\x\<BAR>\n\)/\=submatch(1)=='\n'?'':nr2char('0x'.submatch(1))/ge<CR>
 
+" TODO: The following mapping deletes the whole buffer
+" -> figure out which text-object is called here, for now: disable
+nmap cie <NOp>
+
 " }}}
 " {{{ Settings
 set nocompatible
