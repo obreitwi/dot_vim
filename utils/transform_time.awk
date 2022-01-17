@@ -2,7 +2,7 @@
 func format_quarters(quarters) {
     hours=int(quarters/4);
     if (hours > 0) {
-        return sprintf("% 2dh%02dm", hours, ((quarter%4)*15));
+        return sprintf("% 2dh%02dm", hours, ((quarters%4)*15));
     } else {
         return sprintf("   %02dm", ((quarters%4)*15));
     }
