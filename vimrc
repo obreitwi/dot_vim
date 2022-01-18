@@ -103,6 +103,13 @@ function! CreateTimestamp()
     normal! aSTAMP
 endfunction
 
+" Copy the name of a task in personal time tracking
+function! CopyTaskName()
+    let l:save_cursor = getcurpos()
+    normal! 0Ely$
+    call setpos('.', l:save_cursor)
+endfunction
+
 " Jump to next closed fold
 function! NextClosedFold(dir)
     let cmd = 'norm!z' . a:dir
@@ -303,6 +310,9 @@ vnoremap <Leader>Q :s/=\(\x\x\<BAR>\n\)/\=submatch(1)=='\n'?'':nr2char('0x'.subm
 " -> figure out which text-object is called here, for now: disable
 nmap cie <NOp>
 
+" }}}
+" {{{ Filetype Mappings
+autocmd vimrc FileType markdown    nmap <silent> yc :call CopyTaskName()<CR>
 " }}}
 " {{{ Settings
 set nocompatible
