@@ -117,6 +117,13 @@ function! PasteTaskName()
     call setpos('.', l:save_cursor)
 endfunction
 
+" Replace the name of a task in personal time tracking
+function! ReplaceTaskName()
+    let l:save_cursor = getcurpos()
+    normal! 0El"_D$p
+    call setpos('.', l:save_cursor)
+endfunction
+
 " Jump to next closed fold
 function! NextClosedFold(dir)
     let cmd = 'norm!z' . a:dir
@@ -321,6 +328,7 @@ nmap cie <NOp>
 " {{{ Filetype Mappings
 autocmd vimrc FileType markdown    nmap <silent> <localleader>y :call CopyTaskName()<CR>
 autocmd vimrc FileType markdown    nmap <silent> <localleader>p :call PasteTaskName()<CR>
+autocmd vimrc FileType markdown    nmap <silent> <localleader>r :call ReplaceTaskName()<CR>
 " }}}
 " {{{ Settings
 set nocompatible
