@@ -521,9 +521,6 @@ autocmd vimrc BufNewFile,BufRead *.txt setf text
 " {{{ Apache config files
 autocmd vimrc BufNewFile,BufRead /etc/apache2/* setf apache
 " }}}
-" {{{ go
-autocmd vimrc FileType go syntax sync minlines=10000
-" }}}
 " {{{ Jenkinfiles
 autocmd vimrc BufNewFile,BufRead Jenkinsfile setf groovy
 autocmd vimrc BufNewFile,BufRead *.Jenkinsfile setf groovy
