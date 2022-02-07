@@ -355,9 +355,6 @@ if v:version >= 703 && !has('nvim')
 set cm=blowfish2
 endif
 
-" Fix syntax breakidn down in long files
-syntax sync minlines=10000
-
 " relative line numbers
 set relativenumber
 
@@ -523,6 +520,9 @@ autocmd vimrc BufNewFile,BufRead *.txt setf text
 " }}}
 " {{{ Apache config files
 autocmd vimrc BufNewFile,BufRead /etc/apache2/* setf apache
+" }}}
+" {{{ go
+autocmd vimrc FileType go syntax sync minlines=10000
 " }}}
 " {{{ Jenkinfiles
 autocmd vimrc BufNewFile,BufRead Jenkinsfile setf groovy
