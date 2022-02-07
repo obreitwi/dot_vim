@@ -1367,10 +1367,10 @@ if exists("g:using_coc") && g:using_coc == 1
     nmap <silent> ]g <Plug>(coc-diagnostic-next)
 
     " Remap keys for gotos
-    nmap <silent> gd <Plug>(coc-definition)
-    nmap <silent> gy <Plug>(coc-type-definition)
-    nmap <silent> gi <Plug>(coc-implementation)
-    nmap <silent> gr <Plug>(coc-references)
+    nmap <silent> [coc]d <Plug>(coc-definition)
+    nmap <silent> [coc]y <Plug>(coc-type-definition)
+    nmap <silent> [coc]i <Plug>(coc-implementation)
+    nmap <silent> [coc]r <Plug>(coc-references)
 
     " Use K to show documentation in preview window
     nnoremap <silent> gk :call <SID>show_documentation()<CR>
@@ -1433,21 +1433,21 @@ if exists("g:using_coc") && g:using_coc == 1
 
     " Using CocList
     " Show all diagnostics
-    nnoremap <silent> [coc]a  :<C-u>CocList diagnostics<cr>
+    nnoremap <silent> [coc]D  :<C-u>CocList diagnostics<cr>
     " Manage extensions
-    nnoremap <silent> [coc]e  :<C-u>CocList extensions<cr>
+    nnoremap <silent> [coc]E  :<C-u>CocList extensions<cr>
     " Show commands
-    nnoremap <silent> [coc]c  :<C-u>CocList commands<cr>
+    nnoremap <silent> [coc]C  :<C-u>CocList commands<cr>
     " Find symbol of current document
-    nnoremap <silent> [coc]o  :<C-u>CocList outline<cr>
+    nnoremap <silent> [coc]O  :<C-u>CocList outline<cr>
     " Search workspace symbols
-    nnoremap <silent> [coc]s  :<C-u>CocList -I symbols<cr>
+    nnoremap <silent> [coc]S  :<C-u>CocList -I symbols<cr>
     " Do default action for next item.
     nnoremap <silent> [coc]j  :<C-u>CocNext<CR>
     " Do default action for previous item.
     nnoremap <silent> [coc]k  :<C-u>CocPrev<CR>
     " Resume latest coc list
-    nnoremap <silent> [coc]p  :<C-u>CocListResume<CR>
+    nnoremap <silent> [coc]L  :<C-u>CocListResume<CR>
 endif
 " }}}
 " {{{ dart-vim-plugin
@@ -1584,7 +1584,7 @@ endif
 let g:gh_open_command = 'fn() { echo "$@" | xclip -selection copy; }; fn '
 " }}}
 " {{{ gitgutter
-nmap <leader>gf :GitGutterFold<CR>
+nmap <leader>ggf :GitGutterFold<CR>
 " }}}
 " {{{ gofmt
 autocmd vimrc Filetype go nnoremap <buffer><Leader>cf :GoImports<CR>
