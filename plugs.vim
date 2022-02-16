@@ -111,6 +111,12 @@ Plug 'matze/vim-move'
 " Expectations: useful during coding
 Plug 'Matt-A-Bennett/surround-funk.vim'
 " }}}
+" {{{ nvim-cursorline
+" Expectations: helpful beyond seeing the current line
+if has('nvim')
+  Plug 'yamatsum/nvim-cursorline'
+endif
+" }}}
 " }}}
 
 " {{{ mundo
