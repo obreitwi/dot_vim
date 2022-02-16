@@ -145,7 +145,8 @@ endif
 " }}}
 "
 " {{{ pr pending
-" Plug 'ivyl/vim-bling' " temporarily disabled till PR merged
+" Plug 'ivyl/vim-bling' " temporarily disabled till PR merged:
+" https://github.com/ivyl/vim-bling/pull/16
 Plug 'obreitwi/vim-bling'
 " }}}
 
