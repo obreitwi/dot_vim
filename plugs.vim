@@ -108,6 +108,11 @@ Plug 'ruanyl/vim-gh-line'
 " Expectations: is actually used
 Plug 'matze/vim-move'
 " }}}
+" {{{
+" surround-funk
+" Expectations: useful during coding
+Plug 'Matt-A-Bennett/surround-funk.vim'
+" }}}
 " }}}
 
 " {{{ mundo
