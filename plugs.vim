@@ -103,13 +103,11 @@ endif
 " Expectations: Useful to quickly share codelines.
 Plug 'ruanyl/vim-gh-line'
 " }}}
-" {{{
-" vim-move
+" {{{ vim-move
 " Expectations: is actually used
 Plug 'matze/vim-move'
 " }}}
-" {{{
-" surround-funk
+" {{{ surround-funk
 " Expectations: useful during coding
 Plug 'Matt-A-Bennett/surround-funk.vim'
 " }}}
