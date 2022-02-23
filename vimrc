@@ -1430,13 +1430,13 @@ if exists("g:using_coc") && g:using_coc == 1
 
     " Using CocList
     " Show all diagnostics
-    nnoremap <silent> [coc]D  :<C-u>CocList diagnostics<cr>
+    nnoremap <silent> [coc]D  :<C-u>CocFzfList diagnostics<cr>
     " Manage extensions
-    nnoremap <silent> [coc]E  :<C-u>CocList extensions<cr>
+    nnoremap <silent> [coc]E  :<C-u>CocFzfList extensions<cr>
     " Show commands
-    nnoremap <silent> [coc]C  :<C-u>CocList commands<cr>
+    nnoremap <silent> [coc]C  :<C-u>CocFzfList commands<cr>
     " Find symbol of current document
-    nnoremap <silent> [coc]O  :<C-u>CocList outline<cr>
+    nnoremap <silent> [coc]O  :<C-u>CocFzfList outline<cr>
     " Search workspace symbols
     nnoremap <silent> [coc]S  :<C-u>CocList -I symbols<cr>
     " Do default action for next item.
