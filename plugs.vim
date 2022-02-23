@@ -161,7 +161,9 @@ endif
 " {{{ highlighting
 if has('nvim-0.5')
   Plug 'lukas-reineke/indent-blankline.nvim'
-  Plug 'p00f/nvim-ts-rainbow'
+  " nvim-ts-rainbow requires nightly, so periodically check for a version
+  " working with stable or remove plugin
+  Plug 'p00f/nvim-ts-rainbow', { 'commit': 'c6c26c4def0e9cd82f371ba677d6fc9baa0038af' }
 endif
 " }}}
 
