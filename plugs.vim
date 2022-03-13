@@ -111,6 +111,10 @@ Plug 'matze/vim-move'
 " Expectations: useful during coding
 Plug 'Matt-A-Bennett/surround-funk.vim'
 " }}}
+" {{{ splitjoin
+" Expectations: Actually used to split up long function calls  
+Plug 'AndrewRadev/splitjoin.vim'
+" "}}}
 " }}}
 
 " {{{ mundo
