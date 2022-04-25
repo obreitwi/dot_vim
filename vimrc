@@ -1437,6 +1437,7 @@ if exists("g:using_coc") && g:using_coc == 1
     " Using CocList
     " Show all diagnostics
     nnoremap <silent> [coc]D  :<C-u>CocFzfList diagnostics<cr>
+    nnoremap <silent> [coc]b  :<C-u>CocFzfList diagnostics --current-buf<cr>
     " Manage extensions
     nnoremap <silent> [coc]E  :<C-u>CocFzfList extensions<cr>
     " Show commands
