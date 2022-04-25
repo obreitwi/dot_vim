@@ -707,7 +707,11 @@ endif
 " {{{ Statusline
 " Powerline
 " disable on all machines unless specifically enabled
-set laststatus=2
+if has('nvim-0.7')
+    set laststatus=3
+else
+    set laststatus=2
+endif
 set noshowmode
 
 let g:powerline_available=1
