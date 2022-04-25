@@ -215,6 +215,8 @@ else
     command! -nargs=0 Vimrc tabe $VIM/vimfiles/vimrc
 endif
 
+command! -nargs=0 ReadTimeTable read ~/.vimwiki/template_timelog.md
+
 command! -nargs=0 FT call OpenCustomFT("ftplugin")
 command! -nargs=0 FTA call OpenCustomFT("after")
 
