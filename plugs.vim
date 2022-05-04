@@ -319,6 +319,7 @@ Plug 'airblade/vim-gitgutter'
 " Faster gitv replacment
 Plug 'junegunn/gv.vim'
 " Plug 'mhinz/vim-signify'
+Plug 'rbong/vim-flog'
 " }}}
 
 " {{{ golang
