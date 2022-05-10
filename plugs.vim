@@ -327,6 +327,7 @@ if executable('go')
   Plug 'josa42/coc-go', {'do': 'yarn install --frozen-lockfile'}
   " Plug 'darrikonn/vim-gofmt'
   Plug 'fatih/vim-go'
+  Plug 'buoto/gotests-vim'
 endif
 
 if executable('dlv')
