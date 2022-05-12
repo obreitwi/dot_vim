@@ -1159,6 +1159,7 @@ nmap <Leader>s [usnips]
 
 map <silent> [usnips]l <Esc>:call UltiSnips#ListSnippets()<CR>
 map <silent> [usnips]e :UltiSnipsEdit<CR>
+let g:UltiSnipsSnippetStorageDirectoryForUltiSnipsEdit="~/.vim/bundle-own/my-snippets/UltiSnips"
 " }}}
 " {{{ Unite
 let g:unite_enable_start_insert = 1
