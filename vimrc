@@ -262,6 +262,9 @@ vnoremap Q gq
 nnoremap <silent> <c-f><c-=> :call GuifontsizeModify(1)<cr>
 nnoremap <silent> <c-f><c--> :call GuifontsizeModify(-1)<cr>
 
+" Make bulletin
+nnoremap <silent> <leader>bt :keeppattern s:^\s*\zs:* :<CR>
+
 " Make Y work like C and D..
 " changed for yankring
 map Y y$ 
