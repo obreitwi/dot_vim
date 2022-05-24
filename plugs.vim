@@ -115,6 +115,10 @@ Plug 'Matt-A-Bennett/surround-funk.vim'
 " Expectations: Actually used to split up long function calls  
 Plug 'AndrewRadev/splitjoin.vim'
 " "}}}
+" {{{ unicode
+" Expectations: Actually used to insert unicode digraphs.
+Plug 'chrisbra/unicode.vim'
+" }}}
 " }}}
 
 " {{{ mundo
