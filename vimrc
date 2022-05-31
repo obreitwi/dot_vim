@@ -658,9 +658,9 @@ endif
 
 " This is a test of a line that will exceed 81 characters per line and should trigger the new setting
 " Highlight when a line exceeds 81 characters
-highlight CustomColorColumn ctermbg=magenta ctermfg=black
+" highlight CustomColorColumn ctermbg=magenta ctermfg=black
 " autocmd Syntax * call SetCustomColorColumn()
-autocmd vimrc BufWinEnter * call SetCustomColorColumn()
+" autocmd vimrc BufWinEnter * call SetCustomColorColumn()
 
 " trailing whitespace
 highlight default link ExtraWhitespace Error
