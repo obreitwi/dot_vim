@@ -798,6 +798,7 @@ nmap <Leader>a [ale]
 map <silent> [ale]d <Plug>(ale_detail)
 map <silent> [ale]t <Plug>(ale_toggle)
 map <silent> [ale]b <Plug>(ale_toggle_buffer)
+nmap [ale]l :ALEPopulateQuickfix<CR>
 
 " }}}
 " {{{ ATP
