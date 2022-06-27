@@ -43,6 +43,19 @@ else
     let s:power_online = '1'
 endif
 " }}}
+" {{{ Fixes
+" {{{ Workaround for neovim not reszing itself, see https://github.com/neovim/neovim/issues/11330
+if has("nvim-0.7.2")
+lua <<EOF
+vim.api.nvim_create_autocmd({"VimEnter"}, {
+  callback = function()
+    local pid, WINCH = vim.fn.getpid(), vim.loop.constants.SIGWINCH
+    vim.defer_fn(function() vim.loop.kill(pid, WINCH) end, 20)
+  end
+})
+EOF
+endif
+" }}}
 " {{{ Functions
 function! EnsureDirExists (dir)
     if !isdirectory(a:dir)
