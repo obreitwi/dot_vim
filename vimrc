@@ -1405,6 +1405,9 @@ if exists("g:using_coc") && g:using_coc == 1
     " Remap for rename current word
     nmap [coc]rn <Plug>(coc-rename)
 
+    " Remap for refactoring current word
+    nmap [coc]rf <Plug>(coc-refactor)
+
     " Remap for format selected region
     xmap [coc]f  <Plug>(coc-format-selected)
     nmap [coc]f  <Plug>(coc-format-selected)
