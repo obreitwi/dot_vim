@@ -565,12 +565,12 @@ else
     " These settings were found experimentally
     command! FIncon set guifont=Inconsolata\ Medium:h12
     command! FInconP set guifont=Inconsolata\ Nerd\ Font\ Mono\ Medium:h12
-    command! FDejaP set guifont=DejaVu\ Sans\ Mono\ Nerd\ Font:style=Book:h11
+    command! FDejaP set guifont=DejaVuSansMono\ Nerd\ Font:h10
     command! FInconL set guifont=Inconsolata\ Medium:h16
-    command! FDejaPS set guifont=DejaVu\ Sans\ Mono\ Nerd\ Font:h8
+    command! FDejaPS set guifont=DejaVuSansMono\ Nerd\ Font:h8
     command! FInconPL set guifont=Inconsolata\ Nerd\ Font\ Mono\ Medium:h14
-    command! FDejaPL set guifont=DejaVu\ Sans\ Mono\ Nerd\ Font:h14
-    command! FDejaPVL set guifont=DejaVu\ Sans\ Mono\ Nerd\ Font:h16
+    command! FDejaPL set guifont=DejaVuSansMono\ Nerd\ Font:h14
+    command! FDejaPVL set guifont=DejaVuSansMono\ Nerd\ Font:h16
     command! FEnvy set guifont=Envy\ Code\ R:h11
 endif
 
