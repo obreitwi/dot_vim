@@ -124,6 +124,11 @@ function! ReplaceTaskName()
     call setpos('.', l:save_cursor)
 endfunction
 
+function InsertTaskName(name)
+    call append(line('.'), a:name)
+    normal! J
+endfunction
+
 " Jump to next closed fold
 function! NextClosedFold(dir)
     let cmd = 'norm!z' . a:dir
@@ -264,6 +269,8 @@ nnoremap <silent> <c-f><c--> :call GuifontsizeModify(-1)<cr>
 
 " Make bulletin
 nnoremap <silent> <leader>bt :keeppattern s:^\s*\zs:* :<CR>
+" Make todo
+nnoremap <silent> <leader>td :keeppattern s:^\s*\zs:* [ ] :<CR>
 
 " Make Y work like C and D..
 " changed for yankring
@@ -334,6 +341,7 @@ nmap cie <NOp>
 autocmd vimrc FileType markdown    nmap <silent> <localleader>y :call CopyTaskName()<CR>
 autocmd vimrc FileType markdown    nmap <silent> <localleader>p :call PasteTaskName()<CR>
 autocmd vimrc FileType markdown    nmap <silent> <localleader>r :call ReplaceTaskName()<CR>
+autocmd vimrc FileType markdown    nmap <silent> <localleader>s :call fzf#run(fzf#wrap({'source': 'rev-stories --title --list', 'sink': function("InsertTaskName")}))<CR>
 " }}}
 " {{{ Settings
 set nocompatible
