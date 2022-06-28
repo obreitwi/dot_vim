@@ -356,6 +356,8 @@ autocmd vimrc FileType markdown    nmap <silent> <localleader>y :call CopyTaskNa
 autocmd vimrc FileType markdown    nmap <silent> <localleader>p :call PasteTaskName()<CR>
 autocmd vimrc FileType markdown    nmap <silent> <localleader>r :call ReplaceTaskName()<CR>
 autocmd vimrc FileType markdown    nmap <silent> <localleader>s :call fzf#run(fzf#wrap({'source': 'rev-stories --title --list', 'sink': function("InsertTaskName")}))<CR>
+
+autocmd vimrc FileType terraform   nmap <silent> <leader>cf :!terraform fmt %<CR>
 " }}}
 " {{{ Settings
 set nocompatible
