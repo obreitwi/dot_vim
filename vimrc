@@ -579,12 +579,12 @@ else
     " These settings were found experimentally
     command! FIncon set guifont=Inconsolata\ Medium:h12
     command! FInconP set guifont=Inconsolata\ Nerd\ Font\ Mono\ Medium:h12
-    command! FDejaP set guifont=DejaVuSansMono\ Nerd\ Font:h10
+    command! FDejaP set guifont=DejaVuSansMono\ Nerd\ Font:w57:h9
     command! FInconL set guifont=Inconsolata\ Medium:h16
-    command! FDejaPS set guifont=DejaVuSansMono\ Nerd\ Font:h8
+    command! FDejaPS set guifont=DejaVuSansMono\ Nerd\ Font:w57:h8
     command! FInconPL set guifont=Inconsolata\ Nerd\ Font\ Mono\ Medium:h14
-    command! FDejaPL set guifont=DejaVuSansMono\ Nerd\ Font:h14
-    command! FDejaPVL set guifont=DejaVuSansMono\ Nerd\ Font:h16
+    command! FDejaPL set guifont=DejaVuSansMono\ Nerd\ Font:w57:h14
+    command! FDejaPVL set guifont=DejaVuSansMono\ Nerd\ Font:w57:h16
     command! FEnvy set guifont=Envy\ Code\ R:h11
 endif
 
@@ -709,6 +709,10 @@ digraph td 128078 " :thumbdsdown:
 if exists("g:neovide")
     " config options for neovide
     let g:neovide_cursor_vfx_mode = "railgun"
+    " let g:neovide_cursor_animation_length=0.13
+    let g:neovide_cursor_animation_length=0.08
+    let g:neovide_cursor_trail_length=0.8
+    let g:neovide_cursor_antialiasing=v:true
 endif
 " }}}
 " {{{ Other
