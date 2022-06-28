@@ -56,6 +56,7 @@ vim.api.nvim_create_autocmd({"VimEnter"}, {
 EOF
 endif
 " }}}
+" }}}
 " {{{ Functions
 function! EnsureDirExists (dir)
     if !isdirectory(a:dir)
