@@ -46,7 +46,6 @@ Plug 'rkitover/vimpager'
 Plug 'rust-lang/rust.vim'
 Plug 'sanjayankur31/sli.vim'
 Plug 'scrooloose/nerdcommenter'
-Plug 'sickill/vim-pasta'
 Plug 'sjbach/lusty'
 Plug 'tmhedberg/SimpylFold'
 Plug 'tommcdo/vim-exchange'
@@ -390,6 +389,9 @@ endif
 " Replaced by mundo:
 " Plug 'sjl/gundo.vim'
 " }}}
+" }}}
+" {{{ 2022
+" Plug 'sickill/vim-pasta' " Disabled to see if it is actually used
 " }}}
 " {{{ other
 " Plug 'vim-scripts/SudoEdit.vim'
