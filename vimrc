@@ -1109,6 +1109,7 @@ command! -nargs=0 Nt NERDTree
 nmap <Leader>r  <Plug>ReplaceWithRegisterOperator
 nmap <Leader>rl <Plug>ReplaceWithRegisterLine
 xmap <Leader>r  <Plug>ReplaceWithRegisterVisual
+xmap P          <Plug>ReplaceWithRegisterVisual
 " }}}
 " {{{ Signify
 map <leader>st <Plug>(signify-toggle)
