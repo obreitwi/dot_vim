@@ -143,6 +143,13 @@ function InsertTaskName(name)
     normal! J
 endfunction
 
+function InsertGitIDs(link)
+    let l:lines_id=systemlist(["rev-git-ids", split(a:link, "	")[0]])
+    for line in l:lines_id
+        call append(line('.'), line)
+    endfor
+endfunction
+
 " Jump to next closed fold
 function! NextClosedFold(dir)
     let cmd = 'norm!z' . a:dir
@@ -356,6 +363,8 @@ autocmd vimrc FileType markdown    nmap <silent> <localleader>y :call CopyTaskNa
 autocmd vimrc FileType markdown    nmap <silent> <localleader>p :call PasteTaskName()<CR>
 autocmd vimrc FileType markdown    nmap <silent> <localleader>r :call ReplaceTaskName()<CR>
 autocmd vimrc FileType markdown    nmap <silent> <localleader>s :call fzf#run(fzf#wrap({'source': 'rev-stories --title --list', 'sink': function("InsertTaskName")}))<CR>
+
+autocmd vimrc FileType gitcommit   nmap <silent> <localleader>c :call fzf#run(fzf#wrap({'source': 'rev-stories --list --full', 'sink': function("InsertGitIDs"), 'options': '--with-nth 2..'}))<CR>
 
 autocmd vimrc FileType terraform   nmap <silent> <leader>cf :!terraform fmt %<CR>
 " }}}
