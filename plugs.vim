@@ -80,27 +80,11 @@ Plug 'rickhowe/diffchar.vim'
 " * Should not slow done text handling in large LaTeX files
 Plug 'christoomey/vim-titlecase'
 " }}}
-" {{{ hop as faster easymotion
-" Expections:
-" * Easy of use
-" * Actually gets used
-let g:use_easymotion = 0
-if has('nvim') && !g:use_easymotion
-  Plug 'phaazon/hop.nvim'
-else
-  Plug 'Lokaltog/vim-easymotion'
-  Plug 'justinmk/vim-sneak'
-endif
-" }}}
 " {{{ venn.nvim
 " Expectations: Draw useful boxes
 if has('nvim')
   Plug 'jbyuki/venn.nvim'
 endif
-" }}}
-" {{{ vim-gh-line
-" Expectations: Useful to quickly share codelines.
-Plug 'ruanyl/vim-gh-line'
 " }}}
 " {{{ vim-move
 " Expectations: is actually used
@@ -111,7 +95,7 @@ Plug 'matze/vim-move'
 Plug 'Matt-A-Bennett/surround-funk.vim'
 " }}}
 " {{{ splitjoin
-" Expectations: Actually used to split up long function calls  
+" Expectations: Actually used to split up long function calls
 Plug 'AndrewRadev/splitjoin.vim'
 " "}}}
 " {{{ unicode
@@ -153,6 +137,19 @@ endif
 " Plug 'ivyl/vim-bling' " temporarily disabled till PR merged:
 " https://github.com/ivyl/vim-bling/pull/16
 Plug 'obreitwi/vim-bling'
+" }}}
+
+" {{{ easymotion (or hop as faster alternative)
+" Expections:
+" * Easy of use
+" * Actually gets used
+let g:use_easymotion = 0
+if has('nvim') && !g:use_easymotion
+  Plug 'phaazon/hop.nvim'
+else
+  Plug 'Lokaltog/vim-easymotion'
+  Plug 'justinmk/vim-sneak'
+endif
 " }}}
 
 " {{{ browser addons
@@ -259,7 +256,6 @@ let g:deoplete#enable_at_startup = 1
 
 " }}}
 
-
 " {{{ syntax
 Plug 'cespare/vim-toml'
 if s:coc_enabled
@@ -323,6 +319,8 @@ Plug 'airblade/vim-gitgutter'
 Plug 'junegunn/gv.vim'
 " Plug 'mhinz/vim-signify'
 Plug 'rbong/vim-flog'
+" Useful to quickly share codelines.
+Plug 'ruanyl/vim-gh-line'
 " }}}
 
 " {{{ golang
