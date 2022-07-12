@@ -321,6 +321,16 @@ Plug 'junegunn/gv.vim'
 Plug 'rbong/vim-flog'
 " Useful to quickly share codelines.
 Plug 'ruanyl/vim-gh-line'
+
+" {{{ Octo
+if has('nvim')
+" {{{ Requirements
+Plug 'nvim-lua/plenary.nvim',
+Plug 'nvim-telescope/telescope.nvim',
+Plug 'kyazdani42/nvim-web-devicons',
+" }}}
+Plug 'pwntester/octo.nvim',
+endif
 " }}}
 
 " {{{ golang
