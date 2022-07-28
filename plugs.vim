@@ -320,7 +320,9 @@ Plug 'junegunn/gv.vim'
 " Plug 'mhinz/vim-signify'
 Plug 'rbong/vim-flog'
 " Useful to quickly share codelines.
-Plug 'ruanyl/vim-gh-line'
+" Plug 'ruanyl/vim-gh-line'
+" Use fork until time found to push changes upstream
+Plug 'obreitwi/vim-gh-line'
 
 " {{{ Octo
 if has('nvim')
