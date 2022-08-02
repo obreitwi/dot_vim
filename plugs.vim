@@ -338,7 +338,7 @@ Plug 'obreitwi/vim-gh-line'
 " Plug 'kyazdani42/nvim-web-devicons',
 " " }}}
 " Plug 'pwntester/octo.nvim',
-endif
+" endif
 " }}}
 
 " {{{ golang
