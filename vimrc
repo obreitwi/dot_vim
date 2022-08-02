@@ -1408,14 +1408,14 @@ if exists("g:using_coc") && g:using_coc == 1
                 \ coc#refresh()
     inoremap <expr><S-TAB> coc#pum#visible() ? coc#pum#prev(1) : "\<C-h>"
 
-    " Use <c-space> to trigger completion: >
+    " Use <c-space> to trigger completion:
     if has('nvim')
         inoremap <silent><expr> <c-space> coc#refresh()
     else
         inoremap <silent><expr> <c-@> coc#refresh()
     endif
 
-    " Use <CR> to confirm completion, use: >
+    " Use <CR> to confirm completion, use:
     inoremap <expr> <cr> coc#pum#visible() ? coc#_select_confirm() : "\<CR>"
 
     " To make <CR> to confirm selection of selected complete item or notify coc.nvim to format on enter, use:
@@ -1438,12 +1438,6 @@ if exists("g:using_coc") && g:using_coc == 1
     " let g:coc_snippet_next = '<tab>'
     " Note: the `coc-snippets` extension is required for this to work.
     " }}}
-
-    " Use <cr> to confirm completion, `<C-g>u` means break undo chain at current position.
-    " Coc only does snippet and additional edit on confirm.
-    inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
-    " Or use `complete_info` if your vim support it, like:
-    " inoremap <expr> <cr> complete_info()["selected"] != "-1" ? "\<C-y>" : "\<C-g>u\<CR>"
 
     " Use `[g` and `]g` to navigate diagnostics
     nmap <silent> [g <Plug>(coc-diagnostic-prev)
@@ -1519,22 +1513,22 @@ if exists("g:using_coc") && g:using_coc == 1
 
     " Using CocList
     " Show all diagnostics
-    nnoremap <silent> [coc]D  :<C-u>CocFzfList diagnostics<cr>
-    nnoremap <silent> [coc]b  :<C-u>CocFzfList diagnostics --current-buf<cr>
+    nmap <silent> [coc]D  :<C-u>CocFzfList diagnostics<CR>
+    nmap <silent> [coc]b  :<C-u>CocFzfList diagnostics --current-buf<CR>
     " Manage extensions
-    nnoremap <silent> [coc]E  :<C-u>CocFzfList extensions<cr>
+    nmap <silent> [coc]E  :<C-u>CocFzfList extensions<CR>
     " Show commands
-    nnoremap <silent> [coc]C  :<C-u>CocFzfList commands<cr>
+    nmap <silent> [coc]C  :<C-u>CocFzfList commands<CR>
     " Find symbol of current document
-    nnoremap <silent> [coc]O  :<C-u>CocFzfList outline<cr>
+    nmap <silent> [coc]O  :<C-u>CocFzfList outline<CR>
     " Search workspace symbols
-    nnoremap <silent> [coc]S  :<C-u>CocList -I symbols<cr>
+    nmap <silent> [coc]S  :<C-u>CocList -I symbols<CR>
     " Do default action for next item.
-    nnoremap <silent> [coc]j  :<C-u>CocNext<CR>
+    nmap <silent> [coc]j  :<C-u>CocNext<CR>
     " Do default action for previous item.
-    nnoremap <silent> [coc]k  :<C-u>CocPrev<CR>
+    nmap <silent> [coc]k  :<C-u>CocPrev<CR>
     " Resume latest coc list
-    nnoremap <silent> [coc]L  :<C-u>CocListResume<CR>
+    nmap <silent> [coc]L  :<C-u>CocListResume<CR>
 endif
 " }}}
 " {{{ dart-vim-plugin
