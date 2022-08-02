@@ -171,6 +171,12 @@ if has('nvim-0.5')
 endif
 " }}}
 
+" {{{ jq
+if has('nvim') && executable('jq')
+  Plug 'bfrg/vim-jq'
+endif
+" }}}
+
 " {{{ fzf
 
 if executable('fzf')
