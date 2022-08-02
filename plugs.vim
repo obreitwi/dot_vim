@@ -330,14 +330,14 @@ Plug 'rbong/vim-flog'
 " Use fork until time found to push changes upstream
 Plug 'obreitwi/vim-gh-line'
 
-" {{{ Octo
-if has('nvim')
-" {{{ Requirements
-Plug 'nvim-lua/plenary.nvim',
-Plug 'nvim-telescope/telescope.nvim',
-Plug 'kyazdani42/nvim-web-devicons',
-" }}}
-Plug 'pwntester/octo.nvim',
+" {{{ Octo (disabled since moving away from github)
+" if has('nvim')
+" " {{{ Requirements
+" Plug 'nvim-lua/plenary.nvim',
+" Plug 'nvim-telescope/telescope.nvim',
+" Plug 'kyazdani42/nvim-web-devicons',
+" " }}}
+" Plug 'pwntester/octo.nvim',
 endif
 " }}}
 

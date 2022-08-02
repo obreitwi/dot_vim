@@ -1114,12 +1114,14 @@ let g:NERDSpaceDelims=1
 command! -nargs=0 Nt NERDTree
 " map <c-f> :NERDTreeToggle<CR>
 " }}}
-" {{{ Octo
-if has('nvim')
-lua <<EOF
-require"octo".setup()
-EOF
-endif
+" {{{ Octo (disabled since moving away from github)
+" if has('nvim')
+" lua <<EOF
+" require"octo".setup({
+    " default_remote = {"github", "upstream", "origin"},
+" })
+" EOF
+" endif
 " }}}
 " {{{ ReplaceWithRegister
 nmap <Leader>r  <Plug>ReplaceWithRegisterOperator
