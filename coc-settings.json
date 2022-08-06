@@ -53,9 +53,9 @@
           "rootPatterns": ["*.cabal", "stack.yaml", "cabal.project", "package.yaml", "hie.yaml"],
           "filetypes": ["haskell", "lhaskell"]
         },
-  		"terraform": {
-			"command": "terraform-ls",
-			"args": ["serve"],
+        "terraform": {
+            "command": "terraform-ls",
+            "args": ["serve"],
 			"filetypes": [
 				"terraform",
 				"tf"
@@ -63,6 +63,17 @@
 			"initializationOptions": {},
 			"settings": {}
 		}
+    },
+    "go.goplsOptions": {
+        "hints": {
+            "constantValues": true,
+            "parameterNames": true,
+            "rangeVariableTypes": true,
+            "assignVariableTypes": true,
+            "compositeLiteralTypes": true,
+            "compositeLiteralFields": true,
+            "functionTypeParameters": true
+        }
     },
     "diagnostic.displayByAle": true,
     "rust-analyzer.checkOnSave.command": "clippy"
