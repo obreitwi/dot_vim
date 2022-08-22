@@ -939,7 +939,7 @@ nmap <Leader>csf <Plug>CtrlSFPrompt
 " {{{ DelimitMate
 autocmd vimrc FileType tex let b:delimitMate_quotes = "\" ' $"
 autocmd vimrc FileType django let b:delimitMate_quotes = "\" ' %"
-autocmd vimrc FileType markdown let b:delimitMate_quotes = "\" ' *"
+autocmd vimrc FileType markdown let b:delimitMate_quotes = "\" ' * `"
 let g:delimitMate_expand_cr = 1
 inoremap <C-Tab> <C-R>=delimitMate#JumpAny("\<C-Tab>")<CR>
 imap <C-G><C-G> <Plug>delimitMateS-Tab
