@@ -233,6 +233,8 @@ if s:coc_enabled
     Plug 'fannheyward/coc-texlab', {'do': 'yarn install --frozen-lockfile'}
   endif
 
+  Plug 'yaegassy/coc-marksman', {'do': 'yarn install --frozen-lockfile'}
+
   if g:fzf_found
     Plug 'antoinemadec/coc-fzf'
   endif
