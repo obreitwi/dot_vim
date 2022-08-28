@@ -143,6 +143,14 @@ function InsertTaskName(name)
     normal! J
 endfunction
 
+function InsertTaskDetails(title_details)
+    let l:split=split(a:title_details, '	')
+    let l:title=l:split[0]
+    let l:details=l:split[1]
+    call append(line('.'), l:title . ' #STORY ' . l:details)
+    normal! J
+endfunction
+
 function InsertGitIDs(link)
     let l:lines_id=systemlist(["rev-git-ids", split(a:link, "	")[0]])
     for line in l:lines_id
@@ -362,7 +370,8 @@ nmap cie <NOp>
 autocmd vimrc FileType markdown    nmap <silent> <localleader>y :call CopyTaskName()<CR>
 autocmd vimrc FileType markdown    nmap <silent> <localleader>p :call PasteTaskName()<CR>
 autocmd vimrc FileType markdown    nmap <silent> <localleader>r :call ReplaceTaskName()<CR>
-autocmd vimrc FileType markdown    nmap <silent> <localleader>s :call fzf#run(fzf#wrap({'source': 'rev-stories --title --list', 'sink': function("InsertTaskName")}))<CR>
+autocmd vimrc FileType markdown    nmap <silent> <localleader>s :call fzf#run(fzf#wrap({'source': 'rev-stories --list --title', 'sink': function("InsertTaskName")}))<CR>
+autocmd vimrc FileType markdown    nmap <silent> <localleader>d :call fzf#run(fzf#wrap({'source': 'rev-stories --list --json --title', 'sink': function("InsertTaskDetails"), 'options': '-d "	" --with-nth 1'}))<CR>
 
 autocmd vimrc FileType gitcommit   nmap <silent> <localleader>c :call fzf#run(fzf#wrap({'source': 'rev-stories --list --full', 'sink': function("InsertGitIDs"), 'options': '--with-nth 2..'}))<CR>
 
