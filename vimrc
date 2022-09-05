@@ -1754,6 +1754,10 @@ autocmd vimrc Filetype rust vnoremap <buffer><Leader>cf :RustFmtRange<CR>
 " {{{ sort-folds
 autocmd vimrc FileType bib let g:sort_folds_key_function="get_citekey"
 " }}}
+" {{{ splitjoin
+nmap sj :SplitjoinSplit<cr>
+nmap sk :SplitjoinJoin<cr>
+" }}}
 " {{{ tidal
 if has("nvim")
     let g:tidal_target = "terminal"
