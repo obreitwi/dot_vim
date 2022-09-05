@@ -263,7 +263,7 @@ command! -nargs=0 Then setlocal thesaurus=
 \   /usr/share/mythes/th_en_US.v2.dat
 
 " Compute how often each item appears in time log
-command! TimeStats exec '0/^# Time log$/+2,$w !sed -e "s/^..:.. \?//g" -e "/^$/d" -e "/^\s*\*/d" | sort | uniq -c | gawk -f ~/.vim/utils/transform_time.awk'
+command! TimeStats exec '0/^# Time log$/+2,$w !sed -e "s/^..:.. \?//g" -e "/^$/d" -e "/^\s*\*/d" -e "s:\s*\#STORY.*$::g" | sort | uniq -c | gawk -f ~/.vim/utils/transform_time.awk'
 command! TS TimeStats
 
 " Lazy bunch
@@ -369,9 +369,9 @@ nmap cie <NOp>
 " {{{ Filetype Mappings
 autocmd vimrc FileType markdown    nmap <silent> <localleader>y :call CopyTaskName()<CR>
 autocmd vimrc FileType markdown    nmap <silent> <localleader>p :call PasteTaskName()<CR>
-autocmd vimrc FileType markdown    nmap <silent> <localleader>r :call ReplaceTaskName()<CR>
+autocmd vimrc FileType markdown    nmap <silent> <localleader>r :call ReplaceTaskName()<CR>0
 autocmd vimrc FileType markdown    nmap <silent> <localleader>s :call fzf#run(fzf#wrap({'source': 'rev-stories --list --title', 'sink': function("InsertTaskName")}))<CR>
-autocmd vimrc FileType markdown    nmap <silent> <localleader>d :call fzf#run(fzf#wrap({'source': 'rev-stories --list --json --title', 'sink': function("InsertTaskDetails"), 'options': '-d "	" --with-nth 1'}))<CR>
+autocmd vimrc FileType markdown    nmap <silent> <localleader>t :call fzf#run(fzf#wrap({'source': 'rev-tasks-current --title', 'sink': function("InsertTaskDetails"), 'options': '-d "	" --with-nth 1'}))<CR>
 
 autocmd vimrc FileType gitcommit   nmap <silent> <localleader>c :call fzf#run(fzf#wrap({'source': 'rev-stories --list --full', 'sink': function("InsertGitIDs"), 'options': '--with-nth 2..'}))<CR>
 
