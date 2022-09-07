@@ -88,7 +88,8 @@ endif
 " }}}
 " {{{ vim-move
 " Expectations: is actually used
-Plug 'matze/vim-move'
+" Actual: Cause more accidents than intentional move of code.
+" Plug 'matze/vim-move'
 " }}}
 " {{{ surround-funk
 " Expectations: useful during coding
