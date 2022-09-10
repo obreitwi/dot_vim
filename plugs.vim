@@ -20,7 +20,7 @@ Plug 'Twinside/vim-haskellConceal'
 Plug 'aquach/vim-http-client'
 Plug 'caio/querycommandcomplete.vim'
 Plug 'christoomey/vim-sort-motion'
-Plug 'idbrii/textobj-word-column.vim' " active fork 'coderifous/textobj-word-column.vim'
+" Plug 'idbrii/textobj-word-column.vim' " active fork 'coderifous/textobj-word-column.vim'
 Plug 'dyng/ctrlsf.vim'
 Plug 'ehamberg/vim-cute-python'
 Plug 'godlygeek/tabular'
@@ -35,8 +35,8 @@ Plug 'kana/vim-textobj-user'
 Plug 'majutsushi/tagbar'
 Plug 'mantiz/vim-plugin-dirsettings'
 Plug 'michaeljsmith/vim-indent-object'
-" Plug 'mileszs/ack.vim'
-Plug 'obreitwi/ack.vim' " Use own fork until https://github.com/mileszs/ack.vim/pull/276 is merged
+" " Plug 'mileszs/ack.vim'
+" Plug 'obreitwi/ack.vim' " Use own fork until https://github.com/mileszs/ack.vim/pull/276 is merged
 Plug 'nathanaelkane/vim-indent-guides'
 Plug 'nathangrigg/vim-beancount'
 Plug 'prendradjaja/vim-vertigo'
@@ -56,7 +56,6 @@ Plug 'vim-scripts/ReplaceWithRegister'
 Plug 'vimwiki/vimwiki'
 Plug 'w0rp/ale'
 Plug 'terryma/vim-expand-region'
-Plug 'tkhren/vim-fake'
 " }}}
 
 " {{{ To evaluate
@@ -79,11 +78,6 @@ Plug 'christoomey/vim-titlecase'
 if has('nvim')
   Plug 'jbyuki/venn.nvim'
 endif
-" }}}
-" {{{ vim-move
-" Expectations: is actually used
-" Actual: Cause more accidents than intentional move of code.
-" Plug 'matze/vim-move'
 " }}}
 " {{{ surround-funk
 " Expectations: useful during coding
@@ -279,9 +273,6 @@ Plug 'hashivim/vim-terraform'
 " }}}
 
 " {{{ snippets
-if v:version >= 703
-      " Plug 'chrisbra/histwin.vim'
-endif
 if v:version >= 704
   Plug 'SirVer/ultisnips'
 endif
@@ -336,6 +327,7 @@ Plug 'rbong/vim-flog'
 " Plug 'ruanyl/vim-gh-line'
 " Use fork until time found to push changes upstream
 Plug 'obreitwi/vim-gh-line'
+" }}}
 
 " {{{ Octo (disabled since moving away from github)
 " if has('nvim')
@@ -456,6 +448,15 @@ endif
 " Plug 'LaTeX-Box-Team/LaTeX-Box' " not async
 " Plug 'gyim/vim-boxdraw' " does not play well with vim-plug
 " Plug 'gregsexton/gitv' " Superseeded by 'junegunn/gv.vim/
+" {{{ vim-move
+" Expectations: is actually used
+" Actual: Cause more accidents than intentional move of code.
+" Plug 'matze/vim-move'
+" }}}
+" Plug 'tkhren/vim-fake' " Not really used after finishing thesis
+" if v:version >= 703
+      " Plug 'chrisbra/histwin.vim'
+" endif
 " }}}
 " }}}
 " }}}
