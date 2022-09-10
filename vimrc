@@ -1744,9 +1744,6 @@ let g:netrw_liststyle=3     " tree view
 let g:netrw_list_hide=netrw_gitignore#Hide()
 let g:netrw_list_hide.=',\(^\|\s\s\)\zs\.\S\+'
 " }}}
-" {{{ rainbow
-let g:rainbow_active=0
-" }}}
 " {{{ rust
 autocmd vimrc Filetype rust nnoremap <buffer><Leader>cf :RustFmt<CR>
 autocmd vimrc Filetype rust vnoremap <buffer><Leader>cf :RustFmtRange<CR>
@@ -1763,18 +1760,28 @@ if has("nvim")
     let g:tidal_target = "terminal"
 endif
 " }}}
-" {{{ ts-rainbow
+" {{{ treesitter
 if g:use_treesitter
 lua << EOF
+-- local rainbow = { "#CC8888", "#CCCC88", "#88CC88", "#88CCCC", "#8888CC", "#CC88CC" }
 require'nvim-treesitter.configs'.setup {
+  -- A list of parser names, or "all"
+  ensure_installed = "all",
+
+  -- Automatically install missing parsers when entering buffer
+  auto_install = true,
+
   rainbow = {
     enable = true,
     extended_mode = true, -- Also highlight non-bracket delimiters like html tags, boolean or table: lang -> boolean
-    max_file_lines = nil, -- Do not enable for files with more than n lines, int
-    -- colors = {}, -- table of hex strings
-    -- termcolors = {} -- table of colour name strings
+    -- max_file_lines = nil, -- Do not enable for files with more than n lines, int
+    -- colors = rainbow,
+    -- termcolors = rainbow,
   }
 }
+-- for i, c in ipairs(rainbow) do -- p00f/rainbow#81
+--     vim.cmd(("hi rainbowcol%d guifg=%s"):format(i, c))
+-- end
 EOF
 endif
 " }}}

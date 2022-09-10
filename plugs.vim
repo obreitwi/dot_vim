@@ -155,6 +155,8 @@ endif
 if has('nvim-0.5')
   Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}  " We recommend updating the parsers on update
   Plug 'nvim-treesitter/nvim-treesitter-context'
+  Plug 'nvim-treesitter/playground'
+  Plug 'p00f/nvim-ts-rainbow'
   let g:use_treesitter = 1
 else
   let g:use_treesitter = 0
@@ -162,12 +164,9 @@ endif
 " }}}
 
 " {{{ highlighting
-if has('nvim-0.5')
-  Plug 'lukas-reineke/indent-blankline.nvim'
-  " nvim-ts-rainbow requires nightly, so periodically check for a version
-  " working with stable or remove plugin
-  Plug 'p00f/nvim-ts-rainbow'
-endif
+" if g:use_easymotion
+  " Plug 'lukas-reineke/indent-blankline.nvim'
+" endif
 " }}}
 
 " {{{ jq
