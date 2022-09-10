@@ -295,6 +295,10 @@ endif
 Plug 'icymind/NeoSolarized'
 Plug 'morhetz/gruvbox'
 
+" Enable via
+" :lua require'nvim-highlight-colors'.setup()
+" Plug 'brenoprata10/nvim-highlight-colors'
+
 " tigrana: Tried it, fold headings blend in with the background -> not nice
 " Plug 'iKarith/tigrana'
 " }}}
