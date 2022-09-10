@@ -57,12 +57,6 @@ Plug 'vimwiki/vimwiki'
 Plug 'w0rp/ale'
 Plug 'terryma/vim-expand-region'
 Plug 'tkhren/vim-fake'
-if has('nvim-0.5')
-  Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}  " We recommend updating the parsers on update
-  let g:use_treesitter = 1
-else
-  let g:use_treesitter = 0
-endif
 " }}}
 
 " {{{ To evaluate
@@ -161,6 +155,16 @@ if index(s:firenvim_hosts, s:hostname) >= 0 && has('nvim')
   Plug 'glacambre/firenvim', { 'do': { _ -> firenvim#install(0) } }
 endif
 
+" }}}
+"
+" {{{ treesitter
+if has('nvim-0.5')
+  Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}  " We recommend updating the parsers on update
+  Plug 'nvim-treesitter/nvim-treesitter-context'
+  let g:use_treesitter = 1
+else
+  let g:use_treesitter = 0
+endif
 " }}}
 
 " {{{ highlighting
