@@ -356,114 +356,6 @@ if executable('dlv')
 endif
 " }}}
 
-" {{{ disabled stuff:
-" {{{ plugin detox 
-" {{{ 2019
-" temoporarily disabled plugins to see if I really miss them
-" Plug 'kana/vim-textobj-line'
-" Plug 'vim-scripts/L9'
-" Plug 'kana/vim-operator-user'
-" if has('nvim') && executable('stack')
-  " Plug 'parsonsmatt/intero-neovim'
-" endif
-" }}}
-" {{{ 2020
-" {{{ youcompleteme
-" function! BuildYCM(info)
-"   " info is a dictionary with 3 fields
-"   " - name:   name of the plugin
-"   " - status: 'installed', 'updated', or 'unchanged'
-"   " - force:  set on PlugInstall! or PlugUpdate!
-"   if a:info.status != 'unchanged' || a:info.force
-"     !git submodule update --init --recursive
-"     let l:args = []
-"     if executable("go")
-"       call add(l:args, "--go-completer")
-"     endif
-"     if executable("clang")
-"       call add(l:args, "--clang-completer")
-"       " call add(l:args, "--clangd-completer")
-"       " try upstream pre-built clang with built clangd because system clangd
-"       " is not working....
-"       call add(l:args, "--system-libclang")
-"     endif
-"     let l:update_command = "!./install.py " . join(l:args, " ")
-"     exec l:update_command
-"   endif
-" endfunction
-" 
-" " Since YCM requires manual installation, dont enable it by default everywhere
-" let g:hosts_ycm=["dopamine", "lark", "helvetica", "beli"]
-" let g:hosts_no_jedi=["gordon"]
-" let g:ycm_requirements_met = v:version >= 704 || (v:version == 703 && has('patch584'))
-" if 0 && g:ycm_requirements_met && index(g:hosts_ycm, hostname()) >= 0
-"     Plug 'Valloric/YouCompleteMe', { 'do': function('BuildYCM') }
-"     Plug 'rdnetto/YCM-Generator', { 'branch': 'stable'}
-" elseif 0 && index(g:hosts_no_jedi, hostname()) == -1
-"     Plug 'davidhalter/jedi-vim'
-" endif
-" }}}
-" {{{ 2021
-" Replaced by mundo:
-" Plug 'sjl/gundo.vim'
-" }}}
-" }}}
-" {{{ 2022
-" Plug 'sickill/vim-pasta' " Disabled to see if it is actually used
-" }}}
-" {{{ other
-" Plug 'vim-scripts/SudoEdit.vim'
-" Plug 'vim-scripts/FSwitch'
-" Plug 'luochen1990/rainbow'
-" Plug 'tpope/vim-markdown'
-" Plug 'tpope/vim-abolish'
-" Plug 'tpope/vim-ragtag'
-" Plug 'tpope/vim-haml'
-" Plug 'vim-scripts/taglist.vim'
-" Plug 'gregsexton/VimCalc'
-" Plug 'int3/vim-extradite'
-" Plug 'jeetsukumaran/vim-filesearch'
-" Plug 'vim-scripts/Highlight-UnMatched-Brackets'
-" Plug 'vim-scripts/xoria256.vim'
-" Plug 'vim-scripts/TaskList.vim'
-" Plug 'scrooloose/nerdtree'
-" Plug 'vim-scripts/FuzzyFinder'
-" Plug 'vim-scripts/bufexplorer.zip'
-" Plug 'om/theshadowhost/Clippo'
-" Plug 'vim-scripts/YankRing.vim'
-" Plug 'Rip-Rip/clang_complete'
-" Plug 'vim-scripts/calendar.vim--Matsumoto'
-" Plug 'msanders/snipmate.vim'
-" Plug 'mikewest/vimroom'
-" Plug 'jeffkreeftmeijer/vim-numbertoggle'
-" Plug 'noahfrederick/Hemisu'
-" Plug 'chrisbra/csv.vim'
-" Plug 'ivanov/vim-ipython'
-" Plug 'fmoralesc/vim-pad'
-" Plug 'vim-scripts/LargeFile'
-" Plug 'maxbrunsfeld/vim-yankstack'
-" Plug 'benmills/vimux'
-" Plug 'mattn/webapi-vim'
-" Plug 'mattn/gist-vim'
-" Plug 'vim-scripts/DrawIt'
-" Plug 'nelstrom/vim-visual-star-search' " Suspect errors when searching
-" Plug 'scrooloose/syntastic'
-" Plug 'LaTeX-Box-Team/LaTeX-Box' " not async
-" Plug 'gyim/vim-boxdraw' " does not play well with vim-plug
-" Plug 'gregsexton/gitv' " Superseeded by 'junegunn/gv.vim/
-" {{{ vim-move
-" Expectations: is actually used
-" Actual: Cause more accidents than intentional move of code.
-" Plug 'matze/vim-move'
-" }}}
-" Plug 'tkhren/vim-fake' " Not really used after finishing thesis
-" if v:version >= 703
-      " Plug 'chrisbra/histwin.vim'
-" endif
-" }}}
-" }}}
-" }}}
-
 " {{{ haskell
 if executable('ghc') && !has('nvim')
     Plug 'lukerandall/haskellmode-vim'
@@ -476,16 +368,6 @@ if executable('ghc-mod')
     Plug 'eagletmt/ghcmod-vim'
 endif
 
-" }}}
-
-" {{{ language server client
-" currently not used because in favor of coc
-if has('nvim') && 0
-  Plug 'autozimu/LanguageClient-neovim', {
-    \ 'branch': 'next',
-    \ 'do': './install.sh'
-    \ }
-endif
 " }}}
 
 " {{{ ledger 
@@ -553,6 +435,122 @@ if !s:coc_enabled || !g:fzf_found
   Plug 'Shougo/neossh.vim'
 endif
 
+" }}}
+
+" {{{ disabled stuff / plugin detox 
+" {{{ used at some point
+" Plug 'vim-scripts/SudoEdit.vim'
+" Plug 'vim-scripts/FSwitch'
+" Plug 'luochen1990/rainbow'
+" Plug 'tpope/vim-markdown'
+" Plug 'tpope/vim-abolish'
+" Plug 'tpope/vim-ragtag'
+" Plug 'tpope/vim-haml'
+" Plug 'vim-scripts/taglist.vim'
+" Plug 'gregsexton/VimCalc'
+" Plug 'int3/vim-extradite'
+" Plug 'jeetsukumaran/vim-filesearch'
+" Plug 'vim-scripts/Highlight-UnMatched-Brackets'
+" Plug 'vim-scripts/xoria256.vim'
+" Plug 'vim-scripts/TaskList.vim'
+" Plug 'scrooloose/nerdtree'
+" Plug 'vim-scripts/FuzzyFinder'
+" Plug 'vim-scripts/bufexplorer.zip'
+" Plug 'om/theshadowhost/Clippo'
+" Plug 'vim-scripts/YankRing.vim'
+" Plug 'Rip-Rip/clang_complete'
+" Plug 'vim-scripts/calendar.vim--Matsumoto'
+" Plug 'msanders/snipmate.vim'
+" Plug 'mikewest/vimroom'
+" Plug 'jeffkreeftmeijer/vim-numbertoggle'
+" Plug 'noahfrederick/Hemisu'
+" Plug 'chrisbra/csv.vim'
+" Plug 'ivanov/vim-ipython'
+" Plug 'fmoralesc/vim-pad'
+" Plug 'vim-scripts/LargeFile'
+" Plug 'maxbrunsfeld/vim-yankstack'
+" Plug 'benmills/vimux'
+" Plug 'mattn/webapi-vim'
+" Plug 'mattn/gist-vim'
+" Plug 'vim-scripts/DrawIt'
+" Plug 'nelstrom/vim-visual-star-search' " Suspect errors when searching
+" Plug 'scrooloose/syntastic'
+" Plug 'LaTeX-Box-Team/LaTeX-Box' " not async
+" Plug 'gyim/vim-boxdraw' " does not play well with vim-plug
+" Plug 'gregsexton/gitv' " Superseeded by 'junegunn/gv.vim/
+" }}}
+" {{{ 2019
+" temoporarily disabled plugins to see if I really miss them
+" Plug 'kana/vim-textobj-line'
+" Plug 'vim-scripts/L9'
+" Plug 'kana/vim-operator-user'
+" if has('nvim') && executable('stack')
+  " Plug 'parsonsmatt/intero-neovim'
+" endif
+" }}}
+" {{{ 2020
+" {{{ youcompleteme
+" function! BuildYCM(info)
+"   " info is a dictionary with 3 fields
+"   " - name:   name of the plugin
+"   " - status: 'installed', 'updated', or 'unchanged'
+"   " - force:  set on PlugInstall! or PlugUpdate!
+"   if a:info.status != 'unchanged' || a:info.force
+"     !git submodule update --init --recursive
+"     let l:args = []
+"     if executable("go")
+"       call add(l:args, "--go-completer")
+"     endif
+"     if executable("clang")
+"       call add(l:args, "--clang-completer")
+"       " call add(l:args, "--clangd-completer")
+"       " try upstream pre-built clang with built clangd because system clangd
+"       " is not working....
+"       call add(l:args, "--system-libclang")
+"     endif
+"     let l:update_command = "!./install.py " . join(l:args, " ")
+"     exec l:update_command
+"   endif
+" endfunction
+" 
+" " Since YCM requires manual installation, dont enable it by default everywhere
+" let g:hosts_ycm=["dopamine", "lark", "helvetica", "beli"]
+" let g:hosts_no_jedi=["gordon"]
+" let g:ycm_requirements_met = v:version >= 704 || (v:version == 703 && has('patch584'))
+" if 0 && g:ycm_requirements_met && index(g:hosts_ycm, hostname()) >= 0
+"     Plug 'Valloric/YouCompleteMe', { 'do': function('BuildYCM') }
+"     Plug 'rdnetto/YCM-Generator', { 'branch': 'stable'}
+" elseif 0 && index(g:hosts_no_jedi, hostname()) == -1
+"     Plug 'davidhalter/jedi-vim'
+" endif
+" }}}
+" {{{ 2021
+" Replaced by mundo:
+" Plug 'sjl/gundo.vim'
+" }}}
+" }}}
+" {{{ 2022
+" Plug 'sickill/vim-pasta' " Disabled to see if it is actually used
+" {{{ language server client
+" currently not used because in favor of coc
+" if has('nvim') && 0
+"   Plug 'autozimu/LanguageClient-neovim', {
+"     \ 'branch': 'next',
+"     \ 'do': './install.sh'
+"     \ }
+" endif
+" }}}
+
+" {{{ vim-move
+" Expectations: is actually used
+" Actual: Cause more accidents than intentional move of code.
+" Plug 'matze/vim-move'
+" }}}
+" Plug 'tkhren/vim-fake' " Not really used after finishing thesis
+" if v:version >= 703
+      " Plug 'chrisbra/histwin.vim'
+" endif
+" }}}
 " }}}
 
 " {{{ Postscript
