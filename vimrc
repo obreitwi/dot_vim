@@ -1493,10 +1493,10 @@ if exists("g:using_coc") && g:using_coc == 1
 
     " Remap for do codeAction of selected region, ex: `<leader>aap` for current paragraph
     xmap [coc]a  <Plug>(coc-codeaction-selected)
-    nmap [coc]a  <Plug>(coc-codeaction-selected)
+    " nmap [coc]a  <Plug>(coc-codeaction-cursor)
 
     " Remap for do codeAction of current line
-    nmap [coc]ac  <Plug>(coc-codeaction)
+    nmap [coc]a  <Plug>(coc-codeaction)
     " Fix autofix problem of current line
     nmap [coc]qf  <Plug>(coc-fix-current)
 
