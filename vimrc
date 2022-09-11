@@ -1795,7 +1795,15 @@ require'nvim-treesitter.configs'.setup {
     --     "Cyan",
     --     "White",
     -- },
-  }
+  },
+
+  highlight = {
+      enable = true,
+      -- custom_captures = {
+      --     ["punctuation.bracket"] = "",
+      --     ["constructor"] = "",
+      -- },
+  },
 }
 -- for i, c in ipairs(rainbow) do -- p00f/rainbow#81
 --     vim.cmd(("hi rainbowcol%d guifg=%s"):format(i, c))
