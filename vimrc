@@ -26,7 +26,7 @@ else
     source $HOME/.vim/plugs.vim
 endif
 
-call dirsettings#Install("vimrc")
+call dirsettings#Install("init.vim")
 
 " Have pathogen load the other local/non-git plugins
 call pathogen#infect("bundle/{}")
