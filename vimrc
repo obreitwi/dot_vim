@@ -1142,7 +1142,7 @@ xmap P          <Plug>ReplaceWithRegisterVisual
 " {{{ Signify
 map <leader>st <Plug>(signify-toggle)
 " }}}
-" {{{ SimplyFold
+" {{{ SimpylFold
 " autocmd BufWinEnter *.py setlocal foldexpr=SimpylFold(v:lnum) foldmethod=expr
 " autocmd BufWinLeave *.py setlocal foldexpr< foldmethod<
 " }}}
@@ -1781,8 +1781,12 @@ require'nvim-treesitter.configs'.setup {
   },
 
   indent = {
-      enable = true,
+      enable = false,
       disable = {},
+  },
+
+  yati = {
+      enable = true,
   },
 
   playground = {
@@ -1795,7 +1799,12 @@ require'nvim-treesitter.configs'.setup {
     lint_events = {"BufWrite", "CursorHold"},
   },
 }
+require'pretty-fold'.setup {}
+require'nvim-autopairs'.setup {}
 EOF
+set foldminlines=10
+set foldmethod=expr
+set foldexpr=nvim_treesitter#foldexpr()
 endif
 " }}}
 " {{{ titlecase

@@ -15,7 +15,6 @@ Plug 'AndrewRadev/id3.vim'
 Plug 'AndrewRadev/linediff.vim'
 Plug 'Glench/Vim-Jinja2-Syntax'
 Plug 'PeterRincker/vim-argumentative'
-Plug 'Raimondi/delimitMate'
 Plug 'Twinside/vim-haskellConceal'
 Plug 'aquach/vim-http-client'
 Plug 'caio/querycommandcomplete.vim'
@@ -47,7 +46,6 @@ Plug 'rust-lang/rust.vim'
 Plug 'sanjayankur31/sli.vim'
 Plug 'scrooloose/nerdcommenter'
 Plug 'sjbach/lusty'
-Plug 'tmhedberg/SimpylFold'
 Plug 'tommcdo/vim-exchange'
 Plug 'trapd00r/vim-syntax-vidir-ls'
 Plug 'powerman/vim-plugin-AnsiEsc'
@@ -157,8 +155,13 @@ if has('nvim-0.5')
   Plug 'nvim-treesitter/nvim-treesitter-context'
   Plug 'nvim-treesitter/playground'
   Plug 'p00f/nvim-ts-rainbow'
+  Plug 'anuvyklack/pretty-fold.nvim'
+  Plug 'windwp/nvim-autopairs'
+  Plug 'yioneko/nvim-yati'
   let g:use_treesitter = 1
 else
+  " Replacement for treesitter auto-pair
+  Plug 'Raimondi/delimitMate'
   let g:use_treesitter = 0
 endif
 " }}}
@@ -550,6 +553,7 @@ endif
 " if v:version >= 703
       " Plug 'chrisbra/histwin.vim'
 " endif
+" Plug 'tmhedberg/SimpylFold' " replaced by treesitter folding
 " }}}
 " }}}
 
