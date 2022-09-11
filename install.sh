@@ -14,7 +14,7 @@ if [ "${PREFIX:+x}" != "x" ]; then
 fi
 SOURCE_FOLDER="$(dirname "$(readlink -m "$0")")"
 VIMPLUG_FOLDER="${SOURCE_FOLDER}/plugged/vim-plug"
-VIMPLUG_URL="https://github.com/junegunn/vim-plug" 
+VIMPLUG_URL="https://github.com/junegunn/vim-plug"
 
 if [ ! -d "${VIMPLUG_FOLDER}" ]; then
     # Quick install script to setup all symlinks
