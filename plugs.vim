@@ -267,9 +267,6 @@ let g:deoplete#enable_at_startup = 1
 
 " {{{ syntax
 Plug 'cespare/vim-toml'
-if s:coc_enabled
-  Plug 'jackguo380/vim-lsp-cxx-highlight'
-endif
 
 Plug 'hashivim/vim-terraform'
 " }}}
@@ -554,6 +551,11 @@ endif
       " Plug 'chrisbra/histwin.vim'
 " endif
 " Plug 'tmhedberg/SimpylFold' " replaced by treesitter folding
+" }}}
+" {{{ vim-lsp-cxx-hightlight replaced by treesitter
+" if s:coc_enabled
+"   Plug 'jackguo380/vim-lsp-cxx-highlight'
+" endif
 " }}}
 " }}}
 
