@@ -346,6 +346,7 @@ Plug 'obreitwi/vim-gh-line'
 " {{{ golang
 if executable('go')
   Plug 'josa42/coc-go', {'do': 'yarn install --frozen-lockfile'}
+  " Plug 'yaegassy/coc-go', {'do': 'yarn install --frozen-lockfile', 'branch': 'feat/inlay-hints'}
   " Plug 'darrikonn/vim-gofmt'
   Plug 'fatih/vim-go'
   Plug 'buoto/gotests-vim'

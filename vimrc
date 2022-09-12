@@ -1430,7 +1430,7 @@ if exists("g:using_coc") && g:using_coc == 1
 
     " To make <CR> to confirm selection of selected complete item or notify coc.nvim to format on enter, use:
     inoremap <silent><expr> <CR> coc#pum#visible() ? coc#_select_confirm()
-                \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
+	                \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
 
     " " Map <tab> for trigger completion, completion confirm, snippet expand and jump like VSCode:
     " inoremap <silent><expr> <TAB>
