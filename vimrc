@@ -1425,8 +1425,8 @@ if exists("g:using_coc") && g:using_coc == 1
         inoremap <silent><expr> <c-@> coc#refresh()
     endif
 
-    " Use <CR> to confirm completion, use:
-    inoremap <expr> <cr> coc#pum#visible() ? coc#_select_confirm() : "\<CR>"
+    " Use <CR> to confirm completion, use (done in lua below)
+    " inoremap <expr> <cr> coc#pum#visible() ? coc#_select_confirm() : "\<CR>"
 
     " To make <CR> to confirm selection of selected complete item or notify coc.nvim to format on enter, use:
     inoremap <silent><expr> <CR> coc#pum#visible() ? coc#_select_confirm()
@@ -1763,44 +1763,58 @@ endif
 " {{{ treesitter
 if g:use_treesitter
 lua << EOF
-require'nvim-treesitter.configs'.setup {
-  -- A list of parser names, or "all"
-  ensure_installed = "all",
+    require'nvim-treesitter.configs'.setup {
+        -- A list of parser names, or "all"
+        ensure_installed = "all",
 
-  -- Automatically install missing parsers when entering buffer
-  auto_install = true,
+        -- Automatically install missing parsers when entering buffer
+        auto_install = true,
 
-  rainbow = {
-    enable = true,
-    extended_mode = true, -- Also highlight non-bracket delimiters like html tags, boolean or table: lang -> boolean
-    max_file_lines = nil, -- Do not enable for files with more than n lines, int
-  },
+        rainbow = {
+            enable = true,
+            extended_mode = true, -- Also highlight non-bracket delimiters like html tags, boolean or table: lang -> boolean
+            max_file_lines = nil, -- Do not enable for files with more than n lines, int
+        },
 
-  highlight = {
-      enable = true,
-  },
+        highlight = {
+            enable = true,
+        },
 
-  indent = {
-      enable = false,
-      disable = {},
-  },
+        indent = {
+            enable = false,
+            disable = {},
+        },
 
-  yati = {
-      enable = true,
-  },
+        yati = {
+            enable = true,
+        },
 
-  playground = {
-      enable = true,
-  },
+        playground = {
+            enable = true,
+        },
 
-  query_linter = {
-    enable = true,
-    use_virtual_text = true,
-    lint_events = {"BufWrite", "CursorHold"},
-  },
-}
-require'pretty-fold'.setup {}
-require'nvim-autopairs'.setup {}
+        query_linter = {
+            enable = true,
+            use_virtual_text = true,
+            lint_events = {"BufWrite", "CursorHold"},
+        },
+    }
+    require'pretty-fold'.setup {}
+
+    local remap = vim.api.nvim_set_keymap
+    local npairs = require'nvim-autopairs'
+    npairs.setup({ map_cr = false })
+
+    _G.MUtils={}
+    MUtils.completion_confirm=function()
+        if vim.fn["coc#pum#visible"]() ~= 0  then
+            return vim.fn["coc#pum#confirm"]()
+        else
+            return npairs.autopairs_cr()
+        end
+    end
+
+    remap('i' , '<CR>','v:lua.MUtils.completion_confirm()', {expr = true , noremap = true})
 EOF
 set foldminlines=50
 set foldmethod=expr
