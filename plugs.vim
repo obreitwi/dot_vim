@@ -416,7 +416,6 @@ endif
 
 " {{{ tpope plugins
 Plug 'tpope/vim-dispatch'
-Plug 'tpope/vim-eunuch'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-git'
 Plug 'tpope/vim-repeat'
@@ -536,15 +535,12 @@ endif
 " }}}
 " {{{ 2022
 " Plug 'sickill/vim-pasta' " Disabled to see if it is actually used
-" {{{ language server client
 " currently not used because in favor of coc
 " if has('nvim') && 0
 "   Plug 'autozimu/LanguageClient-neovim', {
 "     \ 'branch': 'next',
 "     \ 'do': './install.sh'
 "     \ }
-" endif
-" }}}
 
 " {{{ vim-move
 " Expectations: is actually used
@@ -556,11 +552,12 @@ endif
       " Plug 'chrisbra/histwin.vim'
 " endif
 " Plug 'tmhedberg/SimpylFold' " replaced by treesitter folding
-" }}}
 " {{{ vim-lsp-cxx-hightlight replaced by treesitter
 " if s:coc_enabled
 "   Plug 'jackguo380/vim-lsp-cxx-highlight'
 " endif
+" }}}
+" Plug 'tpope/vim-eunuch' " clashes with coc
 " }}}
 " }}}
 
@@ -569,5 +566,5 @@ call plug#end()
 
 " Update vim-plug via vim-plug and no special command
 delc PlugUpgrade
-" vim: fdm=marker
+" vim: fdm=marker foldminlines=0
 " }}}
