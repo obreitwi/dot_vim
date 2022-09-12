@@ -1802,7 +1802,7 @@ require'nvim-treesitter.configs'.setup {
 require'pretty-fold'.setup {}
 require'nvim-autopairs'.setup {}
 EOF
-set foldminlines=10
+set foldminlines=50
 set foldmethod=expr
 set foldexpr=nvim_treesitter#foldexpr()
 endif
@@ -1922,5 +1922,5 @@ autocmd vimrc filetype go nmap <buffer> <silent> [coc]t <Plug>(go-test)
 " {{{ Fix airline sometimes not rendering when splitting
 au vimrc BufEnter * AirlineRefresh
 " }}}
-" vim: fdm=marker ts=4 sw=4 sts=4
+" vim: fdm=marker ts=4 sw=4 sts=4 foldminlines=0
 " }}}
