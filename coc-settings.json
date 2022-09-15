@@ -1,80 +1,103 @@
 {
-    "languageserver": {
-        "bash": {
-            "command": "bash-language-server",
-            "args": ["start"],
-            "filetypes": ["sh"],
-            "ignoredRootPaths": ["~"]
-        },
-        "ccls": {
-            "command": "ccls",
-            "filetypes": [
-                "c",
-                "cpp",
-                "objc",
-                "objcpp"
-            ],
-            "rootPatterns": [
-                ".ccls",
-                "compile_commands.json",
-                ".vim/",
-                ".git/",
-                ".hg/"
-            ],
-            "initializationOptions": {
-                "cache": {
-                    "directory": "/tmp/ccls"
-                },
-                "highlight": { "lsRanges" : true },
-                "clang" : {"extraargs": "-std=c++20"}
-            }
-        },
-        "clangd": {
-            "enable": false,
-            "filetypes": [
-                "c",
-                "cpp",
-                "objc",
-                "objcpp"
-            ]
-        },
-        "clangtidy": {
-            "enable": false,
-            "filetypes": [
-                "c",
-                "cpp",
-                "objc",
-                "objcpp"
-            ]
-        },
-        "haskell": {
-          "command": "haskell-language-server-wrapper",
-          "args": ["--lsp"],
-          "rootPatterns": ["*.cabal", "stack.yaml", "cabal.project", "package.yaml", "hie.yaml"],
-          "filetypes": ["haskell", "lhaskell"]
-        },
-        "terraform": {
-            "command": "terraform-ls",
-            "args": ["serve"],
-			"filetypes": [
-				"terraform",
-				"tf"
-			],
-			"initializationOptions": {},
-			"settings": {}
-		}
+  "languageserver": {
+    "bash": {
+      "command": "bash-language-server",
+      "args": [
+        "start"
+      ],
+      "filetypes": [
+        "sh"
+      ],
+      "ignoredRootPaths": [
+        "~"
+      ]
     },
-    "go.goplsOptions": {
-        "hints": {
-            "constantValues": true,
-            "parameterNames": true,
-            "rangeVariableTypes": true,
-            "assignVariableTypes": true,
-            "compositeLiteralTypes": true,
-            "compositeLiteralFields": true,
-            "functionTypeParameters": true
+    "ccls": {
+      "command": "ccls",
+      "filetypes": [
+        "c",
+        "cpp",
+        "objc",
+        "objcpp"
+      ],
+      "rootPatterns": [
+        ".ccls",
+        "compile_commands.json",
+        ".vim/",
+        ".git/",
+        ".hg/"
+      ],
+      "initializationOptions": {
+        "cache": {
+          "directory": "/tmp/ccls"
+        },
+        "highlight": {
+          "lsRanges": true
+        },
+        "clang": {
+          "extraargs": "-std=c++20"
         }
+      }
     },
-    "diagnostic.displayByAle": true,
-    "rust-analyzer.checkOnSave.command": "clippy"
+    "clangd": {
+      "enable": false,
+      "filetypes": [
+        "c",
+        "cpp",
+        "objc",
+        "objcpp"
+      ]
+    },
+    "clangtidy": {
+      "enable": false,
+      "filetypes": [
+        "c",
+        "cpp",
+        "objc",
+        "objcpp"
+      ]
+    },
+    "haskell": {
+      "command": "haskell-language-server-wrapper",
+      "args": [
+        "--lsp"
+      ],
+      "rootPatterns": [
+        "*.cabal",
+        "stack.yaml",
+        "cabal.project",
+        "package.yaml",
+        "hie.yaml"
+      ],
+      "filetypes": [
+        "haskell",
+        "lhaskell"
+      ]
+    },
+    "terraform": {
+      "command": "terraform-ls",
+      "args": [
+        "serve"
+      ],
+      "filetypes": [
+        "terraform",
+        "tf"
+      ],
+      "initializationOptions": {},
+      "settings": {}
+    }
+  },
+  "go.goplsOptions": {
+    "hints": {
+      "constantValues": true,
+      "parameterNames": true,
+      "rangeVariableTypes": true,
+      "assignVariableTypes": true,
+      "compositeLiteralTypes": true,
+      "compositeLiteralFields": true,
+      "functionTypeParameters": true
+    }
+  },
+  "diagnostic.displayByAle": true,
+  "rust-analyzer.checkOnSave.command": "clippy"
 }
