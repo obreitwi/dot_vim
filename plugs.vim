@@ -91,7 +91,9 @@ Plug 'chrisbra/unicode.vim'
 " }}}
 " {{{ neorg
 " Expectations: Possible replacement for diary files and vimwiki
-Plug 'nvim-neorg/neorg' | Plug 'nvim-lua/plenary.nvim'
+if has('nvim-0.8')
+  Plug 'nvim-neorg/neorg' | Plug 'nvim-lua/plenary.nvim'
+endif
 " }}}
 " }}}
 

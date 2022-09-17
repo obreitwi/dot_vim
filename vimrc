@@ -1734,6 +1734,13 @@ let g:ledger_maxwith = 80
 let g:ledger_fillstring = "······"
 let g:ledger_detailed_first = 1
 " }}}
+" {{{ neorg
+if has('nvim-0.8')
+lua <<EOF
+require'neorg'.setup {}
+EOF
+endif
+" }}}
 " {{{ netrw
 " Tweaks for browsing
 " (taken from: https://github.com/mcantor/no_plugins/blob/master/no_plugins.vim)
