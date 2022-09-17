@@ -1737,7 +1737,26 @@ let g:ledger_detailed_first = 1
 " {{{ neorg
 if has('nvim-0.8')
 lua <<EOF
-require'neorg'.setup {}
+require'neorg'.setup {
+    load = {
+        ["core.defaults"] = {},
+        ["core.norg.concealer"] = {},
+        ["core.norg.dirman"] = {
+            config = {
+                workspaces = {
+                    vimwiki = "~/.vimwiki/neorg",
+                    example_gtd = "~/sandboxes/2022-09-17_setup_neorg/example_workspaces/gtd",
+                }
+            }
+        },
+        ["core.gtd.base"] = {
+            config = {
+                workspace = "example_gtd",
+            },
+        },
+        ["external.context"] = {},
+    }
+}
 EOF
 endif
 " }}}

@@ -89,12 +89,6 @@ Plug 'AndrewRadev/splitjoin.vim'
 " Expectations: Actually used to insert unicode digraphs.
 Plug 'chrisbra/unicode.vim'
 " }}}
-" {{{ neorg
-" Expectations: Possible replacement for diary files and vimwiki
-if has('nvim-0.8')
-  Plug 'nvim-neorg/neorg' | Plug 'nvim-lua/plenary.nvim'
-endif
-" }}}
 " }}}
 
 " {{{ mundo
@@ -392,6 +386,14 @@ endif
 " For standalone only (see
 " https://github.com/Lokaltog/powerline/blob/develop/docs/source/overview.rst)
 " Plug 'Lokaltog/powerline', {'rtp': 'powerline/bindings/vim/'}
+" }}}
+
+" {{{ neorg
+" Expectations: Possible replacement for diary files and vimwiki
+if has('nvim-0.8')
+  Plug 'nvim-neorg/neorg' | Plug 'nvim-lua/plenary.nvim'
+  Plug 'max397574/neorg-contexts'
+endif
 " }}}
 
 " {{{ my stuff
