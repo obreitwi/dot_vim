@@ -1957,6 +1957,14 @@ autocmd vimrc filetype go nmap <buffer> <silent> [coc]m <Plug>(go-metalinter)
 autocmd vimrc filetype go nmap <buffer> <silent> [coc]s :GoFillStruct<CR>
 autocmd vimrc filetype go nmap <buffer> <silent> [coc]t <Plug>(go-test)
 " }}}
+" {{{ windows
+lua <<EOF
+vim.o.winwidth = 10
+vim.o.winminwidth = 10
+require'windows'.setup {}
+vim.keymap.set('n', '<C-w>z', '<Cmd>WindowsMaximaze<CR>')
+EOF
+" }}}
 " }}}
 " {{{ Postscript
 " {{{ Fix airline sometimes not rendering when splitting

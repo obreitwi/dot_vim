@@ -89,6 +89,16 @@ Plug 'AndrewRadev/splitjoin.vim'
 " Expectations: Actually used to insert unicode digraphs.
 Plug 'chrisbra/unicode.vim'
 " }}}
+" {{{ windows.nvim
+" Expectations:
+" * Actually useful when dealing with windows
+" * Might even solve resize bug
+" Requirements
+Plug 'anuvyklack/middleclass',
+Plug 'anuvyklack/animation.nvim'
+" Actual plugin
+Plug 'anuvyklack/windows.nvim'
+" }}}
 " }}}
 
 " {{{ mundo
