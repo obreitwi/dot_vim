@@ -1758,6 +1758,9 @@ require'neorg'.setup {
     }
 }
 EOF
+nmap <Leader>tv :Neorg gtd views<CR>
+nmap <Leader>te :Neorg gtd edit<CR>
+nmap <Leader>tc :Neorg gtd capture<CR>
 endif
 " }}}
 " {{{ netrw
