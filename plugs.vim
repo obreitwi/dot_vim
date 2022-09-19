@@ -133,7 +133,8 @@ endif
 " {{{ pr pending
 " Plug 'ivyl/vim-bling' " temporarily disabled till PR merged:
 " https://github.com/ivyl/vim-bling/pull/16
-Plug 'obreitwi/vim-bling'
+" Disable for performance
+" Plug 'obreitwi/vim-bling'
 " }}}
 
 " {{{ easymotion (or hop as faster alternative)
