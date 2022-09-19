@@ -549,7 +549,7 @@ autocmd vimrc FileType python      setlocal tabstop=4 |     setlocal shiftwidth=
 autocmd vimrc FileType sh          setlocal tabstop=4 |     setlocal softtabstop=4 | setlocal shiftwidth=4  | setlocal expandtab
 autocmd vimrc FileType text        setlocal expandtab |     setlocal comments=fb:*,fb:#
 autocmd vimrc FileType vim         setlocal tabstop=2 |     setlocal shiftwidth=2 |  setlocal expandtab
-autocmd vimrc FileType vimwiki     setlocal tabstop=2 |     setlocal shiftwidth=2 |  setlocal expandtab | setlocal foldlevel=0 |   setlocal comments=fb:*,fb:#
+autocmd vimrc FileType vimwiki     setlocal tabstop=2 |     setlocal shiftwidth=2 |  setlocal expandtab | setlocal foldlevel=0 |   setlocal comments=fb:*,fb:# | setlocal foldminlines=0
 autocmd vimrc FileType yaml        setlocal tabstop=2 |     setlocal shiftwidth=2 |  setlocal expandtab
 autocmd vimrc FileType zsh         setlocal expandtab |     setlocal tabstop=4 |     setlocal shiftwidth=4
 " }}}
