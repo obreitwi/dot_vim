@@ -1672,7 +1672,7 @@ if g:fzf_found
 endif
 " }}}
 " {{{ gh-line
-let g:gh_open_command = 'fn() { echo "$@" | xclip -selection copy; }; fn '
+let g:gh_open_command = 'fn() { echo -n "$@" | xclip -selection copy; }; fn '
 " }}}
 " {{{ gitgutter
 nmap <leader>ggf :GitGutterFold<CR>
