@@ -373,6 +373,9 @@ autocmd vimrc FileType markdown    nmap <silent> <localleader>r :call ReplaceTas
 autocmd vimrc FileType markdown    nmap <silent> <localleader>s :call fzf#run(fzf#wrap({'source': 'rev-stories --list --title', 'sink': function("InsertTaskName")}))<CR>
 autocmd vimrc FileType markdown    nmap <silent> <localleader>t :call fzf#run(fzf#wrap({'source': 'rev-tasks-current --title', 'sink': function("InsertTaskDetails"), 'options': '-d "	" --with-nth 1'}))<CR>
 
+autocmd vimrc FileType norg        nmap <silent> ]d             :Neorg journal custom =system(["next-day", expand("%:t:r")])<CR><CR>
+autocmd vimrc FileType norg        nmap <silent> [d             :Neorg journal custom =system(["prev-day", expand("%:t:r")])<CR><CR>
+
 autocmd vimrc FileType gitcommit   nmap <silent> <localleader>c :call fzf#run(fzf#wrap({'source': 'rev-stories --list --full', 'sink': function("InsertGitIDs"), 'options': '--with-nth 2..'}))<CR>
 
 autocmd vimrc FileType terraform   nmap <silent> <leader>cf :!terraform fmt %<CR>
@@ -1745,22 +1748,27 @@ require'neorg'.setup {
             config = {
                 workspaces = {
                     vimwiki = "~/.vimwiki/neorg",
-                    example_gtd = "~/sandboxes/2022-09-17_setup_neorg/example_workspaces/gtd",
+                    -- example_gtd = "~/sandboxes/2022-09-17_setup_neorg/example_workspaces/gtd",
                 }
             }
         },
+        ["core.norg.journal"] = {
+            config = {
+                journal_folder = "journal",
+                strategy = "flat",
+                workspace = "vimwiki",
+                template_name = "template_timelog.norg",
+            },
+        },
         ["core.gtd.base"] = {
             config = {
-                workspace = "example_gtd",
+                workspace = "vimwiki",
             },
         },
         ["external.context"] = {},
     }
 }
 EOF
-nmap <Leader>tv :Neorg gtd views<CR>
-nmap <Leader>te :Neorg gtd edit<CR>
-nmap <Leader>tc :Neorg gtd capture<CR>
 endif
 " }}}
 " {{{ netrw

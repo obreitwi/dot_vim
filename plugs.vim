@@ -165,6 +165,7 @@ if has('nvim-0.5')
   Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}  " We recommend updating the parsers on update
   Plug 'nvim-treesitter/nvim-treesitter-context'
   Plug 'nvim-treesitter/playground'
+  " Plug 'nvim-lua/plenary.nvim' | Plug 'nvim-telescope/telescope.nvim'
   Plug 'p00f/nvim-ts-rainbow'
   Plug 'anuvyklack/pretty-fold.nvim'
   Plug 'windwp/nvim-autopairs'

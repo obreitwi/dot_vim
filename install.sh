@@ -50,6 +50,9 @@ symlink "${SOURCE_FOLDER}/plugged/vimpager/vimcat"   "${PREFIX}/bin/vcat"
 symlink "${SOURCE_FOLDER}/plugged/vimpager/vimcat"   "${PREFIX}/bin/vimcat"
 symlink "${SOURCE_FOLDER}/plugged/vimpager/vimpager" "${PREFIX}/bin/vimpager"
 
+symlink "${SOURCE_FOLDER}/utils/prev-day"            "${PREFIX}/bin/prev-day"
+symlink "${SOURCE_FOLDER}/utils/next-day"            "${PREFIX}/bin/next-day"
+
 # check if nvim exists
 if command -v nvim >/dev/null; then
     mkdir -p "${HOME}/.config/nvim"

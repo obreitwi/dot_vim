@@ -1,0 +1,3 @@
+#!/bin/bash
+
+date --iso -d "$1 - 1 day" | tr -d "\n"
