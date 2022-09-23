@@ -10,13 +10,18 @@ module.exports = grammar({
     timestamp: $ => seq($._number, $._number, ':', $._number, $._number),
 
     time_entry: $ => seq(
-      field('timestamp', $.timestamp),
-      optional(field('title', $.words)),
+      $.timestamp,
+      optional($.title),
       optional($.story),
       $._newline
     ),
 
-    task_entry: $ => seq(choice('*', '-'), field('entry', $.words), $._newline),
+    task_entry: $ => seq($.entry_operator, $.entry, $._newline),
+
+    entry_operator: $ => choice('*', '-'),
+
+    title: $ => $.words,
+    entry: $ => $.words,
 
     story: $ => seq(
       '#STORY',

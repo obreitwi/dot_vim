@@ -367,18 +367,18 @@ nmap cie <NOp>
 
 " }}}
 " {{{ Filetype Mappings
-autocmd vimrc FileType markdown    nmap <silent> <localleader>y :call CopyTaskName()<CR>
-autocmd vimrc FileType markdown    nmap <silent> <localleader>p :call PasteTaskName()<CR>
-autocmd vimrc FileType markdown    nmap <silent> <localleader>r :call ReplaceTaskName()<CR>0
-autocmd vimrc FileType markdown    nmap <silent> <localleader>s :call fzf#run(fzf#wrap({'source': 'rev-stories --list --title', 'sink': function("InsertTaskName")}))<CR>
-autocmd vimrc FileType markdown    nmap <silent> <localleader>t :call fzf#run(fzf#wrap({'source': 'rev-tasks-current --title', 'sink': function("InsertTaskDetails"), 'options': '-d "	" --with-nth 1'}))<CR>
+autocmd vimrc FileType markdown         nmap <silent> <localleader>y :call CopyTaskName()<CR>
+autocmd vimrc FileType markdown         nmap <silent> <localleader>p :call PasteTaskName()<CR>
+autocmd vimrc FileType markdown         nmap <silent> <localleader>r :call ReplaceTaskName()<CR>0
+autocmd vimrc FileType markdown,norg    nmap <silent> <localleader>s :call fzf#run(fzf#wrap({'source': 'rev-stories --list --title', 'sink': function("InsertTaskName")}))<CR>
+autocmd vimrc FileType markdown,norg    nmap <silent> <localleader>t :call fzf#run(fzf#wrap({'source': 'rev-tasks-current --title', 'sink': function("InsertTaskDetails"), 'options': '-d "	" --with-nth 1'}))<CR>
 
-autocmd vimrc FileType norg        nmap <silent> ]d             :Neorg journal custom =system(["next-day", expand("%:t:r")])<CR><CR>
-autocmd vimrc FileType norg        nmap <silent> [d             :Neorg journal custom =system(["prev-day", expand("%:t:r")])<CR><CR>
+autocmd vimrc FileType norg             nmap <silent> ]d             :Neorg journal custom =system(["next-day", expand("%:t:r")])<CR><CR>
+autocmd vimrc FileType norg             nmap <silent> [d             :Neorg journal custom =system(["prev-day", expand("%:t:r")])<CR><CR>
 
-autocmd vimrc FileType gitcommit   nmap <silent> <localleader>c :call fzf#run(fzf#wrap({'source': 'rev-stories --list --full', 'sink': function("InsertGitIDs"), 'options': '--with-nth 2..'}))<CR>
+autocmd vimrc FileType gitcommit        nmap <silent> <localleader>c :call fzf#run(fzf#wrap({'source': 'rev-stories --list --full', 'sink': function("InsertGitIDs"), 'options': '--with-nth 2..'}))<CR>
 
-autocmd vimrc FileType terraform   nmap <silent> <leader>cf :!terraform fmt %<CR>
+autocmd vimrc FileType terraform        nmap <silent> <leader>cf :!terraform fmt %<CR>
 " }}}
 " {{{ Settings
 set nocompatible
@@ -651,7 +651,7 @@ let g:gruvbox_guisp_fallback='bg'
 " }}}
 
 " {{{ Common / GUI-Term settings
-syntax enable
+" syntax enable " Disable to help with treesitter
 if $BG == "dark" || ($BG == "light")
     execute 'set background=' . $BG
 else
@@ -1769,6 +1769,8 @@ require'neorg'.setup {
     }
 }
 EOF
+set conceallevel=2
+autocmd vimrc Filetype norg setlocal nolist
 endif
 " }}}
 " {{{ netrw
