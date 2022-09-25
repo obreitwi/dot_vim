@@ -21,7 +21,6 @@ Plug 'caio/querycommandcomplete.vim'
 Plug 'christoomey/vim-sort-motion'
 " Plug 'idbrii/textobj-word-column.vim' " active fork 'coderifous/textobj-word-column.vim'
 Plug 'dyng/ctrlsf.vim'
-Plug 'ehamberg/vim-cute-python'
 Plug 'godlygeek/tabular'
 Plug 'groenewege/vim-less'
 Plug 'guns/xterm-color-table.vim'
@@ -162,6 +161,8 @@ endif
 "
 " {{{ treesitter
 if has('nvim-0.5')
+  let g:use_treesitter = 1
+
   Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}  " We recommend updating the parsers on update
   Plug 'nvim-treesitter/nvim-treesitter-context'
   Plug 'nvim-treesitter/playground'
@@ -170,11 +171,12 @@ if has('nvim-0.5')
   Plug 'anuvyklack/pretty-fold.nvim'
   Plug 'windwp/nvim-autopairs'
   Plug 'yioneko/nvim-yati'
-  let g:use_treesitter = 1
 else
+  let g:use_treesitter = 0
+
   " Replacement for treesitter auto-pair
   Plug 'Raimondi/delimitMate'
-  let g:use_treesitter = 0
+  Plug 'ehamberg/vim-cute-python' " not working with treesitter-conceal
 endif
 " }}}
 
@@ -574,6 +576,7 @@ endif
 " endif
 " }}}
 " Plug 'tpope/vim-eunuch' " clashes with coc
+" Plug 'ehamberg/vim-cute-python' " not working with treesitter-conceal
 " }}}
 " }}}
 
