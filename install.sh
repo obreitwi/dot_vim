@@ -52,6 +52,7 @@ symlink "${SOURCE_FOLDER}/plugged/vimpager/vimpager" "${PREFIX}/bin/vimpager"
 
 symlink "${SOURCE_FOLDER}/utils/prev-day"            "${PREFIX}/bin/prev-day"
 symlink "${SOURCE_FOLDER}/utils/next-day"            "${PREFIX}/bin/next-day"
+symlink "${SOURCE_FOLDER}/utils/neorg-existing-day"  "${PREFIX}/bin/neorg-existing-day"
 
 # check if nvim exists
 if command -v nvim >/dev/null; then

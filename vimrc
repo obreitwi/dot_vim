@@ -252,7 +252,7 @@ endif
 command! -nargs=0 ReadTimeTableOld read ~/.vimwiki/template_timelog.md
 command! -nargs=0 ReadTimeTable    read ~/.vimwiki/neorg/template_timelog.norg
 
-command! -nargs=0 FT call OpenCustomFT("ftplugin")
+command! -nargs=0 FT  call OpenCustomFT("ftplugin")
 command! -nargs=0 FTA call OpenCustomFT("after")
 
 " Spelling
@@ -374,8 +374,8 @@ autocmd vimrc FileType markdown         nmap <silent> <localleader>r :call Repla
 autocmd vimrc FileType markdown,norg    nmap <silent> <localleader>s :call fzf#run(fzf#wrap({'source': 'rev-stories --list --title', 'sink': function("InsertTaskName")}))<CR>
 autocmd vimrc FileType markdown,norg    nmap <silent> <localleader>t :call fzf#run(fzf#wrap({'source': 'rev-tasks-current --title', 'sink': function("InsertTaskDetails"), 'options': '-d "	" --with-nth 1'}))<CR>
 
-autocmd vimrc FileType norg             nmap <silent> ]d             :Neorg journal custom =system(["next-day", expand("%:t:r")])<CR><CR>
-autocmd vimrc FileType norg             nmap <silent> [d             :Neorg journal custom =system(["prev-day", expand("%:t:r")])<CR><CR>
+autocmd vimrc FileType norg             nmap <silent> ]d             :e =system(["neorg-existing-day", expand("%:t:r"), "+1"])<CR><CR>
+autocmd vimrc FileType norg             nmap <silent> [d             :e =system(["neorg-existing-day", expand("%:t:r"), "-1"])<CR><CR>
 
 autocmd vimrc FileType gitcommit        nmap <silent> <localleader>c :call fzf#run(fzf#wrap({'source': 'rev-stories --list --full', 'sink': function("InsertGitIDs"), 'options': '--with-nth 2..'}))<CR>
 
