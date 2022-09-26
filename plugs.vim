@@ -98,6 +98,9 @@ Plug 'anuvyklack/animation.nvim'
 " Actual plugin
 Plug 'anuvyklack/windows.nvim'
 " }}}
+if has('nvim')
+  Plug 'AckslD/messages.nvim'
+endif
 " }}}
 
 " {{{ mundo

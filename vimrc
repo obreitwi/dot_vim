@@ -1738,6 +1738,16 @@ let g:ledger_maxwith = 80
 let g:ledger_fillstring = "······"
 let g:ledger_detailed_first = 1
 " }}}
+" {{{ messages
+if has('nvim')
+lua <<EOF
+require"messages".setup {}
+Msg = function(...)
+    require('messages.api').capture_thing(...)
+end
+EOF
+endif
+" }}}
 " {{{ neorg
 if has('nvim-0.8')
 lua <<EOF
@@ -1972,12 +1982,14 @@ autocmd vimrc filetype go nmap <buffer> <silent> [coc]s :GoFillStruct<CR>
 autocmd vimrc filetype go nmap <buffer> <silent> [coc]t <Plug>(go-test)
 " }}}
 " {{{ windows
+if has('nvim')
 lua <<EOF
 vim.o.winwidth = 10
 vim.o.winminwidth = 10
 require'windows'.setup {}
 vim.keymap.set('n', '<C-w>z', '<Cmd>WindowsMaximaze<CR>')
 EOF
+endif
 " }}}
 " }}}
 " {{{ Postscript
