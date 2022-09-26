@@ -368,9 +368,9 @@ nmap cie <NOp>
 
 " }}}
 " {{{ Filetype Mappings
-autocmd vimrc FileType markdown         nmap <silent> <localleader>y :call CopyTaskName()<CR>
-autocmd vimrc FileType markdown         nmap <silent> <localleader>p :call PasteTaskName()<CR>
-autocmd vimrc FileType markdown         nmap <silent> <localleader>r :call ReplaceTaskName()<CR>0
+autocmd vimrc FileType markdown,norg    nmap <silent> <localleader>y :call CopyTaskName()<CR>
+autocmd vimrc FileType markdown,norg    nmap <silent> <localleader>p :call PasteTaskName()<CR>
+autocmd vimrc FileType markdown,norg    nmap <silent> <localleader>r :call ReplaceTaskName()<CR>0
 autocmd vimrc FileType markdown,norg    nmap <silent> <localleader>s :call fzf#run(fzf#wrap({'source': 'rev-stories --list --title', 'sink': function("InsertTaskName")}))<CR>
 autocmd vimrc FileType markdown,norg    nmap <silent> <localleader>t :call fzf#run(fzf#wrap({'source': 'rev-tasks-current --title', 'sink': function("InsertTaskDetails"), 'options': '-d "	" --with-nth 1'}))<CR>
 
