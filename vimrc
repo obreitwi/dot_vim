@@ -264,7 +264,7 @@ command! -nargs=0 Then setlocal thesaurus=
 \   /usr/share/mythes/th_en_US.v2.dat
 
 " Compute how often each item appears in time log
-command! TimeStats exec '0/^# Time log$/+2,$w !sed -e "s/^..:.. \?//g" -e "/^$/d" -e "/^\s*\*/d" -e "s:\s*\#STORY.*$::g" | sort | uniq -c | gawk -f ~/.vim/utils/transform_time.awk'
+command! TimeStats exec '0/^\(\*\|#\) Time log$/+2,$w !grep "^[0-9]\{2\}:[0-9]\{2\}" | sed -e "s/[0-9][0-9]:[0-9][0-9] \?//g" -e "/^$/d" -e "/^\s*\*/d" -e "s:\s*\#STORY.*$::g" | sort | uniq -c | gawk -f ~/.vim/utils/transform_time.awk'
 command! TS TimeStats
 
 " Lazy bunch
