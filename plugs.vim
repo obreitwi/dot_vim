@@ -91,9 +91,14 @@ Plug 'anuvyklack/animation.nvim'
 " Actual plugin
 Plug 'anuvyklack/windows.nvim'
 " }}}
+" {{{ messages for easier debugging
 if has('nvim')
   Plug 'AckslD/messages.nvim'
 endif
+" }}}
+" {{{ should speed up startuptime
+Plug 'nathom/filetype.nvim'
+" }}}
 " }}}
 
 " {{{ mundo
@@ -249,6 +254,10 @@ if s:coc_enabled
 
   if g:fzf_found
     Plug 'antoinemadec/coc-fzf'
+  endif
+
+  if has('nvim')
+    Plug 'josa42/coc-lua', {'do': 'yarn install --frozen-lockfile'}
   endif
 
   let g:using_coc=1

@@ -1774,6 +1774,10 @@ require'neorg'.setup {
         ["core.gtd.base"] = {
             config = {
                 workspace = "vimwiki",
+                -- exclude = {
+                --     "journal",
+                -- },
+                custom_tag_completion = true,
             },
         },
         ["external.context"] = {},
