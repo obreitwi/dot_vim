@@ -16,28 +16,20 @@ Plug 'AndrewRadev/linediff.vim'
 Plug 'Glench/Vim-Jinja2-Syntax'
 Plug 'PeterRincker/vim-argumentative'
 Plug 'Twinside/vim-haskellConceal'
-Plug 'aquach/vim-http-client'
 Plug 'caio/querycommandcomplete.vim'
 Plug 'christoomey/vim-sort-motion'
-" Plug 'idbrii/textobj-word-column.vim' " active fork 'coderifous/textobj-word-column.vim'
-Plug 'dyng/ctrlsf.vim'
+Plug 'idbrii/textobj-word-column.vim' " active fork 'coderifous/textobj-word-column.vim'
 Plug 'godlygeek/tabular'
-Plug 'groenewege/vim-less'
-Plug 'guns/xterm-color-table.vim'
 Plug 'honza/vim-snippets'
 Plug 'jamessan/vim-gnupg'
-Plug 'jceb/vim-orgmode'
 Plug 'kana/vim-textobj-entire'
 Plug 'kana/vim-textobj-indent'
 Plug 'kana/vim-textobj-user'
 Plug 'majutsushi/tagbar'
 Plug 'mantiz/vim-plugin-dirsettings'
 Plug 'michaeljsmith/vim-indent-object'
-" " Plug 'mileszs/ack.vim'
-" Plug 'obreitwi/ack.vim' " Use own fork until https://github.com/mileszs/ack.vim/pull/276 is merged
 Plug 'nathanaelkane/vim-indent-guides'
 Plug 'nathangrigg/vim-beancount'
-Plug 'prendradjaja/vim-vertigo'
 Plug 'qpkorr/vim-renamer'
 Plug 'rhysd/vim-clang-format'
 Plug 'rkitover/vimpager'
@@ -72,7 +64,8 @@ Plug 'christoomey/vim-titlecase'
 " }}}
 " {{{ venn.nvim
 " Expectations: Draw useful boxes
-if has('nvim')
+" Reality: Often activated by accident -> keep disabled until actually used
+if 0 && has('nvim')
   Plug 'jbyuki/venn.nvim'
 endif
 " }}}
@@ -580,6 +573,16 @@ endif
 " }}}
 " Plug 'tpope/vim-eunuch' " clashes with coc
 " Plug 'ehamberg/vim-cute-python' " not working with treesitter-conceal
+" " Plug 'mileszs/ack.vim'
+" Plug 'obreitwi/ack.vim' " Use own fork until https://github.com/mileszs/ack.vim/pull/276 is merged
+" {{{ simply not used
+" Plug 'dyng/ctrlsf.vim'
+" Plug 'aquach/vim-http-client'
+" Plug 'prendradjaja/vim-vertigo'
+" Plug 'groenewege/vim-less'
+" Plug 'jceb/vim-orgmode'
+" Plug 'guns/xterm-color-table.vim'
+" }}}
 " }}}
 " }}}
 
