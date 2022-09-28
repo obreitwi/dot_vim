@@ -43,7 +43,6 @@ Plug 'powerman/vim-plugin-AnsiEsc'
 Plug 'vim-scripts/DirDiff.vim'
 Plug 'vim-scripts/ReplaceWithRegister'
 Plug 'vimwiki/vimwiki'
-Plug 'w0rp/ale'
 Plug 'terryma/vim-expand-region'
 " }}}
 
@@ -593,6 +592,7 @@ endif
 " Plug 'jceb/vim-orgmode'
 " Plug 'guns/xterm-color-table.vim'
 " }}}
+" Plug 'w0rp/ale' " Disabled to see if missed
 " }}}
 " }}}
 

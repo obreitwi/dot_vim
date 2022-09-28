@@ -98,6 +98,6 @@
       "functionTypeParameters": true
     }
   },
-  "diagnostic.displayByAle": true,
+  "diagnostic.displayByAle": false,
   "rust-analyzer.checkOnSave.command": "clippy"
 }
