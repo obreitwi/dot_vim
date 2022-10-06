@@ -96,7 +96,9 @@ if has('nvim')
 endif
 " }}}
 " {{{ should speed up startuptime
-Plug 'nathom/filetype.nvim'
+if has('nvim') && !has('nvim-0.8')
+  Plug 'nathom/filetype.nvim'
+endif
 " }}}
 " }}}
 
