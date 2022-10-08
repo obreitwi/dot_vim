@@ -351,6 +351,9 @@ Plug 'rbong/vim-flog'
 " Plug 'ruanyl/vim-gh-line'
 " Use fork until time found to push changes upstream
 Plug 'obreitwi/vim-gh-line'
+" Use two way diffs for conflict resolution
+" (NOTE: Needs to define own diff tool in git)
+Plug 'whiteinge/diffconflicts'
 " }}}
 
 " {{{ Octo (disabled since moving away from github)
