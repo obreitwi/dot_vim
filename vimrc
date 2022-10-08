@@ -1644,6 +1644,8 @@ if g:fzf_found
     nmap <silent> [unite]/ :History/<CR>
     nmap <silent> [unite]: :History:<CR>
     nmap <silent> [unite]f :Files<CR>
+    nmap <silent> [unite]l :BLines<CR>
+    nmap <silent> [unite]L :Lines<CR>
     nmap <silent> [unite]m :History<CR>
     nmap <silent> [unite]s :Snippets<CR>
     nmap <silent> [unite]r :RgFromSearch<CR>

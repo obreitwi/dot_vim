@@ -304,6 +304,11 @@ Plug 'vim-airline/vim-airline-themes'
 Plug 'ryanoasis/vim-devicons'
 " }}}
 
+" {{{ file navigation
+" Plug 'SidOfc/carbon.nvim' " NOTE: Should be AFTER airline
+Plug 'elihunter173/dirbuf.nvim'
+" }}}
+
 " {{{ audio stuff
 let s:tidal_hosts=["abed"]
 if index(s:tidal_hosts, s:hostname) >= 0
@@ -451,7 +456,7 @@ Plug 'tpope/vim-sleuth'
 Plug 'tpope/vim-speeddating'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-unimpaired'
-Plug 'tpope/vim-vinegar'
+" Plug 'tpope/vim-vinegar' " replaced by dirbuf
 " }}}
 
 " {{{ unite
