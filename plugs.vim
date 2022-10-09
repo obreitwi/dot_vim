@@ -306,7 +306,9 @@ Plug 'ryanoasis/vim-devicons'
 
 " {{{ file navigation
 " Plug 'SidOfc/carbon.nvim' " NOTE: Should be AFTER airline
-Plug 'elihunter173/dirbuf.nvim'
+if has('nvim')
+  Plug 'elihunter173/dirbuf.nvim'
+endif
 " }}}
 
 " {{{ audio stuff
