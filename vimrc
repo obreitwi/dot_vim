@@ -1816,6 +1816,7 @@ let g:netrw_list_hide.=',\(^\|\s\s\)\zs\.\S\+'
 " {{{ rust
 autocmd vimrc Filetype rust nnoremap <buffer><Leader>cf :RustFmt<CR>
 autocmd vimrc Filetype rust vnoremap <buffer><Leader>cf :RustFmtRange<CR>
+let g:rustfmt_autosave = 1
 " }}}
 " {{{ sort-folds
 autocmd vimrc FileType bib let g:sort_folds_key_function="get_citekey"
