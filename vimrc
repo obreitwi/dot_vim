@@ -1201,9 +1201,8 @@ nnoremap <c-y> :TagbarToggle<CR>
 let g:tagbar_autofocus = 1
 " }}}
 " {{{ Taglist
-nnoremap <c-s> :TlistToggle<CR>
-command! -nargs=0 TU :TlistUpdate
-
+" nnoremap <c-s> :TlistToggle<CR>
+" command! -nargs=0 TU :TlistUpdate
 " }}}
 " {{{ TaskWarrior
 let g:task_report_name="long"
