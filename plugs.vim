@@ -37,7 +37,7 @@ Plug 'rust-lang/rust.vim'
 Plug 'sanjayankur31/sli.vim'
 Plug 'scrooloose/nerdcommenter'
 " Plug 'sjbach/lusty'
-Plug 'obreitwi/lusty', {'branch': 'workaround/ensure_proper_height'}
+" Plug 'obreitwi/lusty', {'branch': 'workaround/ensure_proper_height'}
 Plug 'tommcdo/vim-exchange'
 Plug 'trapd00r/vim-syntax-vidir-ls'
 Plug 'powerman/vim-plugin-AnsiEsc'
