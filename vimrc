@@ -293,9 +293,10 @@ map <f8> :setlocal spell!<CR>
 nnoremap Q gqap
 vnoremap Q gq
 
-" Use <c-f> as prefix for font related commands
-nnoremap <silent> <c-f><c-=> :call GuifontsizeModify(1)<cr>
-nnoremap <silent> <c-f><c--> :call GuifontsizeModify(-1)<cr>
+" Use <c-s> as prefix for <S>et-font related commands
+" TODO: Use hydra for this
+nnoremap <silent> <c-s><c-=> :call GuifontsizeModify(1)<cr>
+nnoremap <silent> <c-s><c--> :call GuifontsizeModify(-1)<cr>
 
 " Make bulletin
 nnoremap <silent> <leader>bt :keeppattern s:^\s*\zs:* :<CR>
@@ -314,9 +315,14 @@ imap <silent> <C-D><C-W> <C-R>=strftime("%Y-%m-%d")<CR>
 
 nnoremap <silent> <c-u> :nohl<CR>
 inoremap <silent> <c-u> <c-o>:nohl<CR>
+" <c-q> is more comfortable to reach on regular keyboards
 nnoremap <c-q> <c-u>
 inoremap <c-q> <c-u>
-vnoremap <c-q> <c-u>
+xnoremap <c-q> <c-u>
+" <c-f> is easier to reach on model 100
+nnoremap <c-f> <c-u>
+inoremap <c-f> <c-u>
+xnoremap <c-f> <c-u>
 noremap M J
 noremap J M
 noremap <silent> <expr> j (v:count == 0 ? 'gj' : 'j')
