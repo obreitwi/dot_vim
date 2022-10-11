@@ -175,6 +175,7 @@ if has('nvim-0.5')
   Plug 'anuvyklack/pretty-fold.nvim'
   Plug 'windwp/nvim-autopairs'
   Plug 'yioneko/nvim-yati'
+  Plug 'abecodes/tabout.nvim'
 else
   let g:use_treesitter = 0
 
