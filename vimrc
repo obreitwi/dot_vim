@@ -1584,6 +1584,9 @@ nmap [disableDiffchhar4] <Plug>JumpDiffCharPrevEnd
 nmap [disableDiffchhar5] <Plug>JumpDiffCharPrevStart
 nmap [disableDiffchhar6] <Plug>PutDiffCharPair
 " }}}
+" {{{ dirbuf
+map <leader>lr :Dirbuf<CR>:BLines<CR>
+" }}}
 " {{{ fake
 " let g:fake_bootstrap = 1
 " " function! s:FakeInit()
