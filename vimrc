@@ -1832,6 +1832,7 @@ require("tabout").setup({
   backwards_tabkey = "",
 })
 EOF
+inoremap <c-g><c-g> <Plug>(Tabout)
 " }}}
 " {{{ tidal
 if has("nvim")
