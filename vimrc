@@ -1727,12 +1727,12 @@ nnoremap <leader>it :IndentBlanklineToggle<CR>
 " " nnoremap <silent> [intero]t <Plug>InteroGenericType
 " }}}
 " {{{ latex-unicoder
-let g:unicoder_cancel_normal = 1
-let g:unicoder_cancel_insert = 1
-let g:unicoder_cancel_visual = 1
-nnoremap <leader>li :call unicoder#start(0)<CR>
-" inoremap <C-l> <Esc>:call unicoder#start(1)<CR>
-" vnoremap <C-l> :<C-u>call unicoder#selection()<CR>
+" let g:unicoder_cancel_normal = 1
+" let g:unicoder_cancel_insert = 1
+" let g:unicoder_cancel_visual = 1
+" nnoremap <leader>li :call unicoder#start(0)<CR>
+" " inoremap <C-l> <Esc>:call unicoder#start(1)<CR>
+" " vnoremap <C-l> :<C-u>call unicoder#selection()<CR>
 " }}}
 " {{{ ledger
 " let g:ledger_bin="hledger"

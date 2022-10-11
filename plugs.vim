@@ -217,8 +217,9 @@ endif
 " }}}
 
 " {{{ latex
-" Insert unicode symbols based on their latex names
-Plug 'joom/latex-unicoder.vim'
+" Insert unicode symbols based on their latex names (disabled because not
+" really used)
+" Plug 'joom/latex-unicoder.vim'
 
 let s:latex_hosts=["abed", "mucku", "mimir"]
 let s:latex_enabled = index(s:latex_hosts, s:hostname) >= 0
