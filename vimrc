@@ -956,13 +956,13 @@ vmap <Leader>csf <Plug>CtrlSFVwordPath
 nmap <Leader>csf <Plug>CtrlSFPrompt
 " }}}
 " {{{ DelimitMate
-autocmd vimrc FileType tex let b:delimitMate_quotes = "\" ' $"
-autocmd vimrc FileType django let b:delimitMate_quotes = "\" ' %"
-autocmd vimrc FileType markdown let b:delimitMate_quotes = "\" ' * `"
-autocmd vimrc FileType vimwiki let b:delimitMate_quotes = "\" ' `"
-let g:delimitMate_expand_cr = 1
-inoremap <C-Tab> <C-R>=delimitMate#JumpAny("\<C-Tab>")<CR>
-imap <C-G><C-G> <Plug>delimitMateS-Tab
+" autocmd vimrc FileType tex let b:delimitMate_quotes = "\" ' $"
+" autocmd vimrc FileType django let b:delimitMate_quotes = "\" ' %"
+" autocmd vimrc FileType markdown let b:delimitMate_quotes = "\" ' * `"
+" autocmd vimrc FileType vimwiki let b:delimitMate_quotes = "\" ' `"
+" let g:delimitMate_expand_cr = 1
+" inoremap <C-Tab> <C-R>=delimitMate#JumpAny("\<C-Tab>")<CR>
+" imap <C-G><C-G> <Plug>delimitMateS-Tab
 " }}}
 " {{{ Dispatch
 " Make on its own calls `cargo` -> typing 'build' is annoying
@@ -1417,15 +1417,20 @@ if exists("g:using_coc") && g:using_coc == 1
     " {{{ custom completion popup
     function! s:check_back_space() abort
         let col = col('.') - 1
-        return !col || getline('.')[col - 1]  =~ '\s'
+        return !col || getline('.')[col - 1]  =~ '[\(\)\[\]\{\}\s]'
     endfunction
 
     " Insert <tab> when previous text is space, refresh completion if not.
+    " inoremap <silent><expr> <TAB>
+                " \ coc#pum#visible() ? coc#pum#next(1):
+                " \ <SID>check_back_space() ? "\<Tab>" :
+                " \ coc#refresh()
+    " inoremap <expr><S-TAB> coc#pum#visible() ? coc#pum#prev(1) : "\<C-h>"
     inoremap <silent><expr> <TAB>
                 \ coc#pum#visible() ? coc#pum#next(1):
-                \ <SID>check_back_space() ? "\<Tab>" :
+                \ <SID>check_back_space() ? "\<Plug>(Tabout)" :
                 \ coc#refresh()
-    inoremap <expr><S-TAB> coc#pum#visible() ? coc#pum#prev(1) : "\<C-h>"
+    inoremap <expr><S-TAB> coc#pum#visible() ? coc#pum#prev(1) : "\<Plug>(TaboutBack)"
 
     " Use <c-space> to trigger completion:
     if has('nvim')
@@ -1818,6 +1823,14 @@ autocmd vimrc FileType bib let g:sort_folds_key_function="get_citekey"
 " {{{ splitjoin
 nmap sj :SplitjoinSplit<cr>
 nmap sk :SplitjoinJoin<cr>
+" }}}
+" {{{ tabout 
+lua <<EOF
+require("tabout").setup({
+  tabkey = "",
+  backwards_tabkey = "",
+})
+EOF
 " }}}
 " {{{ tidal
 if has("nvim")
