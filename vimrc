@@ -1591,8 +1591,8 @@ nmap [disableDiffchhar6] <Plug>PutDiffCharPair
 " }}}
 " {{{ dirbuf
 map <leader>lr :Dirbuf<CR>:BLines<CR>
-function! s:dirbuf_enter(lines)
-    let chunks = split(a:lines[0], "\t", 1)
+function! s:dirbuf_enter(line)
+    let chunks = split(a:line, '\t', 1)
     let linenum = chunks[0]
     exec ':' . linenum
     lua require('dirbuf').enter('edit')
