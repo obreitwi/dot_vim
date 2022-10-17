@@ -1591,6 +1591,20 @@ nmap [disableDiffchhar6] <Plug>PutDiffCharPair
 " }}}
 " {{{ dirbuf
 map <leader>lr :Dirbuf<CR>:BLines<CR>
+function! s:dirbuf_enter(lines)
+    let chunks = split(a:lines[0], "\t", 1)
+    let linenum = chunks[0]
+    exec ':' . linenum
+    lua require('dirbuf').enter('edit')
+endfunction
+function! s:fzf_dirbuf()
+    Dirbuf
+    call fzf#vim#buffer_lines({
+        \ 'sink': function('s:dirbuf_enter'),
+        \ })
+endfunction
+command! DirbufFzf call s:fzf_dirbuf()
+map <leader>lr :DirbufFzf<CR>
 " }}}
 " {{{ fake
 " let g:fake_bootstrap = 1
