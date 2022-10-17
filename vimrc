@@ -1840,6 +1840,7 @@ nmap sj :SplitjoinSplit<cr>
 nmap sk :SplitjoinJoin<cr>
 " }}}
 " {{{ tabout 
+if g:use_treesitter
 lua <<EOF
 require("tabout").setup({
   tabkey = "",
@@ -1847,6 +1848,7 @@ require("tabout").setup({
 })
 EOF
 inoremap <c-g><c-g> <Plug>(Tabout)
+endif
 " }}}
 " {{{ tidal
 if has("nvim")
