@@ -187,7 +187,7 @@ endif
 
 " {{{ highlighting
 " if g:use_easymotion
-  " Plug 'lukas-reineke/indent-blankline.nvim'
+  Plug 'lukas-reineke/indent-blankline.nvim'
 " endif
 " }}}
 
