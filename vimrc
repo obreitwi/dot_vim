@@ -535,6 +535,11 @@ autocmd vimrc filetype tex hi MatchParen ctermbg=black guibg=black
 " autocmd! vimrc BufWritePost vundles.vim source $MYVIMRC
 
 " autocmd vimrc FileType python setlocal omnifunc=pythoncomplete#Complete
+" {{{ spell checking in comments only
+if has('nvim-0.8')
+    autocmd vimrc FileType go setlocal spelloptions+=noplainbuffer
+endif
+" }}}
 
 " {{{ Tab-Settings
 autocmd vimrc FileType arduino     setlocal tabstop=4 |     setlocal shiftwidth=4 |  setlocal softtabstop=4
