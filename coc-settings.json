@@ -39,24 +39,6 @@
         }
       }
     },
-    "clangd": {
-      "enable": false,
-      "filetypes": [
-        "c",
-        "cpp",
-        "objc",
-        "objcpp"
-      ]
-    },
-    "clangtidy": {
-      "enable": false,
-      "filetypes": [
-        "c",
-        "cpp",
-        "objc",
-        "objcpp"
-      ]
-    },
     "haskell": {
       "command": "haskell-language-server-wrapper",
       "args": [
