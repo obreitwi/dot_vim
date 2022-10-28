@@ -2065,7 +2065,7 @@ autocmd vimrc filetype go nmap <buffer> <silent> [coc]s :GoFillStruct<CR>
 autocmd vimrc filetype go nmap <buffer> <silent> [coc]t <Plug>(go-test)
 " }}}
 " {{{ windows
-if has('nvim')
+if 0 &&  has('nvim')
 lua <<EOF
 vim.o.winwidth = 10
 vim.o.winminwidth = 10

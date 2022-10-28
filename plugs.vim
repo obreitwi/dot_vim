@@ -81,16 +81,6 @@ Plug 'AndrewRadev/splitjoin.vim'
 " Expectations: Actually used to insert unicode digraphs.
 Plug 'chrisbra/unicode.vim'
 " }}}
-" {{{ windows.nvim
-" Expectations:
-" * Actually useful when dealing with windows
-" * Might even solve resize bug
-" Requirements
-Plug 'anuvyklack/middleclass',
-Plug 'anuvyklack/animation.nvim'
-" Actual plugin
-Plug 'anuvyklack/windows.nvim'
-" }}}
 " {{{ messages for easier debugging
 if has('nvim')
   Plug 'AckslD/messages.nvim'
@@ -611,6 +601,18 @@ endif
 " Plug 'guns/xterm-color-table.vim'
 " }}}
 " Plug 'w0rp/ale' " Disabled to see if missed
+" }}}
+" {{{ windows.nvim
+" " Expectations:
+" " * Actually useful when dealing with windows
+" " * Might even solve resize bug
+" " Reality:
+" " * Does not work on all cases and too inconsistent.
+" " Requirements
+" Plug 'anuvyklack/middleclass',
+" Plug 'anuvyklack/animation.nvim'
+" " Actual plugin
+" Plug 'anuvyklack/windows.nvim'
 " }}}
 " }}}
 
