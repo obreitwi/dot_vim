@@ -251,7 +251,8 @@ if s:coc_enabled
   endif
 
   if has('nvim')
-    Plug 'josa42/coc-lua', {'do': 'yarn install --frozen-lockfile'}
+    " Plug 'josa42/coc-lua', {'do': 'yarn install --frozen-lockfile'} " not maintained
+    Plug 'xiyaowong/coc-sumneko-lua', {'do': 'yarn install --frozen-lockfile'}
   endif
 
   let g:using_coc=1
