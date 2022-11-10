@@ -1602,14 +1602,20 @@ function! s:dirbuf_enter(line)
     exec ':' . linenum
     lua require('dirbuf').enter('edit')
 endfunction
-function! s:fzf_dirbuf()
-    Dirbuf
+function! s:fzf_dirbuf_enter()
     call fzf#vim#buffer_lines({
         \ 'sink': function('s:dirbuf_enter'),
         \ })
 endfunction
+function! s:fzf_dirbuf()
+    Dirbuf
+    call s:fzf_dirbuf_enter()
+endfunction
 command! DirbufFzf call s:fzf_dirbuf()
 map <leader>lr :DirbufFzf<CR>
+ nmap <leader>lr :DirbufFzf<CR>
+autocmd vimrc Filetype dirbuf command! DirbufFzfEnter call s:fzf_dirbuf_enter()
+autocmd vimrc Filetype dirbuf nmap <buffer><Leader><Leader> :DirbufFzfEnter<CR>
 " }}}
 " {{{ fake
 " let g:fake_bootstrap = 1
