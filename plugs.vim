@@ -225,7 +225,6 @@ endif
 let s:coc_hosts=["abed", "mucku", "helvetica.kip.uni-heidelberg.de", "mimir"]
 let s:coc_enabled = (has('nvim') || v:version >= 802) && index(s:coc_hosts, s:hostname) >= 0
 if s:coc_enabled
-  " Plug 'neoclide/coc.nvim', {'branch': 'release'}
   Plug 'neoclide/coc.nvim', {'do': 'yarn install --frozen-lockfile'}
   Plug 'neoclide/coc-json', {'do': 'yarn install --frozen-lockfile'}
   if executable('python')
@@ -236,7 +235,6 @@ if s:coc_enabled
   endif
   if executable('rustc')
     Plug 'fannheyward/coc-rust-analyzer', {'do': 'yarn install --frozen-lockfile'}
-    " Plug 'neoclide/coc-rls', {'do': 'yarn install --frozen-lockfile'}
   endif
 
   if s:latex_enabled
