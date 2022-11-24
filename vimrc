@@ -315,14 +315,22 @@ imap <silent> <C-D><C-W> <C-R>=strftime("%Y-%m-%d")<CR>
 
 nnoremap <silent> <c-u> :nohl<CR>
 inoremap <silent> <c-u> <c-o>:nohl<CR>
+
+" center after these jumps
 " <c-q> is more comfortable to reach on regular keyboards
-nnoremap <c-q> <c-u>
-inoremap <c-q> <c-u>
-xnoremap <c-q> <c-u>
+nnoremap <c-q> <c-u>zz
+inoremap <c-q> <c-u>zz
+xnoremap <c-q> <c-u>zz
 " <c-f> is easier to reach on model 100
-nnoremap <c-f> <c-u>
-inoremap <c-f> <c-u>
-xnoremap <c-f> <c-u>
+nnoremap <c-f> <c-u>zz
+inoremap <c-f> <c-u>zz
+xnoremap <c-f> <c-u>zz
+nnoremap <c-d> <c-d>zz
+xnoremap <c-d> <c-d>zz
+inoremap <c-d> <c-d>zz
+nnoremap n nzz
+nnoremap N Nzz
+
 noremap M J
 noremap J M
 noremap <silent> <expr> j (v:count == 0 ? 'gj' : 'j')
