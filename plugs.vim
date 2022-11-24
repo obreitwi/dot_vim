@@ -414,7 +414,8 @@ endif
 " {{{ neorg
 " Expectations: Possible replacement for diary files and vimwiki
 if has('nvim-0.8')
-  Plug 'nvim-neorg/neorg' | Plug 'nvim-lua/plenary.nvim'
+  Plug 'nvim-neorg/neorg', {'do': ':Neorg sync-parsers'}
+  Plug 'nvim-lua/plenary.nvim'
   Plug 'max397574/neorg-contexts'
 endif
 " }}}

@@ -1811,6 +1811,7 @@ require'neorg'.setup {
                 }
             }
         },
+        ["core.export"] = {},
         ["core.norg.journal"] = {
             config = {
                 journal_folder = "journal",
@@ -1819,15 +1820,15 @@ require'neorg'.setup {
                 template_name = "template_timelog.norg",
             },
         },
-        ["core.gtd.base"] = {
-            config = {
-                workspace = "vimwiki",
-                -- exclude = {
-                --     "journal",
-                -- },
-                custom_tag_completion = true,
-            },
-        },
+        -- ["core.gtd.base"] = {
+        --     config = {
+        --         workspace = "vimwiki",
+        --         -- exclude = {
+        --         --     "journal",
+        --         -- },
+        --         custom_tag_completion = true,
+        --     },
+        -- },
         ["external.context"] = {},
     }
 }
