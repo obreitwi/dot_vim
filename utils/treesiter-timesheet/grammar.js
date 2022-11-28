@@ -4,7 +4,6 @@ module.exports = grammar({
   word: $ => $._identifier,
 
   rules: {
-    // TODO: add the actual grammar rules
     source_file: $ => repeat(choice($.time_entry, $.task_entry, $._newline)),
 
     timestamp: $ => seq($._number, $._number, ':', $._number, $._number),
