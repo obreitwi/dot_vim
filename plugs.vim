@@ -559,10 +559,10 @@ endif
 "     Plug 'davidhalter/jedi-vim'
 " endif
 " }}}
+" }}}
 " {{{ 2021
 " Replaced by mundo:
 " Plug 'sjl/gundo.vim'
-" }}}
 " }}}
 " {{{ 2022
 " Plug 'sickill/vim-pasta' " Disabled to see if it is actually used
@@ -601,7 +601,6 @@ endif
 " Plug 'guns/xterm-color-table.vim'
 " }}}
 " Plug 'w0rp/ale' " Disabled to see if missed
-" }}}
 " {{{ windows.nvim
 " " Expectations:
 " " * Actually useful when dealing with windows
@@ -613,6 +612,7 @@ endif
 " Plug 'anuvyklack/animation.nvim'
 " " Actual plugin
 " Plug 'anuvyklack/windows.nvim'
+" }}}
 " }}}
 " }}}
 
