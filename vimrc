@@ -415,6 +415,7 @@ set ttyfast
 set cul
 " set timeoutlen=250
 set timeoutlen=500
+set scrolloff=8
 
 if v:version >= 703 && !has('nvim')
 set cm=blowfish2
