@@ -1129,8 +1129,9 @@ map <leader>bg :LustyBufferGrep<CR>
 " }}}
 " {{{ Mundo
 " decide which mapping to keep
-map gt :MundoToggle<CR>
+" map gt :MundoToggle<CR>
 map <leader>mt :MundoToggle<CR>
+let g:mundo_inline_undo=1
 " }}}
 " {{{ NERDCommenter
 let g:NERDCustomDelimiters = {
