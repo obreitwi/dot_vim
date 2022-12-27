@@ -11,7 +11,7 @@ if diff := cmp.Diff(${1:want}, ${2:got}, protocmp.Transform()$3); diff != "" {
 endsnippet
 
 snippet differror "Do a diff for a test"
-if diff := cmp.Diff(${1:want}, ${2:got}, cmpopts.EquateErrors()$3); diff != "" {
+if diff := cmp.Diff(${1:tt.wantErr}, ${2:err}, cmpopts.EquateErrors()$3); diff != "" {
 	t.Errorf("${4:error} mismatch (-want, +got):\n%s", diff)
 }
 endsnippet
