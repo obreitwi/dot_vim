@@ -365,6 +365,10 @@ map L <nop>
 nnoremap <silent> <leader>zj :call NextClosedFold('j')<cr>
 nnoremap <silent> <leader>zk :call NextClosedFold('k')<cr>
 
+" Use <leader>y/<leader>p to yank/paste to/from system clipboard
+vnoremap <silent> <leader>y "+y
+vnoremap <silent> <leader>p "+p
+
 " select put text, via http://stackoverflow.com/a/4775281/955926
 nnoremap <expr> gV "`[".getregtype(v:register)[0]."`]"
 
