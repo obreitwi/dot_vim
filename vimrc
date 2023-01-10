@@ -1866,7 +1866,7 @@ autocmd vimrc FileType bib let g:sort_folds_key_function="get_citekey"
 nmap sj :SplitjoinSplit<cr>
 nmap sk :SplitjoinJoin<cr>
 " }}}
-" {{{ tabout 
+" {{{ tabout
 if g:use_treesitter
 lua <<EOF
 require("tabout").setup({
@@ -1967,6 +1967,19 @@ lua << EOF
     end
 
     remap('i' , '<CR>','v:lua.MUtils.completion_confirm()', {expr = true , noremap = true})
+
+    local parser_config = require "nvim-treesitter.parsers".get_parser_configs()
+    parser_config.timesheet = {
+        install_info = {
+            url = "~/.vim/utils/treesitter-timesheet", -- local path or git repo
+            files = {"src/parser.c"},
+            -- optional entries:
+            branch = "main", -- default branch in case of git repo if different from master
+            generate_requires_npm = false, -- if stand-alone parser without npm dependencies
+            requires_generate_from_grammar = false, -- if folder contains pre-generated src/parser.c
+        },
+        -- filetype = "zu", -- if filetype does not match the parser name
+    }
 EOF
 set foldminlines=50
 set foldmethod=expr

@@ -66,7 +66,7 @@ EOF
 ln -svf ~/.vim/coc-settings.json ~/.config/nvim
 
 if command -v tree-sitter >/dev/null; then
-    cd ~/.vim/utils/treesiter-timesheet/
+    cd ~/.vim/utils/treesitter-timesheet/
     tree-sitter generate
     gcc -Wall --shared -o timesheet.so -I src/tree_sitter src/parser.c
 fi
