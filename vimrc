@@ -249,8 +249,8 @@ else
     command! -nargs=0 Vimrc tabe $VIM/vimfiles/vimrc
 endif
 
-command! -nargs=0 ReadOldTimeTable read ~/.vimwiki/template_timelog.md
-command! -nargs=0 ReadTimeTable    read ~/.vimwiki/neorg/template_timelog.norg
+" command! -nargs=0 ReadOldTimeTable read ~/wiki/template_timelog.md
+command! -nargs=0 ReadTimeTable    read ~/wiki/neorg/template_timelog.norg
 
 command! -nargs=0 FT  call OpenCustomFT("ftplugin")
 command! -nargs=0 FTA call OpenCustomFT("after")
@@ -1345,8 +1345,8 @@ let g:vimwiki_table_mappings = 0
 let g:vimwiki_global_ext = 0
 
 let wiki_sync = {}
-let wiki_sync.path = '~/.vimwiki/'
-let wiki_sync.path_html = '~/doc/wiki_html/'
+let wiki_sync.path = '~/wiki/vimwiki'
+let wiki_sync.path_html = '~/wiki/vimwiki/html/'
 let wiki_sync.syntax = 'markdown'
 let wiki_sync.ext = '.md'
 
@@ -1813,7 +1813,7 @@ require'neorg'.setup {
         ["core.norg.dirman"] = {
             config = {
                 workspaces = {
-                    vimwiki = "~/.vimwiki/neorg",
+                    vimwiki = "~/wiki/neorg",
                     -- example_gtd = "~/sandboxes/2022-09-17_setup_neorg/example_workspaces/gtd",
                 }
             }
