@@ -6,7 +6,7 @@ shopt -s inherit_errexit
 basedate="$1"
 day_diff="$2"
 
-FOLDER="$HOME/.vimwiki/neorg/journal"
+FOLDER="$HOME/wiki/neorg/journal"
 
 MAX_DAYS_SEARCH=7
 
