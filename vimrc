@@ -1403,6 +1403,41 @@ if 0 && g:ycm_requirements_met && index(g:hosts_ycm, hostname()) >= 0
     " let g:ycm_clangd_args=['-ferror-limit=0']
 endif
 " }}}
+" {{{ barbecue
+lua <<EOC
+-- require("barbecue").setup({
+--   -- attach_navic = false, -- prevent barbecue from automatically attaching nvim-navic
+--   -- create_autocmd = false, -- prevent barbecue from updating itself automatically
+-- })
+
+-- Requires lspconfig, need a way to work with coc
+-- require("lspconfig")[server].setup({
+--   -- attach navic to each tab page
+--   on_attach = function(client, bufnr)
+--     if client.server_capabilities["documentSymbolProvider"] then
+--       require("nvim-navic").attach(client, bufnr)
+--     end
+--   end,
+-- })
+--
+-- vim.api.nvim_create_autocmd({
+--   "WinResized",
+--   "BufWinEnter",
+--   "CursorHold",
+--   "InsertLeave",
+-- 
+--   -- include these if you have set `show_modified` to `true`
+--   "BufWritePost",
+--   "TextChanged",
+--   "TextChangedI",
+-- }, {
+--   group = vim.api.nvim_create_augroup("barbecue.updater", {}),
+--   callback = function()
+--     require("barbecue.ui").update()
+--   end,
+-- })
+EOC
+" }}}
 " {{{ black
 " Mnemonic is <c>ode-<f>ormat
 autocmd vimrc Filetype python nnoremap <buffer><Leader>cf :Black<CR>
@@ -1433,6 +1468,9 @@ if exists("g:using_coc") && g:using_coc == 1
 
     " always show signcolumns
     set signcolumn=yes
+
+    " disabled since context already gives the same info
+    " set winbar=%{%get(b:,'coc_symbol_line','')%}
 
     " {{{ custom completion popup
     function! s:check_back_space() abort

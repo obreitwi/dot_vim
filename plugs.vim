@@ -473,6 +473,19 @@ endif
 " }}}
 
 " {{{ disabled stuff / plugin detox 
+" {{{ winbar
+" BLOCKED: navic rquires lspconfig which clashes with coc.
+" NOTE: Load AFTER colorscheme
+" Plug 'SmiteshP/nvim-navic'
+" Plug 'nvim-tree/nvim-web-devicons'
+" Plug 'utilyre/barbecue.nvim'
+
+" The coc-variant gives the same info as context-plugins -> not needed
+" if g:using_coc
+"   Plug 'xiyaowong/coc-symbol-line', {'do': 'yarn install --frozen-lockfile'}
+" endif
+" }}}
+
 " {{{ used at some point
 " Plug 'vim-scripts/SudoEdit.vim'
 " Plug 'vim-scripts/FSwitch'
