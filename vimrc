@@ -136,6 +136,7 @@ function! ReplaceTaskName()
     let l:save_cursor = getcurpos()
     normal! 0El"_D$p
     call setpos('.', l:save_cursor)
+    normal! zO
 endfunction
 
 function InsertTaskName(name)
@@ -149,6 +150,7 @@ function InsertTaskDetails(title_details)
     let l:details=l:split[1]
     call append(line('.'), l:title . ' #STORY ' . l:details)
     normal! J
+    normal! zO
 endfunction
 
 function InsertGitIDs(link)
@@ -395,7 +397,7 @@ autocmd vimrc FileType markdown,norg    nmap <silent> <localleader>t :call fzf#r
 autocmd vimrc FileType norg             nmap <silent> ]d             :e =system(["neorg-existing-day", expand("%:t:r"), "+1"])<CR><CR>
 autocmd vimrc FileType norg             nmap <silent> [d             :e =system(["neorg-existing-day", expand("%:t:r"), "-1"])<CR><CR>
 
-autocmd vimrc FileType gitcommit        nmap <silent> <localleader>c :call fzf#run(fzf#wrap({'source': 'rev-stories --list --full', 'sink': function("InsertGitIDs"), 'options': '--with-nth 2..'}))<CR>
+autocmd vimrc FileType gitcommit        nmap <silent> <localleader>c :call fzf#run(fzf#wrap({'source': 'revcli stories --list --title', 'sink': function("InsertGitIDs"), 'options': '-d "	" --with-nth 1'}))<CR>
 
 autocmd vimrc FileType terraform        nmap <silent> <leader>cf :!terraform fmt %<CR>
 " }}}
