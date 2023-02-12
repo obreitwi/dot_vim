@@ -615,6 +615,11 @@ autocmd vimrc BufNewFile,BufRead *.sli setf sli
 au vimrc BufRead,BufNewFile /tmp/*mutt-* set filetype=mail | nohl | setlocal omnifunc=QueryCommandComplete
 let g:qcc_query_command="nottoomuch-addresses-reformatted"
 " }}}
+" {{{ rust
+" Workaround for second line getting replaced by crate name on safe: Disable folding via expr
+" NOTE: setlocal does _not_ work.
+au vimrc FileType rust             set foldmethod=manual | set foldexpr=0
+" }}}
 " }}}
 " {{{ Font config
 " Font settings
