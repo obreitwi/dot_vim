@@ -1849,7 +1849,7 @@ EOF
 endif
 " }}}
 " {{{ neorg
-if has('nvim-0.8')
+if has('nvim-0.8') && g:use_treesitter
 lua <<EOF
 require'neorg'.setup {
     load = {
