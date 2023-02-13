@@ -69,5 +69,6 @@ if command -v tree-sitter >/dev/null; then
     cd ~/.vim/utils/treesitter-timesheet/
     tree-sitter generate
     gcc -Wall --shared -o timesheet.so -I src/tree_sitter src/parser.c
+    nvim '+TSInstall timesheet'
 fi
 fi
