@@ -1887,7 +1887,7 @@ require'neorg'.setup {
 }
 EOF
 set conceallevel=2
-autocmd vimrc Filetype norg setlocal nolist
+autocmd vimrc Filetype norg setlocal nolist | setlocal foldminlines=0
 endif
 " }}}
 " {{{ netrw
