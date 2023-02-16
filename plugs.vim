@@ -472,6 +472,14 @@ endif
 
 " }}}
 
+" {{{ code coverage
+if has('nvim')
+  " needs to be done after gitgutter?
+  Plug 'nvim-lua/plenary.nvim'
+  Plug 'andythigpen/nvim-coverage'"
+endif
+" }}}
+
 " {{{ disabled stuff / plugin detox 
 " {{{ winbar
 " BLOCKED: navic rquires lspconfig which clashes with coc.

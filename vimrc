@@ -665,6 +665,7 @@ if index(s:hosts_clipboard_enabled, hostname()) < 0 && !has('nvim')
 end
 " }}}
 " {{{ Color management
+let g:gitgutter_override_sign_column_highlight=1
 
 " Put a linewidth indicator on a custom colum instead of the default 80
 let g:colorcolumn_custom = {
@@ -1898,6 +1899,15 @@ let g:netrw_altv=1          " open splits to the right
 let g:netrw_liststyle=3     " tree view
 let g:netrw_list_hide=netrw_gitignore#Hide()
 let g:netrw_list_hide.=',\(^\|\s\s\)\zs\.\S\+'
+" }}}
+" {{{ nvim-coverage
+if has('nvim')
+lua<<EOF
+require("coverage").setup({
+    auto_reload = true,
+})
+EOF
+endif
 " }}}
 " {{{ rust
 autocmd vimrc Filetype rust nnoremap <buffer><Leader>cf :RustFmt<CR>
