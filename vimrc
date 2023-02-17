@@ -533,7 +533,7 @@ set listchars=tab:>\ ,trail:\ ,extends:>,precedes:<,nbsp:+
 if (g:opsystem != "windows") && (&termencoding ==# 'utf-8' || &encoding ==# 'utf-8')
     " NOTE: These two lines are NOT the same characgters!
     " let &listchars = "tab:\u21e5 ,trail:\u2423,extends:\u21c9,precedes:\u21c7,nbsp:\u00b7"
-    set listchars=tab:▸\ ,extends:⇉,precedes:⇇,nbsp:·,eol:¬,trail:␣
+    set listchars=tab:▸·,extends:⇉,precedes:⇇,nbsp:·,eol:¬,trail:␣
 endif
 
 " }}}
