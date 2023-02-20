@@ -1305,14 +1305,6 @@ if g:unite_enabled
     call neoyank#update()
 endif
 " }}}
-" {{{ Vertigo
-nnoremap <silent> <Space>j :<C-U>VertigoDown n<CR>
-vnoremap <silent> <Space>j :<C-U>VertigoDown v<CR>
-onoremap <silent> <Space>j :<C-U>VertigoDown o<CR>
-nnoremap <silent> <Space>k :<C-U>VertigoUp n<CR>
-vnoremap <silent> <Space>k :<C-U>VertigoUp v<CR>
-onoremap <silent> <Space>k :<C-U>VertigoUp o<CR>
-" }}}
 " {{{ VimFiler
 let g:vimfiler_as_default_explorer = 1
 " }}}
