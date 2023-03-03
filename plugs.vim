@@ -73,10 +73,6 @@ endif
 " Expectations: useful during coding
 Plug 'Matt-A-Bennett/surround-funk.vim'
 " }}}
-" {{{ splitjoin
-" Expectations: Actually used to split up long function calls
-Plug 'AndrewRadev/splitjoin.vim'
-" "}}}
 " {{{ unicode
 " Expectations: Actually used to insert unicode digraphs.
 Plug 'chrisbra/unicode.vim'
@@ -153,7 +149,7 @@ endif
 " }}}
 "
 " {{{ treesitter
-if has('nvim-0.5')
+if has('nvim-0.8')
   let g:use_treesitter = 1
 
   Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}  " We recommend updating the parsers on update
@@ -166,12 +162,17 @@ if has('nvim-0.5')
   Plug 'windwp/nvim-autopairs'
   Plug 'yioneko/nvim-yati'
   Plug 'abecodes/tabout.nvim'
+
+  Plug 'Wansmer/treesj'
 else
   let g:use_treesitter = 0
 
   " Replacement for treesitter auto-pair
   Plug 'Raimondi/delimitMate'
   Plug 'ehamberg/vim-cute-python' " not working with treesitter-conceal
+
+  " fall-back for treesj
+  Plug 'AndrewRadev/splitjoin.vim'
 endif
 " }}}
 

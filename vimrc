@@ -2034,6 +2034,19 @@ set foldmethod=expr
 set foldexpr=nvim_treesitter#foldexpr()
 endif
 " }}}
+" {{{ treesj
+if g:use_treesitter
+lua <<EOF
+require('treesj').setup({
+    use_default_keymaps = false,
+    max_join_length = 360,
+})
+EOF
+nnoremap <leader>sj :TSJJoin<CR>
+nnoremap <leader>ss :TSJSplit<CR>
+nnoremap <leader>st :TSJToggle<CR>
+endif
+" }}}
 " {{{ titlecase
 " Add support for repeat (does not work this easily unfortunately)
 " silent! call repeat#set("\<Plug>Titlecase", v:count)
