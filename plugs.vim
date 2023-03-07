@@ -157,7 +157,7 @@ if has('nvim-0.8')
   Plug 'nvim-treesitter/nvim-treesitter-textobjects'
   Plug 'nvim-treesitter/playground'
   " Plug 'nvim-lua/plenary.nvim' | Plug 'nvim-telescope/telescope.nvim'
-  Plug 'p00f/nvim-ts-rainbow'
+  Plug 'HiPhish/nvim-ts-rainbow2'
   Plug 'anuvyklack/pretty-fold.nvim'
   Plug 'windwp/nvim-autopairs'
   Plug 'yioneko/nvim-yati'
