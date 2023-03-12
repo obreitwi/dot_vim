@@ -81,5 +81,8 @@
     }
   },
   "diagnostic.displayByAle": false,
-  "rust-analyzer.checkOnSave.command": "clippy"
+  "rust-analyzer": {
+    "checkOnSave.command": "clippy",
+    "completion.autoimport.enable": true
+  }
 }
