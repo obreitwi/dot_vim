@@ -397,6 +397,8 @@ autocmd vimrc FileType markdown,norg    nmap <silent> <localleader>t :call fzf#r
 autocmd vimrc FileType norg             nmap <silent> ]d             :e =system(["neorg-existing-day", expand("%:t:r"), "+1"])<CR><CR>
 autocmd vimrc FileType norg             nmap <silent> [d             :e =system(["neorg-existing-day", expand("%:t:r"), "-1"])<CR><CR>
 
+autocmd vimrc FileType dart             nmap <silent> <leader>gc     :call jobstart([expand("~/.vim/utils/flutter-pub-get-recursive"), expand("%")])<CR>
+
 autocmd vimrc FileType gitcommit        nmap <silent> <localleader>c :call fzf#run(fzf#wrap({'source': 'revcli stories --list --title', 'sink': function("InsertGitIDs"), 'options': '-d "	" --with-nth 1'}))<CR>
 
 autocmd vimrc FileType terraform        nmap <silent> <leader>cf :!terraform fmt %<CR>
