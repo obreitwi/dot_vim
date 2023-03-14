@@ -1,0 +1,53 @@
+#!/usr/bin/env bash
+
+set -Eeuo pipefail
+shopt -s inherit_errexit
+
+usage() {
+cat <<EOF >&2
+    Run flutter pub get in the first partent directory containing pubspec.yaml if pubspec.lock older than current commit date.
+
+    Usage:
+    $0 [<path>]
+EOF
+}
+
+while [[ $# -gt 0 ]]; do
+    case $1 in
+        -h|--help)
+            usage
+            exit 0
+            ;;
+        *)
+            break
+            ;;
+    esac
+done
+
+if (( $# > 0 )); then
+    startpoint=$1
+    if [ -d "${startpoint}" ]; then
+        cd "${startpoint}"
+    else
+        cd "$(dirname "${startpoint}")"
+    fi
+fi
+
+while [[ "$PWD" != "/" ]]; do
+    if [ -f ./pubspec.yaml ]; then
+        date_HEAD=$(date -d "$(git show HEAD -s --format=%cI HEAD)" +%s)
+        date_pubspec_lock=0
+        if [ -f ./pubspec.lock ]; then
+            date_pubspec_lock=$(stat -c %Y ./pubspec.lock)
+        fi
+
+        if (( date_HEAD > date_pubspec_lock )); then
+            flutter pub get
+        fi
+
+        exit 0
+    fi
+    cd ..
+done
+
+echo "# No pubspec.yaml found" >&2
