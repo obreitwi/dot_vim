@@ -398,6 +398,7 @@ autocmd vimrc FileType norg             nmap <silent> ]d             :e =system
 autocmd vimrc FileType norg             nmap <silent> [d             :e =system(["neorg-existing-day", expand("%:t:r"), "-1"])<CR><CR>
 
 autocmd vimrc FileType dart             nmap <silent> <leader>gc     :call jobstart([expand("~/.vim/utils/flutter-pub-get-recursive"), expand("%")])<CR>
+autocmd vimrc BufRead *.dart            call jobstart([expand("~/.vim/utils/flutter-pub-get-ensure-recursive"), expand("%")])
 
 autocmd vimrc FileType gitcommit        nmap <silent> <localleader>c :call fzf#run(fzf#wrap({'source': 'revcli stories --list --title', 'sink': function("InsertGitIDs"), 'options': '-d "	" --with-nth 1'}))<CR>
 
