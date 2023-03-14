@@ -1,0 +1,42 @@
+#!/usr/bin/env bash
+
+set -Eeuo pipefail
+shopt -s inherit_errexit
+
+usage() {
+cat <<EOF >&2
+    Run flutter pub get in the first partent directory containing pubspec.yaml.
+
+    Usage:
+    $0 [<path>]
+EOF
+}
+
+while [[ $# -gt 0 ]]; do
+    case $1 in
+        -h|--help)
+            usage
+            exit 0
+            ;;
+    esac
+done
+
+if (( $# > 0 )); then
+    startpoint=$1
+    if [ -d "${startpoint}" ]; then
+        cd "${startpoint}"
+    else
+        cd "$(dirname "${startpoint}")"
+    fi
+fi
+
+while [[ "$PWD" != "/" ]]; do
+    if [ -f ./pubspec.yaml ]; then
+        flutter pub get
+        exit 0
+    fi
+    cd ..
+done
+
+echo "# No pubspec.yaml found" >&2
+exit 1
