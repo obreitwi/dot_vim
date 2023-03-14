@@ -561,7 +561,7 @@ endif
 
 " {{{ Tab-Settings
 autocmd vimrc FileType arduino     setlocal tabstop=4 |     setlocal shiftwidth=4 |  setlocal softtabstop=4
-autocmd vimrc FileType bash        setlocal tabstop=2 |     setlocal shiftwidth=2 |  setlocal softtabstop=2
+autocmd vimrc FileType bash        setlocal tabstop=4 |     setlocal shiftwidth=4 |  setlocal softtabstop=4
 autocmd vimrc FileType c           setlocal tabstop=4 |     setlocal shiftwidth=4 |  setlocal softtabstop=4
 autocmd vimrc FileType cpp         setlocal tabstop=4 |     setlocal shiftwidth=4 |  setlocal softtabstop=4
 autocmd vimrc FileType dart        setlocal tabstop=2 |     setlocal shiftwidth=2 |  setlocal softtabstop=2
