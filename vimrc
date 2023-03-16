@@ -1535,8 +1535,7 @@ if exists("g:using_coc") && g:using_coc == 1
     nmap <silent> [coc]i <Plug>(coc-implementation)
     nmap <silent> [coc]r <Plug>(coc-references)
 
-    " Use K to show documentation in preview window
-    nnoremap <silent> gk :call <SID>show_documentation()<CR>
+    nnoremap <silent> [coc]k :call <SID>show_documentation()<CR>
 
     function! s:show_documentation()
       if (index(['vim','help'], &filetype) >= 0)
