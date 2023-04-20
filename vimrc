@@ -622,7 +622,7 @@ let g:qcc_query_command="nottoomuch-addresses-reformatted"
 " {{{ rust
 " Workaround for second line getting replaced by crate name on safe: Disable folding via expr
 " NOTE: setlocal does _not_ work.
-au vimrc FileType rust             set foldmethod=manual | set foldexpr=0
+" au vimrc FileType rust             set foldmethod=manual | set foldexpr=0
 " }}}
 " }}}
 " {{{ Font config
@@ -1850,8 +1850,8 @@ lua <<EOF
 require'neorg'.setup {
     load = {
         ["core.defaults"] = {},
-        ["core.norg.concealer"] = {},
-        ["core.norg.dirman"] = {
+        ["core.concealer"] = {},
+        ["core.dirman"] = {
             config = {
                 workspaces = {
                     vimwiki = "~/wiki/neorg",
@@ -1860,7 +1860,7 @@ require'neorg'.setup {
             }
         },
         ["core.export"] = {},
-        ["core.norg.journal"] = {
+        ["core.journal"] = {
             config = {
                 journal_folder = "journal",
                 strategy = "flat",
