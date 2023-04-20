@@ -207,6 +207,10 @@ endif
 
 " }}}
 
+" {{{ registers
+Plug 'junegunn/vim-peekaboo'
+" }}}
+
 " {{{ latex
 " Insert unicode symbols based on their latex names (disabled because not
 " really used)
