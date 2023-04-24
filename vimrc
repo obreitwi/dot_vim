@@ -252,7 +252,8 @@ else
 endif
 
 " command! -nargs=0 ReadOldTimeTable read ~/wiki/template_timelog.md
-command! -nargs=0 ReadTimeTable    read ~/wiki/neorg/template_timelog.norg
+command! -nargs=0 ReadTimeTable         read ~/wiki/neorg/template_timelog.norg
+command! -nargs=0 ReadJournalTemplate   read ~/wiki/neorg/template_journal.norg
 
 command! -nargs=0 FT  call OpenCustomFT("ftplugin")
 command! -nargs=0 FTA call OpenCustomFT("after")
