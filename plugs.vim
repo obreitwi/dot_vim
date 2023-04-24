@@ -82,11 +82,6 @@ if has('nvim')
   Plug 'AckslD/messages.nvim'
 endif
 " }}}
-" {{{ should speed up startuptime
-if has('nvim') && !has('nvim-0.8')
-  Plug 'nathom/filetype.nvim'
-endif
-" }}}
 " }}}
 
 " {{{ mundo
