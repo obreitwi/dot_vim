@@ -253,6 +253,10 @@ if s:coc_enabled
     Plug 'xiyaowong/coc-sumneko-lua', {'do': 'yarn install --frozen-lockfile'}
   endif
 
+  if executable('sqlfluff')
+    Plug 'yaegassy/coc-sqlfluff', {'do': 'yarn install --frozen-lockfile'}
+  endif
+
   let g:using_coc=1
   " Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 else
