@@ -3,8 +3,7 @@ local embedded_sql = vim.treesitter.query.parse(
     [[
         (
             (comment) @_tag (#eq? @_tag "/* sql */")
-            (expression_list (raw_string_literal) @sql
-            (#offset! @sql 1 0 -1 0))
+            (expression_list (raw_string_literal) @sql (#offset! @sql 0 1 0 -1))
         )
     ]]
 )
@@ -17,9 +16,11 @@ local get_root = function(bufnr)
     return tree:root()
 end
 
-local notify_errors = function(_, data)
+local handle_io = function(_, data)
     if data then
-        vim.notify("Error formatting: " .. vim.inspect(data))
+        for _, line in ipairs(data) do
+            vim.notify(line, vim.log.levels.TRACE)
+        end
     end
 end
 
@@ -35,12 +36,13 @@ local format_sql = function(bufnr)
 
     local changes = {}
     for id, node in embedded_sql:iter_captures(root, bufnr, 0, -1) do
-        local start_row, start_col, end_row, end_col = node:range()
-        local indentation = string.rep(" ", start_col)
+        -- {start_row, start_col, end_row, end_col } = node:range()
+        local range = { node:range() }
+        -- local indentation = string.rep(" ", start_col)
         local name = embedded_sql.captures[id]
 
         if name == "sql" then
-            start_row = start_row + 1
+            local start_row = range[1] + 1
 
             local lines = vim.split(vim.treesitter.get_node_text(node, bufnr), "\n")
             table.remove(lines)
@@ -54,12 +56,12 @@ local format_sql = function(bufnr)
             -- vim.fn.writefile(lines, tempfile, "D")
             vim.fn.writefile(lines, tempfile)
 
-            vim.fn.jobstart({"sqlfluff", "format", "--dialect", "postgres", tempfile})
-                -- {
-                -- -- stdout_buffered = true,
-                -- -- on_stdout = notify_errors,
-                -- -- on_stderr = notify_errors,
-            -- })
+            vim.fn.jobstart({"sqlfluff", "format", "--dialect", "postgres", tempfile},
+                {
+                stdout_buffered = true,
+                on_stdout = handle_io,
+                on_stderr = handle_io,
+            })
 
             local formatted = vim.fn.readfile(tempfile)
             if formatted[#formatted] == "" then
@@ -72,7 +74,7 @@ local format_sql = function(bufnr)
 
             table.insert(changes, 1, {
                 start = start_row,
-                final = end_row,
+                final = range[3],
                 formatted = formatted,
             })
         end

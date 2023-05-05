@@ -1530,6 +1530,7 @@ if exists("g:using_coc") && g:using_coc == 1
     nmap <silent> [g <Plug>(coc-diagnostic-prev)
     nmap <silent> ]g <Plug>(coc-diagnostic-next)
 
+    imap <silent> <c-w> <Plug>(coc-float-jump)
     " Remap keys for gotos
     nmap <silent> [coc]d <Plug>(coc-definition)
     nmap <silent> [coc]y <Plug>(coc-type-definition)
