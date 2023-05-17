@@ -1601,7 +1601,7 @@ if exists("g:using_coc") && g:using_coc == 1
     " Using CocList
     " Show all diagnostics
     nmap <silent> [coc]D  :<C-u>CocFzfList diagnostics<CR>
-    nmap <silent> [coc]b  :<C-u>CocFzfList diagnostics --current-buf<CR>
+    nmap <silent> [coc]B  :<C-u>CocFzfList diagnostics --current-buf<CR>
     " Manage extensions
     nmap <silent> [coc]E  :<C-u>CocFzfList extensions<CR>
     " Show commands
