@@ -393,7 +393,7 @@ autocmd vimrc FileType markdown,norg    nmap <silent> <localleader>y  :call Copy
 autocmd vimrc FileType markdown,norg    nmap <silent> <localleader>p  :call PasteTaskName()<CR>
 autocmd vimrc FileType markdown,norg    nmap <silent> <localleader>r  :call ReplaceTaskName()<CR>0
 autocmd vimrc FileType markdown,norg    nmap <silent> <localleader>s  :call fzf#run(fzf#wrap({'source': 'revcli stories --list --title', 'sink': function("InsertTaskName")}))<CR>
-autocmd vimrc FileType markdown,norg    nmap <silent> <localleader>tt :call fzf#run(fzf#wrap({'source': 'revcli tasks --list --title --json', 'sink': function("InsertTaskDetails"), 'options': '-d "	" --with-nth 1'}))<CR>
+autocmd vimrc FileType markdown,norg    nmap <silent> <localleader>T :call fzf#run(fzf#wrap({'source': 'revcli tasks --list --title --json', 'sink': function("InsertTaskDetails"), 'options': '-d "	" --with-nth 1'}))<CR>
 
 autocmd vimrc FileType norg             nmap <silent> ]d             :e =system(["neorg-existing-day", expand("%:t:r"), "+1"])<CR><CR>
 autocmd vimrc FileType norg             nmap <silent> [d             :e =system(["neorg-existing-day", expand("%:t:r"), "-1"])<CR><CR>
