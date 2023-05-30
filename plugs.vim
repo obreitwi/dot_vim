@@ -305,6 +305,8 @@ Plug 'ryanoasis/vim-devicons'
 if has('nvim')
   Plug 'elihunter173/dirbuf.nvim'
 endif
+
+Plug 'wsdjeg/vim-fetch'
 " }}}
 
 " {{{ audio stuff
