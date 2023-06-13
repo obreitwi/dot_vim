@@ -480,6 +480,12 @@ set autoread
 " Options for diff mode
 set diffopt=filler,vertical,context:10,internal,indent-heuristic
 
+" disable diff mode on close 
+set diffopt+=closeoff
+
+" improve linematching
+set diffopt+=linematch:100
+
 " No menu if we don't need it
 if has("gui_running") || exists('g:neovide')
     " No Pop Ups but console
