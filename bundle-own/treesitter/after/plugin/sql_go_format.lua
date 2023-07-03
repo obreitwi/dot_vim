@@ -1,11 +1,29 @@
+-- local embedded_sql_queries = { 
+    -- vim.treesitter.query.parse(
+        -- "go",
+        -- [[
+            -- (
+                -- (comment) @_tag (#eq? @_tag "/* sql */")
+                -- (expression_list (raw_string_literal) @sql (#offset! @sql 0 1 0 -1))
+            -- ),
+        -- ]]
+    -- ),
+    -- vim.treesitter.query.parse(
+        -- "go",
+        -- [[
+            -- (
+                -- (comment) @_tag (#eq? @_tag "/* sql */")
+                -- (expression_list) @sql (#offset! @sql 0 1 0 -1)
+            -- )
+        -- ]]
+    -- ),
+-- }
 local embedded_sql = vim.treesitter.query.parse(
     "go",
-    [[
-        (
-            (comment) @_tag (#eq? @_tag "/* sql */")
-            (expression_list (raw_string_literal) @sql (#offset! @sql 0 1 0 -1))
-        )
-    ]]
+    [[(
+        (comment) @_tag (#eq? @_tag "/* sql */")
+        (expression_list (raw_string_literal) @sql (#offset! @sql 0 1 0 -1))
+    )]]
 )
 
 local tempfile = "/tmp/nvim_sql_formatting.sql"
