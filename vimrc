@@ -1711,6 +1711,13 @@ autocmd vimrc Filetype dirbuf nmap <buffer><Leader><Leader> :DirbufFzfEnter<CR>
 " " endfunction
 " " command! -nargs=0 FakeInit :call s:FakeInit()
 " }}}
+" {{{ flash
+if has('nvim') && g:use_flash
+lua <<EOF
+    require('flash').setup()
+EOF
+endif
+" }}}
 " {{{ firenvim
 if exists('g:started_by_firenvim')
     let g:firenvim_config = {
@@ -1789,9 +1796,9 @@ nmap <leader>ggf :GitGutterFold<CR>
 autocmd vimrc Filetype go nnoremap <buffer><Leader>cf :GoImports<CR>
 " }}}
 " {{{ hop
-if has('nvim') && !g:use_easymotion
-    lua << EOF
-require'hop'.setup()
+if has('nvim') && g:use_hop
+lua << EOF
+require('hop').setup()
 EOF
 
 nnoremap [hop] <Nop>

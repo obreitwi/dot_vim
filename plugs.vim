@@ -120,13 +120,16 @@ endif
 " Plug 'obreitwi/vim-bling'
 " }}}
 
-" {{{ easymotion (or hop as faster alternative)
+" {{{ fast moving
 " Expections:
 " * Easy of use
 " * Actually gets used
-let g:use_easymotion = 0
-if has('nvim') && !g:use_easymotion
+let g:use_hop = 1
+let g:use_flash = 0
+if has('nvim') && g:use_hop
   Plug 'phaazon/hop.nvim'
+elseif has('nvim') && g:use_flash
+  Plug 'folke/flash.nvim'
 else
   Plug 'Lokaltog/vim-easymotion'
   Plug 'justinmk/vim-sneak'
