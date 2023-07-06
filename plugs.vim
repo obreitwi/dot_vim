@@ -125,12 +125,14 @@ endif
 " * Easy of use
 " * Actually gets used
 let g:use_hop = 1
-let g:use_flash = 0
+let g:use_flash = 1
 if has('nvim') && g:use_hop
   Plug 'phaazon/hop.nvim'
-elseif has('nvim') && g:use_flash
+endif
+if has('nvim') && g:use_flash
   Plug 'folke/flash.nvim'
-else
+endif
+if !has('nvim')
   Plug 'Lokaltog/vim-easymotion'
   Plug 'justinmk/vim-sneak'
 endif
