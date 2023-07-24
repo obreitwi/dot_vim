@@ -486,12 +486,8 @@ endif
 " {{{ code coverage
 if has('nvim')
   " needs to be done after gitgutter?
-  " Plug 'nvim-lua/plenary.nvim'
-  " While open: https://github.com/nvim-lua/plenary.nvim/pull/466
-  Plug 'obreitwi/plenary.nvim', { 'branch': 'add_path_find_upwards' }
-  " Plug 'andythigpen/nvim-coverage'"
-  " While open: https://github.com/andythigpen/nvim-coverage/pull/20
-  Plug 'obreitwi/nvim-coverage', { 'branch': 'fix/golang/go_mod_upper_folder' }
+  Plug 'nvim-lua/plenary.nvim'
+  Plug 'andythigpen/nvim-coverage'"
 endif
 " }}}
 
