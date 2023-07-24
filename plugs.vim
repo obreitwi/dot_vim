@@ -125,7 +125,7 @@ endif
 " * Easy of use
 " * Actually gets used
 let g:use_hop = 1
-let g:use_flash = 1
+let g:use_flash = 0
 if has('nvim') && g:use_hop
   Plug 'phaazon/hop.nvim'
 endif
