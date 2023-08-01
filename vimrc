@@ -1537,6 +1537,7 @@ if exists("g:using_coc") && g:using_coc == 1
     nmap <silent> ]g <Plug>(coc-diagnostic-next)
 
     imap <silent> <c-w> <Plug>(coc-float-jump)
+    nmap <silent> [coc]w <Plug>(coc-float-jump)
     " Remap keys for gotos
     nmap <silent> [coc]d <Plug>(coc-definition)
     nmap <silent> [coc]y <Plug>(coc-type-definition)
@@ -1617,9 +1618,9 @@ if exists("g:using_coc") && g:using_coc == 1
     " Search workspace symbols
     nmap <silent> [coc]S  :<C-u>CocList -I symbols<CR>
     " Do default action for next item.
-    nmap <silent> [coc]j  :<C-u>CocNext<CR>
+    nmap <silent> [coc]J  :<C-u>CocNext<CR>
     " Do default action for previous item.
-    nmap <silent> [coc]k  :<C-u>CocPrev<CR>
+    nmap <silent> [coc]K  :<C-u>CocPrev<CR>
     " Resume latest coc list
     nmap <silent> [coc]L  :<C-u>CocListResume<CR>
 endif
