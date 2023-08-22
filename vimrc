@@ -409,7 +409,7 @@ autocmd vimrc FileType terraform        nmap <silent> <leader>cf :!terraform fmt
 set nocompatible
 set encoding=utf-8
 
-set foldevelstart=99
+set foldlevelstart=99
 
 set splitright
 "
