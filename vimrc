@@ -409,6 +409,8 @@ autocmd vimrc FileType terraform        nmap <silent> <leader>cf :!terraform fmt
 set nocompatible
 set encoding=utf-8
 
+set foldevelstart=99
+
 set splitright
 "
 set hidden
@@ -425,7 +427,7 @@ set ttyfast
 set cul
 " set timeoutlen=250
 set timeoutlen=500
-set scrolloff=8
+set scrolloff=4
 
 if v:version >= 703 && !has('nvim')
 set cm=blowfish2
@@ -445,8 +447,9 @@ set sessionoptions=blank,curdir,tabpages,folds,resize
 set backspace=indent,eol,start
 
 set smarttab
-set nu
-set ai
+set number
+set noautoindent
+set smartindent
 set incsearch
 set hlsearch
 set ignorecase
@@ -1616,7 +1619,7 @@ if exists("g:using_coc") && g:using_coc == 1
     " Find symbol of current document
     nmap <silent> [coc]O  :<C-u>CocFzfList outline<CR>
     " Search workspace symbols
-    nmap <silent> [coc]S  :<C-u>CocList -I symbols<CR>
+    nmap <silent> [coc]s  :<C-u>CocFzfList symbols<CR>
     " Do default action for next item.
     nmap <silent> [coc]J  :<C-u>CocNext<CR>
     " Do default action for previous item.
@@ -1660,7 +1663,9 @@ nmap [disableDiffchhar5] <Plug>JumpDiffCharPrevStart
 nmap [disableDiffchhar6] <Plug>PutDiffCharPair
 " }}}
 " {{{ dirbuf
-map <leader>lr :Dirbuf<CR>:BLines<CR>
+if g:use_lusty == 0
+    map <leader>lr :Dirbuf<CR>:BLines<CR>
+endif
 function! s:dirbuf_enter(line)
     let chunks = split(a:line, '\t', 1)
     let linenum = chunks[0]
@@ -1678,7 +1683,7 @@ function! s:fzf_dirbuf()
 endfunction
 command! DirbufFzf call s:fzf_dirbuf()
 map <leader>lr :DirbufFzf<CR>
- nmap <leader>lr :DirbufFzf<CR>
+nmap <leader>lr :DirbufFzf<CR>
 autocmd vimrc Filetype dirbuf command! DirbufFzfEnter call s:fzf_dirbuf_enter()
 autocmd vimrc Filetype dirbuf nmap <buffer><Leader><Leader> :DirbufFzfEnter<CR>
 " }}}
@@ -1964,7 +1969,7 @@ lua << EOF
         },
 
         indent = {
-            enable = false,
+            enable = true,
             disable = {},
         },
 
@@ -2176,7 +2181,7 @@ autocmd vimrc filetype go nmap <buffer> <silent> <leader>K <Plug>(go-doc)
 autocmd vimrc filetype go nmap <buffer> <silent> [coc]e :GoIfErr<CR>
 autocmd vimrc filetype go nmap <buffer> <silent> [coc]l :GoLines<CR>
 autocmd vimrc filetype go nmap <buffer> <silent> [coc]m <Plug>(go-metalinter)
-autocmd vimrc filetype go nmap <buffer> <silent> [coc]s :GoFillStruct<CR>
+autocmd vimrc filetype go nmap <buffer> <silent> [coc]S :GoFillStruct<CR>
 autocmd vimrc filetype go nmap <buffer> <silent> [coc]t <Plug>(go-test)
 " }}}
 " {{{ windows

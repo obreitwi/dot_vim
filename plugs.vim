@@ -36,7 +36,6 @@ Plug 'rkitover/vimpager'
 Plug 'rust-lang/rust.vim'
 Plug 'sanjayankur31/sli.vim'
 Plug 'scrooloose/nerdcommenter'
-" Plug 'sjbach/lusty'
 " Plug 'obreitwi/lusty', {'branch': 'workaround/ensure_proper_height'}
 Plug 'tommcdo/vim-exchange'
 Plug 'trapd00r/vim-syntax-vidir-ls'
@@ -93,6 +92,13 @@ endif
 " Verdict:
 " * Is faster than gundo → accepted
 Plug 'simnalamburt/vim-mundo'
+" }}}
+
+" {{{ lusty
+let g:use_lusty=1
+if g:use_lusty
+  Plug 'sjbach/lusty'
+endif
 " }}}
 
 " {{{ black
@@ -260,6 +266,10 @@ if s:coc_enabled
 
   if executable('sqlfluff')
     Plug 'yaegassy/coc-sqlfluff', {'do': 'yarn install --frozen-lockfile'}
+  endif
+
+  if executable('sg')
+    Plug 'yaegassy/coc-ast-grep', {'do': 'yarn install --frozen-lockfile'}
   endif
 
   let g:using_coc=1
