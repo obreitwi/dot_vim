@@ -2019,7 +2019,7 @@ lua << EOF
         },
 
         yati = {
-            enable = true,
+            enable = false,
         },
     }
 

@@ -166,7 +166,7 @@ if has('nvim-0.8')
   Plug 'HiPhish/nvim-ts-rainbow2'
   Plug 'anuvyklack/pretty-fold.nvim'
   Plug 'windwp/nvim-autopairs'
-  Plug 'yioneko/nvim-yati'
+  " Plug 'yioneko/nvim-yati'
   Plug 'abecodes/tabout.nvim'
 
   Plug 'Wansmer/treesj'
