@@ -85,6 +85,16 @@ if has('nvim')
 endif
 " }}}
 
+" {{{ dab debugging
+if has('nvim')
+  Plug 'mfussenegger/nvim-dap'
+  Plug 'rcarriga/nvim-dap-ui'
+  if executable('go')
+    Plug 'leoluz/nvim-dap-go'
+  endif
+endif
+" }}}
+
 " {{{ mundo
 " Expectations:
 " * Should be faster than gundo
@@ -398,7 +408,7 @@ if executable('go')
   Plug 'buoto/gotests-vim'
 endif
 
-if executable('dlv')
+if executable('dlv') && 0
   Plug 'sebdah/vim-delve'
 endif
 " }}}
