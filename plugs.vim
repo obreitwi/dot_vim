@@ -64,7 +64,8 @@ Plug 'christoomey/vim-titlecase'
 " {{{ venn.nvim
 " Expectations: Draw useful boxes
 " Reality: Often activated by accident -> keep disabled until actually used
-if 0 && has('nvim')
+let g:use_venn=0
+if has('nvim') && g:use_venn > 0
   Plug 'jbyuki/venn.nvim'
 endif
 " }}}
@@ -76,11 +77,12 @@ Plug 'Matt-A-Bennett/surround-funk.vim'
 " Expectations: Actually used to insert unicode digraphs.
 Plug 'chrisbra/unicode.vim'
 " }}}
+" }}}
+
 " {{{ messages for easier debugging
 if has('nvim')
   Plug 'AckslD/messages.nvim'
 endif
-" }}}
 " }}}
 
 " {{{ mundo
@@ -119,7 +121,7 @@ endpython3
 endif
 " }}}
 "
-" {{{ pr pending
+" {{{ pr pending (done)
 " Plug 'ivyl/vim-bling' " temporarily disabled till PR merged:
 " https://github.com/ivyl/vim-bling/pull/16
 " Disable for performance
