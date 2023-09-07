@@ -376,6 +376,8 @@ nnoremap <silent> <leader>zk :call NextClosedFold('k')<cr>
 " Use <leader>y/<leader>p to yank/paste to/from system clipboard
 vnoremap <silent> <leader>y "+y
 vnoremap <silent> <leader>p "+p
+nnoremap <silent> <leader>y "+y
+nnoremap <silent> <leader>p "+p
 
 " select put text, via http://stackoverflow.com/a/4775281/955926
 nnoremap <expr> gV "`[".getregtype(v:register)[0]."`]"
@@ -1117,6 +1119,9 @@ let g:jedi#documentation_command="<leader>k"
 let g:jedi#popup_on_dot=1
 let g:jedi#use_tabs_not_buffers=0
 " }}}
+" {{{ Languagetool
+let g:languagetool_jar="/usr/share/java/languagetool/languagetool-commandline.jar"
+" }}}
 " {{{ Large Files
 let g:LargeFile=100
 " }}}
@@ -1142,9 +1147,6 @@ let g:LatexBox_fold_toc=0
 let g:tex_flavor='latex'
 " map <leader>ltt :LatexTOCToggle<CR>
 let g:LatexBox_custom_inden=0
-" }}}
-" {{{ Languagetool
-let g:languagetool_jar="/usr/share/java/languagetool/languagetool-commandline.jar"
 " }}}
 " {{{ LineDiff
 map <leader>dl :Linediff<CR>
@@ -1781,13 +1783,6 @@ autocmd vimrc Filetype dirbuf nmap <buffer><Leader><Leader> :DirbufFzfEnter<CR>
 " " endfunction
 " " command! -nargs=0 FakeInit :call s:FakeInit()
 " }}}
-" {{{ flash
-if has('nvim') && g:use_flash
-lua <<EOF
-    require('flash').setup()
-EOF
-endif
-" }}}
 " {{{ firenvim
 if exists('g:started_by_firenvim')
     let g:firenvim_config = {
@@ -1811,6 +1806,13 @@ if exists('g:started_by_firenvim')
     set laststatus=0
     set noshowcmd
     set cmdheight=1
+endif
+" }}}
+" {{{ flash
+if has('nvim') && g:use_flash
+lua <<EOF
+    require('flash').setup()
+EOF
 endif
 " }}}
 " {{{ fzf
@@ -2018,6 +2020,11 @@ if has("nvim")
     let g:tidal_target = "terminal"
 endif
 " }}}
+" {{{ titlecase
+" Add support for repeat (does not work this easily unfortunately)
+" silent! call repeat#set("\<Plug>Titlecase", v:count)
+" silent! call repeat#set("\<Plug>TitlecaseLine", v:count)
+" }}}
 " {{{ treesitter
 if g:use_treesitter
 lua << EOF
@@ -2135,11 +2142,6 @@ nnoremap <leader>ss :TSJSplit<CR>
 nnoremap <leader>st :TSJToggle<CR>
 endif
 " }}}
-" {{{ titlecase
-" Add support for repeat (does not work this easily unfortunately)
-" silent! call repeat#set("\<Plug>Titlecase", v:count)
-" silent! call repeat#set("\<Plug>TitlecaseLine", v:count)
-" }}}
 " {{{ venn.nvim
 if has('nvim') && g:use_venn > 0
 lua <<EOF
@@ -2167,6 +2169,38 @@ vim.api.nvim_set_keymap('n', '<leader>v', ":lua Toggle_venn()<CR>", { noremap = 
 vim.api.nvim_set_keymap('v', '<leader>v', ":VBox<CR>", { noremap = true})
 EOF
 endif
+" }}}
+" {{{ vim-flutter
+" Enable Flutter menu (useless without gui)
+" call FlutterMenu()
+
+" Some of these key choices were arbitrary;
+" it's just an example.
+nnoremap <leader>fg :FlutterRun<cr>
+nnoremap <leader>fq :FlutterQuit<cr>
+nnoremap <leader>fr :FlutterHotReload<cr>
+nnoremap <leader>fR :FlutterHotRestart<cr>
+nnoremap <leader>fD :FlutterVisualDebug<cr>
+" }}}
+" {{{ vim-go
+" Completion is handles by coc-go
+let g:go_code_completion_enabled = 0
+
+let g:go_metalinter_command = 'golangci-lint'
+
+" not respected anyway?
+" let g:go_mod_fmt_autosave = 0
+
+" let g:go_fillstruct_mode = 'gopls'
+
+" We want a custom mapping for GoDoc
+let g:go_doc_keywordprg_enabled = 0
+autocmd vimrc filetype go nmap <buffer> <silent> <leader>K <Plug>(go-doc)
+autocmd vimrc filetype go nmap <buffer> <silent> [coc]e :GoIfErr<CR>
+autocmd vimrc filetype go nmap <buffer> <silent> [coc]l :GoLines<CR>
+autocmd vimrc filetype go nmap <buffer> <silent> [coc]m <Plug>(go-metalinter)
+autocmd vimrc filetype go nmap <buffer> <silent> [coc]S :GoFillStruct<CR>
+autocmd vimrc filetype go nmap <buffer> <silent> [coc]t <Plug>(go-test)
 " }}}
 " {{{ vimtex
 if hostname() == "mimir" || hostname() == "mucku"
@@ -2215,38 +2249,6 @@ endif
 if executable('tectonic')
     let g:vimtex_compiler_method='tectonic'
 endif
-" }}}
-" {{{ vim-flutter
-" Enable Flutter menu (useless without gui)
-" call FlutterMenu()
-
-" Some of these key choices were arbitrary;
-" it's just an example.
-nnoremap <leader>fg :FlutterRun<cr>
-nnoremap <leader>fq :FlutterQuit<cr>
-nnoremap <leader>fr :FlutterHotReload<cr>
-nnoremap <leader>fR :FlutterHotRestart<cr>
-nnoremap <leader>fD :FlutterVisualDebug<cr>
-" }}}
-" {{{ vim-go
-" Completion is handles by coc-go
-let g:go_code_completion_enabled = 0
-
-let g:go_metalinter_command = 'golangci-lint'
-
-" not respected anyway?
-" let g:go_mod_fmt_autosave = 0
-
-" let g:go_fillstruct_mode = 'gopls'
-
-" We want a custom mapping for GoDoc
-let g:go_doc_keywordprg_enabled = 0
-autocmd vimrc filetype go nmap <buffer> <silent> <leader>K <Plug>(go-doc)
-autocmd vimrc filetype go nmap <buffer> <silent> [coc]e :GoIfErr<CR>
-autocmd vimrc filetype go nmap <buffer> <silent> [coc]l :GoLines<CR>
-autocmd vimrc filetype go nmap <buffer> <silent> [coc]m <Plug>(go-metalinter)
-autocmd vimrc filetype go nmap <buffer> <silent> [coc]S :GoFillStruct<CR>
-autocmd vimrc filetype go nmap <buffer> <silent> [coc]t <Plug>(go-test)
 " }}}
 " {{{ windows
 if 0 &&  has('nvim')
