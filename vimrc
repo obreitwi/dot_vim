@@ -1651,7 +1651,10 @@ end
 dap.listeners.before.event_exited["dapui_config"] = function()
   dapui.close()
 end
+vim.keymap.set('n', '<leader>db', function() dap.toggle_breakpoint() end)
 vim.keymap.set('n', '<leader>dc', function() dap.continue() end)
+vim.keymap.set('n', '<leader>dn', function() dap.step_over() end)
+vim.keymap.set('n', '<leader>ds', function() dap.step_into() end)
 EOF
 if executable("go")
 lua <<EOF
@@ -1694,6 +1697,33 @@ require('dap-go').setup({
 })
 EOF
 endif
+endif
+
+if executable("flutter")
+lua << EOF
+local dap = require('dap')
+
+dap.adapters.dart = {
+    type = "executable",
+    -- As of this writing, this functionality is open for review in https://github.com/flutter/flutter/pull/91802
+    command = "flutter",
+    args = {"debug_adapter"}
+}
+dap.configurations.dart = {
+    {
+        type = "dart",
+        request = "launch",
+        name = "Launch Flutter Program",
+        -- The nvim-dap plugin populates this variable with the filename of the current buffer
+        -- program = "${file}",
+        program = "lib/main.dart",
+        -- The nvim-dap plugin populates this variable with the editor's current working directory
+        cwd = "${workspaceFolder}",
+        -- This gets forwarded to the Flutter CLI tool, substitute `linux` for whatever device you wish to launch
+        toolArgs = {"-d", "web-server", "--profile", "--web-port", "8080"}
+    }
+}
+EOF
 endif
 " }}}
 " {{{ dart-vim-plugin
