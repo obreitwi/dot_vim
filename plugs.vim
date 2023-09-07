@@ -71,7 +71,8 @@ endif
 " }}}
 " {{{ surround-funk
 " Expectations: useful during coding
-Plug 'Matt-A-Bennett/surround-funk.vim'
+" Reality: Never used
+" Plug 'Matt-A-Bennett/surround-funk.vim'
 " }}}
 " {{{ unicode
 " Expectations: Actually used to insert unicode digraphs.
