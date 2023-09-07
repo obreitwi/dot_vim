@@ -672,7 +672,7 @@ else
     FDejaP
 end
 
-if has('gui_running') && g:opsystem != "windows"
+if has('gui_running') && g:opsystem != "windows" && !exists("g:neovide")
     set clipboard=unnamedplus
 endif
 " }}}
