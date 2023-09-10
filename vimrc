@@ -665,13 +665,16 @@ else
     command! FEnvy set guifont=Envy\ Code\ R:h11
 endif
 
+command! FMeslo set guifont=MesloLGS\ NF:h9
+command! FMesloS set guifont=MesloLGS\ NF:h8
+
 " Default font
 if g:opsystem == "windows"
     set guifont=Consolas:h10:cANSI
 elseif exists('g:started_by_firenvim')
-    FDejaPS
+    FMesloS
 else
-    FDejaP
+    FMeslo
 end
 
 if has('gui_running') && g:opsystem != "windows" && !exists("g:neovide")
