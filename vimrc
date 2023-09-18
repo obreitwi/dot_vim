@@ -1700,8 +1700,6 @@ require('dap-go').setup({
 })
 EOF
 endif
-endif
-
 if executable("flutter")
 lua << EOF
 local dap = require('dap')
@@ -1729,6 +1727,7 @@ dap.configurations.dart = {
     }
 }
 EOF
+endif
 endif
 " }}}
 " {{{ dart-vim-plugin
