@@ -227,7 +227,8 @@ endif
 " }}}
 
 " {{{ registers
-Plug 'junegunn/vim-peekaboo'
+" Plug 'junegunn/vim-peekaboo'
+Plug 'Gee19/vim-peekaboo' " fixes resize bug
 " }}}
 
 " {{{ latex
