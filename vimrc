@@ -306,6 +306,9 @@ vnoremap Q gq
 nnoremap <silent> <c-s><c-=> :call GuifontsizeModify(1)<cr>
 nnoremap <silent> <c-s><c--> :call GuifontsizeModify(-1)<cr>
 
+" reset windows (Great Reset)
+nnoremap <silent> gr :resize 200<CR><c-w>=
+
 " Make bulletin
 nnoremap <silent> <leader>bt :keeppattern s:^\s*\zs:* :<CR>
 " Make todo
@@ -1658,6 +1661,22 @@ vim.keymap.set('n', '<leader>db', function() dap.toggle_breakpoint() end)
 vim.keymap.set('n', '<leader>dc', function() dap.continue() end)
 vim.keymap.set('n', '<leader>dn', function() dap.step_over() end)
 vim.keymap.set('n', '<leader>ds', function() dap.step_into() end)
+vim.keymap.set('n', '<leader>do', function() dap.step_out() end)
+vim.keymap.set('n', '<leader>dr', function() dap.repl_open() end)
+vim.keymap.set({'n', 'v'}, '<Leader>dh', function()
+    require('dap.ui.widgets').hover()
+end)
+vim.keymap.set({'n', 'v'}, '<Leader>dp', function()
+    require('dap.ui.widgets').preview()
+end)
+vim.keymap.set('n', '<Leader>df', function()
+    local widgets = require('dap.ui.widgets')
+    widgets.centered_float(widgets.frames)
+end)
+vim.keymap.set('n', '<Leader>ds', function()
+    local widgets = require('dap.ui.widgets')
+    widgets.centered_float(widgets.scopes)
+end)
 EOF
 if executable("go")
 lua <<EOF
@@ -1704,15 +1723,36 @@ if executable("flutter")
 lua << EOF
 local dap = require('dap')
 
-dap.adapters.dart = {
+-- dap.adapters.dart = {
+--     type = "executable",
+--     -- As of this writing, this functionality is open for review in https://github.com/flutter/flutter/pull/91802
+--     command = "/home/obreitwi/fvm/default/bin/dart",
+--     args = {"debug_adapter"}
+-- }
+dap.adapters.flutter = {
     type = "executable",
     -- As of this writing, this functionality is open for review in https://github.com/flutter/flutter/pull/91802
     command = "/home/obreitwi/fvm/default/bin/flutter",
-    args = {"debug_adapter"}
+    -- args = {"debug-adapter", "--dds-port", "${port}"}
+    args = {"debug-adapter"}
 }
 dap.configurations.dart = {
+    -- {
+    --     type = "dart",
+    --     request = "launch",
+    --     name = "Launch dart",
+    --     dartSdkPath = "/home/obreitwi/fvm/default/bin/cache/dart-sdk",
+    --     flutterSdkPath = "/home/obreitwi/fvm/default",
+    --     -- The nvim-dap plugin populates this variable with the filename of the current buffer
+    --     -- program = "${file}",
+    --     program = "${workspaceFolder}/lib/main.dart",
+    --     -- The nvim-dap plugin populates this variable with the editor's current working directory
+    --     cwd = "${workspaceFolder}",
+    --     -- This gets forwarded to the Flutter CLI tool, substitute `linux` for whatever device you wish to launch
+    --     toolArgs = {"-d", "chrome", "--profile", "--web-port", "8080"}
+    -- },
     {
-        type = "dart",
+        type = "flutter",
         request = "launch",
         name = "Launch Flutter Program",
         dartSdkPath = "/home/obreitwi/fvm/default/bin/cache/dart-sdk",
