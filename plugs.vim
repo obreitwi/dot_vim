@@ -486,6 +486,7 @@ Plug 'tpope/vim-sleuth'
 Plug 'tpope/vim-speeddating'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-unimpaired'
+Plug 'tpope/vim-eunuch'
 if !has('nvim')
   Plug 'tpope/vim-vinegar' " replaced by dirbuf
 endif

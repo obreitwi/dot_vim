@@ -1827,6 +1827,9 @@ nmap <leader>lr :DirbufFzf<CR>
 autocmd vimrc Filetype dirbuf command! DirbufFzfEnter call s:fzf_dirbuf_enter()
 autocmd vimrc Filetype dirbuf nmap <buffer><Leader><Leader> :DirbufFzfEnter<CR>
 " }}}
+" {{{ eunuch
+let g:eunuch_no_maps=1
+" }}}
 " {{{ fake
 " let g:fake_bootstrap = 1
 " " function! s:FakeInit()
