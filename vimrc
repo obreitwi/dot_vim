@@ -154,7 +154,7 @@ function InsertTaskDetails(title_details)
 endfunction
 
 function InsertGitIDs(link)
-    let l:lines_id=systemlist(["rev-git-ids", split(a:link, "	")[0]])
+    let l:lines_id=systemlist(["rev-git-ids", split(a:link, "	")[1]])
     for line in l:lines_id
         call append(line('.'), line)
     endfor
