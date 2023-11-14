@@ -419,6 +419,9 @@ autocmd vimrc FileType terraform        nmap <silent> <leader>cf :!terraform fmt
 set nocompatible
 set encoding=utf-8
 
+" Adjust number of recent files to 1000
+set shada=!,'1000,<50,s10,h
+
 set foldlevelstart=99
 
 set splitright
