@@ -420,9 +420,6 @@ if executable('ghc') && !has('nvim')
     Plug 'lukerandall/haskellmode-vim'
     Plug 'eagletmt/neco-ghc'
 endif
-if executable('hindent')
-    Plug 'commercialhaskell/hindent'
-endif
 if executable('ghc-mod')
     Plug 'eagletmt/ghcmod-vim'
 endif
