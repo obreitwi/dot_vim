@@ -1585,6 +1585,7 @@ if exists("g:using_coc") && g:using_coc == 1
     " Remap for format selected region
     xmap [coc]f  <Plug>(coc-format-selected)
     nmap [coc]f  <Plug>(coc-format-selected)
+    nmap [coc]F  :<C-u>Format<CR>
 
     " augroup mygroup
       " autocmd!
@@ -2020,8 +2021,10 @@ require'neorg'.setup {
         ["core.concealer"] = {},
         ["core.dirman"] = {
             config = {
+                default_workspace = "work",
                 workspaces = {
-                    vimwiki = "~/wiki/neorg",
+                    work = "~/wiki/neorg",
+                    home = "~/Nextcloud/wiki"
                     -- example_gtd = "~/sandboxes/2022-09-17_setup_neorg/example_workspaces/gtd",
                 }
             }
@@ -2031,8 +2034,8 @@ require'neorg'.setup {
             config = {
                 journal_folder = "journal",
                 strategy = "flat",
-                workspace = "vimwiki",
-                template_name = "template_timelog.norg",
+                workspace = "work",
+                template_name = "../template_journal.norg",
             },
         },
         -- ["core.gtd.base"] = {
