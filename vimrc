@@ -676,14 +676,22 @@ endif
 
 command! FMeslo set guifont=MesloLGS\ NF:h9
 command! FMesloS set guifont=MesloLGS\ NF:h8
+command! FMesloXS set guifont=MesloLGS\ NF:h6
+command! FIosevka set guifont=IosevkaTerm\ NF:h10
+command! FIosevkaS set guifont=IosevkaTerm\ NF:h9
+command! FIosevkaXS set guifont=IosevkaTerm\ NF:h6
 
 " Default font
 if g:opsystem == "windows"
     set guifont=Consolas:h10:cANSI
 elseif exists('g:started_by_firenvim')
+    " FIosevkaS
     FMesloS
+elseif exists("g:neovide")
+    FMesloXS
 else
     FMeslo
+    " FIosevka
 end
 
 if has('gui_running') && g:opsystem != "windows" && !exists("g:neovide")
