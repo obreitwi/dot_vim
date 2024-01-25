@@ -382,6 +382,9 @@ vnoremap <silent> <leader>p "+p
 nnoremap <silent> <leader>y "+y
 nnoremap <silent> <leader>p "+p
 
+" Use <leader>Y to copy with surrounding backticks for quick markdown pasting
+vnoremap <silent> <leader>Y "+y<CR>:let @+ = "```\n" . @+ . "```"<CR>
+
 " select put text, via http://stackoverflow.com/a/4775281/955926
 nnoremap <expr> gV "`[".getregtype(v:register)[0]."`]"
 
