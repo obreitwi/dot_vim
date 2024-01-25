@@ -329,6 +329,13 @@ Plug 'vim-airline/vim-airline-themes'
 Plug 'ryanoasis/vim-devicons'
 " }}}
 
+" {{{ icon picker 
+if has('nvim')
+Plug 'stevearc/dressing.nvim'
+Plug 'ziontee113/icon-picker.nvim'
+endif
+" }}}
+
 " {{{ file navigation
 " Plug 'SidOfc/carbon.nvim' " NOTE: Should be AFTER airline
 if has('nvim')

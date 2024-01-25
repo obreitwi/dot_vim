@@ -1064,6 +1064,7 @@ autocmd vimrc BufReadPost fugitive://* set bufhidden=delete
 nnoremap <leader>F :Git<CR>:on<CR>
 nnoremap <leader>fa :Git add %<CR>
 nnoremap <leader>fc q:iGit commit -m ""<Left>
+nnoremap gb :G blame<CR>
 " }}}
 " {{{ Fuzzyfinder
 " let g:fuf_modesDisable = []
@@ -1964,6 +1965,14 @@ nmap [hop]f :HopChar1AC<CR>
 nmap [hop]F :HopChar1BC<CR>
 nmap [hop]c :HopChar2AC<CR>
 nmap [hop]C :HopChar2BC<CR>
+endif
+" }}}
+" {{{ icon-picker
+if has('nvim')
+lua << EOF
+require("icon-picker").setup({ disable_legacy_commands = true })
+EOF
+nnoremap <silent> <leader>ip :IconPickerInsert emoji nerd_font_v3 symbols html_colors<CR>
 endif
 " }}}
 " {{{ iPython
