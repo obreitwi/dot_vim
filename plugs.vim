@@ -64,7 +64,7 @@ Plug 'christoomey/vim-titlecase'
 " {{{ venn.nvim
 " Expectations: Draw useful boxes
 " Reality: Often activated by accident -> keep disabled until actually used
-let g:use_venn=0
+let g:use_venn=1
 if has('nvim') && g:use_venn > 0
   Plug 'jbyuki/venn.nvim'
 endif
