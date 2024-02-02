@@ -688,7 +688,7 @@ elseif exists('g:started_by_firenvim')
     " FIosevkaS
     FMesloS
 elseif exists("g:neovide")
-    FMesloXS
+    FMeslo
 else
     FMeslo
     " FIosevka
