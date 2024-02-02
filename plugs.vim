@@ -96,6 +96,12 @@ if has('nvim')
 endif
 " }}}
 
+" {{{ terminal integration
+if has('nvim')
+  Plug 'akinsho/toggleterm.nvim', {'tag' : '*'} " installed with v2
+endif
+" }}}
+
 " {{{ mundo
 " Expectations:
 " * Should be faster than gundo
