@@ -1496,6 +1496,18 @@ autocmd vimrc Filetype c,cpp vnoremap <buffer><Leader>cf :ClangFormat<CR>
 autocmd vimrc Filetype c,cpp map <buffer><Leader>x <Plug>(operator-clang-format)
 " }}}
 " {{{ coc
+nnoremap [coc] <Nop>
+nmap <Leader>g [coc]
+
+" You will have bad experience for diagnostic messages when it's default 4000.
+set updatetime=300
+
+" don't give |ins-completion-menu| messages.
+set shortmess+=c
+
+" always show signcolumns
+set signcolumn=yes
+
 if exists("g:using_coc") && g:using_coc == 1
     nnoremap [coc] <Nop>
     nmap <Leader>g [coc]
@@ -2116,6 +2128,39 @@ require("tabout").setup({
 })
 EOF
 inoremap <c-g><c-g> <Plug>(Tabout)
+endif
+" }}}
+" {{{ telescope
+if g:telescope_enabled
+lua <<EOF
+require('telescope').setup{}
+EOF
+
+nmap <silent> <c-p> :lua require'telescope.builtin'.git_files{}<CR>
+nmap <silent> <leader>be :lua require'telescope.builtin'.buffers{}<CR>
+nmap <silent> [unite]/ :lua require'telescope.builtin'.serach_history{}<CR>
+nmap <silent> [unite]: :lua require'telescope.builtin'.command_history{}<CR>
+nmap <silent> [unite]f :lua require'telescope.builtin'.find_files{}<CR>
+nmap <silent> [unite]c :lua require'telescope.builtin'.commands{}<CR>
+nmap <silent> [unite]u<leader> :lua require'telescope.builtin'.resume{}<CR>
+nmap <silent> [unite]l :lua require'telescope.builtin'.current_buffer_fuzzy_find{}<CR>
+" nmap <silent> [unite]L :Lines<CR>
+nmap <silent> [unite]m :lua require'telescope.builtin'.oldfiles{}<CR>
+" nmap <silent> [unite]s :Snippets<CR>
+nmap <silent> [unite]r :lua require'telescope.builtin'.live_grep{}<CR>
+
+if 0 " bindings to enable once lsp has been configured
+" coc bindings
+nmap <silent> [coc]D   :lua require'telescope.builtin'.diagnostics{}<CR>
+nmap <silent> [coc]d   :lua require'telescope.builtin'.lsp_definitions{}<CR>
+nmap <silent> [coc]t   :lua require'telescope.builtin'.lsp_type_definitions{}<CR>
+nmap <silent> [coc]r   :lua require'telescope.builtin'.lsp_references{}<CR> 
+nmap <silent> [coc]ci  :lua require'telescope.builtin'.lsp_incoming_calls{}<CR> 
+nmap <silent> [coc]co  :lua require'telescope.builtin'.lsp_outgoing_calls{}<CR> 
+nmap <silent> [coc]i   :lua require'telescope.builtin'.lsp_workspace_symbols{}<CR> 
+nmap <silent> [coc]I   :lua require'telescope.builtin'.lsp_document_symbols{}<CR> 
+" nmap <silent> [coc]B   :<C-u>CocFzfList diagnostics --current-buf<CR>
+endif
 endif
 " }}}
 " {{{ tidal

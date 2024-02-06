@@ -213,9 +213,12 @@ if has('nvim') && executable('jq')
 endif
 " }}}
 
-" {{{ fzf
+" {{{ picker: fzf / telescope
+let g:fzf_enabled = 1
+let g:telescope_enabled = 1
 
-if executable('fzf')
+let g:fzf_found = 0
+if g:fzf_enabled && executable('fzf')
   let g:fzf_found = 1
   " We rely on fzf being installed system-wide -> no call to #install()
   Plug 'junegunn/fzf'
@@ -224,12 +227,16 @@ if executable('fzf')
   if executable('rg')
     Plug 'yazgoo/yank-history'
   endif
-else
-  let g:fzf_found = 0
+elseif !g:telescope_enabled
   " Fallback onto ctrlp
   Plug 'ctrlpvim/ctrlp.vim'
 endif
 
+if g:telescope_enabled
+  " requirement:
+  Plug 'nvim-lua/plenary.nvim'
+  Plug 'nvim-telescope/telescope.nvim'
+endif
 " }}}
 
 " {{{ registers
@@ -254,8 +261,10 @@ endif
 
 " {{{ CoC
 let s:coc_hosts=["abed", "mucku", "helvetica.kip.uni-heidelberg.de", "mimir"]
-let s:coc_enabled = (has('nvim') || v:version >= 802) && index(s:coc_hosts, s:hostname) >= 0
-if s:coc_enabled
+let g:lsp_enabled = 1
+let g:coc_enabled = ((has('nvim') || v:version >= 802) && index(s:coc_hosts, s:hostname) >= 0) && !g:lsp_enabled
+
+if g:coc_enabled
   Plug 'neoclide/coc.nvim', {'do': 'yarn install --frozen-lockfile'}
   Plug 'neoclide/coc-json', {'do': 'yarn install --frozen-lockfile'}
   if executable('python')
@@ -294,6 +303,8 @@ if s:coc_enabled
 
   let g:using_coc=1
   " Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+elseif g:lsp_enabled
+  Plug 'neovim/nvim-lspconfig'
 else
   " TODO: this check is very very slow!
   if has("pythonx")
@@ -505,7 +516,7 @@ endif
 " {{{ unite
 
 let g:unite_enabled = 0
-if !s:coc_enabled || !g:fzf_found
+if !g:coc_enabled || !g:fzf_found
   let g:unite_enabled = 1
   Plug 'Shougo/unite.vim'
   Plug 'Shougo/neomru.vim'
@@ -651,7 +662,7 @@ endif
 " endif
 " Plug 'tmhedberg/SimpylFold' " replaced by treesitter folding
 " {{{ vim-lsp-cxx-hightlight replaced by treesitter
-" if s:coc_enabled
+" if g:coc_enabled
 "   Plug 'jackguo380/vim-lsp-cxx-highlight'
 " endif
 " }}}
