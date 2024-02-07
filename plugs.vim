@@ -64,8 +64,8 @@ Plug 'christoomey/vim-titlecase'
 " {{{ venn.nvim
 " Expectations: Draw useful boxes
 " Reality: Often activated by accident -> keep disabled until actually used
-let g:use_venn=1
-if has('nvim') && g:use_venn > 0
+let g:venn_enabled=1
+if has('nvim') && g:venn_enabled > 0
   Plug 'jbyuki/venn.nvim'
 endif
 " }}}
@@ -114,8 +114,8 @@ Plug 'simnalamburt/vim-mundo'
 " }}}
 
 " {{{ lusty
-let g:use_lusty=1
-if g:use_lusty
+let g:lusty_enabled=1
+if g:lusty_enabled
   Plug 'sjbach/lusty'
 endif
 " }}}
@@ -127,12 +127,12 @@ import vim
 try:
   import pip
   import venv
-  vim.command("let g:use_black = 1")
+  vim.command("let g:black_enabled = 1")
 except Exception:
-  vim.command("let g:use_black = 0")
+  vim.command("let g:black_enabled = 0")
 endpython3
 
-  if g:use_black == 1
+  if g:black_enabled == 1
     Plug 'psf/black', { 'tag': '*' }
   endif
 endif
@@ -149,12 +149,12 @@ endif
 " Expections:
 " * Easy of use
 " * Actually gets used
-let g:use_hop = 1
-let g:use_flash = 0
-if has('nvim') && g:use_hop
+let g:hop_enabled = 1
+let g:flash_enabled = 0
+if has('nvim') && g:hop_enabled
   Plug 'phaazon/hop.nvim'
 endif
-if has('nvim') && g:use_flash
+if has('nvim') && g:flash_enabled
   Plug 'folke/flash.nvim'
 endif
 if !has('nvim')
@@ -175,7 +175,7 @@ endif
 "
 " {{{ treesitter
 if has('nvim-0.8')
-  let g:use_treesitter = 1
+  let g:treesitter_enabled = 1
 
   Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}  " We recommend updating the parsers on update
   Plug 'nvim-treesitter/nvim-treesitter-context'
@@ -190,7 +190,7 @@ if has('nvim-0.8')
 
   Plug 'Wansmer/treesj'
 else
-  let g:use_treesitter = 0
+  let g:treesitter_enabled = 0
 
   " Replacement for treesitter auto-pair
   Plug 'Raimondi/delimitMate'
@@ -202,7 +202,7 @@ endif
 " }}}
 
 " {{{ highlighting
-" if g:use_easymotion
+" if g:easymotion_enabled
   Plug 'lukas-reineke/indent-blankline.nvim'
 " endif
 " }}}

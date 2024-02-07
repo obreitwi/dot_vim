@@ -1831,7 +1831,7 @@ nmap [disableDiffchhar5] <Plug>JumpDiffCharPrevStart
 nmap [disableDiffchhar6] <Plug>PutDiffCharPair
 " }}}
 " {{{ dirbuf
-if g:use_lusty == 0
+if g:lusty_enabled == 0
     map <leader>lr :Dirbuf<CR>:BLines<CR>
 endif
 function! s:dirbuf_enter(line)
@@ -1914,7 +1914,7 @@ if exists('g:started_by_firenvim')
 endif
 " }}}
 " {{{ flash
-if has('nvim') && g:use_flash
+if has('nvim') && g:flash_enabled
 lua <<EOF
     require('flash').setup()
 EOF
@@ -1973,7 +1973,7 @@ nmap <leader>ggf :GitGutterFold<CR>
 autocmd vimrc Filetype go nnoremap <buffer><Leader>cf :GoImports<CR>
 " }}}
 " {{{ hop
-if has('nvim') && g:use_hop
+if has('nvim') && g:hop_enabled
 lua << EOF
 require('hop').setup()
 EOF
@@ -2045,7 +2045,7 @@ EOF
 endif
 " }}}
 " {{{ neorg
-if has('nvim-0.8') && g:use_treesitter
+if has('nvim-0.8') && g:treesitter_enabled
 lua <<EOF
 require'neorg'.setup {
     load = {
@@ -2120,7 +2120,7 @@ nmap sj :SplitjoinSplit<cr>
 nmap sk :SplitjoinJoin<cr>
 " }}}
 " {{{ tabout
-if g:use_treesitter
+if g:treesitter_enabled
 lua <<EOF
 require("tabout").setup({
   tabkey = "",
@@ -2200,7 +2200,7 @@ nnoremap <leader>T :ToggleTerm<CR>
 endif
 " }}}
 " {{{ treesitter
-if g:use_treesitter
+if g:treesitter_enabled
 lua << EOF
     require'nvim-treesitter.configs'.setup {
         -- A list of parser names, or "all"
@@ -2304,7 +2304,7 @@ set foldexpr=nvim_treesitter#foldexpr()
 endif
 " }}}
 " {{{ treesj
-if g:use_treesitter
+if g:treesitter_enabled
 lua <<EOF
 require('treesj').setup({
     use_default_keymaps = false,
@@ -2317,7 +2317,7 @@ nnoremap <leader>st :TSJToggle<CR>
 endif
 " }}}
 " {{{ venn.nvim
-if has('nvim') && g:use_venn > 0
+if has('nvim') && g:venn_enabled > 0
 lua <<EOF
 -- venn.nvim: enable or disable keymappings
 function _G.Toggle_venn()
