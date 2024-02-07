@@ -262,9 +262,9 @@ endif
 " }}}
 
 " {{{ CoC
-let s:coc_hosts=["abed", "mucku", "helvetica.kip.uni-heidelberg.de", "mimir"]
-let g:lsp_enabled = 1
-let g:coc_enabled = ((has('nvim') || v:version >= 802) && index(s:coc_hosts, s:hostname) >= 0) && !g:lsp_enabled
+let s:coc_hosts=["mimir", "mucku"]
+let g:lsp_enabled = has('nvim')
+let g:coc_enabled = ((has('nvim') || v:version >= 802) && index(s:coc_hosts, s:hostname) >= 0)
 
 if g:coc_enabled
   Plug 'neoclide/coc.nvim', {'do': 'yarn install --frozen-lockfile'}
