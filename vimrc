@@ -2134,6 +2134,7 @@ endif
 if g:telescope_enabled
 lua <<EOF
 require('telescope').setup{}
+require('telescope').load_extension('fzf')
 EOF
 
 nmap <silent> <c-p> :lua require'telescope.builtin'.git_files{}<CR>
@@ -2147,7 +2148,8 @@ nmap <silent> [unite]l :lua require'telescope.builtin'.current_buffer_fuzzy_find
 " nmap <silent> [unite]L :Lines<CR>
 nmap <silent> [unite]m :lua require'telescope.builtin'.oldfiles{}<CR>
 " nmap <silent> [unite]s :Snippets<CR>
-nmap <silent> [unite]r :lua require'telescope.builtin'.live_grep{}<CR>
+nmap <silent> [unite]r :lua require'telescope.builtin'.grep_string{}<CR>
+nmap <silent> [unite]g :lua require'telescope.builtin'.live_grep{}<CR>
 
 if 0 " bindings to enable once lsp has been configured
 " coc bindings

@@ -236,6 +236,8 @@ if g:telescope_enabled
   " requirement:
   Plug 'nvim-lua/plenary.nvim'
   Plug 'nvim-telescope/telescope.nvim'
+  Plug 'nvim-telescope/telescope-fzf-native.nvim', { 'do': 'make' }
+  Plug 'nvim-tree/nvim-web-devicons'
 endif
 " }}}
 
