@@ -416,7 +416,9 @@ autocmd vimrc BufRead *.dart            call jobstart([expand("~/.vim/utils/flut
 
 autocmd vimrc FileType gitcommit        nmap <silent> <localleader>c :call fzf#run(fzf#wrap({'source': 'revcli stories --list --title', 'sink': function("InsertGitIDs"), 'options': '-d "	" --with-nth 1'}))<CR>
 
-autocmd vimrc FileType terraform        nmap <silent> <leader>cf :!terraform fmt %<CR>
+if !g:lsp_enabled
+    autocmd vimrc FileType terraform        nmap <silent> <leader>cf :!terraform fmt %<CR>
+endif
 " }}}
 " {{{ Settings
 set nocompatible
@@ -1963,6 +1965,64 @@ if g:fzf_found
     let g:yank_history_max_size = 100
 endif
 " }}}
+" {{{ lspconfig
+if g:lsp_enabled
+lua <<EOF
+-- Setup language servers.
+local lspconfig = require('lspconfig')
+lspconfig.ast_grep.setup {}
+lspconfig.dartls.setup {}
+lspconfig.golangci_lint_ls.setup {}
+lspconfig.gopls.setup{}
+lspconfig.lua_ls.setup {}
+lspconfig.marksman.setup {}
+lspconfig.nushell.setup {}
+lspconfig.pyright.setup {}
+lspconfig.rust_analyzer.setup {}
+lspconfig.terraform_lsp.setup {}
+lspconfig.texlab.setup {}
+lspconfig.tsserver.setup {}
+
+-- Global mappings.
+-- See `:help vim.diagnostic.*` for documentation on any of the below functions
+-- vim.keymap.set('n', '<space>e', vim.diagnostic.open_float)
+vim.keymap.set('n', '[d', vim.diagnostic.goto_prev)
+vim.keymap.set('n', ']d', vim.diagnostic.goto_next)
+-- vim.keymap.set('n', '<space>q', vim.diagnostic.setloclist)
+
+-- Use LspAttach autocommand to only map the following keys
+-- after the language server attaches to the current buffer
+vim.api.nvim_create_autocmd('LspAttach', {
+  group = vim.api.nvim_create_augroup('UserLspConfig', {}),
+  callback = function(ev)
+    -- Enable completion triggered by <c-x><c-o>
+    vim.bo[ev.buf].omnifunc = 'v:lua.vim.lsp.omnifunc'
+
+    -- Buffer local mappings.
+    -- See `:help vim.lsp.*` for documentation on any of the below functions
+    local opts = { buffer = ev.buf }
+    -- vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, opts)
+    -- vim.keymap.set('n', 'gd', vim.lsp.buf.definition, opts)
+    vim.keymap.set('n', '[coc]k', vim.lsp.buf.hover, opts)
+    vim.keymap.set('n', '[coc]i', vim.lsp.buf.implementation, opts)
+    vim.keymap.set({'n', 'i'}, '<C-k>', vim.lsp.buf.signature_help, opts)
+    -- vim.keymap.set('n', '<space>wa', vim.lsp.buf.add_workspace_folder, opts)
+    -- vim.keymap.set('n', '<space>wr', vim.lsp.buf.remove_workspace_folder, opts)
+    -- vim.keymap.set('n', '<space>wl', function()
+    --   print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
+    -- end, opts)
+    -- vim.keymap.set('n', '<space>D', vim.lsp.buf.type_definition, opts)
+    vim.keymap.set('n', '[coc]n', vim.lsp.buf.rename, opts)
+    vim.keymap.set({ 'n', 'v' }, '[coc]a', vim.lsp.buf.code_action, opts)
+    -- vim.keymap.set('n', 'gr', vim.lsp.buf.references, opts)
+    vim.keymap.set('n', '<leader>cf', function()
+      vim.lsp.buf.format { async = true }
+    end, opts)
+  end,
+})
+EOF
+endif
+" }}}
 " {{{ gh-line
 let g:gh_open_command = 'fn() { echo -n "$@" | xclip -selection copy; }; fn '
 " }}}
@@ -1970,7 +2030,9 @@ let g:gh_open_command = 'fn() { echo -n "$@" | xclip -selection copy; }; fn '
 nmap <leader>ggf :GitGutterFold<CR>
 " }}}
 " {{{ gofmt
-autocmd vimrc Filetype go nnoremap <buffer><Leader>cf :GoImports<CR>
+if !g:lsp_enabled
+    autocmd vimrc Filetype go nnoremap <buffer><Leader>cf :GoImports<CR>
+endif
 " }}}
 " {{{ hop
 if has('nvim') && g:hop_enabled
@@ -1991,8 +2053,10 @@ nmap [hop]C :HopChar2BC<CR>
 endif
 " }}}
 " {{{ icon-picker
-if has('nvim')
+if has('nvim') && g:icon_picker_enabled
 lua << EOF
+-- disable input mapping because it does not work with 'cedit' as of right now
+require("dressing").setup { input = { enabled = false } }
 require("icon-picker").setup({ disable_legacy_commands = true })
 EOF
 nnoremap <silent> <leader>ip :IconPickerInsert emoji nerd_font_v3 symbols html_colors<CR>
@@ -2107,8 +2171,10 @@ EOF
 endif
 " }}}
 " {{{ rust
-autocmd vimrc Filetype rust nnoremap <buffer><Leader>cf :RustFmt<CR>
-autocmd vimrc Filetype rust vnoremap <buffer><Leader>cf :RustFmtRange<CR>
+if !g:lsp_enabled
+    autocmd vimrc Filetype rust nnoremap <buffer><Leader>cf :RustFmt<CR>
+    autocmd vimrc Filetype rust vnoremap <buffer><Leader>cf :RustFmtRange<CR>
+endif
 let g:rustfmt_autosave = 1
 let g:rust_conceal = 1
 " }}}
@@ -2148,19 +2214,20 @@ nmap <silent> [unite]l :lua require'telescope.builtin'.current_buffer_fuzzy_find
 " nmap <silent> [unite]L :Lines<CR>
 nmap <silent> [unite]m :lua require'telescope.builtin'.oldfiles{}<CR>
 " nmap <silent> [unite]s :Snippets<CR>
+vmap <silent> [unite]r :lua require'telescope.builtin'.grep_string{initial_mode='select'}<CR>
 nmap <silent> [unite]r :lua require'telescope.builtin'.grep_string{}<CR>
 nmap <silent> [unite]g :lua require'telescope.builtin'.live_grep{}<CR>
 
-if 0 " bindings to enable once lsp has been configured
+if 1 " bindings to enable once lsp has been configured
 " coc bindings
 nmap <silent> [coc]D   :lua require'telescope.builtin'.diagnostics{}<CR>
 nmap <silent> [coc]d   :lua require'telescope.builtin'.lsp_definitions{}<CR>
 nmap <silent> [coc]t   :lua require'telescope.builtin'.lsp_type_definitions{}<CR>
-nmap <silent> [coc]r   :lua require'telescope.builtin'.lsp_references{}<CR> 
-nmap <silent> [coc]ci  :lua require'telescope.builtin'.lsp_incoming_calls{}<CR> 
-nmap <silent> [coc]co  :lua require'telescope.builtin'.lsp_outgoing_calls{}<CR> 
-nmap <silent> [coc]i   :lua require'telescope.builtin'.lsp_workspace_symbols{}<CR> 
-nmap <silent> [coc]I   :lua require'telescope.builtin'.lsp_document_symbols{}<CR> 
+nmap <silent> [coc]r   :lua require'telescope.builtin'.lsp_references{}<CR>
+nmap <silent> [coc]ci  :lua require'telescope.builtin'.lsp_incoming_calls{}<CR>
+nmap <silent> [coc]co  :lua require'telescope.builtin'.lsp_outgoing_calls{}<CR>
+nmap <silent> [coc]i   :lua require'telescope.builtin'.lsp_workspace_symbols{}<CR>
+nmap <silent> [coc]I   :lua require'telescope.builtin'.lsp_document_symbols{}<CR>
 " nmap <silent> [coc]B   :<C-u>CocFzfList diagnostics --current-buf<CR>
 endif
 endif
@@ -2272,18 +2339,23 @@ lua << EOF
 
     local remap = vim.api.nvim_set_keymap
     local npairs = require'nvim-autopairs'
-    npairs.setup({ map_cr = false })
 
-    _G.MUtils={}
-    MUtils.completion_confirm=function()
-        if vim.fn["coc#pum#visible"]() ~= 0  then
-            return vim.fn["coc#pum#confirm"]()
-        else
-            return npairs.autopairs_cr()
+    if (vim.g.coc_enabled == nil) or (vim.g.coc_enabled == 0) then
+        npairs.setup({ map_cr = true })
+    else
+        npairs.setup({ map_cr = false })
+
+        _G.MUtils={}
+        MUtils.completion_confirm=function()
+            if vim.fn["coc#pum#visible"]() ~= 0 then
+                return vim.fn["coc#pum#confirm"]()
+            else
+                return npairs.autopairs_cr()
+            end
         end
-    end
 
-    remap('i' , '<CR>','v:lua.MUtils.completion_confirm()', {expr = true , noremap = true})
+        remap('i' , '<CR>','v:lua.MUtils.completion_confirm()', {expr = true , noremap = true})
+    end
 
     local parser_config = require "nvim-treesitter.parsers".get_parser_configs()
     parser_config.timesheet = {

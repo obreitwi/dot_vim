@@ -266,6 +266,8 @@ let s:coc_hosts=["mimir", "mucku"]
 let g:lsp_enabled = has('nvim')
 let g:coc_enabled = ((has('nvim') || v:version >= 802) && index(s:coc_hosts, s:hostname) >= 0)
 
+let g:coc_enabled = 0
+
 if g:coc_enabled
   Plug 'neoclide/coc.nvim', {'do': 'yarn install --frozen-lockfile'}
   Plug 'neoclide/coc-json', {'do': 'yarn install --frozen-lockfile'}
@@ -304,10 +306,8 @@ if g:coc_enabled
   endif
 
   let g:using_coc=1
+elseif !g:lsp_enabled
   " Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-elseif g:lsp_enabled
-  Plug 'neovim/nvim-lspconfig'
-else
   " TODO: this check is very very slow!
   if has("pythonx")
     source $HOME/.vim/compatibility/check_pynvim.pythonx.vim
@@ -324,6 +324,10 @@ else
     Plug 'roxma/nvim-yarp'
     Plug 'roxma/vim-hug-neovim-rpc'
   endif
+endif
+
+if g:lsp_enabled
+  Plug 'neovim/nvim-lspconfig'
 endif
 
 let g:deoplete#enable_at_startup = 1
@@ -345,11 +349,14 @@ endif
 " {{{ statusline
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
-Plug 'ryanoasis/vim-devicons'
+if !has('nvim')
+  Plug 'ryanoasis/vim-devicons'
+endif
 " }}}
 
-" {{{ icon picker 
-if has('nvim')
+" {{{ icon picker
+let g:icon_picker_enabled=1
+if has('nvim') && g:icon_picker_enabled
 Plug 'stevearc/dressing.nvim'
 Plug 'ziontee113/icon-picker.nvim'
 endif
