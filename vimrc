@@ -414,6 +414,8 @@ autocmd vimrc FileType norg             nmap <silent> [d             :e =system
 autocmd vimrc FileType dart             nmap <silent> <leader>gc     :call jobstart([expand("~/.vim/utils/flutter-pub-get-recursive"), expand("%")])<CR>
 autocmd vimrc BufRead *.dart            call jobstart([expand("~/.vim/utils/flutter-pub-get-ensure-recursive"), expand("%")])
 
+autocmd vimrc BufNewFile,BufRead *.yaml.tpl   set filetype=yaml
+
 autocmd vimrc FileType gitcommit        nmap <silent> <localleader>c :call fzf#run(fzf#wrap({'source': 'revcli stories --list --title', 'sink': function("InsertGitIDs"), 'options': '-d "	" --with-nth 1'}))<CR>
 
 if !g:lsp_enabled
@@ -716,6 +718,39 @@ let g:colorcolumn_custom = {
 \}
 
 " {{{ gruvbox settings
+" {{{ gruvbox.nvim
+if has('nvim')
+lua <<EOF
+    -- Default options:
+require("gruvbox").setup({
+  terminal_colors = true, -- add neovim terminal colors
+  undercurl = true,
+  underline = true,
+  bold = true,
+  italic = {
+    strings = true,
+    emphasis = true,
+    comments = true,
+    -- operators = false,
+    operators = true,
+    folds = true,
+  },
+  strikethrough = true,
+  invert_selection = false,
+  invert_signs = false,
+  invert_tabline = false,
+  invert_intend_guides = false,
+  inverse = true, -- invert background for search, diffs, statuslines and errors
+  contrast = "hard", -- can be "hard", "soft" or empty string
+  palette_overrides = {},
+  overrides = {},
+  dim_inactive = false,
+  transparent_mode = false,
+})
+vim.cmd("colorscheme gruvbox")
+EOF
+endif
+" }}}
 " These need to come prior to setting the colorscheme
 if exists("g:neovide")
     let g:gruvbox_italic=1
@@ -729,7 +764,7 @@ let g:gruvbox_guisp_fallback='bg'
 
 " {{{ Common / GUI-Term settings
 " syntax enable " Disable to help with treesitter
-if $BG == "dark" || ($BG == "light")
+if ($BG == "dark") || ($BG == "light")
     execute 'set background=' . $BG
 else
     set background=dark
@@ -750,6 +785,7 @@ if exists("g:neovide") || has("gui_running") || exists('g:started_by_firenvim')
 
     colorscheme gruvbox
     let g:airline_theme = 'gruvbox'
+    " let g:airline_theme = 'base16_gruvbox_dark_hard'
 elseif $TERM == "linux" && !exists('g:neovide')
     colorscheme default
     " set nolist
@@ -770,6 +806,7 @@ else
 
     colorscheme gruvbox
     let g:airline_theme = 'gruvbox'
+    " let g:airline_theme = 'base16_gruvbox_dark_hard'
 endif
 
 if $COLORTERM == "truecolor" && has('nvim')
@@ -784,9 +821,9 @@ endif
 " autocmd Syntax * call SetCustomColorColumn()
 " autocmd vimrc BufWinEnter * call SetCustomColorColumn()
 
-" trailing whitespace
-highlight default link ExtraWhitespace Error
-autocmd vimrc Syntax * syn match ExtraWhitespace /\s\+$\| \+\ze\t/
+" trailing whitespace (disable due to issues with completions)
+" highlight default link ExtraWhitespace Error
+" autocmd vimrc Syntax * syn match ExtraWhitespace /\s\+$\| \+\ze\t/
 " }}}
 " {{{ Digraphs
 digraph el 8230   " …
@@ -834,6 +871,16 @@ if !exists('g:loaded_matchit') && findfile('plugin/matchit.vim', &rtp) ==# ''
 endif
 " }}}
 " {{{ Statusline
+" {{{ lualine
+if !g:airline_enabled
+lua <<EOF
+require('lualine').setup({
+    options = { theme = 'gruvbox' },
+    extensions = { "toggleterm" },
+})
+EOF
+endif
+" }}}
 " Powerline
 " disable on all machines unless specifically enabled
 if has('nvim-0.7')
@@ -1497,6 +1544,66 @@ autocmd vimrc Filetype c,cpp nnoremap <buffer><Leader>cf :ClangFormat<CR>
 autocmd vimrc Filetype c,cpp vnoremap <buffer><Leader>cf :ClangFormat<CR>
 autocmd vimrc Filetype c,cpp map <buffer><Leader>x <Plug>(operator-clang-format)
 " }}}
+" {{{ cmp
+if g:lsp_enabled
+lua <<EOF
+-- luasnip setup
+-- local luasnip = require 'luasnip'
+
+-- nvim-cmp setup
+local cmp = require 'cmp'
+require("cmp_nvim_ultisnips").setup{}
+local cmp_ultisnips_mappings = require("cmp_nvim_ultisnips.mappings")
+cmp.setup {
+  snippet = {
+    expand = function(args)
+        -- luasnip.lsp_expand(args.body)
+        vim.fn["UltiSnips#Anon"](args.body)
+    end,
+  },
+  mapping = cmp.mapping.preset.insert({
+    ['<C-u>'] = cmp.mapping.scroll_docs(-4), -- Up
+    ['<C-d>'] = cmp.mapping.scroll_docs(4), -- Down
+    -- C-b (back) C-f (forward) for snippet placeholder navigation.
+    ['<C-Space>'] = cmp.mapping.complete(),
+    ['<CR>'] = cmp.mapping.confirm {
+      behavior = cmp.ConfirmBehavior.Replace,
+      select = true,
+    },
+    ['<Tab>'] = cmp.mapping(function(fallback)
+      if cmp.visible() then
+        cmp.select_next_item()
+      -- elseif luasnip.expand_or_jumpable() then
+      --   luasnip.expand_or_jump()
+      else
+        cmp_ultisnips_mappings.expand_or_jump_forwards(fallback)
+        -- fallback()
+      end
+    end, { 'i', 's' }),
+    ['<S-Tab>'] = cmp.mapping(function(fallback)
+      if cmp.visible() then
+        cmp.select_prev_item()
+      -- elseif luasnip.jumpable(-1) then
+      --   luasnip.jump(-1)
+      else
+        cmp_ultisnips_mappings.jump_backwards(fallback)
+        -- fallback()
+      end
+    end, { 'i', 's' }),
+  }),
+  sources = {
+    { name = 'nvim_lsp' },
+    -- { name = 'luasnip' },
+    { name = 'ultisnips' },
+  },
+  window = {
+    completion = cmp.config.window.bordered(),
+    documentation = cmp.config.window.bordered(),
+  },
+}
+EOF
+endif
+" }}}
 " {{{ coc
 nnoremap [coc] <Nop>
 nmap <Leader>g [coc]
@@ -1906,7 +2013,9 @@ if exists('g:started_by_firenvim')
             \ },
         \ }
     \ }
-    au! vimrc VimEnter * AirlineToggle
+    if g:airline_enabled
+        au! vimrc VimEnter * AirlineToggle
+    endif
     set wrap
     set noshowmode
     set noruler
@@ -1970,18 +2079,31 @@ if g:lsp_enabled
 lua <<EOF
 -- Setup language servers.
 local lspconfig = require('lspconfig')
-lspconfig.ast_grep.setup {}
-lspconfig.dartls.setup {}
-lspconfig.golangci_lint_ls.setup {}
-lspconfig.gopls.setup{}
-lspconfig.lua_ls.setup {}
-lspconfig.marksman.setup {}
-lspconfig.nushell.setup {}
-lspconfig.pyright.setup {}
-lspconfig.rust_analyzer.setup {}
-lspconfig.terraform_lsp.setup {}
-lspconfig.texlab.setup {}
-lspconfig.tsserver.setup {}
+
+-- Add additional capabilities supported by nvim-cmp
+local capabilities = require("cmp_nvim_lsp").default_capabilities()
+
+local servers = {
+    'ast_grep',
+    'dartls',
+    'golangci_lint_ls',
+    'gopls',
+    'lua_ls',
+    'marksman',
+    'nushell',
+    'pyright',
+    'rust_analyzer',
+    'terraform_lsp',
+    'texlab',
+    'tsserver',
+}
+
+for _, lsp in ipairs(servers) do
+  lspconfig[lsp].setup {
+    -- on_attach = my_custom_on_attach,
+    capabilities = capabilities,
+  }
+end
 
 -- Global mappings.
 -- See `:help vim.diagnostic.*` for documentation on any of the below functions
@@ -2509,7 +2631,9 @@ endif
 " }}}
 " {{{ Postscript
 " {{{ Fix airline sometimes not rendering when splitting
-au vimrc BufEnter * AirlineRefresh
+if g:airline_enabled
+    au vimrc BufEnter * AirlineRefresh
+endif
 " }}}
 " vim: fdm=marker ts=4 sw=4 sts=4 foldminlines=0
 " }}}

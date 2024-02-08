@@ -328,6 +328,12 @@ endif
 
 if g:lsp_enabled
   Plug 'neovim/nvim-lspconfig'
+  Plug 'hrsh7th/cmp-nvim-lsp' " LSP source for nvim-cmp
+  Plug 'hrsh7th/nvim-cmp'
+  Plug 'quangnguyen30192/cmp-nvim-ultisnips'
+  " Plug 'saadparwaiz1/cmp_luasnip' " Snippets source for nvim-cmp
+  " Plug 'L3MON4D3/LuaSnip' " Snippets plugin
+  " Plug 'L3MON4D3/LuaSnip', {'tag': 'v2.*', 'do': 'make install_jsregexp'}
 endif
 
 let g:deoplete#enable_at_startup = 1
@@ -347,10 +353,14 @@ endif
 " }}}
 
 " {{{ statusline
-Plug 'vim-airline/vim-airline'
-Plug 'vim-airline/vim-airline-themes'
 if !has('nvim')
+  Plug 'vim-airline/vim-airline'
+  Plug 'vim-airline/vim-airline-themes'
   Plug 'ryanoasis/vim-devicons'
+  let g:airline_enabled = 1
+else
+  Plug 'nvim-lualine/lualine.nvim'
+  let g:airline_enabled = 0
 endif
 " }}}
 
@@ -381,7 +391,11 @@ endif
 
 " {{{ colors
 Plug 'icymind/NeoSolarized'
-Plug 'morhetz/gruvbox'
+if has('nvim')
+  Plug 'ellisonleao/gruvbox.nvim'
+else
+  Plug 'morhetz/gruvbox'
+endif
 
 " Enable via
 " :lua require'nvim-highlight-colors'.setup()
