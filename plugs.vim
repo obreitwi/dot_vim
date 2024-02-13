@@ -539,7 +539,7 @@ endif
 " {{{ unite
 
 let g:unite_enabled = 0
-if !g:coc_enabled || !g:fzf_found
+if !g:coc_enabled && !g:fzf_found && !g:lsp_enabled
   let g:unite_enabled = 1
   Plug 'Shougo/unite.vim'
   Plug 'Shougo/neomru.vim'

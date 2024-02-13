@@ -1940,6 +1940,9 @@ nmap [disableDiffchhar5] <Plug>JumpDiffCharPrevStart
 nmap [disableDiffchhar6] <Plug>PutDiffCharPair
 " }}}
 " {{{ dirbuf
+lua <<EOF
+require('dirbuf').setup{}
+EOF
 if g:lusty_enabled == 0
     map <leader>lr :Dirbuf<CR>:BLines<CR>
 endif
