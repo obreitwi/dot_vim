@@ -416,8 +416,10 @@ endif
 
 if executable('flutter')
   Plug 'thosakwe/vim-flutter'
-  Plug 'iamcco/coc-flutter', {'do': 'yarn install --frozen-lockfile'}
-  " Plug 'theniceboy/coc-flutter-tools', {'do': 'yarn install --frozen-lockfile'} 
+  if g:coc_enabled
+    Plug 'iamcco/coc-flutter', {'do': 'yarn install --frozen-lockfile'}
+    " Plug 'theniceboy/coc-flutter-tools', {'do': 'yarn install --frozen-lockfile'}
+  endif
 endif
 " }}}
 
