@@ -238,6 +238,7 @@ if g:telescope_enabled
   Plug 'nvim-telescope/telescope.nvim'
   Plug 'nvim-telescope/telescope-fzf-native.nvim', { 'do': 'make' }
   Plug 'nvim-tree/nvim-web-devicons'
+  Plug 'nvim-neorg/neorg-telescope'
 endif
 " }}}
 
