@@ -2306,7 +2306,7 @@ require'neorg'.setup {
         --         custom_tag_completion = true,
         --     },
         -- },
-        ["external.context"] = {},
+        -- ["external.context"] = {},
     }
 }
 
