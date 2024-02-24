@@ -591,32 +591,33 @@ endif
 " }}}
 
 " {{{ Tab-Settings
-autocmd vimrc FileType arduino     setlocal tabstop=4 |     setlocal shiftwidth=4 |  setlocal softtabstop=4
-autocmd vimrc FileType bash        setlocal tabstop=4 |     setlocal shiftwidth=4 |  setlocal softtabstop=4
-autocmd vimrc FileType c           setlocal tabstop=4 |     setlocal shiftwidth=4 |  setlocal softtabstop=4
-autocmd vimrc FileType cpp         setlocal tabstop=4 |     setlocal shiftwidth=4 |  setlocal softtabstop=4
-autocmd vimrc FileType dart        setlocal tabstop=2 |     setlocal shiftwidth=2 |  setlocal softtabstop=2
-autocmd vimrc FileType exim        setlocal tabstop=4 |     setlocal shiftwidth=4 |  setlocal softtabstop=4 | setlocal expandtab
-autocmd vimrc FileType gitcommit   setlocal tabstop=2 |     setlocal softtabstop=2 | setlocal shiftwidth=2  | setlocal expandtab
-autocmd vimrc FileType go          setlocal tabstop=4 |     setlocal softtabstop=4 | setlocal shiftwidth=4  | setlocal noexpandtab
-autocmd vimrc FileType haskell     setlocal tabstop=2 |     setlocal shiftwidth=2 |  setlocal expandtab
-autocmd vimrc FileType html        setlocal tabstop=4 |     setlocal shiftwidth=4 |  setlocal softtabstop=4
-autocmd vimrc FileType java        setlocal tabstop=4 |     setlocal shiftwidth=4 |  setlocal softtabstop=4
-autocmd vimrc FileType javascript  setlocal tabstop=4 |     setlocal shiftwidth=4 |  setlocal expandtab
-autocmd vimrc FileType javascript  setlocal tabstop=4 |     setlocal shiftwidth=4 |  setlocal softtabstop=4
-autocmd vimrc FileType jinja       setlocal tabstop=2 |     setlocal shiftwidth=2 |  setlocal softtabstop=2 | setlocal expandtab
-autocmd vimrc FileType json        setlocal tabstop=4 |     setlocal shiftwidth=4 |  setlocal expandtab
-autocmd vimrc FileType mail        setlocal textwidth=72 |  setlocal wrapmargin=8 |  setlocal spell
-autocmd vimrc FileType markdown    setlocal tabstop=2 |     setlocal shiftwidth=2 |  setlocal softtabstop=2 | setlocal expandtab
-autocmd vimrc FileType matlab      setlocal tabstop=4 |     setlocal shiftwidth=4 |  setlocal expandtab
-autocmd vimrc FileType proto       setlocal tabstop=2 |     setlocal shiftwidth=2 |  setlocal softtabstop=2
-autocmd vimrc FileType python      setlocal tabstop=4 |     setlocal shiftwidth=4 |  setlocal expandtab
-autocmd vimrc FileType sh          setlocal tabstop=4 |     setlocal softtabstop=4 | setlocal shiftwidth=4  | setlocal expandtab
-autocmd vimrc FileType text        setlocal expandtab |     setlocal comments=fb:*,fb:#
-autocmd vimrc FileType vim         setlocal tabstop=2 |     setlocal shiftwidth=2 |  setlocal expandtab
-autocmd vimrc FileType vimwiki     setlocal tabstop=2 |     setlocal shiftwidth=2 |  setlocal expandtab | setlocal foldlevel=0 |   setlocal comments=fb:*,fb:# | setlocal foldminlines=0
-autocmd vimrc FileType yaml        setlocal tabstop=2 |     setlocal shiftwidth=2 |  setlocal expandtab
-autocmd vimrc FileType zsh         setlocal expandtab |     setlocal tabstop=4 |     setlocal shiftwidth=4
+autocmd vimrc FileType arduino     setlocal tabstop=4    | setlocal shiftwidth=4  | setlocal softtabstop=4
+autocmd vimrc FileType bash        setlocal tabstop=4    | setlocal shiftwidth=4  | setlocal softtabstop=4
+autocmd vimrc FileType c           setlocal tabstop=4    | setlocal shiftwidth=4  | setlocal softtabstop=4
+autocmd vimrc FileType cpp         setlocal tabstop=4    | setlocal shiftwidth=4  | setlocal softtabstop=4
+autocmd vimrc FileType dart        setlocal tabstop=2    | setlocal shiftwidth=2  | setlocal softtabstop=2
+autocmd vimrc FileType exim        setlocal tabstop=4    | setlocal shiftwidth=4  | setlocal softtabstop=4 | setlocal expandtab
+autocmd vimrc FileType gitcommit   setlocal tabstop=2    | setlocal softtabstop=2 | setlocal shiftwidth=2  | setlocal expandtab
+autocmd vimrc FileType go          setlocal tabstop=4    | setlocal softtabstop=4 | setlocal shiftwidth=4  | setlocal noexpandtab
+autocmd vimrc FileType haskell     setlocal tabstop=2    | setlocal shiftwidth=2  | setlocal expandtab
+autocmd vimrc FileType html        setlocal tabstop=4    | setlocal shiftwidth=4  | setlocal softtabstop=4
+autocmd vimrc FileType java        setlocal tabstop=4    | setlocal shiftwidth=4  | setlocal softtabstop=4
+autocmd vimrc FileType javascript  setlocal tabstop=4    | setlocal shiftwidth=4  | setlocal expandtab
+autocmd vimrc FileType javascript  setlocal tabstop=4    | setlocal shiftwidth=4  | setlocal softtabstop=4
+autocmd vimrc FileType jinja       setlocal tabstop=2    | setlocal shiftwidth=2  | setlocal softtabstop=2 | setlocal expandtab
+autocmd vimrc FileType json        setlocal tabstop=4    | setlocal shiftwidth=4  | setlocal expandtab
+autocmd vimrc FileType mail        setlocal textwidth=72 | setlocal wrapmargin=8  | setlocal spell
+autocmd vimrc FileType markdown    setlocal tabstop=2    | setlocal shiftwidth=2  | setlocal softtabstop=2 | setlocal expandtab
+autocmd vimrc FileType matlab      setlocal tabstop=4    | setlocal shiftwidth=4  | setlocal expandtab
+autocmd vimrc FileType norg        setlocal tabstop=2    | setlocal shiftwidth=2  | setlocal expandtab
+autocmd vimrc FileType proto       setlocal tabstop=2    | setlocal shiftwidth=2  | setlocal softtabstop=2
+autocmd vimrc FileType python      setlocal tabstop=4    | setlocal shiftwidth=4  | setlocal expandtab
+autocmd vimrc FileType sh          setlocal tabstop=4    | setlocal softtabstop=4 | setlocal shiftwidth=4  | setlocal expandtab
+autocmd vimrc FileType text        setlocal tabstop=2    | setlocal shiftwidth=2  | setlocal expandtab     | setlocal comments=fb:*,fb:#
+autocmd vimrc FileType vim         setlocal tabstop=2    | setlocal shiftwidth=2  | setlocal expandtab
+autocmd vimrc FileType vimwiki     setlocal tabstop=2    | setlocal shiftwidth=2  | setlocal expandtab     | setlocal foldlevel=0        | setlocal comments=fb:*,fb:# | setlocal foldminlines=0
+autocmd vimrc FileType yaml        setlocal tabstop=2    | setlocal shiftwidth=2  | setlocal expandtab
+autocmd vimrc FileType zsh         setlocal expandtab    | setlocal tabstop=4     | setlocal shiftwidth=4
 " }}}
 
 " {{{ cpp
