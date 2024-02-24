@@ -2087,25 +2087,61 @@ local lspconfig = require('lspconfig')
 -- Add additional capabilities supported by nvim-cmp
 local capabilities = require("cmp_nvim_lsp").default_capabilities()
 
+-- copied from: https://neovim.discourse.group/t/using-eslint-language-server-as-a-formatter-fix-all-eslint-errors/1966/8
+--- Neovim's LSP client does not currently support dynamic capabilities registration, so we need to set
+--- the resolved capabilities of the eslint server ourselves!
+---
+---@param  allow_formatting boolean whether to enable formating
+---
+local function toggle_formatting(allow_formatting)
+  return function(client)
+    default_on_attach(client)
+    client.resolved_capabilities.document_formatting = allow_formatting
+    client.resolved_capabilities.document_range_formatting = allow_formatting
+  end
+end
+
 local servers = {
-    'ast_grep',
-    'dartls',
-    'golangci_lint_ls',
-    'gopls',
-    'lua_ls',
-    'marksman',
-    'nushell',
-    'pyright',
-    'rust_analyzer',
-    'terraform_lsp',
-    'texlab',
-    'tsserver',
+    ['ast_grep'] = {},
+    ['dartls'] = {},
+    ['eslint'] = {
+        -- on_attach = toggle_formatting(true),
+        settings = {
+            format = true,
+        },
+    },
+    ['golangci_lint_ls'] = {},
+    ['gopls'] = {},
+    ['lua_ls'] = {},
+    ['marksman'] = {},
+    ['nushell'] = {},
+    ['pyright'] = {},
+    ['pylsp'] = {
+        settings = {
+            pylsp = {
+                plugins = {
+                    black = {
+                        enabled = true,
+                    },
+                },
+            },
+        },
+    },
+    ['rust_analyzer'] = {},
+    ['terraform_lsp'] = {},
+    ['texlab'] = {},
+    ['tsserver'] = {
+        settings = {
+            format = false,
+        },
+    },
 }
 
-for _, lsp in ipairs(servers) do
+for lsp, opts in pairs(servers) do
   lspconfig[lsp].setup {
     -- on_attach = my_custom_on_attach,
     capabilities = capabilities,
+    opts or {}
   }
 end
 
