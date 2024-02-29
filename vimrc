@@ -2114,6 +2114,7 @@ local servers = {
     ['gopls'] = {},
     ['lua_ls'] = {},
     ['marksman'] = {},
+    ['nixd'] = {},
     ['nushell'] = {},
     ['pyright'] = {},
     ['pylsp'] = {
