@@ -2101,6 +2101,10 @@ local function toggle_formatting(allow_formatting)
   end
 end
 
+-- Useful settings:
+--   on_attach = function(client)
+--     client.resolved_capabilties.rename = false -- no renaming
+--   end,
 local servers = {
     ['ast_grep'] = {},
     ['dartls'] = {},
