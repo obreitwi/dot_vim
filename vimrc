@@ -2360,6 +2360,18 @@ if !g:lsp_enabled
 endif
 let g:rust_conceal = 1
 " }}}
+" {{{ silicon
+if has('nvim') && executable('silicon')
+lua <<EOF
+require('silicon').setup {
+    font = "IosevkaTerm NF=34;Noto Color Emoji=34",
+    background = '#00000000',
+    no_window_controls = true,
+    to_clipboard = true,
+}
+EOF
+endif
+" }}}
 " {{{ sort-folds
 autocmd vimrc FileType bib let g:sort_folds_key_function="get_citekey"
 " }}}

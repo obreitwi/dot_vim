@@ -80,6 +80,12 @@ Plug 'chrisbra/unicode.vim'
 " }}}
 " }}}
 
+" {{{ silicon
+if has('nvim') && executable('silicon')
+  Plug 'michaelrommel/nvim-silicon'
+endif
+" }}}
+
 " {{{ messages for easier debugging
 if has('nvim')
   Plug 'AckslD/messages.nvim'
