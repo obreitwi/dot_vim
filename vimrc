@@ -2108,6 +2108,7 @@ end
 --   end,
 local servers = {
     ['ast_grep'] = {},
+    ['bashls'] = {},
     ['dartls'] = {},
     ['eslint'] = {
         -- on_attach = toggle_formatting(true),
