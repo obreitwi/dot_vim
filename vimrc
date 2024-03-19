@@ -606,6 +606,7 @@ autocmd vimrc FileType javascript  setlocal tabstop=4    | setlocal shiftwidth=4
 autocmd vimrc FileType javascript  setlocal tabstop=4    | setlocal shiftwidth=4  | setlocal softtabstop=4
 autocmd vimrc FileType jinja       setlocal tabstop=2    | setlocal shiftwidth=2  | setlocal softtabstop=2 | setlocal expandtab
 autocmd vimrc FileType json        setlocal tabstop=4    | setlocal shiftwidth=4  | setlocal expandtab
+autocmd vimrc FileType lua         setlocal tabstop=2    | setlocal shiftwidth=2  | setlocal expandtab
 autocmd vimrc FileType mail        setlocal textwidth=72 | setlocal wrapmargin=8  | setlocal spell
 autocmd vimrc FileType markdown    setlocal tabstop=2    | setlocal shiftwidth=2  | setlocal softtabstop=2 | setlocal expandtab
 autocmd vimrc FileType matlab      setlocal tabstop=4    | setlocal shiftwidth=4  | setlocal expandtab
