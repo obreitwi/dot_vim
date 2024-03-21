@@ -95,6 +95,7 @@ endif
 " {{{ dab debugging
 if has('nvim')
   Plug 'mfussenegger/nvim-dap'
+  Plug 'nvim-neotest/nvim-nio' " required by nvim-dap-ui
   Plug 'rcarriga/nvim-dap-ui'
   if executable('go')
     Plug 'leoluz/nvim-dap-go'
