@@ -2409,8 +2409,22 @@ endif
 " {{{ telescope
 if g:telescope_enabled
 lua <<EOF
-require('telescope').setup{}
+require('telescope').setup{
+    extensions = {
+        ast_grep = {
+            command = {
+                "sg",
+                "--json=stream",
+            }, -- must have --json=stream
+            grep_open_files = false, -- search in opened files
+            lang = nil, -- string value, specify language for ast-grep `nil` for default
+        },
+    },
+}
 require('telescope').load_extension('fzf')
+if vim.fn.executable('sg') then
+    require('telescope').load_extension('ast_grep')
+end
 EOF
 
 nmap <silent> <c-p> :lua require'telescope.builtin'.git_files{}<CR>
@@ -2427,6 +2441,7 @@ nmap <silent> [unite]m :lua require'telescope.builtin'.oldfiles{}<CR>
 vmap <silent> [unite]r :lua require'telescope.builtin'.grep_string{initial_mode='select'}<CR>
 nmap <silent> [unite]r :lua require'telescope.builtin'.grep_string{}<CR>
 nmap <silent> [unite]g :lua require'telescope.builtin'.live_grep{}<CR>
+nmap <silent> [unite]a :Telescope ast_grep<CR>
 
 if 1 " bindings to enable once lsp has been configured
 " coc bindings
