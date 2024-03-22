@@ -68,7 +68,7 @@ ln -svf ~/.vim/coc-settings.json ~/.config/nvim
 if command -v tree-sitter >/dev/null; then
     cd ~/.vim/utils/treesitter-timesheet/
     tree-sitter generate
-    gcc -Wall --shared -o timesheet.so -I src/tree_sitter src/parser.c
+    gcc -Wall -fPIC --shared -o timesheet.so -I src/tree_sitter src/parser.c
     nvim '+TSInstall timesheet'
 fi
 fi
