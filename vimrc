@@ -2185,16 +2185,24 @@ vim.api.nvim_create_autocmd('LspAttach', {
     vim.keymap.set({ 'n', 'v' }, '[coc]a', vim.lsp.buf.code_action, opts)
     -- vim.keymap.set('n', 'gr', vim.lsp.buf.references, opts)
     vim.keymap.set('n', '<leader>cf', function()
-      local found_eslint = table.getn(
-            vim.lsp.get_active_clients({
-                bufnr = vim.fn.bufnr(),
-                name = "eslint",
-            })
-        ) > 0
-      if not found_eslint then
-        vim.lsp.buf.format { async = true }
-      else
+      local find_lsp = function(name) 
+           return table.getn(
+               vim.lsp.get_active_clients({
+                   bufnr = vim.fn.bufnr(),
+                   name = name,
+               })
+           ) > 0
+      end
+      local found_eslint = find_lsp('eslint')
+      local found_nixd = find_lsp('nixd')
+      local found_alejandra = vim.fn.executable('alejandra') > 0
+
+      if found_eslint then
         vim.cmd('EslintFixAll')
+      elseif found_nixd and found_alejandra then
+        vim.cmd "%!alejandra --quiet"
+      else
+        vim.lsp.buf.format { async = true }
       end
     end, opts)
   end,
