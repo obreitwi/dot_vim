@@ -510,8 +510,7 @@ endif
 " {{{ neorg
 " Expectations: Possible replacement for diary files and vimwiki
 if has('nvim-0.8')
-  " Dependency for neorg
-  " Plug 'camspiers/luarocks'
+  " neorg does not support vim-plug after v8.0.0+ so stay on v7 
   Plug 'nvim-neorg/neorg', {'do': ':Neorg sync-parsers', 'tag': 'v7.0.0'}
   Plug 'nvim-lua/plenary.nvim'
   Plug 'max397574/neorg-contexts'
