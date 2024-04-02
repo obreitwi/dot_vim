@@ -5,6 +5,10 @@ autocmd! vimrc *
 set nocompatible
 filetype off
 
+if !exists("g:nix_enabled")
+    let g:nix_enabled = 0
+endif
+
 if has("win16") || has("win32") || has("win64")
     let g:opsystem = "windows"
 else
@@ -2502,12 +2506,16 @@ endif
 " {{{ treesitter
 if g:treesitter_enabled
 lua << EOF
+    local ensure_installed = nil;
+    if vim.g.nix_enabled == 0 then 
+        ensure_installed = "all"
+    end
     require'nvim-treesitter.configs'.setup {
         -- A list of parser names, or "all"
-        ensure_installed = "all",
+        ensure_installed = ensure_installed,
 
         -- Automatically install missing parsers when entering buffer
-        auto_install = true,
+        auto_install = vim.g.nix_enabled == 0,
 
         highlight = {
             enable = true,
@@ -2563,9 +2571,9 @@ lua << EOF
             },
         },
 
-        yati = {
-            enable = false,
-        },
+        -- yati = {
+        --     enable = false,
+        -- },
     }
 
     require'pretty-fold'.setup {}

@@ -184,19 +184,21 @@ endif
 if has('nvim-0.8')
   let g:treesitter_enabled = 1
 
-  Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}  " We recommend updating the parsers on update
-  Plug 'nvim-treesitter/nvim-treesitter-context'
-  Plug 'nvim-treesitter/nvim-treesitter-textobjects'
-  Plug 'nvim-treesitter/playground'
-  " Plug 'nvim-lua/plenary.nvim' | Plug 'nvim-telescope/telescope.nvim'
-  " Plug 'HiPhish/nvim-ts-rainbow2' " no longer maintained, replaced by plugin below
-  Plug 'https://gitlab.com/HiPhish/rainbow-delimiters.nvim'
-  Plug 'anuvyklack/pretty-fold.nvim'
-  Plug 'windwp/nvim-autopairs'
-  " Plug 'yioneko/nvim-yati'
-  Plug 'abecodes/tabout.nvim'
+  if !g:nix_enabled
+    Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}  " We recommend updating the parsers on update
+    Plug 'nvim-treesitter/nvim-treesitter-context'
+    Plug 'nvim-treesitter/nvim-treesitter-textobjects'
+    Plug 'nvim-treesitter/playground'
+    " Plug 'nvim-lua/plenary.nvim' | Plug 'nvim-telescope/telescope.nvim'
+    " Plug 'HiPhish/nvim-ts-rainbow2' " no longer maintained, replaced by plugin below
+    Plug 'https://gitlab.com/HiPhish/rainbow-delimiters.nvim'
+    Plug 'anuvyklack/pretty-fold.nvim'
+    Plug 'windwp/nvim-autopairs'
+    " Plug 'yioneko/nvim-yati'
+    Plug 'abecodes/tabout.nvim'
 
-  Plug 'Wansmer/treesj'
+    Plug 'Wansmer/treesj'
+  endif
 else
   let g:treesitter_enabled = 0
 

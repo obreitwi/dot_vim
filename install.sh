@@ -55,7 +55,7 @@ symlink "${SOURCE_FOLDER}/utils/next-day"            "${PREFIX}/bin/next-day"
 symlink "${SOURCE_FOLDER}/utils/neorg-existing-day"  "${PREFIX}/bin/neorg-existing-day"
 
 # check if nvim exists
-if command -v nvim >/dev/null; then
+if command -v nvim >/dev/null && ! command -v nix >/dev/null; then
     mkdir -p "${HOME}/.config/nvim"
     cat <<EOF >"${HOME}/.config/nvim/init.vim"
 set runtimepath^=~/.vim runtimepath+=~/.vim/after
@@ -65,7 +65,7 @@ EOF
 
 ln -svf ~/.vim/coc-settings.json ~/.config/nvim
 
-if command -v tree-sitter >/dev/null; then
+if command -v tree-sitter >/dev/null && ! command -v nix >/dev/null; then
     cd ~/.vim/utils/treesitter-timesheet/
     tree-sitter generate
     gcc -Wall -fPIC --shared -o timesheet.so -I src/tree_sitter src/parser.c
