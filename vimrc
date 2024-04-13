@@ -1945,6 +1945,7 @@ nmap [disableDiffchhar5] <Plug>JumpDiffCharPrevStart
 nmap [disableDiffchhar6] <Plug>PutDiffCharPair
 " }}}
 " {{{ dirbuf
+if !g:nix_enabled
 lua <<EOF
 require('dirbuf').setup{}
 EOF
@@ -1971,6 +1972,7 @@ map <leader>lr :DirbufFzf<CR>
 nmap <leader>lr :DirbufFzf<CR>
 autocmd vimrc Filetype dirbuf command! DirbufFzfEnter call s:fzf_dirbuf_enter()
 autocmd vimrc Filetype dirbuf nmap <buffer><Leader><Leader> :DirbufFzfEnter<CR>
+endif
 " }}}
 " {{{ eunuch
 let g:eunuch_no_maps=1
@@ -2376,6 +2378,14 @@ lua<<EOF
 require("coverage").setup({
     auto_reload = true,
 })
+EOF
+endif
+" }}}
+" {{{ oil.nvim
+if g:nix_enabled
+lua <<EOF
+require"oil".setup{}
+vim.keymap.set("n", "-", "<CMD>Oil<CR>", { desc = "Open parent directory" })
 EOF
 endif
 " }}}

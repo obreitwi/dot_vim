@@ -391,8 +391,8 @@ endif
 
 " {{{ file navigation
 " Plug 'SidOfc/carbon.nvim' " NOTE: Should be AFTER airline
-if has('nvim')
-  Plug 'elihunter173/dirbuf.nvim'
+if has('nvim') && !g:nix_enabled
+  Plug 'elihunter173/dirbuf.nvim' " replaced by oil.nvim in nix
 endif
 
 Plug 'wsdjeg/vim-fetch'
