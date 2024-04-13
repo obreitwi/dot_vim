@@ -248,7 +248,9 @@ if g:telescope_enabled
   Plug 'nvim-telescope/telescope.nvim'
   Plug 'nvim-telescope/telescope-fzf-native.nvim', { 'do': 'make' }
   Plug 'nvim-tree/nvim-web-devicons'
-  Plug 'nvim-neorg/neorg-telescope'
+  if !g:nix_enabled || 1 " neorg via nix also does not work "out of the box"
+    Plug 'nvim-neorg/neorg-telescope'
+  endif
 
   if executable('sg')
     Plug 'Marskey/telescope-sg'
@@ -511,10 +513,12 @@ endif
 
 " {{{ neorg
 " Expectations: Possible replacement for diary files and vimwiki
-if has('nvim-0.8')
-  " neorg does not support vim-plug after v8.0.0+ so stay on v7 
-  Plug 'nvim-neorg/neorg', {'do': ':Neorg sync-parsers', 'tag': 'v7.0.0'}
-  Plug 'nvim-lua/plenary.nvim'
+if has('nvim-0.8') 
+  if !g:nix_enabled || 1 " neorg via nix also does not work "out of the box"
+    " neorg does not support vim-plug after v8.0.0+ so stay on v7 
+    Plug 'nvim-neorg/neorg', {'do': ':Neorg sync-parsers', 'tag': 'v7.0.0'}
+    Plug 'nvim-lua/plenary.nvim'
+  endif
   Plug 'max397574/neorg-contexts'
 endif
 " }}}
