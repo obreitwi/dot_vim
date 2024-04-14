@@ -2381,14 +2381,6 @@ require("coverage").setup({
 EOF
 endif
 " }}}
-" {{{ oil.nvim
-if g:nix_enabled
-lua <<EOF
-require"oil".setup{}
-vim.keymap.set("n", "-", "<CMD>Oil<CR>", { desc = "Open parent directory" })
-EOF
-endif
-" }}}
 " {{{ rust
 if !g:lsp_enabled
     autocmd vimrc Filetype rust nnoremap <buffer><Leader>cf :RustFmt<CR>
