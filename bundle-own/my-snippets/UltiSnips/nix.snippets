@@ -1,0 +1,7 @@
+snippet shell "description"
+{pkgs ? import <${1:nixpkgs-unstable}> {}}:
+pkgs.mkShell {
+  nativeBuildInputs = with pkgs; [zsh $2];
+  shellHook = "exec zsh";
+}
+endsnippet
