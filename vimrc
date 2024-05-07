@@ -146,6 +146,8 @@ endfunction
 function InsertTaskName(name)
     call append(line('.'), a:name)
     normal! J
+    normal! :s/\t/ /g<CR>
+    normal! :s/\s\+/ /g<CR>
 endfunction
 
 function InsertTaskDetails(title_details)
@@ -2125,7 +2127,13 @@ local servers = {
     ['gopls'] = {},
     ['lua_ls'] = {},
     ['marksman'] = {},
-    ['nixd'] = {},
+    ['nixd'] = {
+        settings = {
+            nixpkgs = {
+                expr = "import <nixpkgs-unstable> { }",
+            },
+        }
+    },
     ['nushell'] = {},
     ['pyright'] = {},
     ['pylsp'] = {
