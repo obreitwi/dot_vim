@@ -2148,7 +2148,6 @@ local servers = {
         },
     },
     ['rust_analyzer'] = {},
-    ['terraform_lsp'] = {},
     ['texlab'] = {},
     ['tsserver'] = {
         settings = {
