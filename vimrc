@@ -1602,6 +1602,7 @@ cmp.setup {
     { name = 'nvim_lsp' },
     -- { name = 'luasnip' },
     { name = 'ultisnips' },
+    { name = 'buffer' },
   },
   window = {
     completion = cmp.config.window.bordered(),
