@@ -192,7 +192,10 @@ if has('nvim-0.8')
     " Plug 'nvim-lua/plenary.nvim' | Plug 'nvim-telescope/telescope.nvim'
     " Plug 'HiPhish/nvim-ts-rainbow2' " no longer maintained, replaced by plugin below
     Plug 'https://gitlab.com/HiPhish/rainbow-delimiters.nvim'
-    Plug 'anuvyklack/pretty-fold.nvim'
+    if !has('nvim-0.10')
+      " pretty fold has incompatibilities with neovim 0.10
+      Plug 'anuvyklack/pretty-fold.nvim'
+    endif
     Plug 'windwp/nvim-autopairs'
     " Plug 'yioneko/nvim-yati'
     Plug 'abecodes/tabout.nvim'

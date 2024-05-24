@@ -2585,7 +2585,9 @@ lua << EOF
         -- },
     }
 
-    require'pretty-fold'.setup {}
+    if not vim.fn.has('nvim-0.10') then
+        require'pretty-fold'.setup {}
+    end
 
     local remap = vim.api.nvim_set_keymap
     local npairs = require'nvim-autopairs'
