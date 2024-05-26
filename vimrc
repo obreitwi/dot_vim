@@ -322,6 +322,13 @@ map <f8> :setlocal spell!<CR>
 nnoremap Q gqap
 vnoremap Q gq
 
+if has('nvim-0.10')
+lua <<EOF
+    vim.keymap.set('n', '<leader>th', function() vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled()) end)
+    vim.lsp.inlay_hint.enable(true)
+EOF
+endif
+
 " Use <c-s> as prefix for <S>et-font related commands
 " TODO: Use hydra for this
 nnoremap <silent> <c-s><c-=> :call GuifontsizeModify(1)<cr>
