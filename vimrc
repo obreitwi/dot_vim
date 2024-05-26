@@ -291,8 +291,23 @@ command! -nargs=0 GoLines % !golines %
 " Plugin specific mappings are found in Plugins-section
 
 " {{{ prefixes
+nnoremap [dbg] <nop>
 nmap <leader>d [dbg]
-nmap [dbg] <nop>
+
+nnoremap [unite] <Nop>
+nmap <Leader>u [unite]
+
+nnoremap [coc] <Nop>
+nmap <Leader>g [coc]
+
+nnoremap [ale] <Nop>
+nmap <Leader>a [ale]
+
+nnoremap [usnips] <Nop>
+nmap <Leader>s [usnips]
+
+nnoremap [hop] <Nop>
+nmap <leader><leader> [hop]
 " }}}
 
 " let mapleader=";"
@@ -972,9 +987,6 @@ let g:ale_cpp_ccls_init_options = {
 \ }
 
 
-nnoremap [ale] <Nop>
-nmap <Leader>a [ale]
-
 map <silent> [ale]d <Plug>(ale_detail)
 map <silent> [ale]t <Plug>(ale_toggle)
 map <silent> [ale]b <Plug>(ale_toggle_buffer)
@@ -1350,9 +1362,6 @@ if !has('python3') && !has('pythonx')
     let g:UltiSnipsUsePythonVersion=2
 endif
 
-nnoremap [usnips] <Nop>
-nmap <Leader>s [usnips]
-
 map <silent> [usnips]l <Esc>:call UltiSnips#ListSnippets()<CR>
 map <silent> [usnips]e :UltiSnipsEdit<CR>
 let g:UltiSnipsSnippetStorageDirectoryForUltiSnipsEdit="~/.vim/bundle-own/my-snippets/UltiSnips"
@@ -1383,9 +1392,6 @@ if executable('ag')
   \ '--ignore ''.hg'' --ignore ''.svn'' --ignore ''.git'' --ignore ''.bzr'''
   let g:unite_source_grep_recursive_opt = ''
 endif
-
-nnoremap [unite] <Nop>
-nmap <Leader>u [unite]
 
 " nmap <silent> [unite]b :Unite -start-insert buffer<CR>
 " backward compatible mapping to BufferExplorer
@@ -1613,9 +1619,6 @@ EOF
 endif
 " }}}
 " {{{ coc
-nnoremap [coc] <Nop>
-nmap <Leader>g [coc]
-
 " You will have bad experience for diagnostic messages when it's default 4000.
 set updatetime=300
 
@@ -1626,8 +1629,6 @@ set shortmess+=c
 set signcolumn=yes
 
 if exists("g:using_coc") && g:using_coc == 1
-    nnoremap [coc] <Nop>
-    nmap <Leader>g [coc]
     " Better display for messages
     " set cmdheight=2
 
@@ -2240,8 +2241,6 @@ lua << EOF
 require('hop').setup()
 EOF
 
-nnoremap [hop] <Nop>
-nmap <leader><leader> [hop]
 nmap [hop]w :HopWordAC<CR>
 nmap [hop]b :HopWordBC<CR>
 nmap [hop]/ :HopPatternAC<CR>
