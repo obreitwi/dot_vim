@@ -290,29 +290,30 @@ command! -nargs=0 GoLines % !golines %
 " {{{ General Mappings
 " Plugin specific mappings are found in Plugins-section
 
-" {{{ prefixes
-nnoremap [dbg] <nop>
-nmap <leader>d [dbg]
-
-nnoremap [unite] <Nop>
-nmap <Leader>u [unite]
-
-nnoremap [coc] <Nop>
-nmap <Leader>g [coc]
-
-nnoremap [ale] <Nop>
-nmap <Leader>a [ale]
-
-nnoremap [usnips] <Nop>
-nmap <Leader>s [usnips]
-
-nnoremap [hop] <Nop>
-nmap <leader><leader> [hop]
-" }}}
-
 " let mapleader=";"
 let mapleader=" "
 let maplocalleader=";"
+
+" {{{ prefixes
+nmap <leader>d [dbg]
+nnoremap [dbg] <nop>
+
+nmap <leader>u [unite]
+nnoremap [unite] <Nop>
+
+nmap <leader>g [coc]
+nnoremap [coc] <Nop>
+
+nmap <leader>a [ale]
+nnoremap [ale] <Nop>
+
+nmap <leader>s [usnips]
+nnoremap [usnips] <Nop>
+
+nmap <leader><leader> [hop]
+nnoremap [hop] <Nop>
+" }}}
+
 
 " noremap <Esc><Esc> <Esc>
 
