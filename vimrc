@@ -2166,6 +2166,10 @@ local servers = {
     },
 }
 
+if vim.fn.executable('terraform-ls') then
+    servers['terraformls'] = {}
+end
+
 for lsp, opts in pairs(servers) do
   lspconfig[lsp].setup {
     -- on_attach = my_custom_on_attach,
