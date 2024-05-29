@@ -2461,7 +2461,7 @@ EOF
 
 nmap <silent> <c-p> :lua require'telescope.builtin'.git_files{}<CR>
 nmap <silent> <leader>be :lua require'telescope.builtin'.buffers{}<CR>
-nmap <silent> [unite]/ :lua require'telescope.builtin'.serach_history{}<CR>
+nmap <silent> [unite]/ :lua require'telescope.builtin'.search_history{}<CR>
 nmap <silent> [unite]: :lua require'telescope.builtin'.command_history{}<CR>
 nmap <silent> [unite]f :lua require'telescope.builtin'.find_files{}<CR>
 nmap <silent> [unite]c :lua require'telescope.builtin'.commands{}<CR>
