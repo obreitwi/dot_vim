@@ -2143,7 +2143,12 @@ local servers = {
             nixpkgs = {
                 expr = "import <nixpkgs-unstable> { }",
             },
-        }
+            diagnostic = {
+                suppress = {
+                    "sema-escaping-with",
+                },
+            },
+        },
     },
     ['nushell'] = {},
     ['pyright'] = {},
