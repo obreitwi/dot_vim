@@ -2145,7 +2145,8 @@ local servers = {
                     expr = "import <nixpkgs> { }",
                 },
                 formatting = {
-                    command = { "nixfmt" },
+                    -- command = { "nixfmt" },
+                    command = { "alejandra", "-qq" },
                 },
                 diagnostic = {
                     suppress = {
@@ -2250,13 +2251,9 @@ vim.api.nvim_create_autocmd('LspAttach', {
            ) > 0
       end
       local found_eslint = find_lsp('eslint')
-      local found_nixd = find_lsp('nixd')
-      local found_alejandra = vim.fn.executable('alejandra') > 0
 
       if found_eslint then
         vim.cmd('EslintFixAll')
-      elseif false and found_nixd and found_alejandra then
-        vim.cmd "%!alejandra --quiet"
       else
         vim.lsp.buf.format { async = true }
       end
