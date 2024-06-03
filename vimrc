@@ -2482,6 +2482,15 @@ require('telescope').setup{
             lang = nil, -- string value, specify language for ast-grep `nil` for default
         },
     },
+    pickers = {
+        buffers = {
+            mappings = {
+                n = {
+                    ["dd"] = require('telescope.actions').delete_buffer
+                },
+            },
+        },
+    },
 }
 require('telescope').load_extension('fzf')
 if vim.fn.executable('sg') then
@@ -2505,7 +2514,6 @@ nmap <silent> [unite]r :lua require'telescope.builtin'.grep_string{}<CR>
 nmap <silent> [unite]g :lua require'telescope.builtin'.live_grep{}<CR>
 nmap <silent> [unite]a :Telescope ast_grep<CR>
 
-if 1 " bindings to enable once lsp has been configured
 " coc bindings
 nmap <silent> [coc]D   :lua require'telescope.builtin'.diagnostics{}<CR>
 nmap <silent> [coc]d   :lua require'telescope.builtin'.lsp_definitions{}<CR>
@@ -2516,7 +2524,6 @@ nmap <silent> [coc]co  :lua require'telescope.builtin'.lsp_outgoing_calls{}<CR>
 nmap <silent> [coc]s   :lua require'telescope.builtin'.lsp_workspace_symbols{}<CR>
 nmap <silent> [coc]I   :lua require'telescope.builtin'.lsp_document_symbols{}<CR>
 " nmap <silent> [coc]B   :<C-u>CocFzfList diagnostics --current-buf<CR>
-endif
 endif
 " }}}
 " {{{ tidal
