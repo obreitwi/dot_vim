@@ -2140,12 +2140,17 @@ local servers = {
     ['marksman'] = {},
     ['nixd'] = {
         settings = {
-            nixpkgs = {
-                expr = "import <nixpkgs-unstable> { }",
-            },
-            diagnostic = {
-                suppress = {
-                    "sema-escaping-with",
+            nixd = {
+                nixpkgs = {
+                    expr = "import <nixpkgs> { }",
+                },
+                formatting = {
+                    command = { "nixfmt" },
+                },
+                diagnostic = {
+                    suppress = {
+                        "sema-escaping-with",
+                    },
                 },
             },
         },
@@ -2177,12 +2182,31 @@ if vim.fn.executable('terraform-ls') then
 end
 
 for lsp, opts in pairs(servers) do
-  lspconfig[lsp].setup {
-    -- on_attach = my_custom_on_attach,
-    capabilities = capabilities,
-    opts or {}
-  }
+  if opts.capabilities == nil then
+    opts.capabilities = capabilities
+  end
+  lspconfig[lsp].setup(opts)
 end
+
+
+-- lspconfig['nixd'].setup {
+--     capabilities = capabilities,
+--     settings = {
+--         nixd = {
+--             nixpkgs = {
+--                 expr = "import <nixpkgs> { }",
+--             },
+--             formatting = {
+--                 command = { "nixfmt" },
+--             },
+--             diagnostic = {
+--                 suppress = {
+--                     "sema-escaping-with",
+--                 },
+--             },
+--         },
+--     },
+-- }
 
 -- Global mappings.
 -- See `:help vim.diagnostic.*` for documentation on any of the below functions
@@ -2231,7 +2255,7 @@ vim.api.nvim_create_autocmd('LspAttach', {
 
       if found_eslint then
         vim.cmd('EslintFixAll')
-      elseif found_nixd and found_alejandra then
+      elseif false and found_nixd and found_alejandra then
         vim.cmd "%!alejandra --quiet"
       else
         vim.lsp.buf.format { async = true }
