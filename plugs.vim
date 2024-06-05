@@ -121,7 +121,7 @@ Plug 'simnalamburt/vim-mundo'
 " }}}
 
 " {{{ lusty
-let g:lusty_enabled=1
+let g:lusty_enabled=0
 if g:lusty_enabled
   Plug 'sjbach/lusty'
 endif

@@ -1251,9 +1251,11 @@ map <leader>dl :Linediff<CR>
 map <leader>dr :LinediffReset<CR>
 " }}}
 " {{{ Lusty
-let g:LustyJugglerSuppressRubyWarning = 1
-let g:LustyExplorerSuppressRubyWarning = 1
-map <leader>bg :LustyBufferGrep<CR>
+if g:lusty_enabled == 1
+    let g:LustyJugglerSuppressRubyWarning = 1
+    let g:LustyExplorerSuppressRubyWarning = 1
+    map <leader>bg :LustyBufferGrep<CR>
+endif
 " }}}
 " {{{ Mundo
 " decide which mapping to keep
@@ -2510,6 +2512,9 @@ vmap <silent> [unite]r :lua require'telescope.builtin'.grep_string{initial_mode=
 nmap <silent> [unite]r :lua require'telescope.builtin'.grep_string{}<CR>
 nmap <silent> [unite]g :lua require'telescope.builtin'.live_grep{}<CR>
 nmap <silent> [unite]a :Telescope ast_grep<CR>
+if g:lusty_enabled == 0
+nmap <silent> <leader>lr :lua require'telescope.builtin'.find_files{cwd = require'telescope.utils'.buffer_dir()}<CR>
+endif
 
 " coc bindings
 nmap <silent> [coc]D   :lua require'telescope.builtin'.diagnostics{}<CR>
