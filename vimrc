@@ -2470,7 +2470,9 @@ endif
 " {{{ telescope
 if g:telescope_enabled
 lua <<EOF
-require('telescope').setup{
+local tlscp = require('telescope')
+
+tlscp.setup{
     extensions = {
         ast_grep = {
             command = {
@@ -2479,6 +2481,21 @@ require('telescope').setup{
             }, -- must have --json=stream
             grep_open_files = false, -- search in opened files
             lang = nil, -- string value, specify language for ast-grep `nil` for default
+        },
+        file_browser = {
+            hijack_netrw = false,
+            -- mappings = {
+            --     n = {
+            --         ["<c-w>"] = function(bn)
+            --                 require('telescope.actions').extensions.file_browser.actions.goto_parent_dir(bn, true)
+            --             end,
+            --     },
+            --     i = {
+            --         ["<c-w>"] = function(bn)
+            --                 require('telescope.actions').extensions.file_browser.actions.goto_parent_dir(bn, true)
+            --             end,
+            --     },
+            -- },
         },
     },
     pickers = {
@@ -2491,10 +2508,18 @@ require('telescope').setup{
         },
     },
 }
-require('telescope').load_extension('fzf')
+
+tlscp.load_extension('fzf')
 if vim.fn.executable('sg') then
-    require('telescope').load_extension('ast_grep')
+    tlscp.load_extension('ast_grep')
 end
+
+if vim.g.nix_enabled == 1 then
+    tlscp.load_extension('file_browser')
+    vim.keymap.set("n", "<leader>lf", ":Telescope file_browser<CR>", {silent = true})
+    vim.keymap.set("n", "<leader>lr", ":Telescope file_browser path=%:p:h select_buffer=true<CR>", { silent = true})
+end
+
 EOF
 
 nmap <silent> <c-p> :lua require'telescope.builtin'.git_files{}<CR>
@@ -2512,8 +2537,8 @@ vmap <silent> [unite]r :lua require'telescope.builtin'.grep_string{initial_mode=
 nmap <silent> [unite]r :lua require'telescope.builtin'.grep_string{}<CR>
 nmap <silent> [unite]g :lua require'telescope.builtin'.live_grep{}<CR>
 nmap <silent> [unite]a :Telescope ast_grep<CR>
-if g:lusty_enabled == 0
-nmap <silent> <leader>lr :lua require'telescope.builtin'.find_files{cwd = require'telescope.utils'.buffer_dir()}<CR>
+if g:lusty_enabled == 0 && g:nix_enabled == 0
+    nmap <silent> <leader>lr :lua require'telescope.builtin'.find_files{cwd = require'telescope.utils'.buffer_dir()}<CR>
 endif
 
 " coc bindings
