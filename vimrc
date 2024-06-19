@@ -2517,7 +2517,8 @@ tlscp.setup{
         buffers = {
             mappings = {
                 n = {
-                    ["dd"] = require('telescope.actions').delete_buffer
+                    ["dd"] = require('telescope.actions').delete_buffer,
+                    ["<c-h>"] = function(bn) require('telescope.actions').extensions.file_browser.actions.toggle_hidden(bn) end,
                 },
             },
         },
