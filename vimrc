@@ -2185,6 +2185,12 @@ if vim.fn.executable('terraform-ls') then
 end
 
 for lsp, opts in pairs(servers) do
+  if opts.on_attach == nil then
+    opts.on_attach = function(client, bufnr)
+        local bufopts = { noremap = true, silent = true, buffer = bufnr }
+        vim.keymap.set("n", "[coc]E", vim.diagnostic.open_float, bufopts)
+    end
+  end
   if opts.capabilities == nil then
     opts.capabilities = capabilities
   end
