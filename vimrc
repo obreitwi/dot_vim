@@ -2523,7 +2523,8 @@ tlscp.setup{
             },
         },
     },
-    defaults = { path_display = { "smart" } },
+    -- defaults = { path_display = { "smart" } },
+    defaults = { path_display = { "truncate" } },
 }
 
 tlscp.load_extension('fzf')
