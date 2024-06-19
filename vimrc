@@ -2271,6 +2271,15 @@ let g:gh_open_command = 'fn() { echo -n "$@" | xclip -selection copy; }; fn '
 " {{{ gitgutter
 nmap <leader>ggf :GitGutterFold<CR>
 " }}}
+" {{{ gitsigns 
+if has('nvim-0.9')
+lua <<EOF
+require('gitsigns').setup({
+    word_diff = false,
+})
+EOF
+endif
+" }}}
 " {{{ gofmt
 if !g:lsp_enabled
     autocmd vimrc Filetype go nnoremap <buffer><Leader>cf :GoImports<CR>

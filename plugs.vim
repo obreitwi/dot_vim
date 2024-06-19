@@ -445,7 +445,11 @@ endif
 
 " {{{ git
 " See also fugitive and vim-git under tpope
-Plug 'airblade/vim-gitgutter'
+if has('nvim-0.9')
+  Plug 'lewis6991/gitsigns.nvim'
+else
+  Plug 'airblade/vim-gitgutter'
+endif
 " Faster gitv replacment
 Plug 'junegunn/gv.vim'
 " Plug 'mhinz/vim-signify'
