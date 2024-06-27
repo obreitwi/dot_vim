@@ -159,7 +159,7 @@ endif
 let g:hop_enabled = 1
 let g:flash_enabled = 0
 if has('nvim') && g:hop_enabled
-  Plug 'phaazon/hop.nvim'
+  Plug 'smoka7/hop.nvim'
 endif
 if has('nvim') && g:flash_enabled
   Plug 'folke/flash.nvim'
