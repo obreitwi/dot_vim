@@ -2551,6 +2551,7 @@ nmap <silent> [unite]u<leader> :lua require'telescope.builtin'.resume{}<CR>
 nmap <silent> [unite]l :lua require'telescope.builtin'.current_buffer_fuzzy_find{}<CR>
 " nmap <silent> [unite]L :Lines<CR>
 nmap <silent> [unite]m :lua require'telescope.builtin'.oldfiles{}<CR>
+nmap <silent> [unite]M :lua require'telescope.builtin'.keymaps{}<CR>
 " nmap <silent> [unite]s :Snippets<CR>
 vmap <silent> [unite]r :lua require'telescope.builtin'.grep_string{initial_mode='select'}<CR>
 nmap <silent> [unite]r :lua require'telescope.builtin'.grep_string{}<CR>
