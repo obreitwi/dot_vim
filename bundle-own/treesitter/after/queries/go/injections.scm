@@ -3,12 +3,12 @@
 ; embed sql in literals
 (
  (comment) @_tag (#eq? @_tag "/* sql */")
- (raw_string_literal) @sql (#offset! @sql 0 1 0 -1)
+ (raw_string_literal) @injection.content (#set! injection.language "sql")
 )
 
 (
  (comment) @_tag (#eq? @_tag "/* sql */")
- (expression_list (raw_string_literal) @sql (#offset! @sql 0 1 0 -1))
+ (expression_list (raw_string_literal) @injection.content (#set! injection.language "sql"))
 )
 
 ; TODO: This also matches go literals in the middle but there is no way to
@@ -16,5 +16,5 @@
 ; binary_expression tree yet
 (
     (comment) @_tag (#eq? @_tag "/* sql */")
-    (expression_list) @sql (#offset! @sql 0 1 0 -1)
+    (expression_list) @injection.content (#set! injection.language "sql")
 )
