@@ -150,6 +150,17 @@ function InsertTaskName(name)
     normal! :s/\s\+/ /g<CR>
 endfunction
 
+function InsertAsNeorgLink(input)
+    let l:split=split(a:input, '	')
+    let l:title=l:split[0]
+    let l:title=substitute(l:title, "\{", "\\\\{", "g")
+    let l:title=substitute(l:title, "\}", "\\\\}", "g")
+    let l:url=l:split[1]
+    call append(line('.'), printf('{%s}[%s]', l:url, l:title))
+    normal! J
+endfunction
+
+
 function InsertTaskDetails(title_details)
     let l:split=split(a:title_details, '	')
     let l:title=l:split[0]
@@ -434,7 +445,7 @@ nmap cie <NOp>
 autocmd vimrc FileType markdown,norg    nmap <silent> <localleader>y        :call CopyTaskName()<CR>
 autocmd vimrc FileType markdown,norg    nmap <silent> <localleader>p        :call PasteTaskName()<CR>
 autocmd vimrc FileType markdown,norg    nmap <silent> <localleader>r        :call ReplaceTaskName()<CR>0
-autocmd vimrc FileType markdown,norg    nmap <silent> <localleader>s        :call fzf#run(fzf#wrap({'source': 'revcli stories --list --title', 'sink': function("InsertTaskName")}))<CR>
+autocmd vimrc FileType markdown,norg    nmap <silent> <localleader>s        :call fzf#run(fzf#wrap({'source': 'revcli stories --list --title', 'sink': function("InsertAsNeorgLink"), 'options': '-d "	" --with-nth 1'}))<CR>
 autocmd vimrc FileType markdown,norg    nmap <silent> <localleader>t        :call fzf#run(fzf#wrap({'source': 'revcli tasks --list --timesheet', 'sink': function("InsertTaskName"), 'options': '-d "	" --with-nth 1'}))<CR>
 
 autocmd vimrc FileType norg             nmap <silent> ]d             :e =system(["neorg-existing-day", expand("%:t:r"), "+1"])<CR><CR>
