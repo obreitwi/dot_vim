@@ -2060,6 +2060,7 @@ local servers = {
             },
         },
     },
+    ['nil_ls'] = {},
     ['nushell'] = {},
     ['pyright'] = {},
     ['pylsp'] = {
