@@ -1484,41 +1484,6 @@ if 0 && g:ycm_requirements_met && index(g:hosts_ycm, hostname()) >= 0
     " let g:ycm_clangd_args=['-ferror-limit=0']
 endif
 " }}}
-" {{{ barbecue
-lua <<EOC
--- require("barbecue").setup({
---   -- attach_navic = false, -- prevent barbecue from automatically attaching nvim-navic
---   -- create_autocmd = false, -- prevent barbecue from updating itself automatically
--- })
-
--- Requires lspconfig, need a way to work with coc
--- require("lspconfig")[server].setup({
---   -- attach navic to each tab page
---   on_attach = function(client, bufnr)
---     if client.server_capabilities["documentSymbolProvider"] then
---       require("nvim-navic").attach(client, bufnr)
---     end
---   end,
--- })
---
--- vim.api.nvim_create_autocmd({
---   "WinResized",
---   "BufWinEnter",
---   "CursorHold",
---   "InsertLeave",
--- 
---   -- include these if you have set `show_modified` to `true`
---   "BufWritePost",
---   "TextChanged",
---   "TextChangedI",
--- }, {
---   group = vim.api.nvim_create_augroup("barbecue.updater", {}),
---   callback = function()
---     require("barbecue.ui").update()
---   end,
--- })
-EOC
-" }}}
 " {{{ black
 " Mnemonic is <c>ode-<f>ormat
 autocmd vimrc Filetype python nnoremap <buffer><Leader>cf :Black<CR>
@@ -1958,36 +1923,6 @@ endif
 " }}}
 " {{{ eunuch
 let g:eunuch_no_maps=1
-" }}}
-" {{{ fake
-" let g:fake_bootstrap = 1
-" " function! s:FakeInit()
-" " Choose a random element from a list
-" call fake#define('sex', 'fake#choice(["male", "female"])')
-" 
-" " Get a name of male or female
-" call fake#define('name', 'fake#int(1) ? fake#gen("male_name")'
-"             \ . ' : fake#gen("female_name")')
-" 
-" " Get a full name
-" call fake#define('fullname', 'fake#gen("name") . " " . fake#gen("surname")')
-" 
-" " Get a nonsense text like Lorem ipsum
-" call fake#define('sentense', 'fake#capitalize('
-"             \ . 'join(map(range(fake#int(3,15)),"fake#gen(\"nonsense\")"))'
-"             \ . ' . fake#chars(1,"..............!?"))')
-" 
-" " Generate a full paragraph
-" call fake#define('paragraph', 'join(map(range(fake#int(3,10)),'
-"             \ . '"fake#gen(\"sentense\")"))')
-" 
-" " Generate a uuid
-" call fake#define('uuid', 'system("uuidgen")')
-" 
-" "" Alias
-" call fake#define('lipsum', 'fake#gen("paragraph")')
-" " endfunction
-" " command! -nargs=0 FakeInit :call s:FakeInit()
 " }}}
 " {{{ firenvim
 if exists('g:started_by_firenvim')
