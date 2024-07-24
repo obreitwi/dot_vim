@@ -2358,11 +2358,16 @@ let g:rust_conceal = 1
 " {{{ silicon
 if has('nvim') && executable('silicon')
 lua <<EOF
-require('silicon').setup {
+require('nvim-silicon').setup {
     font = "IosevkaTerm NF=34;Noto Color Emoji=34",
     background = '#00000000',
     no_window_controls = true,
     to_clipboard = true,
+    theme = "gruvbox-dark",
+    shadow_blur_radius = 8,
+    pad_horiz = 50,
+    pad_vert = 40,
+
 }
 EOF
 endif
