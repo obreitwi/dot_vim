@@ -407,6 +407,10 @@ if index(s:tidal_hosts, s:hostname) >= 0
   Plug 'tidalcycles/vim-tidal'
   Plug 'supercollider/scvim'
 endif
+let s:sonicpi_hosts=["lark"]
+if index(s:sonicpi_hosts, s:hostname) >= 0
+    Plug 'dermusikman/sonicpi.vim'
+endif
 " }}}
 
 " {{{ colors
@@ -508,11 +512,6 @@ endif
 " }}}
 
 " {{{ misc
-let s:sonicpi_hosts=["lark"]
-if index(s:sonicpi_hosts, s:hostname) >= 0
-    Plug 'dermusikman/sonicpi.vim'
-endif
-
 " For standalone only (see
 " https://github.com/Lokaltog/powerline/blob/develop/docs/source/overview.rst)
 " Plug 'Lokaltog/powerline', {'rtp': 'powerline/bindings/vim/'}
