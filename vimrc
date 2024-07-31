@@ -2089,6 +2089,10 @@ if vim.fn.executable('terraform-ls') then
     servers['terraformls'] = {}
 end
 
+if vim.fn.executable('phpactor') then
+    servers['phpactor'] = {}
+end
+
 for lsp, opts in pairs(servers) do
   if opts.on_attach == nil then
     opts.on_attach = function(client, bufnr)
@@ -2367,6 +2371,7 @@ require('nvim-silicon').setup {
     to_clipboard = true,
     theme = "gruvbox-dark",
     shadow_blur_radius = 8,
+    language = "PHP Source",
     pad_horiz = 50,
     pad_vert = 40,
 
