@@ -921,6 +921,11 @@ lua <<EOF
 require('lualine').setup({
     options = { theme = 'gruvbox' },
     extensions = { "toggleterm" },
+    sections = {
+        lualine_c = {
+            { 'filename', path = 1, file_status = true }
+        },
+    },
 })
 EOF
 endif
