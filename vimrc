@@ -2038,6 +2038,7 @@ end
 local servers = {
     ['ast_grep'] = {},
     ['bashls'] = {},
+    ['cssls'] = {},
     ['dartls'] = {},
     ['eslint'] = {
         -- on_attach = toggle_formatting(true),
@@ -2088,14 +2089,19 @@ local servers = {
             format = false,
         },
     },
+    ['tailwindcss'] = {},
 }
-
-if vim.fn.executable('terraform-ls') then
-    servers['terraformls'] = {}
-end
 
 if vim.fn.executable('phpactor') then
     servers['phpactor'] = {}
+end
+
+if vim.fn.executable('haskell-language-sever') then
+    servers['hls'] = {}
+end
+
+if vim.fn.executable('terraform-ls') then
+    servers['terraformls'] = {}
 end
 
 for lsp, opts in pairs(servers) do
