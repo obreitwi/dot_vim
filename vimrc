@@ -1220,8 +1220,8 @@ let g:tex_flavor='latex'
 let g:LatexBox_custom_inden=0
 " }}}
 " {{{ LineDiff
-map <leader>dl :Linediff<CR>
-map <leader>dr :LinediffReset<CR>
+map <leader>ldd :Linediff<CR>
+map <leader>ldr :LinediffReset<CR>
 " }}}
 " {{{ Lusty
 if g:lusty_enabled == 1
