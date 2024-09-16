@@ -2084,7 +2084,7 @@ local servers = {
     },
     ['rust_analyzer'] = {},
     ['texlab'] = {},
-    ['tsserver'] = {
+    ['ts_ls'] = {
         settings = {
             format = false,
         },
