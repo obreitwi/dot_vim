@@ -2496,8 +2496,8 @@ nmap <silent> [coc]t   :lua require'telescope.builtin'.lsp_type_definitions{}<CR
 nmap <silent> [coc]r   :lua require'telescope.builtin'.lsp_references{}<CR>
 nmap <silent> [coc]ci  :lua require'telescope.builtin'.lsp_incoming_calls{}<CR>
 nmap <silent> [coc]co  :lua require'telescope.builtin'.lsp_outgoing_calls{}<CR>
-nmap <silent> [coc]s   :lua require'telescope.builtin'.lsp_dynamic_workspace_symbols{}<CR>
-nmap <silent> [coc]I   :lua require'telescope.builtin'.lsp_document_symbols{}<CR>
+nmap <silent> [coc]S   :lua require'telescope.builtin'.lsp_dynamic_workspace_symbols{}<CR>
+nmap <silent> [coc]s   :lua require'telescope.builtin'.lsp_document_symbols{}<CR>
 " nmap <silent> [coc]B   :<C-u>CocFzfList diagnostics --current-buf<CR>
 endif
 " }}}
