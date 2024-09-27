@@ -25,7 +25,6 @@ Plug 'jamessan/vim-gnupg'
 Plug 'kana/vim-textobj-entire'
 Plug 'kana/vim-textobj-indent'
 Plug 'kana/vim-textobj-user'
-Plug 'majutsushi/tagbar'
 Plug 'mantiz/vim-plugin-dirsettings'
 Plug 'michaeljsmith/vim-indent-object'
 Plug 'nathanaelkane/vim-indent-guides'
@@ -44,6 +43,10 @@ Plug 'vim-scripts/DirDiff.vim'
 Plug 'vim-scripts/ReplaceWithRegister'
 Plug 'vimwiki/vimwiki'
 Plug 'terryma/vim-expand-region'
+if !g:nix_enabled
+  " Replaced by vista.vim installed via nix
+  Plug 'majutsushi/tagbar'
+endif
 " }}}
 
 " {{{ To evaluate

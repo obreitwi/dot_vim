@@ -1321,8 +1321,10 @@ map <Leader>tm :tabe ~/.vim/bundle-own/tabular-maps/after/plugin/TabularMaps.vim
 " map <Leader>t :Tabularize
 " }}}
 " {{{ Tagbar
-nnoremap <c-y> :TagbarToggle<CR>
-let g:tagbar_autofocus = 1
+if !g:nix_enabled
+    nnoremap <c-y> :TagbarToggle<CR>
+    let g:tagbar_autofocus = 1
+endif
 " }}}
 " {{{ Taglist
 " nnoremap <c-s> :TlistToggle<CR>
