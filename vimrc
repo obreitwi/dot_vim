@@ -1171,7 +1171,8 @@ autocmd vimrc BufReadPost fugitive://* set bufhidden=delete
 nnoremap <leader>F :Git<CR>:on<CR>
 nnoremap <leader>fa :Git add %<CR>
 nnoremap <leader>fc q:iGit commit -m ""<Left>
-nnoremap gb :G blame -CCCw<CR>
+nnoremap gb :Git blame<CR>
+nnoremap gB :Git blame -CCCw<CR>
 " }}}
 " {{{ Gundo
 " if has('python3')
