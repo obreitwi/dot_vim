@@ -2069,10 +2069,19 @@ local servers = {
                         "sema-escaping-with",
                     },
                 },
+                options = {
+                    nixos = {
+                        expr = '(builtins.getFlake "$FLAKE").nixosConfigurations.gentian.options',
+                    },
+                    home_manager = {
+                        expr = '(builtins.getFlake "$FLAKE").homeConfigurations."oliver.breitwieser@mimir".options',
+                    },
+                },
             },
         },
     },
-    ['nil_ls'] = {},
+    -- disable nil_ls to see if nixd is sufficient
+    -- ['nil_ls'] = {},
     ['nushell'] = {},
     ['pyright'] = {},
     ['pylsp'] = {
