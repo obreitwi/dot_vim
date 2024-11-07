@@ -2202,6 +2202,13 @@ vim.api.nvim_create_autocmd('LspAttach', {
   end,
 })
 EOF
+
+function! GenerateProtoRestart()
+    exec '!generate-proto'
+    LspRestart
+endfunction
+nmap <leader>pr :call GenerateProtoRestart()<CR>
+
 endif
 " }}}
 " {{{ gh-line
