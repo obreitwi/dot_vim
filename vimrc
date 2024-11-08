@@ -2741,6 +2741,7 @@ nnoremap <leader>fD :FlutterVisualDebug<cr>
 let g:go_code_completion_enabled = 0
 
 let g:go_metalinter_command = 'golangci-lint'
+let g:go_fillstruct_mode = 'gopls'
 
 " not respected anyway?
 " let g:go_mod_fmt_autosave = 0
