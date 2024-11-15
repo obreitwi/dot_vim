@@ -89,6 +89,12 @@ if has('nvim') && executable('silicon')
 endif
 " }}}
 
+" {{{ lua-console
+if has('nvim')
+  Plug 'YaroSpace/lua-console.nvim'
+endif
+" }}}
+
 " {{{ messages for easier debugging
 if has('nvim')
   Plug 'AckslD/messages.nvim'

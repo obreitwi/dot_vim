@@ -2293,6 +2293,15 @@ let g:ledger_maxwith = 80
 let g:ledger_fillstring = "······"
 let g:ledger_detailed_first = 1
 " }}}
+" {{{ lua-console
+lua <<EOF
+require('lua-console').setup({
+  mappings = {
+    toggle = "<leader>lc",
+},
+})
+EOF
+" }}}
 " {{{ messages
 if has('nvim')
 lua <<EOF
