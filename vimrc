@@ -1679,9 +1679,9 @@ if exists("g:using_coc") && g:using_coc == 1
     nmap [coc]rf <Plug>(coc-refactor)
 
     " Remap for format selected region
-    xmap [coc]f  <Plug>(coc-format-selected)
-    nmap [coc]f  <Plug>(coc-format-selected)
-    nmap [coc]F  :<C-u>Format<CR>
+    " xmap [coc]f  <Plug>(coc-format-selected)
+    " nmap [coc]f  <Plug>(coc-format-selected)
+    " nmap [coc]F  :<C-u>Format<CR>
 
     " augroup mygroup
       " autocmd!
@@ -2095,7 +2095,7 @@ local servers = {
             },
         },
     },
-    ['rust_analyzer'] = {},
+    -- ['rust_analyzer'] = {}, -- disabled for rustacean-nvim
     ['texlab'] = {},
     ['ts_ls'] = {
         settings = {
@@ -2109,7 +2109,7 @@ if vim.fn.executable('phpactor') then
     servers['phpactor'] = {}
 end
 
-if vim.fn.executable('haskell-language-sever') then
+if vim.fn.executable('haskell-language-sever') && vim.g.nix_enabled == 0 then
     servers['hls'] = {}
 end
 
@@ -2763,7 +2763,7 @@ autocmd vimrc filetype go nmap <buffer> <silent> <leader>K <Plug>(go-doc)
 autocmd vimrc filetype go nmap <buffer> <silent> [coc]e :GoIfErr<CR>
 autocmd vimrc filetype go nmap <buffer> <silent> [coc]l :GoLines<CR>
 autocmd vimrc filetype go nmap <buffer> <silent> [coc]m <Plug>(go-metalinter)
-autocmd vimrc filetype go nmap <buffer> <silent> [coc]S :GoFillStruct<CR>
+autocmd vimrc filetype go nmap <buffer> <silent> [coc]f :GoFillStruct<CR>
 autocmd vimrc filetype go nmap <buffer> <silent> [coc]t <Plug>(go-test)
 " }}}
 " {{{ vimtex
