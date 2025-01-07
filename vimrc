@@ -2109,7 +2109,7 @@ if vim.fn.executable('phpactor') then
     servers['phpactor'] = {}
 end
 
-if vim.fn.executable('haskell-language-sever') && vim.g.nix_enabled == 0 then
+if vim.fn.executable('haskell-language-sever') and vim.g.nix_enabled == 0 then
     servers['hls'] = {}
 end
 
