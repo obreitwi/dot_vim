@@ -2467,6 +2467,7 @@ tlscp.setup{
             --     },
             -- },
         },
+        fzf = {}
     },
     pickers = {
         buffers = {
