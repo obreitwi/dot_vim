@@ -358,6 +358,7 @@ endif
 if g:lsp_enabled
   Plug 'neovim/nvim-lspconfig'
   Plug 'hrsh7th/cmp-nvim-lsp' " LSP source for nvim-cmp
+  Plug 'hrsh7th/cmp-buffer' " LSP source for nvim-cmp
   Plug 'hrsh7th/nvim-cmp'
   Plug 'quangnguyen30192/cmp-nvim-ultisnips'
   " Plug 'saadparwaiz1/cmp_luasnip' " Snippets source for nvim-cmp

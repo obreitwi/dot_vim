@@ -1537,24 +1537,10 @@ cmp.setup {
       select = true,
     },
     ['<Tab>'] = cmp.mapping(function(fallback)
-      if cmp.visible() then
-        cmp.select_next_item()
-      -- elseif luasnip.expand_or_jumpable() then
-      --   luasnip.expand_or_jump()
-      else
-        cmp_ultisnips_mappings.expand_or_jump_forwards(fallback)
-        -- fallback()
-      end
+      cmp_ultisnips_mappings.expand_or_jump_forwards(fallback)
     end, { 'i', 's' }),
     ['<S-Tab>'] = cmp.mapping(function(fallback)
-      if cmp.visible() then
-        cmp.select_prev_item()
-      -- elseif luasnip.jumpable(-1) then
-      --   luasnip.jump(-1)
-      else
-        cmp_ultisnips_mappings.jump_backwards(fallback)
-        -- fallback()
-      end
+      cmp_ultisnips_mappings.jump_backwards(fallback)
     end, { 'i', 's' }),
   }),
   sources = {
