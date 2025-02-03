@@ -1447,8 +1447,8 @@ let wiki_sync.nested_syntaxes = {'python': 'python', 'c++': 'cpp', 'rust': 'rs',
 
 let g:vimwiki_list = [wiki_sync]
 
-map ]d <Plug>VimwikiDiaryNextDay
-map [d <Plug>VimwikiDiaryPrevDay
+" map ]d <Plug>VimwikiDiaryNextDay
+" map [d <Plug>VimwikiDiaryPrevDay
 
 " nmap <leader>ws :VimwikiSearch 
 
