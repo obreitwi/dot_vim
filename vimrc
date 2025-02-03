@@ -2311,6 +2311,7 @@ lua <<EOF
 require'neorg'.setup {
     load = {
         ["core.defaults"] = {},
+        ["core.clipboard.code-blocks"] = {}, -- dedent codeblocks
         ["core.concealer"] = {},
         ["core.dirman"] = {
             config = {
@@ -2332,6 +2333,7 @@ require'neorg'.setup {
             },
         },
         ["core.integrations.telescope"] = {},
+        ["core.esupports.indent"] = {},
         -- ["core.gtd.base"] = {
         --     config = {
         --         workspace = "vimwiki",
