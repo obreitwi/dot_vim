@@ -360,6 +360,7 @@ if g:lsp_enabled
   Plug 'hrsh7th/cmp-nvim-lsp' " LSP source for nvim-cmp
   Plug 'hrsh7th/cmp-buffer' " LSP source for nvim-cmp
   Plug 'hrsh7th/nvim-cmp'
+  Plug 'ray-x/lsp_signature.nvim'
   Plug 'quangnguyen30192/cmp-nvim-ultisnips'
   " Plug 'saadparwaiz1/cmp_luasnip' " Snippets source for nvim-cmp
   " Plug 'L3MON4D3/LuaSnip' " Snippets plugin

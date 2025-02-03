@@ -2288,6 +2288,13 @@ require('lua-console').setup({
 })
 EOF
 " }}}
+" {{{ lsp-signature 
+if g:lsp_enabled
+lua <<EOF
+require "lsp_signature".setup(cfg)
+EOF
+endif
+" }}}
 " {{{ messages
 if has('nvim')
 lua <<EOF
