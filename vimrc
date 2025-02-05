@@ -2522,6 +2522,7 @@ nmap <silent> [unite]M :lua require'telescope.builtin'.keymaps{}<CR>
 vmap <silent> [unite]r :lua require'telescope.builtin'.grep_string{initial_mode='select'}<CR>
 nmap <silent> [unite]r :lua require'telescope.builtin'.grep_string{}<CR>
 nmap <silent> [unite]g :lua require'telescope.builtin'.live_grep{}<CR>
+nmap <silent> [unite]G :lua require'telescope.builtin'.live_grep{cwd = require'telescope.utils'.buffer_dir()}<CR>
 nmap <silent> [unite]a :Telescope ast_grep<CR>
 if g:lusty_enabled == 0 && g:nix_enabled == 0
     nmap <silent> <leader>lr :lua require'telescope.builtin'.find_files{cwd = require'telescope.utils'.buffer_dir()}<CR>
