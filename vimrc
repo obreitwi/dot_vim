@@ -654,7 +654,7 @@ autocmd vimrc FileType lua         setlocal tabstop=2    | setlocal shiftwidth=2
 autocmd vimrc FileType mail        setlocal textwidth=72 | setlocal wrapmargin=8  | setlocal spell
 autocmd vimrc FileType markdown    setlocal tabstop=2    | setlocal shiftwidth=2  | setlocal softtabstop=2 | setlocal expandtab
 autocmd vimrc FileType matlab      setlocal tabstop=4    | setlocal shiftwidth=4  | setlocal expandtab
-autocmd vimrc FileType norg        setlocal tabstop=2    | setlocal shiftwidth=2  | setlocal expandtab
+autocmd vimrc FileType norg        setlocal tabstop=2    | setlocal shiftwidth=2  | setlocal expandtab | setlocal fo=tqnj
 autocmd vimrc FileType proto       setlocal tabstop=2    | setlocal shiftwidth=2  | setlocal softtabstop=2
 autocmd vimrc FileType python      setlocal tabstop=4    | setlocal shiftwidth=4  | setlocal expandtab
 autocmd vimrc FileType sh          setlocal tabstop=4    | setlocal softtabstop=4 | setlocal shiftwidth=4  | setlocal expandtab
@@ -2333,7 +2333,13 @@ require'neorg'.setup {
             },
         },
         ["core.integrations.telescope"] = {},
-        ["core.esupports.indent"] = {},
+        ["core.esupports.indent"] = {
+            config = {
+                modifiers = {
+                    ["under-headings"] = function(_, _) return 0 end
+                }
+            },
+        },
         -- ["core.gtd.base"] = {
         --     config = {
         --         workspace = "vimwiki",
