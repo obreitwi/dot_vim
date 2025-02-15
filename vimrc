@@ -1968,7 +1968,7 @@ if g:fzf_found
     nmap <silent> [unite]l :BLines<CR>
     nmap <silent> [unite]L :Lines<CR>
     nmap <silent> [unite]m :History<CR>
-    nmap <silent> [unite]s :Snippets<CR>
+    nmap <silent> [unite]S :Snippets<CR>
     nmap <silent> [unite]r :RgFromSearch<CR>
     " Helptags shadowed by pathogen
     command! -bar -bang FzfHelptags call fzf#vim#helptags(<bang>0)
@@ -2510,6 +2510,7 @@ if vim.g.nix_enabled == 1 then
     vim.keymap.set("n", "<leader>lr", ":Telescope file_browser path=%:p:h select_buffer=true<CR>", { silent = true})
 end
 
+vim.keymap.set("n", "[unite]s", ":Telescope file_browser path=~/tmp/scratchpad select_buffer=true<CR>", { silent = true})
 EOF
 
 nmap <silent> <c-p> :lua require'telescope.builtin'.git_files{}<CR>
